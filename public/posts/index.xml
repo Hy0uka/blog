@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 清夜无尘の一方天地</title>
-    <link>https://m00nwandering.life/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on 清夜无尘の一方天地</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
     <lastBuildDate>Thu, 27 Jun 2024 17:20:46 +0800</lastBuildDate>
     
-	<atom:link href="https://m00nwandering.life/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
