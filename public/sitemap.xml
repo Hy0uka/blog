@@ -2,22 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-06-27T17:20:46+08:00</lastmod>
+    <loc>https://m00nwandering.life/post/</loc>
+    <lastmod>2024-06-27T18:03:45+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-06-27T17:20:46+08:00</lastmod>
+    <loc>https://m00nwandering.life/post/%E6%AE%B7%E5%A2%9F%E5%8D%9A%E7%89%A9%E9%A6%86%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2024-06-27T18:03:45+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2024-06-27T17:15:24+08:00</lastmod>
+    <loc>https://m00nwandering.life/</loc>
+    <lastmod>2024-06-27T18:03:45+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/test2/</loc>
-    <lastmod>2024-06-27T16:59:33+08:00</lastmod>
+    <loc>https://m00nwandering.life/post/%E8%89%BA%E6%9C%AF%E7%9A%84%E5%8A%9B%E9%87%8F%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/</loc>
+    <lastmod>2024-06-27T18:03:23+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://m00nwandering.life/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2024-06-27T18:02:59+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://m00nwandering.life/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://m00nwandering.life/series/</loc>
+  </url><url>
+    <loc>https://m00nwandering.life/tags/</loc>
   </url>
 </urlset>

@@ -2,23 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>清夜无尘の一方天地</title>
-    <link>http://localhost:1313/</link>
+    <link>https://m00nwandering.life/</link>
     <description>Recent content on 清夜无尘の一方天地</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Thu, 27 Jun 2024 17:20:46 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 27 Jun 2024 18:03:45 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://m00nwandering.life/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Test2</title>
-      <link>http://localhost:1313/post/test2/</link>
-      <pubDate>Thu, 27 Jun 2024 16:59:33 +0800</pubDate>
+      <title>殷墟博物馆前置知识</title>
+      <link>https://m00nwandering.life/post/%E6%AE%B7%E5%A2%9F%E5%8D%9A%E7%89%A9%E9%A6%86%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Thu, 27 Jun 2024 18:03:45 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/test2/</guid>
-      <description></description>
+      <guid>https://m00nwandering.life/post/%E6%AE%B7%E5%A2%9F%E5%8D%9A%E7%89%A9%E9%A6%86%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/</guid>
+      <description>&lt;p&gt;位于安阳&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>《艺术的力量》读书札记</title>
+      <link>https://m00nwandering.life/post/%E8%89%BA%E6%9C%AF%E7%9A%84%E5%8A%9B%E9%87%8F%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/</link>
+      <pubDate>Thu, 27 Jun 2024 18:03:23 +0800</pubDate>
+      
+      <guid>https://m00nwandering.life/post/%E8%89%BA%E6%9C%AF%E7%9A%84%E5%8A%9B%E9%87%8F%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/</guid>
+      <description>&lt;p&gt;伟大的艺术都有令人不悦的方面。美术馆中的安静肃穆可以欺骗你，令你相信杰出的艺术作品都是礼貌友好的事物，是抚慰人心、令人陶醉、引人入胜的图景，但是它们其实都是暴徒。无情，狡诈，最伟大的绘画作品简直是要一把按住你的脑袋，将你的沉着镇定彻底击碎，然后立刻开始重组你对真实世界的感知。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugo&#43;CloudFlare搭建博客指南</title>
+      <link>https://m00nwandering.life/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Thu, 27 Jun 2024 18:02:59 +0800</pubDate>
+      
+      <guid>https://m00nwandering.life/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</guid>
+      <description>&lt;p&gt;Hugo server -D的意思是忽略draft=true，即draft属性为true的md文件也会被渲染编译。折磨了一天的问题是“为什么本地能够编译出文章，但是部署到Github上就消失了？”因为实际部署的时候draft=true的文件是不显示的。&lt;/p&gt;
+</description>
     </item>
     
   </channel>

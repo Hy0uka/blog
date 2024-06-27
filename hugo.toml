@@ -21,7 +21,7 @@ unsafe = true
 [params]
 bannerFont = "fonts/exampleFont" 
 description = """
-四时风雅.
+四时风雅
 """ 
 env = "production" # for Google Analytics and DISQUS.
 favicon = "img/favicon-32x32.png" 
@@ -35,7 +35,7 @@ postDateFormat = "2006-1-2"
 [[menu.main]]
 identifier = "post"
 name = "Post"
-url = "/posts/"
+url = "/post/"
 weight = 1
 [[menu.main]]
 name = "Tags"
