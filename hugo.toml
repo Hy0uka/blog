@@ -1,0 +1,7 @@
+baseURL = 'https://m00nwandering.life/'
+languageCode = 'en-us'
+title = '清夜无尘の一方天地'
+
+[module]
+[[module.imports]]
+  path = "github.com/heyeshuang/hugo-theme-tokiwa"
