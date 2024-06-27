@@ -35,7 +35,7 @@ postDateFormat = "2006-1-2"
 [[menu.main]]
 identifier = "post"
 name = "Post"
-url = "/post/"
+url = "/posts/"
 weight = 1
 [[menu.main]]
 name = "Tags"
