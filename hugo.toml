@@ -1,8 +1,8 @@
 DefaultContentLanguage = "en"
 author = "LZX"
 baseURL = "https://m00nwandering.life/"
-copyright = "Copyright © 2008–2019"
-disqusShortname = "YOURSHORTNAME"
+copyright = "Copyright © 2019–2024"
+disqusShortname = "LZX"
 enableInlineShortcodes = true
 footnoteReturnLinkContents = "^"
 googleAnalytics = "UA-FAKE" ## or "G-xxxxxxxx" in Google Analytics v4, in hugo v0.82+
@@ -21,7 +21,7 @@ unsafe = true
 [params]
 bannerFont = "fonts/exampleFont" 
 description = """
-Tokiwa-iro is the theme color of this site.
+四时风雅.
 """ 
 env = "production" # for Google Analytics and DISQUS.
 favicon = "img/favicon-32x32.png" 
@@ -34,7 +34,7 @@ postDateFormat = "2006-1-2"
 # Shown in the side menu.
 [[menu.main]]
 identifier = "post"
-name = "Posts"
+name = "Post"
 url = "/post/"
 weight = 1
 [[menu.main]]
