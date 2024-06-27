@@ -5,7 +5,8 @@
     <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on 清夜无尘の一方天地</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>cn</language>
+    <copyright>Copyright © 2008–2019</copyright>
     <lastBuildDate>Thu, 27 Jun 2024 16:09:34 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
