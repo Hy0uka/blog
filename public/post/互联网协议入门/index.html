@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | Hugo&#43;CloudFlare搭建博客指南</title>
+	<title>清夜无尘の一方天地  | 互联网协议入门</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -151,9 +151,9 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="https://m00nwandering.life/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
 	</h2>
 </div>
-<h1 class="pt-2">Hugo&#43;CloudFlare搭建博客指南</h1>
+<h1 class="pt-2">互联网协议入门</h1>
 
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">崭新架构的安全博客</h3>
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Computer Net-working</h3>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -170,7 +170,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-06-27T18:02:59&#43;08:00">2024-6-27</time>
+		datetime="2020-07-16T15:24:35&#43;08:00">2020-7-16</time>
 </div>
 
 <hr />
@@ -183,10 +183,117 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><ol>
-<li>Hugo server -D的意思是忽略draft=true，即draft属性为true的md文件也会被渲染编译。折磨了一天的问题是“为什么本地能够编译出文章，但是部署到Github上就消失了？”因为实际部署的时候draft=true的文件是不显示的。</li>
-<li>域名的CNAME要解析到项目的别名。</li>
-</ol>
+		<div class="c-rich-text"><p>学计网的时候有些头大,找到了这篇文章,首先对整体有一个认识,再换一本书,机械工业出版社的《Computer Networking A Top-Down Approach》.</p>
+<h4 id="序">序</h4>
+<p>互联网的核心是一系列协议,总称为互联网协议:Internet Protocol Suite.它们对电脑如何连接和组网,做出了详尽的规定.理解了这些协议的规定,就理解了互联网的原理.</p>
+<h4 id="概述">概述</h4>
+<h5 id="五层模型">五层模型</h5>
+<p>自顶向下分别为应用层Application Layer,传输层Transport Layer,网络层Network Layer,链路层Link Layer和物理层Physical Layer.越下面的层越靠近硬件,越上面的层越靠近用户.</p>
+<h5 id="层与协议">层与协议</h5>
+<p>每一层都是为了完成某一种功能,为了实现这些功能就要传输时遵循共同的规则protocol.互联网的每一层都定义了很多协议,这些协议的总称为互联网协议.</p>
+<h4 id="物理层">物理层</h4>
+<p>电脑要组网,首先就要先把电脑连接起来,可以用光缆,线缆,双绞线和无线电波等方式(咋和谢希仁版有点不一样?还是我记错了).这就叫做物理层.<strong>它主要规定了网络的一些电气特性,作用是负责传输0和1的电信号.</strong></p>
+<h4 id="链路层">链路层</h4>
+<h5 id="定义">定义</h5>
+<p>单纯的0和1并没有意义,必须规定其解读方式:多少个电信号算一组,每个信号有何意义?<strong>链路层的功能就是在实体层的上方确定0和1的分组方式.</strong></p>
+<h5 id="以太网协议">以太网协议</h5>
+<p>Ethernet规定,一组电信号构成一个数据包叫做帧(Frame).每一帧分为两个部分:标头Head与数据Data.Head包含数据包的一些说明项,如发送者,接收者,数据类型.数据则是数据包的具体内容.</p>
+<p>标头的长度固定为18字节,数据的长度最短为46字节,最长为1500字节.因此对于一帧来说,大小区间为64-1518字节.数据过长则分为多个帧发送.</p>
+<h5 id="mac地址">MAC地址</h5>
+<p>传输数据的过程中要标识发送者与接收者,就要使用到MAC地址.Ethernet规定连入网络的所有设备都必须有网卡接口,**数据包必须是从一块网卡传送到另一块网卡.网卡的地址就是数据包的发送地址与接收地址即MAC地址.**每块网卡出场时都有一个唯一的MAC地址,长度为48个二进制位,常用12个16进制数表示.前6个位厂商编号,后六个为该厂商网卡流水号.</p>
+<h5 id="广播">广播</h5>
+<p>一块网卡要知道另一块网卡的MAC地址,要使用到ARP协议(在谢希仁版中自学过,现在又给忘了&hellip;);</p>
+<p>知道MAC地址之后,系统怎样才能把数据包准确送到接收方?**Ethernet并不把数据包准确送到接收方,而是向本网络所有计算机发送,让计算机自己判断是否为接收方.**而向本网络所有计算机发包的行为,就叫做广播broadcasting.</p>
+<h4 id="网络层">网络层</h4>
+<h5 id="网络层的由来">网络层的由来</h5>
+<p>根据Ethernet协议,依靠MAC地址发送数据,理论上和技术上世界上任何一个地方的网卡都能够找到任何一个地方的网卡.但是这样做有一个巨大的缺点&quot;<strong>以太网采用广播的方式发送数据包,每个成员都会收到所有的包.不仅效率低,而且只能在发送者的子网络中传播.(如果互联网上每一台计算机都收到所有的包不可想象)</strong>.</p>
+<p>所以必须找到一种方法,能够区分MAC地址是否属于一个子网络.如果属于一个子网络,采用广播的形式发送,否则采用路由(路由即向不同的子网络分发数据包).而MAC地址只与厂商有关与网络无关,所以网络层诞生了.</p>
+<p><strong>它的作用是引进一套新的地址,使我们能够区分不同的计算机是否属于一个子网络.</strong></p>
+<p>于是网络层出现后,每台计算机就有了两种地址,一种是MAC地址,另一种是网络地址(二者之间无任何联系).网络地址帮助我们确定计算机所在的子网络,MAC地址则将数据包送到该子网络的目标网卡.所以从逻辑上看一定是先处理网络地址,再处理MAC地址.</p>
+<h5 id="ip协议">IP协议</h5>
+<p>根据网络地址的协议就叫做IP协议,其定义的地址就叫做IP地址.IP地址由网络号和主机号组成.<strong>处于一个子网络的电脑,其IP地址的网络部分必定是相同的.主机部分是对同处该子网的主机进行编号.</strong></p>
+<p>为了从IP地址判断出两台计算机是否处于同一个子网,就要用到另一个参数&quot;<strong>子网掩码</strong>&ldquo;即subnet mask.子网掩码使表示子网特征的一个参数,在形式上等同于IP地址,也是一个32位二进制数字.<strong>其网络部分全为1,主机部分全为0.</strong></p>
+<p>知道IP地址与子网掩码判断是否属于同一个子网的方法:将两个IP地址分别于子网掩码进行AND运算,结果相同则在一个子网.</p>
+<p><code>已知IP地址172.16.154.1和172.16.254.233子网掩码都是255.255.255.0,请问其是否在一个子网?</code></p>
+<p>总结IP协议的作用:一是为每台计算机分配IP地址,另一个是为确定哪些地址处于一个子网.</p>
+<h5 id="ip数据报">IP数据报</h5>
+<p>根据IP协议发送的数据,就叫做IP数据报.但是Ethernet数据报只包含MAC地址,并没有IP地址的栏位,是否要修改数据报定义,再添加一个栏位?回答是不需要,因为可以直接将IP数据报放进Ethernet数据报的数据部分.这就是互联网分层结构的好处:上层变动完全不涉及下层结构.</p>
+<p><img src="https://pic004.cnblogs.com/news/201205/20120531_153208_10.jpg" alt="IP数据报"></p>
+<p><img src="https://pic004.cnblogs.com/news/201205/20120531_153209_11.jpg" alt="包含IP数据报的Ethernet数据报"></p>
+<p>IP数据报的标头(特指不在Head中而在Data中的关于IP信息的Head)长度一般在20-60字节,整个数据报的长度最大为65535字节.Ethernet数据报的数据部分,最长只有1500字节,所以如果IP数据报超过了1500字节,就要分割成几个Ethernet数据报分开发送.</p>
+<h5 id="arp协议">ARP协议</h5>
+<p>IP数据报是放在以太网数据报里发送的.所以必须同时知道两个地址,一个是对方的MAC地址,一个是对方的IP地址.通常情况下对方的IP地址是已知的,但是MAC地址未知.所以需要一种基址从IP地址得到MAC地址.</p>
+<p>第一种情况,两个主机不在一个子网,则事实上无法得到对方的MAC地址,只能将数据包传送到两个子网连接处的网关,让网关进行处理.</p>
+<p>第二种情况,两个主机在一个子网,则使用ARP协议.<strong>ARP协议发出一个数据报,其中包含所要查询的IP地址,在对方的MAC地址这一栏,填的是FF:FF:FF:FF:FF:FF,表示这是一个广播地址.他所在的子网络的每一台主机,都会收到这个数据报.从中取出IP地址,与自身IP地址进行比较,如果两者相同,则做出回复向对方报告MAC地址,否则就丢弃这个包.</strong></p>
+<h4 id="传输层">传输层</h4>
+<p>有了MAC地址和IP地址,就可以在互联网上任意两台主机建立通信.但是同一台主机上有许多程序都要使用到网络,那么就需要一个参数来表示这个数据包到底供哪个进程使用,这个参数就叫做端口.<strong>它其实是每一个使用网卡的程序的编号,每个数据报都发送到主机的特定端口,这样不同的程序就能够取到自己所需要的数据.</strong></p>
+<p>端口是0到65535之间的一个整数,正好16个二进制位.<strong>0到1023的端口被系统占用,用户只能选择大于1023的端口.</strong></p>
+<p>传输层的功能是建立端口到端口之间的通信,相比之下网络层是建立主机到主机之间的通信.只要确定主机和端口,就能实现程序之间的交流.<strong>因此Unix就把主机+端口,叫做&quot;套接字&quot;socket.</strong></p>
+<h5 id="udp协议">UDP协议</h5>
+<p>现在我们要在数据报中加入端口信息,这就需要新的协议.最简单的实现叫做UDP协议,它的格式就是在数据前面加上端口号.</p>
+<p><img src="https://pic004.cnblogs.com/news/201205/20120531_153209_12.jpg" alt=""></p>
+<p>Head部分主要定义了<strong>发出端口</strong>与<strong>接收接口</strong>,其数据报非常简单,Head部分8个字节,总长度不超过65535字节,正好放进一个IP数据报.数据部分就是具体的内容然后把整个UDP数据报放入IP数据报的数据部分.所以整个Ethernet数据报变成了下面这样:</p>
+<p><img src="https://pic004.cnblogs.com/news/201205/20120531_153209_13.jpg" alt=""></p>
+<h5 id="tcp协议">TCP协议</h5>
+<p>UDP协议的优点在于比较简单,容易实现.但是缺点在于一旦数据报发出,无法知道对方是否知道.为了提高网络可靠性,TCP协议就诞生了.这个协议非常复杂,但可以近似认为它是有确认机制的.因此TCP协议能够确保数据不会丢失,但是实现困难,资源消耗较多.</p>
+<p>TCP数据报和UDP数据报一样,都是内嵌在IP数据报的数据部分.TCP数据报没有长度限制,理论上可以无限长.但是为了保证网络的效率,通常TCP数据报的长度不会超过IP数据报的长度,确保单个TCP数据报不必再被分割.</p>
+<h4 id="应用层">应用层</h4>
+<p>应用程序收到传输层的数据,接下来就要进行解读.由于互联网是开放架构,所以必须先规定好格式.**应用层的作用,就是规定应用程序的数据格式.**举例来说,TCP协议可以为各种各样的程序传递数据,Email/WWW/FTP等,必须有不同协议规定电子邮电,网页和FTP数据的格式,这些应用程序协议就构成了应用层.这是最高的一层,直接面对用户.其数据就在TCP数据报的数据部分,因此现在的Ethernet变成了下面这样:</p>
+<p><img src="https://pic004.cnblogs.com/news/201205/20120531_153209_14.jpg" alt=""></p>
+<p>网络通信的实质就是交换上面的数据报.</p>
+<p><img src="https://segmentfault.com/img/bVc8eX" alt=""></p>
+<p>对于不在一个子网的两台计算机之间的通信(假设1号电脑要向4号电脑发送数据报),则1号电脑需要知道网关A的MAC地址(和4号电脑的IP地址).1号电脑发出数据报到网关A,网关A通过<strong>路由协议</strong>发现4号电脑位于网络B,又把数据报发给网关B,B再转发到4号电脑.</p>
+<h4 id="判断是否处于同一子网的方法">判断是否处于同一子网的方法</h4>
+<h5 id="静态ip地址">静态IP地址</h5>
+<p><strong>本机IP地址</strong>,<strong>子网掩码</strong>,<strong>网关IP地址</strong>,<strong>DNS的IP地址</strong>是TCP/IP协议的重要参数,通俗来说知道它们就可以上网.由于它们是给定的,计算机每次开机都分配到相同的IP地址,<strong>所以这种方法被称作静态IP地址上网.</strong></p>
+<p>但是出于简便性,并且避免IP地址无法灵活变更,大多数用户使用&quot;动态IP上网&rdquo;.</p>
+<h5 id="动态ip地址">动态IP地址</h5>
+<p>计算机开机后会自动分配到一个IP地址,不用人为设定,它们使用的协议叫做DHCP协议.该协议规定每个子网中都有一台计算机负责管理本网络的所有IP地址,叫做DHCP服务器.<strong>新的计算机加入网络,必须向DHCP服务器发送一个DHCP请求数据报,申请IP地址和相关的网络参数</strong>.(指定管理IP地址的DHCP服务器未开机怎么办????)</p>
+<p>新加入的计算机不知道不同子网计算机的MAC地址和IP地址,如何发送数据报?DHCP协议作出了巧妙规定:</p>
+<p>由于DHCP是一种建立在UDP协议基础上的应用层协议,所以整个数据报长这个样子:</p>
+<p><img src="https://segmentfault.com/img/bVc8e1" alt=""></p>
+<blockquote>
+<p>最前面的Ethernet Head,设置发出方的MAC地址和接收方(DHCP服务器)的MAC地址,前者就是本机网卡的MAC地址,后者此时不知道,填入广播地址FF:FF:FF:FF</p>
+<p>后面的IP Head,设置发出方的IP地址和接收方的IP地址,这时对于这两者本机都不知道,于是发出方的IP地址设为0.0.0.0,接收方IP地址设为255.255.255.255</p>
+<p>最后的UDP Head,设置发出方的端口和接收方的端口.DHCP协议规定发出方是port 68,接收方是port 67.</p>
+</blockquote>
+<p>这个数据包构造完成后，就可以发出了。以太网是广播发送，同一个子网络的每台计算机都收到了这个包。因为接收方的MAC地址是FF-FF-FF-FF-FF-FF，看不出是发给谁的，所以每台收到这个包的计算机，还必须分析这个包的IP地址，才能确定是不是发给自己的。当看到发出方IP地址是0.0.0.0，接收方是255.255.255.255，于是DHCP服务器知道”这个包是发给我的”，而其他计算机就可以丢弃这个包。</p>
+<p>接下来，DHCP服务器读出这个包的数据内容，分配好IP地址，发送回去一个”DHCP响应”数据包。这个响应包的结构也是类似的，以太网标头的MAC地址是双方的网卡地址，IP标头的IP地址是DHCP服务器的IP地址（发出方）和255.255.255.255（接收方），UDP标头的端口是67（发出方）和68（接收方），分配给请求端的IP地址和本网络的具体参数则包含在Data部分。新加入的计算机收到这个响应包，于是就知道了自己的IP地址、子网掩码、网关地址、DNS服务器等等参数。</p>
+<h2 id="实例">实例</h2>
+<p>假设网络参数如下:</p>
+<p><code>本机IP:192.168.1.100,子网掩码255.255.255.0,网关IP:192.168.1.1,DNS的IP地址:8.8.8.8</code></p>
+<p>然后打开了Google Chrome,输入了www.google.com,接下来浏览器将要向Google发送一个网页请求数据报.</p>
+<h5 id="dns协议">DNS协议</h5>
+<p>发送数据报就要知道对方的IP地址,我么可以通过DNS协议将网址转换为IP地址.已知DNS服务器为8.8.8.8,于是向其发送DNS数据报(port 53):</p>
+<p><img src="https://segmentfault.com/img/bVc8e4" alt=""></p>
+<p>之后DNS服务器做出响应,告诉我们Google服务器的IP地址172.194.72.105.</p>
+<h5 id="子网掩码">子网掩码</h5>
+<p>得到IP地址后要通过子网掩码来判断改IP是否在同一个子网,以确定要不要向网关发包.将子网掩码与自己的IP地址和Google的IP地址进行AND运算,发现结果不相等,所以不在一个子网.<strong>所以我们要向Google发送数据报,必须通过网关192.168.1.1转发,也就是说接收方的IP地址将是网关的MAC地址.</strong></p>
+<h5 id="应用层协议">应用层协议</h5>
+<p>浏览网页用到的是HTTP协议,它的数据报长下面这个样子:</p>
+<p><img src="https://segmentfault.com/img/bVc8e6" alt=""></p>
+<blockquote>
+<p>　　GET / HTTP/1.1
+　Host: <a href="https://www.google.com">www.google.com</a>
+　Connection: keep-alive
+　User-Agent: Mozilla/5.0 (Windows NT 6.1) ……
+　Accept: text/html,application/xhtml+xml,application/xml;q=0.9,<em>/</em>;q=0.8
+　Accept-Encoding: gzip,deflate,sdch
+　Accept-Language: zh-CN,zh;q=0.8
+　Accept-Charset: GBK,utf-8;q=0.7,*;q=0.3
+　Cookie: … …</p>
+</blockquote>
+<p>被嵌在TCP数据报之中,假定为4960字节.</p>
+<h5 id="tcp协议-1">TCP协议</h5>
+<p>TCP数据报需要设置端口,接收方的HTTP默认端口是80,而发送方的端口是1024-65535之间随机确定的.    假定为51775.TCP数据报的Head长为20字节,加上嵌入HTTP的数据报,总长度变为4980字节.</p>
+<h5 id="ip协议-1">IP协议</h5>
+<p>然后TCP数据报再嵌入IP数据报,IP数据报需要设置双方的IP地址,这是已知的.发送方是192.168.1.100（本机），接收方是172.194.72.105（Google）。IP数据包的标头长度为20字节，加上嵌入的TCP数据包，总长度变为5000字节。</p>
+<h5 id="ethernet协议">Ethernet协议</h5>
+<p>最后IP数据报嵌入以太网数据报,以太网数据报设置双方的MAC地址,发送方为本机的网卡MAC地址，接收方为网关192.168.1.1的MAC地址（通过ARP协议得到）。</p>
+<p>以太网数据包的数据部分，最大长度为1500字节，而现在的IP数据包长度为5000字节。因此，IP数据包必须分割成四个包。因为每个包都有自己的IP标头（20字节），所以四个包的IP数据包的长度分别为1500、1500、1500、560。</p>
+<p><img src="https://segmentfault.com/img/bVc8e7" alt=""></p>
+<h5 id="服务器端响应">服务器端响应</h5>
+<p>经过多个网关转发,Google服务器收到了这四个以太网数据报.根据IP Head的序号,Google将四个包拼接起来,取出完整的TCP数据,根据其中的HTTP请求作出HTTP响应,再用TCP协议发回.本机收到HTTP响应后,就可以将网页显示出来,完成一次网络通信.</p>
 </div>
 	</section>
 
@@ -393,7 +500,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 134 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 5766 words in this page.
 	</div>
 </div>
 
@@ -404,17 +511,17 @@ onload='renderMathInElement(document.body);'></script>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">
+    <a class="flex-grow-0" href="/post/ctf-wiki/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        互联网协议入门
+        CTF Wiki
     </a>
     
     
-    <a class="flex-grow-0" href="/post/%E8%89%BA%E6%9C%AF%E7%9A%84%E5%8A%9B%E9%87%8F%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/">
-        《艺术的力量》读书札记
+    <a class="flex-grow-0" href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">
+        Hugo&#43;CloudFlare搭建博客指南
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
@@ -428,8 +535,6 @@ onload='renderMathInElement(document.body);'></script>
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
-		
-			<a href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">互联网协议入门</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/ctf-wiki/">CTF Wiki</a>
 		
