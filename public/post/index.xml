@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 清夜无尘の一方天地</title>
-    <link>https://m00nwandering.life/post/</link>
+    <link>https://wander1ng.com/post/</link>
     <description>Recent content in Posts on 清夜无尘の一方天地</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
     <lastBuildDate>Tue, 02 Jul 2024 18:06:28 +0800</lastBuildDate>
     
-	<atom:link href="https://m00nwandering.life/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wander1ng.com/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>《格子间的生与死：当我们厌恶工作》札记</title>
-      <link>https://m00nwandering.life/post/%E6%A0%BC%E5%AD%90%E9%97%B4%E7%9A%84%E7%94%9F%E4%B8%8E%E6%AD%BB%E5%BD%93%E6%88%91%E4%BB%AC%E5%8E%8C%E6%81%B6%E5%B7%A5%E4%BD%9C%E6%9C%AD%E8%AE%B0/</link>
+      <link>https://wander1ng.com/post/%E6%A0%BC%E5%AD%90%E9%97%B4%E7%9A%84%E7%94%9F%E4%B8%8E%E6%AD%BB%E5%BD%93%E6%88%91%E4%BB%AC%E5%8E%8C%E6%81%B6%E5%B7%A5%E4%BD%9C%E6%9C%AD%E8%AE%B0/</link>
       <pubDate>Mon, 01 Jul 2024 23:43:17 +0800</pubDate>
       
-      <guid>https://m00nwandering.life/post/%E6%A0%BC%E5%AD%90%E9%97%B4%E7%9A%84%E7%94%9F%E4%B8%8E%E6%AD%BB%E5%BD%93%E6%88%91%E4%BB%AC%E5%8E%8C%E6%81%B6%E5%B7%A5%E4%BD%9C%E6%9C%AD%E8%AE%B0/</guid>
+      <guid>https://wander1ng.com/post/%E6%A0%BC%E5%AD%90%E9%97%B4%E7%9A%84%E7%94%9F%E4%B8%8E%E6%AD%BB%E5%BD%93%E6%88%91%E4%BB%AC%E5%8E%8C%E6%81%B6%E5%B7%A5%E4%BD%9C%E6%9C%AD%E8%AE%B0/</guid>
       <description>&lt;p&gt;​	大卫·格雷伯在《毫无意义的工作》一书中称：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;人类之所以觉得自己是自主存在，是与世界和他人分离的独立体，很大程度上是因为人们觉得自己可以按照可预测的方式对世界和他人产生影响。一旦被剥夺这种拥有力量的感觉，人类就什么也不是了。&lt;/p&gt;
@@ -27,10 +27,10 @@
     
     <item>
       <title>Hugo&#43;CloudFlare搭建博客指南</title>
-      <link>https://m00nwandering.life/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</link>
+      <link>https://wander1ng.com/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</link>
       <pubDate>Thu, 27 Jun 2024 18:02:59 +0800</pubDate>
       
-      <guid>https://m00nwandering.life/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</guid>
+      <guid>https://wander1ng.com/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</guid>
       <description>&lt;ol&gt;
 &lt;li&gt;Hugo server -D的意思是忽略draft=true，即draft属性为true的md文件也会被渲染编译。折磨了一天的问题是“为什么本地能够编译出文章，但是部署到Github上就消失了？”因为实际部署的时候draft=true的文件是不显示的。&lt;/li&gt;
 &lt;li&gt;域名的CNAME要解析到项目的别名。&lt;/li&gt;
@@ -40,10 +40,10 @@
     
     <item>
       <title>互联网协议入门</title>
-      <link>https://m00nwandering.life/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/</link>
+      <link>https://wander1ng.com/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/</link>
       <pubDate>Thu, 16 Jul 2020 15:24:35 +0800</pubDate>
       
-      <guid>https://m00nwandering.life/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/</guid>
+      <guid>https://wander1ng.com/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/</guid>
       <description>&lt;p&gt;学计网的时候有些头大,找到了这篇文章,首先对整体有一个认识,再换一本书,机械工业出版社的《Computer Networking A Top-Down Approach》.&lt;/p&gt;
 &lt;h4 id=&#34;序&#34;&gt;序&lt;/h4&gt;
 &lt;p&gt;互联网的核心是一系列协议,总称为互联网协议:Internet Protocol Suite.它们对电脑如何连接和组网,做出了详尽的规定.理解了这些协议的规定,就理解了互联网的原理.&lt;/p&gt;
@@ -79,8 +79,8 @@
 &lt;p&gt;总结IP协议的作用:一是为每台计算机分配IP地址,另一个是为确定哪些地址处于一个子网.&lt;/p&gt;
 &lt;h5 id=&#34;ip数据报&#34;&gt;IP数据报&lt;/h5&gt;
 &lt;p&gt;根据IP协议发送的数据,就叫做IP数据报.但是Ethernet数据报只包含MAC地址,并没有IP地址的栏位,是否要修改数据报定义,再添加一个栏位?回答是不需要,因为可以直接将IP数据报放进Ethernet数据报的数据部分.这就是互联网分层结构的好处:上层变动完全不涉及下层结构.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://pic004.cnblogs.com/news/201205/20120531_153208_10.jpg&#34; alt=&#34;IP数据报&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://pic004.cnblogs.com/news/201205/20120531_153209_11.jpg&#34; alt=&#34;包含IP数据报的Ethernet数据报&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153208_10.jpg&#34; alt=&#34;IP数据报&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153209_11.jpg&#34; alt=&#34;包含IP数据报的Ethernet数据报&#34;&gt;&lt;/p&gt;
 &lt;p&gt;IP数据报的标头(特指不在Head中而在Data中的关于IP信息的Head)长度一般在20-60字节,整个数据报的长度最大为65535字节.Ethernet数据报的数据部分,最长只有1500字节,所以如果IP数据报超过了1500字节,就要分割成几个Ethernet数据报分开发送.&lt;/p&gt;
 &lt;h5 id=&#34;arp协议&#34;&gt;ARP协议&lt;/h5&gt;
 &lt;p&gt;IP数据报是放在以太网数据报里发送的.所以必须同时知道两个地址,一个是对方的MAC地址,一个是对方的IP地址.通常情况下对方的IP地址是已知的,但是MAC地址未知.所以需要一种基址从IP地址得到MAC地址.&lt;/p&gt;
@@ -92,17 +92,17 @@
 &lt;p&gt;传输层的功能是建立端口到端口之间的通信,相比之下网络层是建立主机到主机之间的通信.只要确定主机和端口,就能实现程序之间的交流.&lt;strong&gt;因此Unix就把主机+端口,叫做&amp;quot;套接字&amp;quot;socket.&lt;/strong&gt;&lt;/p&gt;
 &lt;h5 id=&#34;udp协议&#34;&gt;UDP协议&lt;/h5&gt;
 &lt;p&gt;现在我们要在数据报中加入端口信息,这就需要新的协议.最简单的实现叫做UDP协议,它的格式就是在数据前面加上端口号.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://pic004.cnblogs.com/news/201205/20120531_153209_12.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153209_12.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Head部分主要定义了&lt;strong&gt;发出端口&lt;/strong&gt;与&lt;strong&gt;接收接口&lt;/strong&gt;,其数据报非常简单,Head部分8个字节,总长度不超过65535字节,正好放进一个IP数据报.数据部分就是具体的内容然后把整个UDP数据报放入IP数据报的数据部分.所以整个Ethernet数据报变成了下面这样:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://pic004.cnblogs.com/news/201205/20120531_153209_13.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153209_13.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h5 id=&#34;tcp协议&#34;&gt;TCP协议&lt;/h5&gt;
 &lt;p&gt;UDP协议的优点在于比较简单,容易实现.但是缺点在于一旦数据报发出,无法知道对方是否知道.为了提高网络可靠性,TCP协议就诞生了.这个协议非常复杂,但可以近似认为它是有确认机制的.因此TCP协议能够确保数据不会丢失,但是实现困难,资源消耗较多.&lt;/p&gt;
 &lt;p&gt;TCP数据报和UDP数据报一样,都是内嵌在IP数据报的数据部分.TCP数据报没有长度限制,理论上可以无限长.但是为了保证网络的效率,通常TCP数据报的长度不会超过IP数据报的长度,确保单个TCP数据报不必再被分割.&lt;/p&gt;
 &lt;h4 id=&#34;应用层&#34;&gt;应用层&lt;/h4&gt;
 &lt;p&gt;应用程序收到传输层的数据,接下来就要进行解读.由于互联网是开放架构,所以必须先规定好格式.**应用层的作用,就是规定应用程序的数据格式.**举例来说,TCP协议可以为各种各样的程序传递数据,Email/WWW/FTP等,必须有不同协议规定电子邮电,网页和FTP数据的格式,这些应用程序协议就构成了应用层.这是最高的一层,直接面对用户.其数据就在TCP数据报的数据部分,因此现在的Ethernet变成了下面这样:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://pic004.cnblogs.com/news/201205/20120531_153209_14.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153209_14.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;网络通信的实质就是交换上面的数据报.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://segmentfault.com/img/bVc8eX&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070401.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;对于不在一个子网的两台计算机之间的通信(假设1号电脑要向4号电脑发送数据报),则1号电脑需要知道网关A的MAC地址(和4号电脑的IP地址).1号电脑发出数据报到网关A,网关A通过&lt;strong&gt;路由协议&lt;/strong&gt;发现4号电脑位于网络B,又把数据报发给网关B,B再转发到4号电脑.&lt;/p&gt;
 &lt;h4 id=&#34;判断是否处于同一子网的方法&#34;&gt;判断是否处于同一子网的方法&lt;/h4&gt;
 &lt;h5 id=&#34;静态ip地址&#34;&gt;静态IP地址&lt;/h5&gt;
@@ -112,7 +112,7 @@
 &lt;p&gt;计算机开机后会自动分配到一个IP地址,不用人为设定,它们使用的协议叫做DHCP协议.该协议规定每个子网中都有一台计算机负责管理本网络的所有IP地址,叫做DHCP服务器.&lt;strong&gt;新的计算机加入网络,必须向DHCP服务器发送一个DHCP请求数据报,申请IP地址和相关的网络参数&lt;/strong&gt;.(指定管理IP地址的DHCP服务器未开机怎么办????)&lt;/p&gt;
 &lt;p&gt;新加入的计算机不知道不同子网计算机的MAC地址和IP地址,如何发送数据报?DHCP协议作出了巧妙规定:&lt;/p&gt;
 &lt;p&gt;由于DHCP是一种建立在UDP协议基础上的应用层协议,所以整个数据报长这个样子:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://segmentfault.com/img/bVc8e1&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070402.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;最前面的Ethernet Head,设置发出方的MAC地址和接收方(DHCP服务器)的MAC地址,前者就是本机网卡的MAC地址,后者此时不知道,填入广播地址FF:FF:FF:FF&lt;/p&gt;
 &lt;p&gt;后面的IP Head,设置发出方的IP地址和接收方的IP地址,这时对于这两者本机都不知道,于是发出方的IP地址设为0.0.0.0,接收方IP地址设为255.255.255.255&lt;/p&gt;
@@ -126,13 +126,13 @@
 &lt;p&gt;然后打开了Google Chrome,输入了www.google.com,接下来浏览器将要向Google发送一个网页请求数据报.&lt;/p&gt;
 &lt;h5 id=&#34;dns协议&#34;&gt;DNS协议&lt;/h5&gt;
 &lt;p&gt;发送数据报就要知道对方的IP地址,我么可以通过DNS协议将网址转换为IP地址.已知DNS服务器为8.8.8.8,于是向其发送DNS数据报(port 53):&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://segmentfault.com/img/bVc8e4&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070403.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;之后DNS服务器做出响应,告诉我们Google服务器的IP地址172.194.72.105.&lt;/p&gt;
 &lt;h5 id=&#34;子网掩码&#34;&gt;子网掩码&lt;/h5&gt;
 &lt;p&gt;得到IP地址后要通过子网掩码来判断改IP是否在同一个子网,以确定要不要向网关发包.将子网掩码与自己的IP地址和Google的IP地址进行AND运算,发现结果不相等,所以不在一个子网.&lt;strong&gt;所以我们要向Google发送数据报,必须通过网关192.168.1.1转发,也就是说接收方的IP地址将是网关的MAC地址.&lt;/strong&gt;&lt;/p&gt;
 &lt;h5 id=&#34;应用层协议&#34;&gt;应用层协议&lt;/h5&gt;
 &lt;p&gt;浏览网页用到的是HTTP协议,它的数据报长下面这个样子:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://segmentfault.com/img/bVc8e6&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070404.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;　　GET / HTTP/1.1
 　Host: &lt;a href=&#34;https://www.google.com&#34;&gt;www.google.com&lt;/a&gt;
@@ -152,7 +152,7 @@
 &lt;h5 id=&#34;ethernet协议&#34;&gt;Ethernet协议&lt;/h5&gt;
 &lt;p&gt;最后IP数据报嵌入以太网数据报,以太网数据报设置双方的MAC地址,发送方为本机的网卡MAC地址，接收方为网关192.168.1.1的MAC地址（通过ARP协议得到）。&lt;/p&gt;
 &lt;p&gt;以太网数据包的数据部分，最大长度为1500字节，而现在的IP数据包长度为5000字节。因此，IP数据包必须分割成四个包。因为每个包都有自己的IP标头（20字节），所以四个包的IP数据包的长度分别为1500、1500、1500、560。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://segmentfault.com/img/bVc8e7&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070405.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h5 id=&#34;服务器端响应&#34;&gt;服务器端响应&lt;/h5&gt;
 &lt;p&gt;经过多个网关转发,Google服务器收到了这四个以太网数据报.根据IP Head的序号,Google将四个包拼接起来,取出完整的TCP数据,根据其中的HTTP请求作出HTTP响应,再用TCP协议发回.本机收到HTTP响应后,就可以将网页显示出来,完成一次网络通信.&lt;/p&gt;
 </description>
@@ -160,10 +160,10 @@
     
     <item>
       <title>CTF Wiki</title>
-      <link>https://m00nwandering.life/post/ctf-wiki/</link>
+      <link>https://wander1ng.com/post/ctf-wiki/</link>
       <pubDate>Thu, 20 Jun 2019 00:06:21 +0800</pubDate>
       
-      <guid>https://m00nwandering.life/post/ctf-wiki/</guid>
+      <guid>https://wander1ng.com/post/ctf-wiki/</guid>
       <description>&lt;p&gt;从栈溢出的基本原理开始，整理下CTF-Wiki中几道经典例题(溢出方式)的思路。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;0X01&amp;ndash;栈溢出的基本原理：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;栈溢出指的是程序向栈中某个变量中写入的字节数超过了这个变量本身所申请的字节数，因而导致与其相邻的栈中的变量的值被改变。这种问题是一种特定的缓冲区溢出漏洞，类似的还有堆溢出，bss 段溢出等溢出方式。栈溢出漏洞轻则可以使程序崩溃，重则可以使攻击者控制程序执行流程。发生栈溢出的基本前提是:&lt;u&gt;1.程序必须向栈上写入数据。2.写入的数据大小没有被很好地控制。&lt;/u&gt;&lt;/p&gt;
@@ -300,10 +300,9 @@ target = 0x0804863a
 sh.sendline(&amp;#39;A&amp;#39; * (0x6c+4) + p32(target))
 
 sh.interactive()
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;我觉得这道题倒是让我弄明白了buf的表示，位置关系。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;上面这种类型，ret2text，意思就是这种类型中，可以拿到shell的代码语句连贯存在于text中，关键在于计算出长度。&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;上面这种类型，ret2text，意思就是这种类型中，可以拿到shell的代码语句连贯存在于text中，关键在于计算出长度。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;第二种类型ret2shellcode：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;ret2shellcode，即控制程序执行 shellcode 代码。shellcode 指的是用于完成某个功能的&lt;strong&gt;汇编代码&lt;/strong&gt;，常见的功能主要是获取目标系统的 shell。&lt;strong&gt;一般来说，shellcode 需要我们自己填充。这其实是另外一种典型的利用方法，即此时我们需要自己去填充一些可执行的代码&lt;/strong&gt;。在栈溢出的基础上，要想执行 shellcode，需要对应的 binary 在运行时，shellcode 所在的区域具有可执行权限(未开启NX保护，怎么讲的越来越低级了的说)。此次文件的segments是NX disabled，RWX，将shellcode写入bss段中。获得执行system(“/bin/sh”)汇编代码所对应的机器码：asm(&lt;a href=&#34;http://shellcraft.sh/&#34;&gt;shellcraft.sh&lt;/a&gt;())。&lt;/p&gt;
+&lt;p&gt;ret2shellcode，即控制程序执行 shellcode 代码。shellcode 指的是用于完成某个功能的&lt;strong&gt;汇编代码&lt;/strong&gt;，常见的功能主要是获取目标系统的 shell。&lt;strong&gt;一般来说，shellcode 需要我们自己填充。这其实是另外一种典型的利用方法，即此时我们需要自己去填充一些可执行的代码&lt;/strong&gt;。在栈溢出的基础上，要想执行 shellcode，需要对应的 binary 在运行时，shellcode 所在的区域具有可执行权限(未开启NX保护，怎么讲的越来越低级了的说)。此次文件的segments是NX disabled，RWX，将shellcode写入bss段中。获得执行system(“/bin/sh”)汇编代码所对应的机器码：asm(shellcraft.sh())。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;int __cdecl main(int argc, const char **argv, const char **envp)
 {
   int v4; // [sp+1Ch] [bp-64h]@1
@@ -365,8 +364,7 @@ buf2_addr = 0x804a080
 ## shellcode先放入，剩余的再用&amp;#39;A&amp;#39;填充至112长度。
 sh.sendline(shellcode.ljust(112, &amp;#39;A&amp;#39;) + p32(buf2_addr))
 sh.interactive()
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;&lt;u&gt;shellcode放进去了不需要别的操作吗？这个buf2_addr指的是什么？如何通过调试确定需要填充的长度？&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;第三种类型：ret2syscall：&lt;/strong&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;第三种类型：ret2syscall：&lt;/strong&gt;
 即控制函数执行系统调用。简单地说，只要把对应获取 shell 的系统调用的参数放到对应的寄存器中，那么我们在执行 int 0x80 就可执行对应的系统调用。比如说这里我们利用如下系统调用来获取 shell。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;execve(&amp;#34;/bin/sh&amp;#34;,NULL,NULL)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;由于该程序是 32 位，所以我们需要使得&lt;/p&gt;
@@ -540,12 +538,12 @@ sh.interactive()
 &lt;p&gt;ret2text，ret2shellcode，ret2syscall，ret2libc四种类型，第四种最常用，第一种和第三种感觉有相似之处，第三种比较奇怪，所以用的最少。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;0X06&amp;ndash;MISC:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;1.最简单栈溢出，一套工具解决。&lt;/p&gt;
-&lt;p&gt;python &lt;a href=&#34;http://pattern.py/&#34;&gt;pattern.py&lt;/a&gt; create 150
+&lt;p&gt;python pattern.py create 150
 gdb X
 run
 (input)
 q(uit)
-python &lt;a href=&#34;http://pattern.py/&#34;&gt;pattern.py&lt;/a&gt; offset (address)&lt;/p&gt;
+python pattern.py offset (address)&lt;/p&gt;
 &lt;p&gt;即可得到溢出地址&lt;/p&gt;
 &lt;p&gt;2.注意是返回地址，不是/bin/sh本身在栈上。&lt;/p&gt;
 &lt;p&gt;3.再次查找一下是否有 system 函数存在。经在 ida 中查找，确实也存在。（手动观察左上角窗口中的函数名，对main函数和system函数及一些容易造成溢出的函数加以注意。以及题目中可能会有hint和backdoor作为函数名）。&lt;/p&gt;
@@ -624,14 +622,14 @@ sudo sh -c ‘echo “/tmp/core.%t” &amp;gt; /proc/sys/kernel/core_pattern’
     
     <item>
       <title>Gensis</title>
-      <link>https://m00nwandering.life/post/gensis/</link>
+      <link>https://wander1ng.com/post/gensis/</link>
       <pubDate>Wed, 19 Jun 2019 02:56:00 +0800</pubDate>
       
-      <guid>https://m00nwandering.life/post/gensis/</guid>
+      <guid>https://wander1ng.com/post/gensis/</guid>
       <description>&lt;p&gt;Earthquake and Blog&lt;/p&gt;
-&lt;p&gt;​	第一次建博客的那天晚上，人在学校宿舍，遭遇了人生第一次感到恐慌的地震，震级为6.0级，以至于之后的半年常常在半夜惊醒。&lt;/p&gt;
-&lt;p&gt;​	地震这事，大概就和吃云南野生菌中毒一样，没有必要执着于去经历一次，可是经历过一次真的永生难忘&amp;hellip;&lt;/p&gt;
-&lt;p&gt;​	又想到《西游记》中齐天大圣也是从一块灵石降世，这地震大抵也是我的博客第一声“Hello World&amp;quot;引发的天地异象~&lt;/p&gt;
+&lt;p&gt;第一次建博客的那天晚上，人在学校宿舍，遭遇了人生第一次感到恐慌的地震，震级为6.0级，以至于之后的半年常常在半夜惊醒。&lt;/p&gt;
+&lt;p&gt;地震这事，大概就和吃云南野生菌中毒一样，没有必要执着于去经历一次，可是经历过一次真的永生难忘&amp;hellip;&lt;/p&gt;
+&lt;p&gt;又想到《西游记》中齐天大圣也是从一块灵石降世，这地震大抵也是我的博客第一声“Hello World&amp;quot;引发的天地异象~&lt;/p&gt;
 </description>
     </item>
     

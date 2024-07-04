@@ -184,13 +184,11 @@ sh.sendline('A' * (0x6c+4) + p32(target))
 sh.interactive()
 ```
 
-**我觉得这道题倒是让我弄明白了buf的表示，位置关系。**
-
 **上面这种类型，ret2text，意思就是这种类型中，可以拿到shell的代码语句连贯存在于text中，关键在于计算出长度。**
 
 **第二种类型ret2shellcode：**
 
-ret2shellcode，即控制程序执行 shellcode 代码。shellcode 指的是用于完成某个功能的**汇编代码**，常见的功能主要是获取目标系统的 shell。**一般来说，shellcode 需要我们自己填充。这其实是另外一种典型的利用方法，即此时我们需要自己去填充一些可执行的代码**。在栈溢出的基础上，要想执行 shellcode，需要对应的 binary 在运行时，shellcode 所在的区域具有可执行权限(未开启NX保护，怎么讲的越来越低级了的说)。此次文件的segments是NX disabled，RWX，将shellcode写入bss段中。获得执行system(“/bin/sh”)汇编代码所对应的机器码：asm([shellcraft.sh](http://shellcraft.sh/)())。
+ret2shellcode，即控制程序执行 shellcode 代码。shellcode 指的是用于完成某个功能的**汇编代码**，常见的功能主要是获取目标系统的 shell。**一般来说，shellcode 需要我们自己填充。这其实是另外一种典型的利用方法，即此时我们需要自己去填充一些可执行的代码**。在栈溢出的基础上，要想执行 shellcode，需要对应的 binary 在运行时，shellcode 所在的区域具有可执行权限(未开启NX保护，怎么讲的越来越低级了的说)。此次文件的segments是NX disabled，RWX，将shellcode写入bss段中。获得执行system(“/bin/sh”)汇编代码所对应的机器码：asm(shellcraft.sh())。
 
 ```
 int __cdecl main(int argc, const char **argv, const char **envp)
@@ -268,8 +266,6 @@ buf2_addr = 0x804a080
 sh.sendline(shellcode.ljust(112, 'A') + p32(buf2_addr))
 sh.interactive()
 ```
-
-**<u>shellcode放进去了不需要别的操作吗？这个buf2_addr指的是什么？如何通过调试确定需要填充的长度？</u>**
 
 **第三种类型：ret2syscall：**
 即控制函数执行系统调用。简单地说，只要把对应获取 shell 的系统调用的参数放到对应的寄存器中，那么我们在执行 int 0x80 就可执行对应的系统调用。比如说这里我们利用如下系统调用来获取 shell。
@@ -503,12 +499,12 @@ ret2text，ret2shellcode，ret2syscall，ret2libc四种类型，第四种最常�
 
 1.最简单栈溢出，一套工具解决。
 
-python [pattern.py](http://pattern.py/) create 150
+python pattern.py create 150
         gdb X
         run
         (input)
         q(uit)
-        python [pattern.py](http://pattern.py/) offset (address)
+        python pattern.py offset (address)
 
 即可得到溢出地址
 
