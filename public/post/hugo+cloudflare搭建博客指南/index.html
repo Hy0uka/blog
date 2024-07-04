@@ -183,9 +183,50 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><ol>
-<li>Hugo server -D的意思是忽略draft=true，即draft属性为true的md文件也会被渲染编译。折磨了一天的问题是“为什么本地能够编译出文章，但是部署到Github上就消失了？”因为实际部署的时候draft=true的文件是不显示的。</li>
-<li>域名的CNAME要解析到项目的别名。</li>
+		<div class="c-rich-text"><p>1.首先创建Github库</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705001618.png" alt=""></p>
+<p>2.安装hugo：</p>
+<pre tabindex="0"><code>https://github.com/gohugoio/hugo/releases
+</code></pre><p>3.下载后记得将hugo.exe路径加入系统环境变量，测试是否安装成功：</p>
+<pre tabindex="0"><code>hugo version
+</code></pre><p>4.使用hugo创建博客目录</p>
+<pre tabindex="0"><code>hugo new site blogname
+</code></pre><p>5.在系统中创建博客目录，并<code>git init</code>，配置好git的config文件。</p>
+<p>6.选择hugo主题，并使用git clone将主题下载到本地，本网站选择的主题是<code>https://github.com/heyeshuang/hugo-theme-tokiwa.git</code>，第一眼看到便想到莫奈的《日出·印象》。</p>
+<p>7.新建文章</p>
+<p><code>hugo new post/first-post.md</code></p>
+<p>8.在hugo网站的根目录下执行<code>hugo</code>进行编译，启动本地预览,打开网址 http://localhost:1313/ 可以进行预览<code>hugo server -D</code></p>
+<p>9.部署到GitHub</p>
+<pre tabindex="0"><code>git add .
+git commit -m &#34;xxx&#34;
+git push https://github.com/username/projectname master(main)
+</code></pre><p>10.在Godaddy或其他网站购买域名</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705005703.png" alt=""></p>
+<p>11.将域名托管到Cloudflare，左边导航栏进入Websites</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705005944.png" alt=""></p>
+<p>add site</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705010027.png" alt=""></p>
+<p>记得选free plan</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705010033.png" alt=""></p>
+<p>随后在Godaddy设置域名DNS为Cloudflare的DNS服务器地址</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705010351.png" alt=""></p>
+<p>随后等待DNS解析成功，邮箱将会收到邮件通知</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705010400.png" alt=""></p>
+<p>在Cloudflare创建pages并连接到Git，选择最开始在Git中新建的blog目录</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705011021.png" alt=""></p>
+<p>随后博客文件将部署到Cloudflare上</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705011256.png" alt=""></p>
+<p>最后自定义域名，即将域名DNS记录指向Pages</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705011654.png" alt=""></p>
+<p>踩的坑</p>
+<ol>
+<li>
+<p>Hugo server -D的意思是忽略draft=true，即draft属性为true的md文件也会被渲染编译。折磨了一天的问题是“为什么本地能够编译出文章，但是部署到Github上就消失了？”因为实际部署的时候draft=true的文件是不显示的。</p>
+</li>
+<li>
+<p>域名的CNAME要解析到项目的别名/Aliases，一键交给Cloudflare添加的CNAME可能不是实际的Aliases，需要手动修改DNS添加上master。</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705012026.png" alt=""></p>
+</li>
 </ol>
 </div>
 	</section>
@@ -355,7 +396,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 134 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 723 words in this page.
 	</div>
 </div>
 

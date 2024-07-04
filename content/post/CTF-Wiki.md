@@ -29,7 +29,7 @@ date = 2019-06-20T00:06:21+08:00
 2. 将当前的栈帧切换到新栈帧(ESP值装入EBP，更新栈帧底部)
 3. 给新栈帧分配空间(ESP减去所需要空间的大小，抬高栈顶)
 
-![](https://p5.ssl.qhimg.com/t01b9be9878dadebed6.png)
+![](https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/t01b9be9878dadebed6.png)
 
 **0X02--栈溢出的保护类型：**
 

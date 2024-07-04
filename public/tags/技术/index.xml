@@ -18,9 +18,50 @@
       <pubDate>Thu, 27 Jun 2024 18:02:59 +0800</pubDate>
       
       <guid>https://wander1ng.com/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</guid>
-      <description>&lt;ol&gt;
-&lt;li&gt;Hugo server -D的意思是忽略draft=true，即draft属性为true的md文件也会被渲染编译。折磨了一天的问题是“为什么本地能够编译出文章，但是部署到Github上就消失了？”因为实际部署的时候draft=true的文件是不显示的。&lt;/li&gt;
-&lt;li&gt;域名的CNAME要解析到项目的别名。&lt;/li&gt;
+      <description>&lt;p&gt;1.首先创建Github库&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705001618.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;2.安装hugo：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;https://github.com/gohugoio/hugo/releases
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3.下载后记得将hugo.exe路径加入系统环境变量，测试是否安装成功：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo version
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;4.使用hugo创建博客目录&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new site blogname
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;5.在系统中创建博客目录，并&lt;code&gt;git init&lt;/code&gt;，配置好git的config文件。&lt;/p&gt;
+&lt;p&gt;6.选择hugo主题，并使用git clone将主题下载到本地，本网站选择的主题是&lt;code&gt;https://github.com/heyeshuang/hugo-theme-tokiwa.git&lt;/code&gt;，第一眼看到便想到莫奈的《日出·印象》。&lt;/p&gt;
+&lt;p&gt;7.新建文章&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hugo new post/first-post.md&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;8.在hugo网站的根目录下执行&lt;code&gt;hugo&lt;/code&gt;进行编译，启动本地预览,打开网址 http://localhost:1313/ 可以进行预览&lt;code&gt;hugo server -D&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;9.部署到GitHub&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git add .
+git commit -m &amp;#34;xxx&amp;#34;
+git push https://github.com/username/projectname master(main)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;10.在Godaddy或其他网站购买域名&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705005703.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;11.将域名托管到Cloudflare，左边导航栏进入Websites&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705005944.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;add site&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705010027.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;记得选free plan&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705010033.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;随后在Godaddy设置域名DNS为Cloudflare的DNS服务器地址&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705010351.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;随后等待DNS解析成功，邮箱将会收到邮件通知&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705010400.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在Cloudflare创建pages并连接到Git，选择最开始在Git中新建的blog目录&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705011021.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;随后博客文件将部署到Cloudflare上&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705011256.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;最后自定义域名，即将域名DNS记录指向Pages&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705011654.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;踩的坑&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Hugo server -D的意思是忽略draft=true，即draft属性为true的md文件也会被渲染编译。折磨了一天的问题是“为什么本地能够编译出文章，但是部署到Github上就消失了？”因为实际部署的时候draft=true的文件是不显示的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;域名的CNAME要解析到项目的别名/Aliases，一键交给Cloudflare添加的CNAME可能不是实际的Aliases，需要手动修改DNS添加上master。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705012026.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -167,7 +208,7 @@
 &lt;li&gt;将当前的栈帧切换到新栈帧(ESP值装入EBP，更新栈帧底部)&lt;/li&gt;
 &lt;li&gt;给新栈帧分配空间(ESP减去所需要空间的大小，抬高栈顶)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://p5.ssl.qhimg.com/t01b9be9878dadebed6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/t01b9be9878dadebed6.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;0X02&amp;ndash;栈溢出的保护类型：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;知己知彼，方能百战不殆。在正式开始栈溢出之前，先来了解一下一个程序在系统中所受到的保护类型，保护类型可在terminal中用checksec+文件名查看。&lt;/p&gt;
 &lt;ol&gt;
