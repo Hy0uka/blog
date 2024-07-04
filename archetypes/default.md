@@ -1,9 +1,9 @@
 +++
 title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 
-description = "Something"
+description = "Meta"
 
-tags = [ "Something" ]
+tags = [ "Meta" ]
 
 date = {{ .Date }}
 draft = true

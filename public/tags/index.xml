@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Mon, 01 Jul 2024 23:43:17 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jul 2024 22:02:31 +0800</lastBuildDate>
     
 	<atom:link href="https://m00nwandering.life/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Meta</title>
+      <link>https://m00nwandering.life/tags/meta/</link>
+      <pubDate>Thu, 04 Jul 2024 22:02:31 +0800</pubDate>
+      
+      <guid>https://m00nwandering.life/tags/meta/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>阅读</title>
@@ -27,15 +36,6 @@
       <pubDate>Thu, 27 Jun 2024 18:02:59 +0800</pubDate>
       
       <guid>https://m00nwandering.life/tags/%E6%8A%80%E6%9C%AF/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Something</title>
-      <link>https://m00nwandering.life/tags/something/</link>
-      <pubDate>Wed, 19 Jun 2019 02:56:00 +0800</pubDate>
-      
-      <guid>https://m00nwandering.life/tags/something/</guid>
       <description></description>
     </item>
     

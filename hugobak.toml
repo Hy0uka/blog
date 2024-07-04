@@ -44,22 +44,30 @@ url = "/tags/"
 weight = 2
 
 [[menu.main]]
+name = "Categories"
+url = "/categories/"
+weight = 2
+
+[[menu.main]]
 identifier = "about"
 name = "About"
 url = "/about/"
 weight = 3
 
 [taxonomies]
+category = "categories"
 series = "series"
 tag = "tags"
 [social]
 bilibili = "https://bilibili.com/"
 github = "https://github.com/"
+gitlab = "https://gitlab.com/"
 instagram = "https://instagram.com/"
 mail = "https://mail.google.com"
 twitter = "https://twitter.com/"
 weibo = "https://weibo.com/"
 youtube = "https://youtube.com/"
+zhihu = "https://zhihu.com/"
 # any icon in layouts/partials/svg can be used by the name without the "-line.svg"
 
 [outputs]
