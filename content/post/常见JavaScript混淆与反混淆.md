@@ -1,9 +1,9 @@
 +++
 title = '常见JavaScript混淆与反混淆'
 
-description = "Meta"
+description = "JavaScript混淆"
 
-tags = [ "Meta" ]
+tags = [ "技术" ]
 
 date = 2024-07-05T15:35:25+08:00
 

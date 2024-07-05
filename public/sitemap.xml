@@ -2,9 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wander1ng.com/tags/meta/</loc>
-    <lastmod>2024-07-05T15:35:25+08:00</lastmod>
-  </url><url>
     <loc>https://wander1ng.com/post/</loc>
     <lastmod>2024-07-05T15:35:25+08:00</lastmod>
   </url><url>
@@ -12,6 +9,9 @@
     <lastmod>2024-07-05T15:35:25+08:00</lastmod>
   </url><url>
     <loc>https://wander1ng.com/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/</loc>
+    <lastmod>2024-07-05T15:35:25+08:00</lastmod>
+  </url><url>
+    <loc>https://wander1ng.com/tags/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2024-07-05T15:35:25+08:00</lastmod>
   </url><url>
     <loc>https://wander1ng.com/</loc>
@@ -30,6 +30,9 @@
     <lastmod>2024-07-05T11:26:32+08:00</lastmod>
   </url><url>
     <loc>https://wander1ng.com/about/</loc>
+    <lastmod>2024-07-04T22:02:31+08:00</lastmod>
+  </url><url>
+    <loc>https://wander1ng.com/tags/meta/</loc>
     <lastmod>2024-07-04T22:02:31+08:00</lastmod>
   </url><url>
     <loc>https://wander1ng.com/tags/film/</loc>
@@ -51,9 +54,6 @@
     <lastmod>2024-07-01T23:43:17+08:00</lastmod>
   </url><url>
     <loc>https://wander1ng.com/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/</loc>
-    <lastmod>2024-06-27T18:02:59+08:00</lastmod>
-  </url><url>
-    <loc>https://wander1ng.com/tags/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2024-06-27T18:02:59+08:00</lastmod>
   </url><url>
     <loc>https://wander1ng.com/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/</loc>
