@@ -9,7 +9,7 @@ date = 2024-07-04T22:02:31+08:00
 
 +++
 
-Cybersecurity Researcher(Focusing on APT)
+Cybersecurity Researcher(Focusing on Advanced Persistent Threat)
 
 Interest: Reading | Photography  | Travel | Wander | Cooking
 
@@ -26,4 +26,6 @@ WeChat ID: WanderingtotheMoon (どうぞよろしくお願いいたします)
 [湖中焉得更有此人！]——张岱
 
 [身体为了繁衍留下后代，精神为了繁衍留下文字。]——我自己
+
+[阅读只是在被动接受，你读过什么并不代表你是什么。书写才能定义自我，你所写下的就是你自己。]——我自己
 
