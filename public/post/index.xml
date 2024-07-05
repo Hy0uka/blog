@@ -7,10 +7,126 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Fri, 05 Jul 2024 11:28:56 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jul 2024 15:35:25 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>常见JavaScript混淆与反混淆</title>
+      <link>https://wander1ng.com/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/</link>
+      <pubDate>Fri, 05 Jul 2024 15:35:25 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/</guid>
+      <description>&lt;p&gt;JavaScript 混淆（Obfuscation）是指通过一系列技术手段，使 JS 代码变得难以理解和分析，增加代码的复杂性和混淆度，阻碍逆向工程和代码盗用。实际上就是一种保护 JS 代码的手段。JS最早被设计出来就是为了在客户端运行，直接以源码的形式传递给客户端，如果不做处理则完全公开透明，任何人都可以读、分析、复制、盗用，甚至篡改源码与数据，这是网站开发者不愿意看到的。&lt;/p&gt;
+&lt;p&gt;压缩工具开发的初衷是减小 JS 文件体积，但 JS 代码经过压缩替换后，其可读性也大大降低，间接起到了保护代码的作用。但是后来主流浏览器的开发者工具都提供了格式化代码的功能，压缩技术所能提供的安全保护收效甚微。于是专门保护 JS 代码的技术：JS 加密和 JS 混淆。&lt;/p&gt;
+&lt;h4 id=&#34;常见混淆手段&#34;&gt;常见混淆手段&lt;/h4&gt;
+&lt;p&gt;变量名/函数名的替换，将有意义的变量名函数名替换为随机生成的名称&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/*
+function calculateArea(radius) {
+  return Math.PI * radius * radius;
+}
+console.log(calculateArea(5));
+*/
+function _0x2d8f05(_0x4b083b) {
+  return Math.PI * _0x4b083b * _0x4b083b;
+}
+console.log(_0x2d8f05(5));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;字符串混淆，将代码中的字符串替换为编码或加密的形式，可以防止字符串被轻易读取。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;// console.log(&amp;#34;Hello, world!&amp;#34;);
+console.log(&amp;#34;\x48\x65\x6c\x6c\x6f\x2c\x20\x77\x6f\x72\x6c\x64\x21&amp;#34;);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;控制流混淆，改变代码的执行顺序或结构。例如，可以使用条件语句和循环语句来替换简单的赋值操作。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/*
+let a = 1;
+let b = 2;
+let c = a + b;
+console.log(c);
+*/
+let a = 1;
+let b = 2;
+let c;
+if (a === 1) {
+  if (b === 2) {
+    c = a + b;
+  }
+}
+console.log(c);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;花指令，即在源码插入一些不会被执行的代码。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/*
+let a = 1;
+let b = 2;
+let c = a + b;
+console.log(c);
+*/
+let a = 1;
+let b = 2;
+if (false) {
+  console.log(a - b);
+}
+let c = a + b;
+console.log(c);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;代码转换，将代码转换为等价的，但更难理解的形式。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/*
+let a = 1;
+let b = 2;
+let c = a + b;
+console.log(c);
+*/
+let a = 1;
+let b = 2;
+let c = a - (-b);
+console.log(c);
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;常见反调试手段&#34;&gt;常见反调试手段&lt;/h4&gt;
+&lt;p&gt;实现防止他人调试、动态分析自己的代码，我们可以预先在代码中做处理，防止用户调试代码。&lt;/p&gt;
+&lt;p&gt;无限 debugger。比如写个定时器死循环禁止调试。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;var c = new RegExp(&amp;#34;1&amp;#34;);
+c.toString = function () {
+    alert(&amp;#34;检测到调试&amp;#34;)
+    setInterval(function() {
+        debugger
+    }, 1000);
+}
+console.log(c);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;内存耗尽。更隐蔽的反调试手段，代码运行造成的内存占用会越来越大，很快会使浏览器崩溃。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;var startTime = new Date();
+debugger;
+var endTime = new Date();
+var isDev = endTime - startTime &amp;gt; 100;
+var stack = [];
+
+if (isDev) {
+    while (true) {
+        stack.push(this);
+        console.log(stack.length, this);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;检测函数、对象属性修改。攻击者在调试的时，经常会把防护的函数删除，或者把检测数据对象进行篡改。可以检测函数内容，在原型上设置禁止修改。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;function eval() {
+    [native code]
+}
+
+window.eval = function(str) {
+    console.log(&amp;#34;[native code]&amp;#34;);
+};
+
+window.eval = function(str) {
+};
+
+window.eval.toString = function() {
+    return `function eval() {[native code]}`
+};
+
+function hijacked(fun) {
+    return &amp;#34;prototype&amp;#34; in fun || fun.toString().replace(/\n|\s/g, &amp;#34;&amp;#34;) != &amp;#34;function&amp;#34; + fun.name + &amp;#34;() {[nativecode]}&amp;#34;;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;在线混淆工具&#34;&gt;在线混淆工具&lt;/h4&gt;
+&lt;h4 id=&#34;反混淆&#34;&gt;反混淆&lt;/h4&gt;
+&lt;p&gt;JS 反混淆（Deobfuscator ）是指对经过混淆处理的代码进行还原和解析，以恢复其可读性。Deobfuscator 可以通过对代码进行静态分析和动态分析等方式来实现。需要注意的是，Obfuscation 只能降低可读性，不能完全避免逆向攻击，而 Deobfuscator 也并不能完全还原混淆过的代码。&lt;/p&gt;
+&lt;h4 id=&#34;在线反混淆工具&#34;&gt;在线反混淆工具&lt;/h4&gt;
+&lt;p&gt;以及浏览器前端中的Source窗口，配合console.log（）函数非常好用。&lt;/p&gt;
+&lt;p&gt;目前的需求是，一段经过混淆的恶意代码，能否直接在前端执行出解混淆后的结果。目前认知来看只有编码类混淆可以，而且存在执行到C2的风险。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>摄影作品小记(持续更新中)</title>
@@ -49,7 +165,7 @@
     <item>
       <title>待看电影及剧集小记</title>
       <link>https://wander1ng.com/post/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E5%8F%8A%E5%89%A7%E9%9B%86%E5%B0%8F%E8%AE%B0/</link>
-      <pubDate>Fri, 05 Jul 2024 10:28:44 +0800</pubDate>
+      <pubDate>Wed, 03 Jul 2024 10:28:44 +0800</pubDate>
       
       <guid>https://wander1ng.com/post/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E5%8F%8A%E5%89%A7%E9%9B%86%E5%B0%8F%E8%AE%B0/</guid>
       <description>&lt;h4 id=&#34;二二四年七月&#34;&gt;二〇二四年|七月&lt;/h4&gt;
@@ -65,7 +181,7 @@
     <item>
       <title>待玩游戏小记</title>
       <link>https://wander1ng.com/post/%E5%BE%85%E7%8E%A9%E6%B8%B8%E6%88%8F%E5%B0%8F%E8%AE%B0/</link>
-      <pubDate>Fri, 05 Jul 2024 10:27:42 +0800</pubDate>
+      <pubDate>Wed, 03 Jul 2024 10:27:42 +0800</pubDate>
       
       <guid>https://wander1ng.com/post/%E5%BE%85%E7%8E%A9%E6%B8%B8%E6%88%8F%E5%B0%8F%E8%AE%B0/</guid>
       <description>&lt;h4 id=&#34;二二四年七月&#34;&gt;二〇二四年|七月&lt;/h4&gt;
@@ -83,7 +199,7 @@
     <item>
       <title>待读书籍小记</title>
       <link>https://wander1ng.com/post/%E5%BE%85%E8%AF%BB%E4%B9%A6%E7%B1%8D%E5%B0%8F%E8%AE%B0/</link>
-      <pubDate>Fri, 05 Jul 2024 10:20:30 +0800</pubDate>
+      <pubDate>Wed, 03 Jul 2024 10:20:30 +0800</pubDate>
       
       <guid>https://wander1ng.com/post/%E5%BE%85%E8%AF%BB%E4%B9%A6%E7%B1%8D%E5%B0%8F%E8%AE%B0/</guid>
       <description>&lt;h4 id=&#34;二二四年七月&#34;&gt;二〇二四年|七月&lt;/h4&gt;

@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | About</title>
+	<title>清夜无尘の一方天地  | 常见JavaScript混淆与反混淆</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -151,9 +151,9 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
 	</h2>
 </div>
-<h1 class="pt-2">About</h1>
+<h1 class="pt-2">常见JavaScript混淆与反混淆</h1>
 
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">关于我的二三事</h3>
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Meta</h3>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -170,7 +170,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-07-04T22:02:31&#43;08:00">2024-7-4</time>
+		datetime="2024-07-05T15:35:25&#43;08:00">2024-7-5</time>
 </div>
 
 <hr />
@@ -183,16 +183,113 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><p>Cybersecurity Researcher(Focusing on Advanced Persistent Threat)</p>
-<p>Interest: Reading | Photography  | Travel | Wander | Cooking</p>
-<p>WeChat ID: WanderingtotheMoon (どうぞよろしくお願いいたします)</p>
-<p>[不要温和地走进那个良夜]——Dylan Thomas</p>
-<p>[我与我周旋久 宁作我]——《世说新语》</p>
-<p>[去爱去生活去受伤]——《我的阿勒泰》</p>
-<p>[A rolling stone gathers no moss]——Publiius Syrus</p>
-<p>[湖中焉得更有此人！]——张岱</p>
-<p>[身体为了繁衍留下后代，精神为了繁衍留下文字。]——我自己</p>
-<p>[阅读只是在被动接受，你读过什么并不代表你是什么。书写才能定义自我，你所写下的就是你自己。]——我自己</p>
+		<div class="c-rich-text"><p>JavaScript 混淆（Obfuscation）是指通过一系列技术手段，使 JS 代码变得难以理解和分析，增加代码的复杂性和混淆度，阻碍逆向工程和代码盗用。实际上就是一种保护 JS 代码的手段。JS最早被设计出来就是为了在客户端运行，直接以源码的形式传递给客户端，如果不做处理则完全公开透明，任何人都可以读、分析、复制、盗用，甚至篡改源码与数据，这是网站开发者不愿意看到的。</p>
+<p>压缩工具开发的初衷是减小 JS 文件体积，但 JS 代码经过压缩替换后，其可读性也大大降低，间接起到了保护代码的作用。但是后来主流浏览器的开发者工具都提供了格式化代码的功能，压缩技术所能提供的安全保护收效甚微。于是专门保护 JS 代码的技术：JS 加密和 JS 混淆。</p>
+<h4 id="常见混淆手段">常见混淆手段</h4>
+<p>变量名/函数名的替换，将有意义的变量名函数名替换为随机生成的名称</p>
+<pre tabindex="0"><code>/*
+function calculateArea(radius) {
+  return Math.PI * radius * radius;
+}
+console.log(calculateArea(5));
+*/
+function _0x2d8f05(_0x4b083b) {
+  return Math.PI * _0x4b083b * _0x4b083b;
+}
+console.log(_0x2d8f05(5));
+</code></pre><p>字符串混淆，将代码中的字符串替换为编码或加密的形式，可以防止字符串被轻易读取。</p>
+<pre tabindex="0"><code>// console.log(&#34;Hello, world!&#34;);
+console.log(&#34;\x48\x65\x6c\x6c\x6f\x2c\x20\x77\x6f\x72\x6c\x64\x21&#34;);
+</code></pre><p>控制流混淆，改变代码的执行顺序或结构。例如，可以使用条件语句和循环语句来替换简单的赋值操作。</p>
+<pre tabindex="0"><code>/*
+let a = 1;
+let b = 2;
+let c = a + b;
+console.log(c);
+*/
+let a = 1;
+let b = 2;
+let c;
+if (a === 1) {
+  if (b === 2) {
+    c = a + b;
+  }
+}
+console.log(c);
+</code></pre><p>花指令，即在源码插入一些不会被执行的代码。</p>
+<pre tabindex="0"><code>/*
+let a = 1;
+let b = 2;
+let c = a + b;
+console.log(c);
+*/
+let a = 1;
+let b = 2;
+if (false) {
+  console.log(a - b);
+}
+let c = a + b;
+console.log(c);
+</code></pre><p>代码转换，将代码转换为等价的，但更难理解的形式。</p>
+<pre tabindex="0"><code>/*
+let a = 1;
+let b = 2;
+let c = a + b;
+console.log(c);
+*/
+let a = 1;
+let b = 2;
+let c = a - (-b);
+console.log(c);
+</code></pre><h4 id="常见反调试手段">常见反调试手段</h4>
+<p>实现防止他人调试、动态分析自己的代码，我们可以预先在代码中做处理，防止用户调试代码。</p>
+<p>无限 debugger。比如写个定时器死循环禁止调试。</p>
+<pre tabindex="0"><code>var c = new RegExp(&#34;1&#34;);
+c.toString = function () {
+    alert(&#34;检测到调试&#34;)
+    setInterval(function() {
+        debugger
+    }, 1000);
+}
+console.log(c);
+</code></pre><p>内存耗尽。更隐蔽的反调试手段，代码运行造成的内存占用会越来越大，很快会使浏览器崩溃。</p>
+<pre tabindex="0"><code>var startTime = new Date();
+debugger;
+var endTime = new Date();
+var isDev = endTime - startTime &gt; 100;
+var stack = [];
+
+if (isDev) {
+    while (true) {
+        stack.push(this);
+        console.log(stack.length, this);
+    }
+}
+</code></pre><p>检测函数、对象属性修改。攻击者在调试的时，经常会把防护的函数删除，或者把检测数据对象进行篡改。可以检测函数内容，在原型上设置禁止修改。</p>
+<pre tabindex="0"><code>function eval() {
+    [native code]
+}
+
+window.eval = function(str) {
+    console.log(&#34;[native code]&#34;);
+};
+
+window.eval = function(str) {
+};
+
+window.eval.toString = function() {
+    return `function eval() {[native code]}`
+};
+
+function hijacked(fun) {
+    return &#34;prototype&#34; in fun || fun.toString().replace(/\n|\s/g, &#34;&#34;) != &#34;function&#34; + fun.name + &#34;() {[nativecode]}&#34;;
+}
+</code></pre><h4 id="在线混淆工具">在线混淆工具</h4>
+<h4 id="反混淆">反混淆</h4>
+<p>JS 反混淆（Deobfuscator ）是指对经过混淆处理的代码进行还原和解析，以恢复其可读性。Deobfuscator 可以通过对代码进行静态分析和动态分析等方式来实现。需要注意的是，Obfuscation 只能降低可读性，不能完全避免逆向攻击，而 Deobfuscator 也并不能完全还原混淆过的代码。</p>
+<h4 id="在线反混淆工具">在线反混淆工具</h4>
+<p>以及浏览器前端中的Source窗口，配合console.log（）函数非常好用。</p>
+<p>目前的需求是，一段经过混淆的恶意代码，能否直接在前端执行出解混淆后的结果。目前认知来看只有编码类混淆可以，而且存在执行到C2的风险。</p>
 </div>
 	</section>
 
@@ -210,7 +307,8 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" >
+		<a href="/post/" title="Post page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Post
 		</a>
 	</li>
@@ -222,8 +320,7 @@ onload='renderMathInElement(document.body);'></script>
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/about/" title="About page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+		<a href="/about/" title="About page" >
 			About
 		</a>
 	</li>
@@ -361,7 +458,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 211 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1168 words in this page.
 	</div>
 </div>
 
@@ -372,21 +469,14 @@ onload='renderMathInElement(document.body);'></script>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E5%8F%8A%E5%89%A7%E9%9B%86%E5%B0%8F%E8%AE%B0/">
+    <a class="flex-grow-0" href="/post/%E6%91%84%E5%BD%B1%E4%BD%9C%E5%93%81%E5%B0%8F%E8%AE%B0%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        待看电影及剧集小记
+        摄影作品小记(持续更新中)
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/%E5%8F%A4%E5%89%91%E5%A5%87%E8%B0%AD%E4%B8%89%E5%B0%8F%E8%AE%B0/">
-        《古剑奇谭三》小记(持续更新中)
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -396,6 +486,8 @@ onload='renderMathInElement(document.body);'></script>
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/about/">About</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/gensis/">Gensis</a>
 		
