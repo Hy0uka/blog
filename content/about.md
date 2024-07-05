@@ -11,9 +11,9 @@ date = 2024-07-04T22:02:31+08:00
 
 Cybersecurity Researcher(Focusing on APT)
 
-Interest: Reading | Photography | Wander | Cooking | Travel
+Interest: Reading | Photography  | Travel | Wander | Cooking
 
-WeChat ID: WanderingtotheMoon(どうぞよろしくお願いいたします)
+WeChat ID: WanderingtotheMoon (どうぞよろしくお願いいたします)
 
 [不要温和地走进那个良夜]——Dylan Thomas
 
