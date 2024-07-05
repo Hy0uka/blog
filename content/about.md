@@ -15,6 +15,8 @@ Interest: Reading | Photography  | Travel | Wander | Cooking
 
 WeChat ID: WanderingtotheMoon (どうぞよろしくお願いいたします)
 
+微信公众号：清夜无尘的一方天地 (欢迎关注~)
+
 [不要温和地走进那个良夜]——Dylan Thomas
 
 [我与我周旋久 宁作我]——《世说新语》
