@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Fri, 05 Jul 2024 15:35:25 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jul 2024 11:28:45 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Meta</title>
+      <link>https://wander1ng.com/tags/meta/</link>
+      <pubDate>Tue, 09 Jul 2024 11:28:45 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/tags/meta/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>技术</title>
@@ -36,15 +45,6 @@
       <pubDate>Fri, 05 Jul 2024 11:26:32 +0800</pubDate>
       
       <guid>https://wander1ng.com/tags/%E6%B8%B8%E6%88%8F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Meta</title>
-      <link>https://wander1ng.com/tags/meta/</link>
-      <pubDate>Thu, 04 Jul 2024 22:02:31 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/tags/meta/</guid>
       <description></description>
     </item>
     
