@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Wed, 10 Jul 2024 10:11:09 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jul 2024 11:28:45 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>阅读</title>
+      <link>https://wander1ng.com/tags/%E9%98%85%E8%AF%BB/</link>
+      <pubDate>Thu, 11 Jul 2024 11:28:45 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/tags/%E9%98%85%E8%AF%BB/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>技术</title>
@@ -18,15 +27,6 @@
       <pubDate>Wed, 10 Jul 2024 10:11:09 +0800</pubDate>
       
       <guid>https://wander1ng.com/tags/%E6%8A%80%E6%9C%AF/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>阅读</title>
-      <link>https://wander1ng.com/tags/%E9%98%85%E8%AF%BB/</link>
-      <pubDate>Tue, 09 Jul 2024 14:24:39 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/tags/%E9%98%85%E8%AF%BB/</guid>
       <description></description>
     </item>
     
@@ -54,15 +54,6 @@
       <pubDate>Fri, 05 Jul 2024 11:26:32 +0800</pubDate>
       
       <guid>https://wander1ng.com/tags/%E6%B8%B8%E6%88%8F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>电影</title>
-      <link>https://wander1ng.com/tags/%E7%94%B5%E5%BD%B1/</link>
-      <pubDate>Wed, 03 Jul 2024 10:28:44 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/tags/%E7%94%B5%E5%BD%B1/</guid>
       <description></description>
     </item>
     
