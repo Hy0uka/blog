@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | Python中的短路评估</title>
+	<title>清夜无尘の一方天地 </title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -27,6 +27,9 @@
 
 	
 
+	
+	<link rel="alternate" href="/tags/%E6%80%9D%E8%80%83/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
+	<link rel="feed" href="/tags/%E6%80%9D%E8%80%83/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
 	
 	
 	
@@ -145,104 +148,23 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-				
-<div>
-	<h2>
-		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-	</h2>
-</div>
-<h1 class="pt-2">Python中的短路评估</h1>
-
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">a &amp; b和a and b的运算逻辑并不一样</h3>
-
-<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-07-09T14:22:49&#43;08:00">2024-7-9</time>
-</div>
-
-<hr />
-
-
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-<article>
-	<section class="mx-auto content">
-		<div class="c-rich-text"><p>在 Python 中，使用按位与运算符 <code>&amp;</code> 来连接多个条件在 if 语句中不是常见做法。如果你实际上是想判断多个布尔表达式的逻辑与，即 <code>a</code>、<code>b</code>、<code>c</code> 都为真时执行某个代码块，那么你应该使用逻辑与 <code>and</code> 运算符。</p>
-<h3 id="使用逻辑与-and-运算符">使用逻辑与 <code>and</code> 运算符</h3>
-<p>当使用 <code>and</code> 时，Python 会从左到右依次计算每个条件。如果其中任何一个条件为 <code>False</code>，则整个表达式为 <code>False</code>，并且后续的条件将不会被计算，程序直接跳到 <code>else</code> 代码块。这种行为被称为 “短路” (short-circuit) 评估。</p>
-<pre tabindex="0"><code>a = True
-b = False
-c = True
-
-if a and b and c:
-    print(&#34;All conditions are True&#34;)
-else:
-    print(&#34;One or more conditions are False&#34;)
-</code></pre><p>在这种情况下，由于 <code>b</code> 是 <code>False</code>，所以 <code>c</code> 不会被计算，程序直接进入 <code>else</code> 代码块，输出：</p>
-<pre tabindex="0"><code>One or more conditions are False
-</code></pre><h3 id="使用按位与--运算符">使用按位与 <code>&amp;</code> 运算符</h3>
-<p>按位与运算符 <code>&amp;</code> 对左右两边的操作数逐位执行按位与运算，不进行布尔运算。用于条件判断时，它会对所有操作数进行计算，而不会 “短路”。</p>
-<pre tabindex="0"><code>a = True
-b = False
-c = True
-
-if a &amp; b &amp; c:
-    print(&#34;All conditions are True&#34;)
-else:
-    print(&#34;One or more conditions are False&#34;)
-</code></pre><p>在这种情况下，虽然 <code>b</code> 是 <code>False</code>，但 <code>a</code>、<code>b</code>、<code>c</code> 都会被计算。因为 <code>b</code> 为 <code>False</code>，所以结果仍然是 <code>False</code>， 程序会进入 <code>else</code> 代码块，输出：</p>
-<pre tabindex="0"><code>One or more conditions are False
-</code></pre><h3 id="小结">小结</h3>
-<ul>
-<li><strong>逻辑与 <code>and</code></strong>: 如果任何一个条件为 <code>False</code>，则不会计算后续条件，直接跳到 <code>else</code>（短路评估）。</li>
-<li><strong>按位与 <code>&amp;</code></strong>: 对所有条件进行位运算，不会短路。如果要判断多个布尔条件应使用 <code>and</code>。</li>
-</ul>
-<p>总的来说，在逻辑判断中使用 <code>and</code> 是更为合理和常见的做法，因为它能够利用短路评估来提高代码的效率。</p>
-<pre tabindex="0"><code>if a and b and c:
-    # 执行所有条件都为真的情况
-    ...
-</code></pre><p>这会在找到第一个 <code>False</code> 时立即停止后续的判断，从而提高代码效率。</p>
-</div>
-	</section>
-
-
-</article>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-	<div class="md:max-w-xs  flex flex-col md:items-end">
+					<div class="pb-4">
+		<h1 >
+			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+		</h1>
+	</div>
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+		<a href="/post/" title="Post page" >
 			Post
 		</a>
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/tags/" title="Tags page" >
+		<a href="/tags/" title="Tags page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Tags
 		</a>
 	</li>
@@ -253,6 +175,10 @@ else:
 		</a>
 	</li>
 	
+	
+	<li>
+		<a href='/tags/%E6%80%9D%E8%80%83/index.xml'>RSS</a>
+	</li>
 	
 	
 	
@@ -266,6 +192,121 @@ else:
 	</div>
 	
 </ul>
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+<h1 class="pb-4">
+	思考
+</h1>
+<div>
+	<section>
+		
+		<div>
+			<div class="pb-8">
+	<div class="font-serif font-medium text-xl">
+		<a href="https://wander1ng.com/post/%E7%88%B1%E7%9A%84%E8%89%BA%E6%9C%AF%E4%B9%A6%E8%AF%84%E6%91%98%E5%BD%95/">
+			《爱的艺术》书评摘录
+		</a>
+	</div>
+	
+	
+	
+	
+	<div class="font-serif text-gray-600 font-light pt-1">
+		幼稚之爱？</div>
+
+	
+	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E6%80%9D%E8%80%83'>思考</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
+			datetime="2024-07-31T20:59:48&#43;08:00">2024-7-31</time>
+	</div>
+</div>
+
+		</div>
+		
+	</section>
+</div>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -383,81 +424,25 @@ else:
 	
 </div>
 
-	<div class="text-sm text-gray-500 leading-tight a-gray">
+	<div class="a-gray text-sm text-gray-500 leading-tight">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 612 words in this page.
+		Built with Hugo and theme <a 
+			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
+			<br />
+			29 pages, 39314 words in total.
 	</div>
 </div>
-
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
-<hr class="double-line" />
-<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
-    
-    <a class="flex-grow-0" href="/post/%E5%AE%89%E9%98%B3%E6%B8%B8%E8%AE%B0/">
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        安阳游记
-    </a>
-    
-    
-    <a class="flex-grow-0" href="/post/stoic%E5%AD%A6%E6%B4%BE%E4%B8%8E%E8%AF%BE%E9%A2%98%E5%88%86%E7%A6%BB%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E6%B4%BD%E7%9A%84%E4%BA%BA/">
-        《Stoic学派与课题分离》——成为一个自洽的人
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
-    
-</div>
-<div >
 
 
 
-<div class="font-serif pb-2 flex align-start leading-loose">
-	<span class="heading pr-6 leading-loose">Related</span>
-	<span >
-		
-			<a href="/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">常见JavaScript混淆与反混淆</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">Hugo&#43;CloudFlare搭建博客指南</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">互联网协议入门</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/ctf-wiki/">CTF Wiki</a>
-		
-</span>
-</div>
 
-</div>
-<hr />
-<div class="pb-2">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "LZX" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-<hr />
+
+
 
 		</footer>
 		
