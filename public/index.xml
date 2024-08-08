@@ -7,10 +7,89 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Wed, 31 Jul 2024 20:59:48 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 08 Aug 2024 11:00:43 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>日语学习记录</title>
+      <link>https://wander1ng.com/post/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Thu, 08 Aug 2024 11:00:43 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/08/161776c91e13f28fb680232a26e18da1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;音读&lt;/strong&gt;（日语：音読み／おんよみ &lt;em&gt;On&amp;rsquo;yomi&lt;/em&gt;），是日语汉字的一种发音方式，是保留该等汉字当初传入日本时的发音。相对的，若使用该等汉字之日本固有同义语汇的读音，则称为训读。&lt;/p&gt;
+&lt;p&gt;两点：ka-ga, sa-za, ta-da, ha-ba,&lt;/p&gt;
+&lt;p&gt;圈圈°：ha-pa&lt;/p&gt;
+&lt;p&gt;hiragana平假名&lt;/p&gt;
+&lt;p&gt;katagana片假名&lt;/p&gt;
+&lt;p&gt;hanji汉字&lt;/p&gt;
+&lt;p&gt;经常省略she’s he’s I和it’s等，根据上下文语句决定。&lt;/p&gt;
+&lt;p&gt;动词也分现在时和过去时的变形，&lt;/p&gt;
+&lt;p&gt;形容语句：它很好吃&lt;/p&gt;
+&lt;p&gt;好吃desu&lt;/p&gt;
+&lt;p&gt;陈述语句：我是日本人&lt;/p&gt;
+&lt;p&gt;日本人desu&lt;/p&gt;
+&lt;p&gt;疑问语句：它好吃吗？&lt;/p&gt;
+&lt;p&gt;好吃desuka？&lt;/p&gt;
+&lt;p&gt;疑问语句：飞机在哪儿？&lt;/p&gt;
+&lt;p&gt;飞机doko desuka？&lt;/p&gt;
+&lt;p&gt;疑问句：你昨天做了什么？&lt;/p&gt;
+&lt;p&gt;昨天什么wo(宾语标记)做过(做的过去式)ka&lt;/p&gt;
+&lt;p&gt;在日语中，宾语标记**「を」&lt;strong&gt;（wo）用于标记句子中的宾语。宾语是动词的直接对象，也就是动词作用的目标或接受者。&lt;/strong&gt;「を」**放在宾语的后面，帮助明确句子的意思。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;りんごを食べる&lt;/p&gt;
+&lt;p&gt;（ringo o taberu）：表示“吃苹果”。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;りんご&lt;/strong&gt;（ringo）：苹果&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;を&lt;/strong&gt;（wo）：宾语标记&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;食べる&lt;/strong&gt;（taberu）：吃&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在这句话中，**「りんご」&lt;strong&gt;是&lt;/strong&gt;「食べる」&lt;strong&gt;这个动作的宾语，所以使用&lt;/strong&gt;「を」**标记它。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/08/862ee4466b4bf5b62a1b517640148032.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/08/e3dfa97dbadcb054d49ed438b066207a.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>常见隧道工具实现</title>
+      <link>https://wander1ng.com/post/%E5%B8%B8%E8%A7%81%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Wed, 07 Aug 2024 10:38:40 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E5%B8%B8%E8%A7%81%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7%E5%AE%9E%E7%8E%B0/</guid>
+      <description>&lt;h4 id=&#34;chisel&#34;&gt;Chisel&lt;/h4&gt;
+&lt;p&gt;项目地址：https://github.com/jpillora/chisel&lt;/p&gt;
+&lt;p&gt;Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Written in Go (golang). Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://camo.githubusercontent.com/f211df8890519ba2e5b50f7268f089117e5f754be9f759aa05617b92cc27d24a/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f317035335657787a474e667938726a722d6d5738707669734a6d686b6f4c6c383276416763744f5f366631772f7075623f773d39363026683d373230&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;gsocket&#34;&gt;gsocket&lt;/h4&gt;
+&lt;p&gt;项目地址：https://github.com/hackerschoice/gsocket/tree/master&lt;/p&gt;
+&lt;p&gt;The Global Socket Tookit allows two users behind NAT/Firewall to establish a TCP connection with each other. Securely.&lt;/p&gt;
+&lt;p&gt;通信是通过gsocket分配密钥后，输入输出都传到官方服务器上实现的。&lt;/p&gt;
+&lt;h4 id=&#34;ssh隧道&#34;&gt;SSH隧道&lt;/h4&gt;
+&lt;p&gt;本地转发 - L&lt;/p&gt;
+&lt;p&gt;本地转发里的本地，我认为最简单的理解就是执行转发命令后，后续实际用于连接的端口位于本地主机。 本地转发的基本命令形式如下：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh -L 主机A端口A:主机C:主机C端口C username@主机B&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;结合下面的示意图，我们来理解下这个命令。如果我们的电脑是主机A，主机B是服务器的登录节点，主机C是服务器的子节点，其中我们的主机A可以连接主机B，但不能直接访问主机C。这时如果我们想要在自己电脑上直接使用主机C上部署在端口C的服务，就可以使用上面的命令，将端口C转发到本地的端口A上。 这时，我们在本地其它程序访问A端口，就等于访问了主机C的端口C，就好像在A和C端口之间打了一条隧道直连一样。 另外主要注意的时，主机B可以和主机C是同一台电脑，我们只要把上面命令里的主机C改成localhost即可。一般用在我们只能访问B的部分端口的情况。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.msq.pub/202312190654146.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/08/5763c4a58667798dfad28adac6664178.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;远程转发 - R&lt;/p&gt;
+&lt;p&gt;远程转发里的远程，同样的理解方法，在执行转发命令后，后续实际用于连接的端口在远程主机。 远程转发的基本命令形式如下：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh -R 主机B端口B:主机C:主机C端口C username@主机B&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;同样结合示意图来进行理解。此时我们的主机A与主机C位于同一个内网，无法被直接访问，主机B位于公网可以直接访问。如果我们想要访问主机C端口C上的服务，可以在主机A上发起到主机B的ssh连接，执行如上命令。 这是，访问主机B的端口B，就等于访问主机C的端口C。同样的，主机A和主机C可以是同一台电脑，实现将内网机器提供的服务暴露到公网上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.msq.pub/202312190730017.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;动态转发 - D&lt;/p&gt;
+&lt;p&gt;不同于上面的固定端口转发，动态转发相当于把主机B当做一台代理来使用，使用如下命令，可以在端口A上提供一个socks5代理服务。这样当我们在主机A的其它应用上设置了代理后，就可以通过主机B来访问网络，并且A和B之间的通信会被ssh加密。这也是最雏形的越过wall的方式。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh -D 主机A端口A username@主机B&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://note.msq.pub/202312191822341.webp&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;在执行上面的命令时，会同时打开一个ssh交互终端，如果我们只是需要后台启动隧道，可以添加- N参数。&lt;/p&gt;
+&lt;h4 id=&#34;dns隧道&#34;&gt;DNS隧道&lt;/h4&gt;
+</description>
+    </item>
     
     <item>
       <title>《爱的艺术》书评摘录</title>

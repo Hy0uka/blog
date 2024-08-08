@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地 </title>
+	<title>清夜无尘の一方天地  | 常见隧道工具实现</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -145,16 +145,89 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-					<div class="pb-4">
-		<h1 >
-			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-		</h1>
-	</div>
+				
+<div>
+	<h2>
+		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+	</h2>
+</div>
+<h1 class="pt-2">常见隧道工具实现</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Chisel、Gosocket、SSH隧道、DNS隧道等</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-08-07T10:38:40&#43;08:00">2024-8-7</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h4 id="chisel">Chisel</h4>
+<p>项目地址：https://github.com/jpillora/chisel</p>
+<p>Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Written in Go (golang). Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.</p>
+<p><img src="https://camo.githubusercontent.com/f211df8890519ba2e5b50f7268f089117e5f754be9f759aa05617b92cc27d24a/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f317035335657787a474e667938726a722d6d5738707669734a6d686b6f4c6c383276416763744f5f366631772f7075623f773d39363026683d373230" alt=""></p>
+<h4 id="gsocket">gsocket</h4>
+<p>项目地址：https://github.com/hackerschoice/gsocket/tree/master</p>
+<p>The Global Socket Tookit allows two users behind NAT/Firewall to establish a TCP connection with each other. Securely.</p>
+<p>通信是通过gsocket分配密钥后，输入输出都传到官方服务器上实现的。</p>
+<h4 id="ssh隧道">SSH隧道</h4>
+<p>本地转发 - L</p>
+<p>本地转发里的本地，我认为最简单的理解就是执行转发命令后，后续实际用于连接的端口位于本地主机。 本地转发的基本命令形式如下：</p>
+<p><code>ssh -L 主机A端口A:主机C:主机C端口C username@主机B</code></p>
+<p>结合下面的示意图，我们来理解下这个命令。如果我们的电脑是主机A，主机B是服务器的登录节点，主机C是服务器的子节点，其中我们的主机A可以连接主机B，但不能直接访问主机C。这时如果我们想要在自己电脑上直接使用主机C上部署在端口C的服务，就可以使用上面的命令，将端口C转发到本地的端口A上。 这时，我们在本地其它程序访问A端口，就等于访问了主机C的端口C，就好像在A和C端口之间打了一条隧道直连一样。 另外主要注意的时，主机B可以和主机C是同一台电脑，我们只要把上面命令里的主机C改成localhost即可。一般用在我们只能访问B的部分端口的情况。</p>
+<p><img src="https://note.msq.pub/202312190654146.webp" alt=""></p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/08/5763c4a58667798dfad28adac6664178.png" alt=""></p>
+<p>远程转发 - R</p>
+<p>远程转发里的远程，同样的理解方法，在执行转发命令后，后续实际用于连接的端口在远程主机。 远程转发的基本命令形式如下：</p>
+<p><code>ssh -R 主机B端口B:主机C:主机C端口C username@主机B</code></p>
+<p>同样结合示意图来进行理解。此时我们的主机A与主机C位于同一个内网，无法被直接访问，主机B位于公网可以直接访问。如果我们想要访问主机C端口C上的服务，可以在主机A上发起到主机B的ssh连接，执行如上命令。 这是，访问主机B的端口B，就等于访问主机C的端口C。同样的，主机A和主机C可以是同一台电脑，实现将内网机器提供的服务暴露到公网上。</p>
+<p><img src="https://note.msq.pub/202312190730017.webp" alt=""></p>
+<p>动态转发 - D</p>
+<p>不同于上面的固定端口转发，动态转发相当于把主机B当做一台代理来使用，使用如下命令，可以在端口A上提供一个socks5代理服务。这样当我们在主机A的其它应用上设置了代理后，就可以通过主机B来访问网络，并且A和B之间的通信会被ssh加密。这也是最雏形的越过wall的方式。</p>
+<p><code>ssh -D 主机A端口A username@主机B</code></p>
+<p><img src="https://note.msq.pub/202312191822341.webp" alt=""></p>
+<p>在执行上面的命令时，会同时打开一个ssh交互终端，如果我们只是需要后台启动隧道，可以添加- N参数。</p>
+<h4 id="dns隧道">DNS隧道</h4>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" >
+		<a href="/post/" title="Post page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Post
 		</a>
 	</li>
@@ -184,90 +257,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-<article>
-	<h1>
-		Ain't nobody here but us chickens.
-	</h1>
-	<div class="pt-4">404 not found.</div>
-	
-</article>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -385,20 +374,90 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a 
-			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
-			<br />
-			32 pages, 42935 words in total.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1041 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
-			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/%E7%88%B1%E7%9A%84%E8%89%BA%E6%9C%AF%E4%B9%A6%E8%AF%84%E6%91%98%E5%BD%95/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        《爱的艺术》书评摘录
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/post/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+        日语学习记录
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
+
+
+
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/">威胁情报RSS体系构建</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">越南方向海莲花APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%A5%9E%E5%99%A8cyberchef%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">数据处理神器Cyberchef使用指南</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/python%E4%B8%AD%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%AF%84%E4%BC%B0/">Python中的短路评估</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">常见JavaScript混淆与反混淆</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">Hugo&#43;CloudFlare搭建博客指南</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">互联网协议入门</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/ctf-wiki/">CTF Wiki</a>
+		
+</span>
+</div>
+
+</div>
+<hr />
+<div class="pb-2">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "LZX" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+<hr />
+
 		</footer>
 		
 
