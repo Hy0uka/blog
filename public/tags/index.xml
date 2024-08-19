@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Thu, 08 Aug 2024 11:00:43 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 12 Aug 2024 11:00:27 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>旅行</title>
+      <link>https://wander1ng.com/tags/%E6%97%85%E8%A1%8C/</link>
+      <pubDate>Mon, 12 Aug 2024 11:00:27 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/tags/%E6%97%85%E8%A1%8C/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>语言</title>
@@ -45,15 +54,6 @@
       <pubDate>Thu, 11 Jul 2024 11:28:45 +0800</pubDate>
       
       <guid>https://wander1ng.com/tags/%E9%98%85%E8%AF%BB/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>旅行</title>
-      <link>https://wander1ng.com/tags/%E6%97%85%E8%A1%8C/</link>
-      <pubDate>Sun, 07 Jul 2024 12:25:03 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/tags/%E6%97%85%E8%A1%8C/</guid>
       <description></description>
     </item>
     
