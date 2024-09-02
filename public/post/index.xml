@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Mon, 12 Aug 2024 11:00:27 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 02 Sep 2024 11:00:14 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/post/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>英仙座流星雨</title>
-      <link>https://wander1ng.com/post/%E8%8B%B1%E4%BB%99%E5%BA%A7%E6%B5%81%E6%98%9F%E9%9B%A8/</link>
-      <pubDate>Mon, 12 Aug 2024 11:00:27 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/post/%E8%8B%B1%E4%BB%99%E5%BA%A7%E6%B5%81%E6%98%9F%E9%9B%A8/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>日语学习记录</title>
@@ -204,15 +195,6 @@
     </item>
     
     <item>
-      <title>宜昌溪降</title>
-      <link>https://wander1ng.com/post/%E5%AE%9C%E6%98%8C%E6%BA%AA%E9%99%8D/</link>
-      <pubDate>Fri, 19 Jul 2024 10:59:47 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/post/%E5%AE%9C%E6%98%8C%E6%BA%AA%E9%99%8D/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>威胁情报RSS体系构建</title>
       <link>https://wander1ng.com/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/</link>
       <pubDate>Mon, 15 Jul 2024 10:11:09 +0800</pubDate>
@@ -361,45 +343,6 @@
 理性和求知是人类最高贵的品质。我相信，今日世界中许多令人痛心的东西——比如分歧和对立——都不是绝症。真正能对人类造成“降维打击”的，只有愚昧和封闭。正因如此，我们永远不应放弃思考和探索。任何一种“信仰”或“价值观”都不该成为闭目塞听、阻碍思辨的封印。
 愿探索能拓宽我们的想象。愿对更高维度的渴望和追求能引领我们飞向更高的地方。&lt;/p&gt;
 &lt;/blockquote&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>韩国方向APT-Q-12&amp;APT-Q-15攻击样本分析复现</title>
-      <link>https://wander1ng.com/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0/</link>
-      <pubDate>Wed, 10 Jul 2024 10:49:35 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>印度方向白象&amp;响尾蛇APT攻击样本分析复现(一)</title>
-      <link>https://wander1ng.com/post/%E5%8D%B0%E5%BA%A6%E6%96%B9%E5%90%91%E7%99%BD%E8%B1%A1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</link>
-      <pubDate>Wed, 10 Jul 2024 10:16:39 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/post/%E5%8D%B0%E5%BA%A6%E6%96%B9%E5%90%91%E7%99%BD%E8%B1%A1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/MKgXLnMX9PTZIAEfoh1Okw&#34;&gt;https://mp.weixin.qq.com/s/MKgXLnMX9PTZIAEfoh1Okw&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>朝鲜方向Kimsuky组织APT攻击样本分析复现(一)</title>
-      <link>https://wander1ng.com/post/%E6%9C%9D%E9%B2%9C%E6%96%B9%E5%90%91kimsukyapt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</link>
-      <pubDate>Wed, 10 Jul 2024 10:13:47 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/post/%E6%9C%9D%E9%B2%9C%E6%96%B9%E5%90%91kimsukyapt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/q796regUE66tEOc4RnGtdg&#34;&gt;https://mp.weixin.qq.com/s/q796regUE66tEOc4RnGtdg&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>越南方向海莲花APT攻击样本分析复现(一)</title>
-      <link>https://wander1ng.com/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</link>
-      <pubDate>Wed, 10 Jul 2024 10:07:42 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/9INu5Y-GP75C9aiZ4kgY0A&#34;&gt;https://mp.weixin.qq.com/s/9INu5Y-GP75C9aiZ4kgY0A&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -782,102 +725,6 @@ function hijacked(fun) {
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705124105.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705124111.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>待看电影及剧集小记</title>
-      <link>https://wander1ng.com/post/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E5%8F%8A%E5%89%A7%E9%9B%86%E5%B0%8F%E8%AE%B0/</link>
-      <pubDate>Wed, 03 Jul 2024 10:28:44 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/post/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E5%8F%8A%E5%89%A7%E9%9B%86%E5%B0%8F%E8%AE%B0/</guid>
-      <description>&lt;h4 id=&#34;二二四年七月&#34;&gt;二〇二四年|七月&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;《眷思量》&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;《人间世》&lt;/code&gt;&amp;amp;&lt;code&gt;《人间世2》&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;《边走边唱的女子》&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;《是的首相》&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;《权力的游戏》&lt;/code&gt;&lt;/p&gt;
-&lt;h4 id=&#34;二二四年八月&#34;&gt;二〇二四年|八月&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;《唐朝诡事录2》&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;《从21世纪安全撤离》&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;《名侦探柯南·百万美元的五棱星》&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;《我们与恶的距离》&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;《胜利即是正义》&lt;/code&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>待读书籍小记</title>
-      <link>https://wander1ng.com/post/%E5%BE%85%E8%AF%BB%E4%B9%A6%E7%B1%8D%E5%B0%8F%E8%AE%B0/</link>
-      <pubDate>Wed, 03 Jul 2024 10:20:30 +0800</pubDate>
-      
-      <guid>https://wander1ng.com/post/%E5%BE%85%E8%AF%BB%E4%B9%A6%E7%B1%8D%E5%B0%8F%E8%AE%B0/</guid>
-      <description>&lt;h4 id=&#34;二二四年七月&#34;&gt;二〇二四年|七月&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;《莱博维茨的赞歌》&lt;/code&gt;for科幻读书会&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;​	“站住别动！”老头儿用嘶哑的声音吼道，“离我远点儿，你这怪物！我这里没有你要的东西！这里有奶酪，你可以拿走。想要肉的话，除了这把老骨头，我什么都没有。你要敢动，我就和你拼个鱼死网破！滚开！快滚！”
-“等等——”修士刚说两个字就住了口。只有出于行善或礼貌才可以打破斋节期间禁言的规矩，情势所迫也能得到谅解，但主动打破沉默还是让修士有些紧张。
-​	“我并非怪物，善良的蠢货。”修士用表示礼貌的称呼接着说道。他褪下了兜帽，露出修士发式，抬起手中的念珠：“这下您明白了吧？”
-​	沉寂持续了几秒钟，老人一边像猫一样保持警惕，随时准备以命相搏，一边细细打量修士被晒出水疱的稚嫩脸颊——尽管他自己的老脸才是个天生的错误。沙漠边缘到处游荡着怪物，他们常常戴着兜帽、面具或穿着宽松的长袍来掩盖身体的缺陷。他们的畸形不仅限于身体，有的怪物甚至会把旅行者当作可以赖以为生的野味。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;​	尽管弗朗西斯因为摄水量不足而导致身体脱水，可一见到食物，口腔里一下子涌上了唾液。修士的目光被这递食物的手牢牢吸引住了，无法移开。刹那间，宇宙收缩了，悬浮不定的宇宙中心就在于这沾满沙土的珍馐——黑面包和白奶酪。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《永恒的终结》&lt;/code&gt;for科幻读书会&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《与罗摩相会》&lt;/code&gt;for科幻读书会&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《刘擎现代西方思想讲义》&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;​	着眼于分析、诊断和反思，什么样的思想观念塑造了现代社会的行动逻辑，构成了现代世界的复杂性。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《这就是ChatGPT》&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;​	GPT的主要思路是通过生成获取世界模型的压缩表示——Ilya Sutskever&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;​	产生“有意义的人类语言”需要什么？过去，我们可能认为人类大脑必不可少。但现在我们知道，ChatGPT的神经网络也可以做得非常出色……我强烈怀疑ChatGPT的成功暗示了一个重要的“科学”事实：有意义的人类语言实际上比我们所知道的更加结构化、更加简单，最终可能以相当简单的规则来描述如何组织这样的语言。
-​	语言是严肃思考、决策和沟通的工具。从孩子的成长过程来看，相比感知、行动，语言应该是智能中更难的任务。但ChatGPT很可能已经攻破了其中的密码，正如Wolfram说的“它也在某种意义上‘钻研’到了，不必考虑可能的不同措辞，就能‘以语义上有意义的方式组织语言’的地步”。这确实预示着未来我们通过计算语言或者其他表示方式，有可能进一步大幅提升整体的智能水平。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《艺术的力量》&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;​	伟大的艺术都有令人不悦的方面。美术馆中的安静肃穆可以欺骗你，令你相信杰出的艺术作品都是礼貌友好的事物，是抚慰人心、令人陶醉、引人入胜的图景，但是它们其实都是暴徒。无情，狡诈，最伟大的绘画作品简直是要一把按住你的脑袋，将你的沉着镇定彻底击碎，然后立刻开始重组你对真实世界的感知。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《我还能看到多少次满月升起》&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;​	因为不知死何时将至，我们仍将生命视为无穷无尽、取之不竭的源泉。然而，一生所遇之事也许就只发生那么几次。曾经左右过我们人生的童年回忆浮现在心头的时刻还能有多少次呢？也许还能有四五次。目睹满月升起的时刻又还能有多少次呢？或许最多还能有二十次。但人们总是深信这些机会将无穷无尽。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《念念远山》&lt;/code&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《席德梅尔的回忆录》&lt;/code&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《合作农场的冬日食谱》&lt;/code&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《亲密关系的核心是友谊》&lt;/code&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《政治学通识》&lt;/code&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《采香者》&lt;/code&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;code&gt;《翦商》&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;古国时代：辽河文明、黄河文明、长江文明;&lt;/p&gt;
-&lt;p&gt;辽河文明主要是红山文化牛河梁遗址;黄河文明主要是仰韶文化、大汶口文化、龙山文化、陶寺遗址、石峁遗址;长江文明主要是凌家滩文化、良渚文化、三星堆遗址;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;杀祭地点在戍嗣子的家宅或附近，操办和参加祭礼的是商朝贵族，给了死者一点宽待，但仍按照惯例烹食了很多被献祭的人，尤其是婴儿和幼儿。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;罗马人后来皈依了基督教，传统的阿兹特克宗教被西班牙殖民者的天主教所取代，殷商则与之不同：周灭商后，人祭被周人消除，但周人并未开创一种新的宗教，而是采用世俗的人文主义立场，与极端宗教行为保持距离，不允许其干预现实生活，所谓“敬鬼神而远之”。这奠定了后世中国的文化基础。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;人祭主要表现为以下三种形式： 一，把人夯筑在地基内，用作建筑物的奠基，可称之为“人奠基”。其原理可能是把人奉献给土地之神，用以交换神对建筑物的护佑，以及通过施展巫术，被杀者可能也会变成守护建筑之鬼。 二，把人作为食物或仆役献祭给神或祖先之灵，这是狭义的“人祭”。 三，把人作为殉葬品埋在主人的墓穴内，可称之为“人殉”。其原理可能是当时的人们认为尊贵的人在死后会变为神灵，所以在去往神界的旅途中要给他（她）带上一些仆役和食物。&lt;/p&gt;
-&lt;/blockquote&gt;
 </description>
     </item>
     
