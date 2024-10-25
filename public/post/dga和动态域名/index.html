@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地 </title>
+	<title>清夜无尘の一方天地  | DGA和动态域名</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
-	<link rel="feed" href="/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
 	
 	
 	
@@ -148,16 +145,80 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-					<div class="pb-4">
-		<h1 >
-			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-		</h1>
-	</div>
+				
+<div>
+	<h2>
+		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+	</h2>
+</div>
+<h1 class="pt-2">DGA和动态域名</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">不能说是区别很大，只能说是毫不相干</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-10-25T14:54:57&#43;08:00">2024-10-25</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><p><strong>DGA算法</strong>，即Domain Generation Algorithm，是一种可以生成大量新域名的算法。攻击者使用该算法来频繁更改所使用的域名，利用这项技术可以逃避针对于特定域名和静态IP地址的恶意软件解决方案。</p>
+<p>域名生成算法使用字符序列来快速生成数以千计的域名，这些域名实际上就是攻击者与 C2 服务器进行通信的会合点。这些算法每天可以生成成千上万个 DGA 域名，其中大部分都未注册。黑客使用未注册的域名隐藏已注册的域名，从而更轻松地避开使用签名和 IP 声誉的检查引擎所进行的检测。该算法可以在客户端和源端上执行。它从攻击者和 C2 服务器已知的一个种子开始，让双方都知道将生成哪些域名以及要注册哪个域名以用作恶意软件的通信通道。如果安全系统识别出该域名并进行拦截，攻击者就会遵从黑客和恶意软件或僵尸网络都理解的模式快速切换到下一个域名，以便继续与 C2 服务器保持联系。</p>
+<p>目前，黑客攻击者为了防止恶意域名被发现，会使用Domain Flux或者IP Flux来快速生成大量的恶意域名。Domain Flux是通过不断变换域名，指向同一个IP，IP Flux是只有一个域名，不断变换IP，一个域名可以使用多个IP。</p>
+<p>DGA生成的域名也可以是二级域名。</p>
+<p>受害者端视角：使用同样的种子运行DGA，生成大量域名，逐个访问这些域名，检测是否存在，如果该域名未注册，程序继续检测其他域名，如果该域名已注册(如果某生成域名发生了被抢注的情况该怎么办？不处理，因为那些域名并不能发攻击指令，看设计方案是否要继续进行轮询)，那么恶意软件将选择使用该域名联系C&amp;C服务器。
+DGA使用的种子有很多种类，包含日期、社交网络搜索热词、随机数或字典，生成一串字符前缀，添加TLD（如com、org等）后得到最终生成域名AGD（Algorithmically Generated Domain） 。
+（怎样确定同样的种子？在程序中内嵌。但是安全人员逆向了之后仍旧不能确定种子是什么，因为并不能知道攻击者究竟以什么字段作为种子）。</p>
+<p><strong>动态域名</strong>，即Dynamic DNS。API或网站等许多 Web 属性在其 IP 地址经常改变的互联网连接上运行；如果这些属性的运营商想要为托管的资源提供特定域名，就必须将 IP 地址存储在域名系统 (DNS) 记录中，这就会产生问题。动态 DNS (DDNS) 是一项服务，即使该 IP 地址不断更新，其也可使用 Web 属性的正确 IP 地址来更新 DNS。</p>
+<p>例如，如果一位网络管理员正在运营一个域名为 <a href="https://www.example.com">www.example.com</a> 且 IP 地址为 192.0.2.0 的小型网站，则每当另一个用户在浏览器中输入 <a href="https://www.example.com">www.example.com</a> 时，DNS 会将他们定向到位于 192.0.2.0 的服务器。如果该管理员的 ISP 将 IP 动态更改为 192.0.2.1，则动态 DNS 服务可自动更新该管理员的 DNS 记录，以便使尝试访问 <a href="https://www.example.com">www.example.com</a> 的其他用户现在将转到正确的 IP 地址。</p>
+<p>准确地说变换的并不是域名本身，而是IP地址。之前一直认为具有非常多子域名的二级域名统称为动态域名，认为变化的是子域名，实际上大错特错。</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/5a7886630805c6a8d732489bc2c3539b.png" alt=""></p>
+<p><strong>为什么某些IP地址会更改？</strong></p>
+<p>在互联网早期，IP 地址很少改变，这使得域的管理非常简单。但具有互联网访问权限的 Web 和家用计算机的快速增长造成了可用 IP 地址的短缺。动态主机配置协议 (DHCP) 应运而生，该协议可使 ISP 为用户动态分配 IP。ISP 一般将维护一个 IP 地址共享池，并在连接期间或在达到最大时间之前，根据需要将其分配或“租赁”给用户。尽管引入 IPV6 缓解了 IP 地址短缺问题，但 ISP 仍经常使用 DHCP，因为这比提供静态 IP 更具成本效益。</p>
+<p>运行主要 Web 服务的大型企业要求其 ISP 为他们提供不变或“静态”IP 地址，以便他们能够使用标准 DNS 惯例进行操作。相反，较小服务的 IP 地址经常被 ISP 更改，因此它们需要动态 DNS 解决方案来使其 DNS 记录保持最新状态。这些较小的服务可包括小型企业网站、个人网站、DVR 和安全摄像机。</p>
+<p><strong>动态DNS如何工作？</strong></p>
+<p>有许多公司提供具有不同功能和技术的动态 DNS 服务。启用动态 DNS 的一种极为常见的方法是为用户提供在其计算机或路由器上运行的软件。每次更新 ISP 提供的 IP 地址时，该软件就会与动态 DNS 服务提供商进行通信，而动态 DNS 提供商接着更新进行了这些更改的 DNS，从而提供几乎即时的更新。</p>
+<p>使用DGA的组织并不局限于僵尸网络，许多黑产也在使用，二者并无具体关系。</p>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" >
+		<a href="/post/" title="Post page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Post
 		</a>
 	</li>
@@ -175,10 +236,6 @@ onload='renderMathInElement(document.body);'></script>
 	</li>
 	
 	
-	<li>
-		<a href='/index.xml'>RSS</a>
-	</li>
-	
 	
 	
 	<div id="fastSearch" class="m-0">
@@ -191,285 +248,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-<div class="font-serif text-medium-red-violet-400 pt-3">
-	《行香子·述怀》清夜无尘，月色如银。酒斟时、须满十分。浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。
-虽抱文章，开口谁亲。且陶陶、乐尽天真。几时归去，作个闲人。对一张琴，一壶酒，一溪云。
-</div>
-<hr  class="pt-2"/>
-
-
-<div>
-	<section>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">
-			越南方向海莲花APT攻击样本分析复现(一)
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		APT样本分析基础提高</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-07-10T10:07:42&#43;08:00">2024-7-10</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%A5%9E%E5%99%A8cyberchef%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
-			数据处理神器Cyberchef使用指南
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		妈妈再也不用担心我不会编码解码了</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-07-10T10:05:48&#43;08:00">2024-7-10</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/python%E4%B8%AD%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%AF%84%E4%BC%B0/">
-			Python中的短路评估
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		a &amp; b和a and b的运算逻辑并不一样</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-07-09T14:22:49&#43;08:00">2024-7-9</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">
-			常见JavaScript混淆与反混淆
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		JavaScript混淆</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-07-05T15:35:25&#43;08:00">2024-7-5</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">
-			Hugo&#43;CloudFlare搭建博客指南
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		崭新架构的安全博客</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-06-27T18:02:59&#43;08:00">2024-6-27</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">
-			互联网协议入门
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		Computer Net-working</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2020-07-16T15:24:35&#43;08:00">2020-7-16</time>
-	</div>
-</div>
-
-		</div>
-		
-	</section>
-</div>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -587,115 +365,90 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a 
-			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
-			<br />
-			21 pages, 22034 words in total.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1659 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/%E5%B8%B8%E8%A7%81%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7%E5%AE%9E%E7%8E%B0/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        常见隧道工具实现
+    </a>
+    
+    
+</div>
+<div >
 
 
 
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/%E5%B8%B8%E8%A7%81%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7%E5%AE%9E%E7%8E%B0/">常见隧道工具实现</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/">威胁情报RSS体系构建</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0/">韩国方向APT-Q-12&amp;APT-Q-15攻击样本分析复现</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E5%8D%B0%E5%BA%A6%E6%96%B9%E5%90%91%E7%99%BD%E8%B1%A1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">印度方向白象&amp;响尾蛇APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E6%9C%9D%E9%B2%9C%E6%96%B9%E5%90%91kimsukyapt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">朝鲜方向Kimsuky组织APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">越南方向海莲花APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%A5%9E%E5%99%A8cyberchef%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">数据处理神器Cyberchef使用指南</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/python%E4%B8%AD%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%AF%84%E4%BC%B0/">Python中的短路评估</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">常见JavaScript混淆与反混淆</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">Hugo&#43;CloudFlare搭建博客指南</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">互联网协议入门</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/ctf-wiki/">CTF Wiki</a>
+		
+</span>
+</div>
+
+</div>
 <hr />
-
-
-<ul class="flex justify-between">
-    
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevrons-left h-4 w-4 relative -bottom-1">
-                    <polyline points="11 17 6 12 11 7"></polyline>
-                    <polyline points="18 17 13 12 18 7"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/"  class="page-link" aria-label="Previous"><span
-                aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevron-left h-4 w-4 relative -bottom-1">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    <div class="flex-grow-3"></div>
+<div class="pb-2">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/">1</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item active"><a class="page-link" href="/page/2/">2</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a>
-    </li>
-    
-    
-    <div class="flex-grow-3"></div>
-    <li class="page-item">
-        <a href="/page/3/"  class="page-link" aria-label="Next"><span
-                aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevron-right h-4 w-4 relative -bottom-1">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/3/" class="page-link" aria-label="Last"><span aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevrons-right h-4 w-4 relative -bottom-1">
-                    <polyline points="13 17 18 12 13 7"></polyline>
-                    <polyline points="6 17 11 12 6 7"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-</ul>
-
-
-
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "LZX" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+<hr />
 
 		</footer>
 		

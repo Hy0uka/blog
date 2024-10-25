@@ -7,10 +7,36 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Mon, 02 Sep 2024 11:15:28 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 25 Oct 2024 14:54:57 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DGA和动态域名</title>
+      <link>https://wander1ng.com/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Fri, 25 Oct 2024 14:54:57 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;DGA算法&lt;/strong&gt;，即Domain Generation Algorithm，是一种可以生成大量新域名的算法。攻击者使用该算法来频繁更改所使用的域名，利用这项技术可以逃避针对于特定域名和静态IP地址的恶意软件解决方案。&lt;/p&gt;
+&lt;p&gt;域名生成算法使用字符序列来快速生成数以千计的域名，这些域名实际上就是攻击者与 C2 服务器进行通信的会合点。这些算法每天可以生成成千上万个 DGA 域名，其中大部分都未注册。黑客使用未注册的域名隐藏已注册的域名，从而更轻松地避开使用签名和 IP 声誉的检查引擎所进行的检测。该算法可以在客户端和源端上执行。它从攻击者和 C2 服务器已知的一个种子开始，让双方都知道将生成哪些域名以及要注册哪个域名以用作恶意软件的通信通道。如果安全系统识别出该域名并进行拦截，攻击者就会遵从黑客和恶意软件或僵尸网络都理解的模式快速切换到下一个域名，以便继续与 C2 服务器保持联系。&lt;/p&gt;
+&lt;p&gt;目前，黑客攻击者为了防止恶意域名被发现，会使用Domain Flux或者IP Flux来快速生成大量的恶意域名。Domain Flux是通过不断变换域名，指向同一个IP，IP Flux是只有一个域名，不断变换IP，一个域名可以使用多个IP。&lt;/p&gt;
+&lt;p&gt;DGA生成的域名也可以是二级域名。&lt;/p&gt;
+&lt;p&gt;受害者端视角：使用同样的种子运行DGA，生成大量域名，逐个访问这些域名，检测是否存在，如果该域名未注册，程序继续检测其他域名，如果该域名已注册(如果某生成域名发生了被抢注的情况该怎么办？不处理，因为那些域名并不能发攻击指令，看设计方案是否要继续进行轮询)，那么恶意软件将选择使用该域名联系C&amp;amp;C服务器。
+DGA使用的种子有很多种类，包含日期、社交网络搜索热词、随机数或字典，生成一串字符前缀，添加TLD（如com、org等）后得到最终生成域名AGD（Algorithmically Generated Domain） 。
+（怎样确定同样的种子？在程序中内嵌。但是安全人员逆向了之后仍旧不能确定种子是什么，因为并不能知道攻击者究竟以什么字段作为种子）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动态域名&lt;/strong&gt;，即Dynamic DNS。API或网站等许多 Web 属性在其 IP 地址经常改变的互联网连接上运行；如果这些属性的运营商想要为托管的资源提供特定域名，就必须将 IP 地址存储在域名系统 (DNS) 记录中，这就会产生问题。动态 DNS (DDNS) 是一项服务，即使该 IP 地址不断更新，其也可使用 Web 属性的正确 IP 地址来更新 DNS。&lt;/p&gt;
+&lt;p&gt;例如，如果一位网络管理员正在运营一个域名为 &lt;a href=&#34;https://www.example.com&#34;&gt;www.example.com&lt;/a&gt; 且 IP 地址为 192.0.2.0 的小型网站，则每当另一个用户在浏览器中输入 &lt;a href=&#34;https://www.example.com&#34;&gt;www.example.com&lt;/a&gt; 时，DNS 会将他们定向到位于 192.0.2.0 的服务器。如果该管理员的 ISP 将 IP 动态更改为 192.0.2.1，则动态 DNS 服务可自动更新该管理员的 DNS 记录，以便使尝试访问 &lt;a href=&#34;https://www.example.com&#34;&gt;www.example.com&lt;/a&gt; 的其他用户现在将转到正确的 IP 地址。&lt;/p&gt;
+&lt;p&gt;准确地说变换的并不是域名本身，而是IP地址。之前一直认为具有非常多子域名的二级域名统称为动态域名，认为变化的是子域名，实际上大错特错。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/5a7886630805c6a8d732489bc2c3539b.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;为什么某些IP地址会更改？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在互联网早期，IP 地址很少改变，这使得域的管理非常简单。但具有互联网访问权限的 Web 和家用计算机的快速增长造成了可用 IP 地址的短缺。动态主机配置协议 (DHCP) 应运而生，该协议可使 ISP 为用户动态分配 IP。ISP 一般将维护一个 IP 地址共享池，并在连接期间或在达到最大时间之前，根据需要将其分配或“租赁”给用户。尽管引入 IPV6 缓解了 IP 地址短缺问题，但 ISP 仍经常使用 DHCP，因为这比提供静态 IP 更具成本效益。&lt;/p&gt;
+&lt;p&gt;运行主要 Web 服务的大型企业要求其 ISP 为他们提供不变或“静态”IP 地址，以便他们能够使用标准 DNS 惯例进行操作。相反，较小服务的 IP 地址经常被 ISP 更改，因此它们需要动态 DNS 解决方案来使其 DNS 记录保持最新状态。这些较小的服务可包括小型企业网站、个人网站、DVR 和安全摄像机。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动态DNS如何工作？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;有许多公司提供具有不同功能和技术的动态 DNS 服务。启用动态 DNS 的一种极为常见的方法是为用户提供在其计算机或路由器上运行的软件。每次更新 ISP 提供的 IP 地址时，该软件就会与动态 DNS 服务提供商进行通信，而动态 DNS 提供商接着更新进行了这些更改的 DNS，从而提供几乎即时的更新。&lt;/p&gt;
+&lt;p&gt;使用DGA的组织并不局限于僵尸网络，许多黑产也在使用，二者并无具体关系。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>常见隧道工具实现</title>
