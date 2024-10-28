@@ -7,10 +7,53 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Fri, 25 Oct 2024 14:54:57 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 28 Oct 2024 18:07:46 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Living Off the Land Binaries</title>
+      <link>https://wander1ng.com/post/living-off-the-land-binaries/</link>
+      <pubDate>Mon, 28 Oct 2024 18:07:46 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/living-off-the-land-binaries/</guid>
+      <description>&lt;h4 id=&#34;什么样的程序才能称之为lolbins&#34;&gt;什么样的程序才能称之为LOLBins？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;可以是带有Microsoft签名的二进制文件，也可以是Microsoft系统目录中的二进制文件。&lt;/li&gt;
+&lt;li&gt;可以是第三方认证签名的程序。&lt;/li&gt;
+&lt;li&gt;具有对APT或红队有用的功能。&lt;/li&gt;
+&lt;li&gt;该程序除正常的功能之外，还可以做意料之外的行为（如恶意代码执行，UAC绕过）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;lolbins常见的利用&#34;&gt;LOLBins常见的利用&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Cmd.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Powershell.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rundll32.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Wmic.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;WMIC扩展WMI（Windows Management Instrumentation，Windows管理工具），执行“wmic”命令启动WMIC命令行环境。这个命令可以在XP或 .NET Server的标准命令行解释器（cmd.exe）、Telnet会话或“运行”对话框中执行。这些启动方法可以在本地使用，也可以通过.NET Server终端服务会话使用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mshta.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;文全称Microsoft HTML Application，可翻译为微软超文本标记语言应用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cscript.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Windows Script Host引擎，用于加载wsf，.vbs，.js等脚本。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Regsvr32.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;用于注册COM组件，是 Windows 系统提供的用来向系统注册控件或者卸载控件的命令。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cerutil.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可用于在Windows中管理证书。使用此程序可以在Windows中安装，备份，删除，管理和执行与证书和证书存储相关的各种功能。程序有一特性是能够从远程URL下载证书或任何其他文件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Msiexec.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;系统进程，是Windows Installer的一部分。用于安装Windows Installer安装包（MSI）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Installutil.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;安装程序工具是一个命令行实用工具，你可以通过此工具执行指定程序集中的安装程序组件，从而安装和卸载服务器资源。程序将会寻找卸载程序中的InstallUtil()函数，进行调用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MSBuild.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;生成项目或解决方案文件。程序运行将会寻找该项目文件中指定的TaskName名称中对应的程序的Execute()函数，进行调用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Write.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;系统写字板程序，程序加载需调用PROPSYS.dll中的PSCreateMemoryPropertyStore()函数,同时也加载config配置文件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rekeywiz.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;加密文件系统证书管理向导程序，程序加载需调用mpr.dll。&lt;/p&gt;
+&lt;h4 id=&#34;第三方认证签名文件利用&#34;&gt;第三方认证签名文件利用&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;WeChat.exe&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;微信主程序，需调用WeChatWin.dll运行。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>DGA和动态域名</title>
