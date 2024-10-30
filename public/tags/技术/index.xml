@@ -7,10 +7,115 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Mon, 28 Oct 2024 18:07:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 30 Oct 2024 18:31:14 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MSI TRANSFORMS技术分析</title>
+      <link>https://wander1ng.com/post/msi-transforms%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 30 Oct 2024 18:31:14 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/msi-transforms%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/</guid>
+      <description>&lt;p&gt;来源于真实环境中遇到的某组织&lt;/p&gt;
+&lt;p&gt;该技术比较冷门，Google只有Microsoft官方对其的两个介绍页面。它可以修改正常安装包的组件，实现木马的落地。&lt;/p&gt;
+&lt;p&gt;官方定义：&lt;/p&gt;
+&lt;p&gt;TRANSFORMS 属性是安装程序在安装包时应用的转换的列表。 安装程序按转换在属性中列出的顺序应用转换。 转换可以按文件名或按完整路径指定。 若要指定多个转换，请使用分号 (;) 分隔每个文件名或完整路径。 例如，若要对包应用三个转换，请将 TRANSFORMS 设置为文件名列表或完整路径列表。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;TRANSFORMS=transform1.mst;transform2.mst;transform3.mst
+TRANSFORMS=\\server\share\path\transform1.mst;\\server2\share2\path2\transform2.mst;\\server3\share3\path3\transform3.mst
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以通过在文件名前面加上冒号 (:) 来指示转换文件嵌入 .msi 文件的存储中，而不是一个独立文件。 例如，以下示例指示 transform1.mst 和 transform2.mst 嵌入在 .msi 文件中，而 transform3.mst 是独立文件。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;TRANSFORMS=:transform1.mst;:transform2.mst;transform3.mst
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;安装程序在包的每次安装、播发、按需安装或维护安装时都需要 TRANSFORMS 中列出的转换。 TransformsSecure策略、TRANSFORMS 属性和 TRANSFORMS 字符串的第一个字符告知安装程序如何处理独立转换文件的源复原能力。 Windows Installer 将 TransformsAtSource 策略 或 TRANSFORMSATSOURCE设置得与 TransformsSecure 策略和 TRANSFORMSSECURE 相同。 请注意，嵌入 .msi 文件的转换不会缓存，并且始终从包中获取。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;看不懂，问了问GPT-4o&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;TRANSFORMS&lt;/code&gt; 是 Microsoft Installer (MSI) 安装包中的一个参数，用于指定一个或多个变换文件（Transform files），这些变换文件可以在安装过程中修改 MSI 安装包的默认设置和行为。&lt;/p&gt;
+&lt;h4 id=&#34;msi-transforms-参数&#34;&gt;MSI &lt;code&gt;TRANSFORMS&lt;/code&gt; 参数&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;TRANSFORMS&lt;/code&gt; 是一个参数，指定一个或多个变换文件（通常是 &lt;code&gt;.mst&lt;/code&gt; 文件）。&lt;/li&gt;
+&lt;li&gt;这些变换文件定义了对原始 MSI 安装包进行的修改或定制。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用途&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;可以用来配置软件的默认设置，添加或移除功能模块，修改安装路径等。&lt;/li&gt;
+&lt;li&gt;适用于企业部署场景，帮助管理员根据公司需要定制软件安装。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;示例&#34;&gt;示例&lt;/h4&gt;
+&lt;p&gt;假设你有一个名为 &lt;code&gt;example.msi&lt;/code&gt; 的安装包，以及一个变换文件 &lt;code&gt;custom.mst&lt;/code&gt;，你可以在命令行中使用 &lt;code&gt;TRANSFORMS&lt;/code&gt; 参数来应用变换文件：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;msiexec /i example.msi TRANSFORMS=custom.mst
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;多个变换文件&#34;&gt;多个变换文件&lt;/h4&gt;
+&lt;p&gt;你也可以同时应用多个变换文件，用分号 &lt;code&gt;;&lt;/code&gt; 分隔：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;msiexec /i example.msi TRANSFORMS=custom1.mst;custom2.mst
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;实际案例&#34;&gt;实际案例&lt;/h4&gt;
+&lt;p&gt;例如，一个软件包在不同的部门需要不同的配置设置，使用变换文件可以创建多个配置方案而无需修改原始的 MSI 文件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;原始安装包&lt;/strong&gt;： &lt;code&gt;software.msi&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;财务部门定制&lt;/strong&gt;： &lt;code&gt;finance.mst&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IT 部门定制&lt;/strong&gt;： &lt;code&gt;it.mst&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;安装财务部门定制版本&#34;&gt;安装财务部门定制版本：&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;msiexec /i software.msi TRANSFORMS=finance.mst
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;安装-it-部门定制版本&#34;&gt;安装 IT 部门定制版本：&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;msiexec /i software.msi TRANSFORMS=it.mst
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;如何创建变换文件&#34;&gt;如何创建变换文件&lt;/h4&gt;
+&lt;p&gt;变换文件通常是通过专门的 MSI 编辑工具创建的，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Orca&lt;/strong&gt;：Microsoft 提供的一个免费的 MSI 数据库编辑器，可以用来创建和编辑变换文件。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;InstEd&lt;/strong&gt;：第三方工具，功能强大且易于使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;总结&#34;&gt;总结&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;TRANSFORMS&lt;/code&gt; 参数在 MSI 安装过程中起到了关键作用，通过指定一个或多个变换文件，管理员可以灵活地定制软件的安装设置和行为。这对于大规模部署和不同部门的个性化需求特别有用，既能减少工作量，又能确保安装的一致性和准确性。&lt;/p&gt;
+&lt;p&gt;我的理解是攻击者在msi安装文件中嵌入了自己的恶意代码&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Confucius组织利用ADS隐藏技术的攻击活动</title>
+      <link>https://wander1ng.com/post/confucius%E7%BB%84%E7%BB%87%E5%88%A9%E7%94%A8ads%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF%E7%9A%84%E6%94%BB%E5%87%BB%E6%B4%BB%E5%8A%A8/</link>
+      <pubDate>Wed, 30 Oct 2024 17:58:02 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/confucius%E7%BB%84%E7%BB%87%E5%88%A9%E7%94%A8ads%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF%E7%9A%84%E6%94%BB%E5%87%BB%E6%B4%BB%E5%8A%A8/</guid>
+      <description>&lt;p&gt;&lt;em&gt;来源360威胁情报中心的文章&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://mp.weixin.qq.com/s/qi1krFG75sxQO6DSS3B3eQ&#34;&gt;https://mp.weixin.qq.com/s/qi1krFG75sxQO6DSS3B3eQ&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Confucius即“魔罗桫”，看名字没记错的话应该也是印度的组织，主要针对巴基斯坦地区进行攻击。&lt;/p&gt;
+&lt;p&gt;ADS技术即Alternate Data Streams，也称作NTFS交换数据流，随着杀毒软件功能的日益强大，病毒总会借助各式各样的隐藏手段来逃避杀毒软件的“追捕”。有些病毒会通过设置文件属性来隐藏自身，从而长期伏在计算机中，使自己很难被用户发现。一种更为隐蔽、危害性更大的隐藏方法逐渐被病毒利用，即利用NTFS数据流来隐藏病毒，此类病毒我们称之为ADS流病毒或ZeroAcess。&lt;/p&gt;
+&lt;p&gt;它是NTFS磁盘格式的一个特性。在NTFS文件系统下，每个文件都可以存在多个数据流，意思是除了主文件流之外还可以有许多非主文件流寄宿在主文件流中，这些利用NTFS数据流寄宿并隐藏在系统中的非主文件流我们称之为ADS流文件。虽然我们无法看到ADS流文件，但它们却是真实存在。&lt;/p&gt;
+&lt;h4 id=&#34;攻击链&#34;&gt;攻击链&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/33d25060d87d6991e4e54df03061f08a.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Confucius组织首先针对目标人群发送钓鱼邮件，并且携带恶意压缩包，其中压缩包中包括一个存在多个数据流的LNK文件，攻击者利用ADS交换数据流实现了恶意DLL和诱饵文档的隐藏，用户解压压缩包，看不到隐藏的DLL等文件，只能看到LNK文件，并且文件大小也只是LNK文件大小本身，但是当用户点击其中LNK文件即中招，LNK文件会释放隐藏的诱饵文档流数据，并释放DLL文件以及拷贝fixmapi.exe实现侧加载，并通过注册表实现持久化驻留。&lt;/p&gt;
+&lt;p&gt;攻击入口为一个压缩包，文件名称为“Hajj_Advisory.rar”。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;MD5&lt;/th&gt;
+&lt;th&gt;fbcac2eb16586813275d2e25ec57142e&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;文件名称&lt;/td&gt;
+&lt;td&gt;Hajj_Advisory.rar&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;文件大小&lt;/td&gt;
+&lt;td&gt;131.71 KB (134871 字节)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;解压后可以看到一个同名称的lnk文件，文件大小只有4KB。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/9c2b9e819c45a3cece3b64a6d8e0f23e.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;但是实际上攻击者利用ADS交换数据流技术在LNK文件中捆绑了两个数据流Banana和Apple，这两个数据流分别是恶意DLL和诱饵文档，不过这两个文件流不显示，即使系统设置显示隐藏文件，解压后也看不到该文件流。通过在CMD中执行dir /r命令，可以看到，如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/f78d53895d3caacce74e2bfd8202be65.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;另外虽然LNK文件大小显示只有4KB，但是仔细观察发现该文件占用空间为188KB,也侧面看出该LNK携带了恶意文件流数据。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/31a841fedd7b29a5928c50ecb3d9a029.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;一种未曾见过的新技术，记录一下，长见识了~&lt;/p&gt;
+&lt;p&gt;以及Confucius喜欢用fixmapi.exe进程侧加载。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Living Off the Land Binaries</title>
