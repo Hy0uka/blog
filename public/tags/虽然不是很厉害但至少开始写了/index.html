@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | Confucius组织利用ADS隐藏技术的攻击活动</title>
+	<title>清夜无尘の一方天地 </title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -27,6 +27,9 @@
 
 	
 
+	
+	<link rel="alternate" href="/tags/%E8%99%BD%E7%84%B6%E4%B8%8D%E6%98%AF%E5%BE%88%E5%8E%89%E5%AE%B3%E4%BD%86%E8%87%B3%E5%B0%91%E5%BC%80%E5%A7%8B%E5%86%99%E4%BA%86/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
+	<link rel="feed" href="/tags/%E8%99%BD%E7%84%B6%E4%B8%8D%E6%98%AF%E5%BE%88%E5%8E%89%E5%AE%B3%E4%BD%86%E8%87%B3%E5%B0%91%E5%BC%80%E5%A7%8B%E5%86%99%E4%BA%86/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
 	
 	
 	
@@ -145,104 +148,23 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-				
-<div>
-	<h2>
-		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-	</h2>
-</div>
-<h1 class="pt-2">Confucius组织利用ADS隐藏技术的攻击活动</h1>
-
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">虽然不是很厉害但至少开始写了</h3>
-
-<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-10-30T17:58:02&#43;08:00">2024-10-30</time>
-</div>
-
-<hr />
-
-
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-<article>
-	<section class="mx-auto content">
-		<div class="c-rich-text"><p><em>来源360威胁情报中心的文章</em></p>
-<p><a href="https://mp.weixin.qq.com/s/qi1krFG75sxQO6DSS3B3eQ">https://mp.weixin.qq.com/s/qi1krFG75sxQO6DSS3B3eQ</a></p>
-<p>Confucius即“魔罗桫”，看名字没记错的话应该也是印度的组织，主要针对巴基斯坦地区进行攻击。</p>
-<p>ADS技术即Alternate Data Streams，也称作NTFS交换数据流，随着杀毒软件功能的日益强大，病毒总会借助各式各样的隐藏手段来逃避杀毒软件的“追捕”。有些病毒会通过设置文件属性来隐藏自身，从而长期伏在计算机中，使自己很难被用户发现。一种更为隐蔽、危害性更大的隐藏方法逐渐被病毒利用，即利用NTFS数据流来隐藏病毒，此类病毒我们称之为ADS流病毒或ZeroAcess。</p>
-<p>它是NTFS磁盘格式的一个特性。在NTFS文件系统下，每个文件都可以存在多个数据流，意思是除了主文件流之外还可以有许多非主文件流寄宿在主文件流中，这些利用NTFS数据流寄宿并隐藏在系统中的非主文件流我们称之为ADS流文件。虽然我们无法看到ADS流文件，但它们却是真实存在。</p>
-<h4 id="攻击链">攻击链</h4>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/33d25060d87d6991e4e54df03061f08a.png" alt=""></p>
-<p>Confucius组织首先针对目标人群发送钓鱼邮件，并且携带恶意压缩包，其中压缩包中包括一个存在多个数据流的LNK文件，攻击者利用ADS交换数据流实现了恶意DLL和诱饵文档的隐藏，用户解压压缩包，看不到隐藏的DLL等文件，只能看到LNK文件，并且文件大小也只是LNK文件大小本身，但是当用户点击其中LNK文件即中招，LNK文件会释放隐藏的诱饵文档流数据，并释放DLL文件以及拷贝fixmapi.exe实现侧加载，并通过注册表实现持久化驻留。</p>
-<p>攻击入口为一个压缩包，文件名称为“Hajj_Advisory.rar”。</p>
-<table>
-<thead>
-<tr>
-<th>MD5</th>
-<th>fbcac2eb16586813275d2e25ec57142e</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>文件名称</td>
-<td>Hajj_Advisory.rar</td>
-</tr>
-<tr>
-<td>文件大小</td>
-<td>131.71 KB (134871 字节)</td>
-</tr>
-</tbody>
-</table>
-<p>解压后可以看到一个同名称的lnk文件，文件大小只有4KB。</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/9c2b9e819c45a3cece3b64a6d8e0f23e.png" alt=""></p>
-<p>但是实际上攻击者利用ADS交换数据流技术在LNK文件中捆绑了两个数据流Banana和Apple，这两个数据流分别是恶意DLL和诱饵文档，不过这两个文件流不显示，即使系统设置显示隐藏文件，解压后也看不到该文件流。通过在CMD中执行dir /r命令，可以看到，如下图所示：</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/f78d53895d3caacce74e2bfd8202be65.png" alt=""></p>
-<p>另外虽然LNK文件大小显示只有4KB，但是仔细观察发现该文件占用空间为188KB,也侧面看出该LNK携带了恶意文件流数据。</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/31a841fedd7b29a5928c50ecb3d9a029.png" alt=""></p>
-<p>一种未曾见过的新技术，记录一下，长见识了~</p>
-<p>以及Confucius喜欢用fixmapi.exe进程侧加载。</p>
-</div>
-	</section>
-
-
-</article>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-	<div class="md:max-w-xs  flex flex-col md:items-end">
+					<div class="pb-4">
+		<h1 >
+			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+		</h1>
+	</div>
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+		<a href="/post/" title="Post page" >
 			Post
 		</a>
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/tags/" title="Tags page" >
+		<a href="/tags/" title="Tags page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Tags
 		</a>
 	</li>
@@ -253,6 +175,10 @@ onload='renderMathInElement(document.body);'></script>
 		</a>
 	</li>
 	
+	
+	<li>
+		<a href='/tags/%E8%99%BD%E7%84%B6%E4%B8%8D%E6%98%AF%E5%BE%88%E5%8E%89%E5%AE%B3%E4%BD%86%E8%87%B3%E5%B0%91%E5%BC%80%E5%A7%8B%E5%86%99%E4%BA%86/index.xml'>RSS</a>
+	</li>
 	
 	
 	
@@ -266,6 +192,115 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+<h1 class="pb-4">
+	虽然不是很厉害但至少开始写了
+</h1>
+<div>
+	<section>
+		
+		<div>
+			<div class="pb-8">
+	<div class="font-serif font-medium text-xl">
+		<a href="https://wander1ng.com/post/msi%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%B8%E5%85%B3apt%E7%BB%84%E7%BB%87%E6%89%8B%E6%B3%95/">
+			Msi恶意文件及相关APT组织手法
+		</a>
+	</div>
+	
+	
+	
+	
+	<div class="font-serif text-gray-600 font-light pt-1">
+		技术</div>
+
+	
+	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E8%99%BD%E7%84%B6%E4%B8%8D%E6%98%AF%E5%BE%88%E5%8E%89%E5%AE%B3%E4%BD%86%E8%87%B3%E5%B0%91%E5%BC%80%E5%A7%8B%E5%86%99%E4%BA%86'>虽然不是很厉害但至少开始写了</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
+			datetime="2024-11-12T11:15:13&#43;08:00">2024-11-12</time>
+	</div>
+</div>
+
+		</div>
+		
+	</section>
+</div>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -383,101 +418,25 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="text-sm text-gray-500 leading-tight a-gray">
+	<div class="a-gray text-sm text-gray-500 leading-tight">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 938 words in this page.
+		Built with Hugo and theme <a 
+			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
+			<br />
+			26 pages, 27954 words in total.
 	</div>
 </div>
-
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
-<hr class="double-line" />
-<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
-    
-    <a class="flex-grow-0" href="/post/living-off-the-land-binaries/">
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Living Off the Land Binaries
-    </a>
-    
-    
-    <a class="flex-grow-0" href="/post/msi-transforms%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
-        MSI TRANSFORMS技术分析
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
-    
-</div>
-<div >
 
 
 
-<div class="font-serif pb-2 flex align-start leading-loose">
-	<span class="heading pr-6 leading-loose">Related</span>
-	<span >
-		
-			<a href="/post/living-off-the-land-binaries/">Living Off the Land Binaries</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/">DGA和动态域名</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E5%B8%B8%E8%A7%81%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7%E5%AE%9E%E7%8E%B0/">常见隧道工具实现</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/">威胁情报RSS体系构建</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0/">韩国方向APT-Q-12&amp;APT-Q-15攻击样本分析复现</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E5%8D%B0%E5%BA%A6%E6%96%B9%E5%90%91%E7%99%BD%E8%B1%A1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">印度方向白象&amp;响尾蛇APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E6%9C%9D%E9%B2%9C%E6%96%B9%E5%90%91kimsukyapt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">朝鲜方向Kimsuky组织APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">越南方向海莲花APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%A5%9E%E5%99%A8cyberchef%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">数据处理神器Cyberchef使用指南</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/python%E4%B8%AD%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%AF%84%E4%BC%B0/">Python中的短路评估</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">常见JavaScript混淆与反混淆</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">Hugo&#43;CloudFlare搭建博客指南</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">互联网协议入门</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/ctf-wiki/">CTF Wiki</a>
-		
-</span>
-</div>
 
-</div>
-<hr />
-<div class="pb-2">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "LZX" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-<hr />
+
+
 
 		</footer>
 		

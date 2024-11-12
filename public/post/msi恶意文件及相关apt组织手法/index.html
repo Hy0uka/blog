@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | Confucius组织利用ADS隐藏技术的攻击活动</title>
+	<title>清夜无尘の一方天地  | Msi恶意文件及相关APT组织手法</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -151,9 +151,9 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
 	</h2>
 </div>
-<h1 class="pt-2">Confucius组织利用ADS隐藏技术的攻击活动</h1>
+<h1 class="pt-2">Msi恶意文件及相关APT组织手法</h1>
 
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">虽然不是很厉害但至少开始写了</h3>
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">技术</h3>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -165,12 +165,12 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
+		href='/tags/%E8%99%BD%E7%84%B6%E4%B8%8D%E6%98%AF%E5%BE%88%E5%8E%89%E5%AE%B3%E4%BD%86%E8%87%B3%E5%B0%91%E5%BC%80%E5%A7%8B%E5%86%99%E4%BA%86'>虽然不是很厉害但至少开始写了</a>
 	
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-10-30T17:58:02&#43;08:00">2024-10-30</time>
+		datetime="2024-11-12T11:15:13&#43;08:00">2024-11-12</time>
 </div>
 
 <hr />
@@ -183,41 +183,73 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><p><em>来源360威胁情报中心的文章</em></p>
-<p><a href="https://mp.weixin.qq.com/s/qi1krFG75sxQO6DSS3B3eQ">https://mp.weixin.qq.com/s/qi1krFG75sxQO6DSS3B3eQ</a></p>
-<p>Confucius即“魔罗桫”，看名字没记错的话应该也是印度的组织，主要针对巴基斯坦地区进行攻击。</p>
-<p>ADS技术即Alternate Data Streams，也称作NTFS交换数据流，随着杀毒软件功能的日益强大，病毒总会借助各式各样的隐藏手段来逃避杀毒软件的“追捕”。有些病毒会通过设置文件属性来隐藏自身，从而长期伏在计算机中，使自己很难被用户发现。一种更为隐蔽、危害性更大的隐藏方法逐渐被病毒利用，即利用NTFS数据流来隐藏病毒，此类病毒我们称之为ADS流病毒或ZeroAcess。</p>
-<p>它是NTFS磁盘格式的一个特性。在NTFS文件系统下，每个文件都可以存在多个数据流，意思是除了主文件流之外还可以有许多非主文件流寄宿在主文件流中，这些利用NTFS数据流寄宿并隐藏在系统中的非主文件流我们称之为ADS流文件。虽然我们无法看到ADS流文件，但它们却是真实存在。</p>
-<h4 id="攻击链">攻击链</h4>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/33d25060d87d6991e4e54df03061f08a.png" alt=""></p>
-<p>Confucius组织首先针对目标人群发送钓鱼邮件，并且携带恶意压缩包，其中压缩包中包括一个存在多个数据流的LNK文件，攻击者利用ADS交换数据流实现了恶意DLL和诱饵文档的隐藏，用户解压压缩包，看不到隐藏的DLL等文件，只能看到LNK文件，并且文件大小也只是LNK文件大小本身，但是当用户点击其中LNK文件即中招，LNK文件会释放隐藏的诱饵文档流数据，并释放DLL文件以及拷贝fixmapi.exe实现侧加载，并通过注册表实现持久化驻留。</p>
-<p>攻击入口为一个压缩包，文件名称为“Hajj_Advisory.rar”。</p>
-<table>
-<thead>
-<tr>
-<th>MD5</th>
-<th>fbcac2eb16586813275d2e25ec57142e</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>文件名称</td>
-<td>Hajj_Advisory.rar</td>
-</tr>
-<tr>
-<td>文件大小</td>
-<td>131.71 KB (134871 字节)</td>
-</tr>
-</tbody>
-</table>
-<p>解压后可以看到一个同名称的lnk文件，文件大小只有4KB。</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/9c2b9e819c45a3cece3b64a6d8e0f23e.png" alt=""></p>
-<p>但是实际上攻击者利用ADS交换数据流技术在LNK文件中捆绑了两个数据流Banana和Apple，这两个数据流分别是恶意DLL和诱饵文档，不过这两个文件流不显示，即使系统设置显示隐藏文件，解压后也看不到该文件流。通过在CMD中执行dir /r命令，可以看到，如下图所示：</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/f78d53895d3caacce74e2bfd8202be65.png" alt=""></p>
-<p>另外虽然LNK文件大小显示只有4KB，但是仔细观察发现该文件占用空间为188KB,也侧面看出该LNK携带了恶意文件流数据。</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/31a841fedd7b29a5928c50ecb3d9a029.png" alt=""></p>
-<p>一种未曾见过的新技术，记录一下，长见识了~</p>
-<p>以及Confucius喜欢用fixmapi.exe进程侧加载。</p>
+		<div class="c-rich-text"><p><strong>Msi文件</strong>：即microsoft installer的简写，msi文件就是window installer的<strong>数据包</strong>，把所有和安装文件相关（即下文说的windows installer的功能）的内容封装在一个包里。是包含有关软件安装的详细信息的数据库文件，存储安装过程中的数据，包括配置设置、要安装的文件和安装说明，确保结构化和高效的软件部署。</p>
+<p><strong>Windows Installer的用途包括</strong>:管理软件的安装、管理软件组件的添加和删除、监视文件的复原以及使用回滚技术维护基本的灾难恢复。</p>
+<p><strong>Msi技术的原理</strong>：Windows Installer技术就是合并在一起发挥作用的两个部分:客户端安装程序服务（Msiexec.exe） 和Microsoft软件安装（MSI）软件包文件。</p>
+<p>Msiexec.exe 程序是 Windows Installer 的一个组件。 当 Msiexec.exe 被安装程序调用时，它将用 Msi.dll 读取<strong>软件包文件(.msi)、应用转换文件(.mst)</strong> 并合并由安装程序提供的命令行选项。 Windows Installer 执行所有与安装有关的任务：包括将文件复制到硬盘、修改注册表、创建桌面快捷方式、必要时显示提示对话框以便用户输入安装首选项。</p>
+<p>当双击MSI文件的时候，与之关联的Windows Installer 的一个文件Msiexec.exe 被调用，它将用Msi.dll读取软件包文件（.msi）、应用转换文件（.mst）进行进一步处理。</p>
+<p>MSI文件的结构是Windows Installer用于软件安装、维护和删除的<strong>关系数据库</strong>，数据库由几个表组成，每个表在安装过程中有特定的用途，这些表通过主键值和外键值链接。安装数据库包含安装应用程序所需的所有信息，因此需要用所需的信息填充表。一个MSI文件可以有多个表，我们重点关注在我们的分析中最有用的表。</p>
+<p><strong>二进制表</strong>直接在MSI数据库中存储二进制数据，如图标、位图、动画或自定义操作脚本，这些数据直接嵌入MSI文件中，并在安装期间使用Windows Installer API进行访问，它通常用于安装过程本身所需的较小资源。</p>
+<p>文件表包含有关将安装在目标系统上的文件的信息，描述要复制到用户计算机的实际应用程序文件。这些文件通常单独存储（例如，在CAB文件中）或作为MSI中的压缩流，并表示构成正在安装的应用程序的文件，文件表用于确定要安装的文件、安装位置及其属性。</p>
+<p><strong>Custom Action表</strong></p>
+<p>MSI文件中的自定义操作是指在安装过程中运行的命令或脚本，用于执行标准MSI操作无法处理的自定义任务。这些操作可以执行可执行文件、DLL、VBScript、JavaScript或预定义命令，从而使攻击者能够在看似合法安装的后台执行恶意代码</p>
+<p>MSI文件中的自定义操作在CustomAction表中定义，此表中的每个条目指定一个自定义操作、其类型、源和目标。以下是用于定义自定义操作的列的细分：</p>
+<ul>
+<li>Action：这是自定义操作的名称。它充当主键并在序列表中引用此操作。如果名称与任何内置操作匹配，则不会执行自定义操作。</li>
+<li>Type：此字段包含指定自定义操作类型及其执行选项的标志的按位组合。类型确定操作是调用DLL、可执行文件、脚本还是设置属性。</li>
+<li>Source：此字段可以包含属性名称或指向另一个表的键，例如Binary表（用于嵌入的二进制文件）、File表（用于已安装的文件）或Directory表（用于路径）。引用的特定表取决于自定义操作的类型。</li>
+<li>Target：此字段提供自定义操作所需的其他信息，如DLL的入口点、可执行文件的命令行参数或脚本代码。</li>
+<li>ExtendedType：此字段指定自定义操作的其他选项，例如处理补丁卸载。</li>
+</ul>
+<p>这里就可以完成很多预期之外的操作，例如运行可执行文件的自定义操作可能使其Source字段引用File表中的键，而其Target字段包含命令行参数。</p>
+<p><strong>常见文件扩展名及其作用</strong></p>
+<ul>
+<li>.msi：Microsoft Windows软件包文件的主要扩展名，包含安装数据库和安装软件的必要说明。</li>
+<li>.mst：Windows NT转换文件，用于修改或自定义MSI文件，而不改变原始软件包。</li>
+<li>.msm：合并模块文件，用于交付共享组件并确保跨多个应用程序安装相同版本的共享文件。</li>
+<li>.msp：Windows Installer修补程序文件，用于对已安装的应用程序应用更新或修复。</li>
+<li>.cab：Cabinet文件，用于将多个文件压缩和打包到一个文件中，以便于分发。CAB 文件可以显著减小安装包的大小，并将多个文件打包在一起，以简化分发和部署。</li>
+</ul>
+<p><strong>手动分析MSI文件的工具</strong></p>
+<ul>
+<li>msitools：包括msiinfo和msidump等实用程序，可用于检查MSI文件，枚举表和流，转储表内容，并从MSI文件中提取数据。</li>
+<li>msidump：由Mgeeky开发的工具，用于分析恶意MSI软件包，可以提取文件、流和二进制数据，并集成了YARA扫描，对于快速分类和详细检查潜在的恶意MSI特别有用。</li>
+<li>lessmsi：一个具有图形用户界面和命令行界面的实用程序，可以用来查看和提取MSI文件的内容，还具有Windows资源管理器集成，便于提取和MSI表查看器。</li>
+<li>MSI Viewer：可从Microsoft Store获得，用以查看MSI安装程序文件和合并模块的内容，还可以提取文件，而无需运行安装程序。</li>
+<li>Orca：由Microsoft开发的图形用户界面（GUI）工具，用于分析和编辑MSI文件，Orca允许用户打开MSI文件并查看其内部结构，包括表，属性和安装包的其他组件。</li>
+<li>msidiff：可以用于比较两个msi文件的差异。</li>
+</ul>
+<p><strong>活跃APT组织使用MSI作为相关攻击载体情况</strong></p>
+<p>Bitter、APT-Q-27、APT-Q-15(Darkhotel)、CNC等APT组织将恶意组件压缩在cab中，在msi安装过程中释放并执行，这也是目前最为常见的利用手法，缺点是恶意组件随着MSI的安装会落地在磁盘上，比较考验攻击者持续的免杀技术。</p>
+<p>在CustomAction中支持各种类型的自定义操作，攻击者有较为丰富的操作空间，例如Bitter组织在CustomAction表中调用带有签名的第三方powershell解释器执行powershell脚本。</p>
+<p>而APT-Q-15（Darkhotel）在针对朝鲜人的间谍活动中，投递恶意的朝鲜字体MSI安装包，将木马模块core.dll添加到customAction表内，与Media表中插入的恶意模块相比，core.dll在msi安装过程中并不会落地，系统进程msiexec会启动一个独立的子进程内存加载该DLL，从而达到LOLBINS的效果。</p>
+<p><strong>MST文件和MSI文件的关系</strong></p>
+<p><strong>MST (Microsoft Transform) 文件</strong>是一种变换文件，它用于自定义和修改 MSI 文件的安装过程。通过使用 MST 文件，管理员可以对 MSI 安装包进行定制化调整，而不需要直接修改原始的 MSI 文件。这种方式非常适用于批量部署，因为可以根据不同需求灵活调整安装设置。</p>
+<p><strong>使用方法</strong></p>
+<ol>
+<li><strong>生成 MST 文件</strong>：
+<ul>
+<li>可以使用工具如 InstallShield、Orca 等来创建和编辑 MST 文件。</li>
+</ul>
+</li>
+<li><strong>应用 MST 文件</strong>：
+<ul>
+<li>在安装 MSI 文件时，可以使用命令行参数将 MST 文件应用于 MSI 包。例如：</li>
+</ul>
+</li>
+</ol>
+<pre tabindex="0"><code>     msiexec /i example.msi TRANSFORMS=example.mst
+</code></pre><ul>
+<li>这条命令会安装 example.msi 文件，同时应用 example.mst 文件中的配置。</li>
+</ul>
+<p>所以其实只是LOLbins的一种实现方式，不过“黑”从dll变成了mst。mst可以使用ocra生成，</p>
+<p>MST文件实际上也是压缩包，解压开来分析其中的dll就行。</p>
+<p>MST 内部的可执行模块一般会有两个导出函数分别为 LogSetupAfterInstall 和 LogSetupBeforeInstall，用来控制 MSI 安装过程中的流程。</p>
+<p><em>参考：</em></p>
+<p>[[翻译]msi恶意软件分析]: https://bbs.kanxue.com/thread-258044.htm
+[MSI文件结构详解及MSI恶意样本分析方法]: https://xz.aliyun.com/t/16134?time__1311=GuD%3D7IqGhx%2FnKYK0%3DvBxmTr%3DwDOimeD
+[MSI Shenanigans. Part 1 – Offensive Capabilities Overview]: https://mgeeky.tech/msi-shenanigans-part-1/
+[How to Analyze Malicious MSI Installer Files]: https://intezer.com/blog/incident-response/how-to-analyze-malicious-msi-installer-files/</p>
 </div>
 	</section>
 
@@ -386,7 +418,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 938 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 3042 words in this page.
 	</div>
 </div>
 
@@ -397,61 +429,19 @@ onload='renderMathInElement(document.body);'></script>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/living-off-the-land-binaries/">
+    <a class="flex-grow-0" href="/post/msi-transforms%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Living Off the Land Binaries
+        MSI TRANSFORMS技术分析
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/msi-transforms%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
-        MSI TRANSFORMS技术分析
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
 
 
-
-<div class="font-serif pb-2 flex align-start leading-loose">
-	<span class="heading pr-6 leading-loose">Related</span>
-	<span >
-		
-			<a href="/post/living-off-the-land-binaries/">Living Off the Land Binaries</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/">DGA和动态域名</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E5%B8%B8%E8%A7%81%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7%E5%AE%9E%E7%8E%B0/">常见隧道工具实现</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/">威胁情报RSS体系构建</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0/">韩国方向APT-Q-12&amp;APT-Q-15攻击样本分析复现</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E5%8D%B0%E5%BA%A6%E6%96%B9%E5%90%91%E7%99%BD%E8%B1%A1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">印度方向白象&amp;响尾蛇APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E6%9C%9D%E9%B2%9C%E6%96%B9%E5%90%91kimsukyapt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">朝鲜方向Kimsuky组织APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">越南方向海莲花APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E7%A5%9E%E5%99%A8cyberchef%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">数据处理神器Cyberchef使用指南</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/python%E4%B8%AD%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%AF%84%E4%BC%B0/">Python中的短路评估</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">常见JavaScript混淆与反混淆</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">Hugo&#43;CloudFlare搭建博客指南</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">互联网协议入门</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/ctf-wiki/">CTF Wiki</a>
-		
-</span>
-</div>
 
 </div>
 <hr />
