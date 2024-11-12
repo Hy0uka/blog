@@ -1,7 +1,7 @@
 +++
 title = 'Confucius组织利用ADS隐藏技术的攻击活动'
 
-description = "虽然不是很深刻但至少开始写了"
+description = "虽然不是很厉害但至少开始写了"
 
 tags = [ "技术" ]
 

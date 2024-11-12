@@ -1,7 +1,7 @@
 +++
 title = 'MSI TRANSFORMS技术分析'
 
-description = "虽然不是很深刻但至少开始写了"
+description = "虽然不是很厉害但至少开始写了"
 
 tags = [ "技术" ]
 
