@@ -101,23 +101,16 @@ MST文件实际上也是压缩包，解压开来分析其中的dll就行。
 
 MST 内部的可执行模块一般会有两个导出函数分别为 LogSetupAfterInstall 和 LogSetupBeforeInstall，用来控制 MSI 安装过程中的流程。
 
+
+
 *参考：*
 
-[MSI文件滥用新趋势：新海莲花组织首度利用MST文件投递特马]: https://ti.qianxin.com/blog/articles/new%20-trend-in-msi-file-abuse-new-oceanlotus-group-first-to-use-mst-files-to-deliver-special-trojan-cn/
+[MSI文件滥用新趋势：新海莲花组织首度利用MST文件投递特马](https://ti.qianxin.com/blog/articles/new%20-trend-in-msi-file-abuse-new-oceanlotus-group-first-to-use-mst-files-to-deliver-special-trojan-cn/)
 
+[msi恶意软件分析](https://bbs.kanxue.com/thread-258044.htm )
 
+[MSI文件结构详解及MSI恶意样本分析方法](https://xz.aliyun.com/t/16134?time__1311=GuD%3D7IqGhx%2FnKYK0%3DvBxmTr%3DwDOimeD)
 
-[[翻译\]msi恶意软件分析]: https://bbs.kanxue.com/thread-258044.htm
+[MSI Shenanigans. Part 1 – Offensive Capabilities Overview](https://mgeeky.tech/msi-shenanigans-part-1/)
 
-
-
-[MSI文件结构详解及MSI恶意样本分析方法]: https://xz.aliyun.com/t/16134?time__1311=GuD%3D7IqGhx%2FnKYK0%3DvBxmTr%3DwDOimeD
-
-
-
-[MSI Shenanigans. Part 1 – Offensive Capabilities Overview]: https://mgeeky.tech/msi-shenanigans-part-1/
-
-
-
-[How to Analyze Malicious MSI Installer Files]: https://intezer.com/blog/incident-response/how-to-analyze-malicious-msi-installer-files/
-
+[How to Analyze Malicious MSI Installer Files](https://intezer.com/blog/incident-response/how-to-analyze-malicious-msi-installer-files/)
