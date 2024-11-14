@@ -1,5 +1,5 @@
 +++
-title = '韩国方向APT-Q-12&APT-Q-15攻击样本分析复现'
+title = '韩国方向APT-Q-15攻击样本分析复现'
 
 description = "APT样本分析基础提高"
 

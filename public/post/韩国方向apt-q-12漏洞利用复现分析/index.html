@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | 常见隧道工具实现</title>
+	<title>清夜无尘の一方天地  | 韩国方向APT-Q-12漏洞利用复现分析</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -151,9 +151,9 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
 	</h2>
 </div>
-<h1 class="pt-2">常见隧道工具实现</h1>
+<h1 class="pt-2">韩国方向APT-Q-12漏洞利用复现分析</h1>
 
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">Chisel、Gosocket、SSH隧道、DNS隧道等</h3>
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">还没修的0day保密</h3>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -170,7 +170,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-08-07T10:38:40&#43;08:00">2024-8-7</time>
+		datetime="2024-11-12T16:53:23&#43;08:00">2024-11-12</time>
 </div>
 
 <hr />
@@ -183,33 +183,28 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h4 id="chisel">Chisel</h4>
-<p>项目地址：https://github.com/jpillora/chisel</p>
-<p>Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Written in Go (golang). Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.</p>
-<p><img src="https://camo.githubusercontent.com/f211df8890519ba2e5b50f7268f089117e5f754be9f759aa05617b92cc27d24a/68747470733a2f2f646f63732e676f6f676c652e636f6d2f64726177696e67732f642f317035335657787a474e667938726a722d6d5738707669734a6d686b6f4c6c383276416763744f5f366631772f7075623f773d39363026683d373230" alt=""></p>
-<h4 id="gsocket">gsocket</h4>
-<p>项目地址：https://github.com/hackerschoice/gsocket/tree/master</p>
-<p>The Global Socket Tookit allows two users behind NAT/Firewall to establish a TCP connection with each other. Securely.</p>
-<p>通信是通过gsocket分配密钥后，输入输出都传到官方服务器上实现的。</p>
-<h4 id="ssh隧道">SSH隧道</h4>
-<p>本地转发 - L</p>
-<p>本地转发里的本地，我认为最简单的理解就是执行转发命令后，后续实际用于连接的端口位于本地主机。 本地转发的基本命令形式如下：</p>
-<p><code>ssh -L 主机A端口A:主机C:主机C端口C username@主机B</code></p>
-<p>结合下面的示意图，我们来理解下这个命令。如果我们的电脑是主机A，主机B是服务器的登录节点，主机C是服务器的子节点，其中我们的主机A可以连接主机B，但不能直接访问主机C。这时如果我们想要在自己电脑上直接使用主机C上部署在端口C的服务，就可以使用上面的命令，将端口C转发到本地的端口A上。 这时，我们在本地其它程序访问A端口，就等于访问了主机C的端口C，就好像在A和C端口之间打了一条隧道直连一样。 另外主要注意的时，主机B可以和主机C是同一台电脑，我们只要把上面命令里的主机C改成localhost即可。一般用在我们只能访问B的部分端口的情况。</p>
-<p><img src="https://note.msq.pub/202312190654146.webp" alt=""></p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/08/5763c4a58667798dfad28adac6664178.png" alt=""></p>
-<p>远程转发 - R</p>
-<p>远程转发里的远程，同样的理解方法，在执行转发命令后，后续实际用于连接的端口在远程主机。 远程转发的基本命令形式如下：</p>
-<p><code>ssh -R 主机B端口B:主机C:主机C端口C username@主机B</code></p>
-<p>同样结合示意图来进行理解。此时我们的主机A与主机C位于同一个内网，无法被直接访问，主机B位于公网可以直接访问。如果我们想要访问主机C端口C上的服务，可以在主机A上发起到主机B的ssh连接，执行如上命令。 这是，访问主机B的端口B，就等于访问主机C的端口C。同样的，主机A和主机C可以是同一台电脑，实现将内网机器提供的服务暴露到公网上。</p>
-<p><img src="https://note.msq.pub/202312190730017.webp" alt=""></p>
-<p>动态转发 - D</p>
-<p>不同于上面的固定端口转发，动态转发相当于把主机B当做一台代理来使用，使用如下命令，可以在端口A上提供一个socks5代理服务。这样当我们在主机A的其它应用上设置了代理后，就可以通过主机B来访问网络，并且A和B之间的通信会被ssh加密。这也是最雏形的越过wall的方式。</p>
-<p><code>ssh -D 主机A端口A username@主机B</code></p>
-<p><img src="https://note.msq.pub/202312191822341.webp" alt=""></p>
-<p>在执行上面的命令时，会同时打开一个ssh交互终端，如果我们只是需要后台启动隧道，可以添加- N参数。</p>
-<h4 id="dns隧道">DNS隧道</h4>
-<h4 id="反向socket代理">反向SOCKET代理</h4>
+		<div class="c-rich-text"><ul>
+<li>
+<p><input checked="" disabled="" type="checkbox"> APT-Q-12普通探针</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> APT-Q-12针对Word的探针</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> APT-Q-12针对WPS的探针</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> APT-Q-12针对某邮箱平台的第一个0day</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> APT-Q-12针对某邮箱平台的第二个0day</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> APT-Q-14针对某Android 平台邮件客户端 0day 漏洞</p>
+</li>
+</ul>
+<p>参考：</p>
+<p><a href="https://ti.qianxin.com/blog/articles/operation-deviltiger-0day-vulnerability-techniques-and-tactics-used-by-apt-q-12-disclosed-cn/"><strong>Operation DevilTiger：APT-Q-12 使用 0day 漏洞技战术披露</strong></a></p>
 </div>
 	</section>
 
@@ -378,7 +373,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1051 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 152 words in this page.
 	</div>
 </div>
 
@@ -389,21 +384,14 @@ onload='renderMathInElement(document.body);'></script>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/">
+    <a class="flex-grow-0" href="/post/msi%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%B8%E5%85%B3apt%E7%BB%84%E7%BB%87%E6%89%8B%E6%B3%95/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        威胁情报RSS体系构建
+        Msi恶意文件及相关APT组织手法
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/">
-        DGA和动态域名
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
@@ -413,6 +401,18 @@ onload='renderMathInElement(document.body);'></script>
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/msi%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%B8%E5%85%B3apt%E7%BB%84%E7%BB%87%E6%89%8B%E6%B3%95/">Msi恶意文件及相关APT组织手法</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/msi-transforms%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">MSI TRANSFORMS技术分析</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/confucius%E7%BB%84%E7%BB%87%E5%88%A9%E7%94%A8ads%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF%E7%9A%84%E6%94%BB%E5%87%BB%E6%B4%BB%E5%8A%A8/">Confucius组织利用ADS隐藏技术的攻击活动</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/living-off-the-land-binaries/">Living Off the Land Binaries</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/">DGA和动态域名</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E5%B8%B8%E8%A7%81%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7%E5%AE%9E%E7%8E%B0/">常见隧道工具实现</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/">威胁情报RSS体系构建</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -430,11 +430,7 @@ onload='renderMathInElement(document.body);'></script>
 		
 			<a href="/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">常见JavaScript混淆与反混淆</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">Hugo&#43;CloudFlare搭建博客指南</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">互联网协议入门</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/ctf-wiki/">CTF Wiki</a>
+			<a href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">Hugo&#43;CloudFlare搭建博客指南</a>
 		
 </span>
 </div>

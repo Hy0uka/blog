@@ -7,10 +7,41 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Tue, 12 Nov 2024 11:15:13 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 12 Nov 2024 16:53:23 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>韩国方向APT-Q-12漏洞利用复现分析</title>
+      <link>https://wander1ng.com/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%A4%8D%E7%8E%B0%E5%88%86%E6%9E%90/</link>
+      <pubDate>Tue, 12 Nov 2024 16:53:23 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%A4%8D%E7%8E%B0%E5%88%86%E6%9E%90/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; APT-Q-12普通探针&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; APT-Q-12针对Word的探针&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; APT-Q-12针对WPS的探针&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; APT-Q-12针对某邮箱平台的第一个0day&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; APT-Q-12针对某邮箱平台的第二个0day&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; APT-Q-14针对某Android 平台邮件客户端 0day 漏洞&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://ti.qianxin.com/blog/articles/operation-deviltiger-0day-vulnerability-techniques-and-tactics-used-by-apt-q-12-disclosed-cn/&#34;&gt;&lt;strong&gt;Operation DevilTiger：APT-Q-12 使用 0day 漏洞技战术披露&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Msi恶意文件及相关APT组织手法</title>
@@ -332,7 +363,7 @@ DGA使用的种子有很多种类，包含日期、社交网络搜索热词、�
     </item>
     
     <item>
-      <title>韩国方向APT-Q-12&amp;APT-Q-15攻击样本分析复现</title>
+      <title>韩国方向APT-Q-15攻击样本分析复现</title>
       <link>https://wander1ng.com/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0/</link>
       <pubDate>Wed, 10 Jul 2024 10:49:35 +0800</pubDate>
       
