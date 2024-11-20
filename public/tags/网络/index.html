@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | 复习HTTPS握手流程及相关扫描器</title>
+	<title>清夜无尘の一方天地 </title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -27,6 +27,9 @@
 
 	
 
+	
+	<link rel="alternate" href="/tags/%E7%BD%91%E7%BB%9C/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
+	<link rel="feed" href="/tags/%E7%BD%91%E7%BB%9C/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
 	
 	
 	
@@ -145,94 +148,23 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-				
-<div>
-	<h2>
-		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-	</h2>
-</div>
-<h1 class="pt-2">复习HTTPS握手流程及相关扫描器</h1>
-
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">Handshake</h3>
-
-<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E7%BD%91%E7%BB%9C'>网络</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-11-15T10:29:53&#43;08:00">2024-11-15</time>
-</div>
-
-<hr />
-
-
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-<article>
-	<section class="mx-auto content">
-		<div class="c-rich-text"><h4 id="0x01常见抓包工具charlesfiddlerwireshark区别">0x01常见抓包工具Charles/Fiddler/Wireshark区别</h4>
-<p>为什么Charles等抓包工具或浏览器控制台看到的HTTPS是明文的？</p>
-<p>HTTPS其实相当于HTTP+TLS,HTTP是明文操作，所有的加解密操作都在TLS这边。</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/7284e8bfe1801b74890299a2b1a6e594.png" alt=""></p>
-<p>浏览器控制台能看到明文HTTPS是因为浏览器是应用层，所以浏览器的输出都是TLS解密过的。</p>
-<p>Charles能看到是因为Charles抓包的时候有一个信任证书的操作，类似于中间人攻击。</p>
-<p>Fiddler和Charles都是用于抓取应用层协议等上层的数据，都是建立连接成功以后的数据。而Wireshark可以抓取所有协议的数据包，因为直接读取网卡数据。需要抓取HTTPS建立连接成功前的过程，所以选择Wireshark。</p>
-<p>Curl命令只发送一个请求，如果用浏览器打开百度，页面的各种资源也会发送请求，对分析造成很多不必要的数据包。</p>
-<h4 id="0x01为什么指数数字签名证书需要hash一次">0x01为什么指数数字签名证书需要hash一次</h4>
-<p>给证书明文签名和给明文的hash签名其实区别不大，但是对hash签名能让非对称加密的速度快很多。</p>
-<h4 id="0x02传输流程">0x02传输流程</h4>
-<ol>
-<li><strong>三次握手</strong></li>
-<li><strong>客户端发送client_hello</strong></li>
-<li><strong>服务端发送server_hello</strong></li>
-<li><strong>服务端发送证书</strong></li>
-<li><strong>服务端发送Server Key Exchange</strong></li>
-<li><strong>服务端发送Server Hello Done</strong></li>
-<li><strong>客户端发送Client_key_exchange+Change_cipher_spec+Encrypted_handshake_message</strong></li>
-<li><strong>服务端发送New Session Ticket</strong></li>
-<li><strong>服务端发送Change_cipher_spec</strong></li>
-<li><strong>服务端发送Encrypted_handshake_message</strong></li>
-<li><strong>完成密钥协商，开始发送数据</strong></li>
-<li><strong>完成数据发送，四次TCP挥手</strong>：客户端FIN，服务端ACK，服务端FIN，客户端ACK。</li>
-</ol>
-</div>
-	</section>
-
-
-</article>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-	<div class="md:max-w-xs  flex flex-col md:items-end">
+					<div class="pb-4">
+		<h1 >
+			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+		</h1>
+	</div>
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+		<a href="/post/" title="Post page" >
 			Post
 		</a>
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/tags/" title="Tags page" >
+		<a href="/tags/" title="Tags page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Tags
 		</a>
 	</li>
@@ -243,6 +175,10 @@ onload='renderMathInElement(document.body);'></script>
 		</a>
 	</li>
 	
+	
+	<li>
+		<a href='/tags/%E7%BD%91%E7%BB%9C/index.xml'>RSS</a>
+	</li>
 	
 	
 	
@@ -256,6 +192,121 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+<h1 class="pb-4">
+	网络
+</h1>
+<div>
+	<section>
+		
+		<div>
+			<div class="pb-8">
+	<div class="font-serif font-medium text-xl">
+		<a href="https://wander1ng.com/post/%E5%A4%8D%E4%B9%A0https%E6%8F%A1%E6%89%8B%E6%B5%81%E7%A8%8B/">
+			复习HTTPS握手流程及相关扫描器
+		</a>
+	</div>
+	
+	
+	
+	
+	<div class="font-serif text-gray-600 font-light pt-1">
+		Handshake</div>
+
+	
+	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E7%BD%91%E7%BB%9C'>网络</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
+			datetime="2024-11-15T10:29:53&#43;08:00">2024-11-15</time>
+	</div>
+</div>
+
+		</div>
+		
+	</section>
+</div>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -373,59 +424,25 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="text-sm text-gray-500 leading-tight a-gray">
+	<div class="a-gray text-sm text-gray-500 leading-tight">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 718 words in this page.
+		Built with Hugo and theme <a 
+			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
+			<br />
+			29 pages, 30617 words in total.
 	</div>
 </div>
-
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
-<hr class="double-line" />
-<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
-    
-    <a class="flex-grow-0" href="/post/certutil%E5%9C%A8%E6%B8%97%E9%80%8F%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/">
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        Certutil在渗透中的使用
-    </a>
-    
-    
-</div>
-<div >
 
 
 
-</div>
-<hr />
-<div class="pb-2">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "LZX" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-<hr />
+
+
+
 
 		</footer>
 		
