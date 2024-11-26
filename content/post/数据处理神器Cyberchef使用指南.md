@@ -3,7 +3,7 @@ title = '数据处理神器Cyberchef使用指南'
 
 description = "妈妈再也不用担心我不会编码解码了"
 
-tags = [ "技术" ]
+tags = [ "Coding" ]
 
 date = 2024-07-10T10:05:48+08:00
 

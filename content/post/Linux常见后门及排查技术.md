@@ -3,7 +3,7 @@ title = 'Linux常见后门及排查技术'
 
 description = "说实话Linux的样本一点都调不来"
 
-tags = [ "技术" ]
+tags = [ "应急响应" ]
 
 date = 2024-11-22T17:49:53+08:00
 

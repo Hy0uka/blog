@@ -3,7 +3,7 @@ title = 'Msi恶意文件及相关APT组织手法'
 
 description = "虽然不是很厉害但至少开始写了"
 
-tags = [ "技术" ]
+tags = [ "APT" ]
 
 date = 2024-11-12T11:15:13+08:00
 

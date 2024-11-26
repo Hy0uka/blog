@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cyber Threat Hunting on 清夜无尘の一方天地</title>
+    <link>https://wander1ng.com/tags/cyber-threat-hunting/</link>
+    <description>Recent content in Cyber Threat Hunting on 清夜无尘の一方天地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <copyright>Copyright © 2019–2024</copyright>
+    <lastBuildDate>Thu, 21 Nov 2024 10:24:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://wander1ng.com/tags/cyber-threat-hunting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VT高级语法</title>
+      <link>https://wander1ng.com/post/vt%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Thu, 21 Nov 2024 10:24:27 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/vt%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/</guid>
+      <description>&lt;h2 id=&#34;vt高级语法&#34;&gt;VT高级语法：&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Network activity&lt;/strong&gt;：behaviour_network:&amp;ldquo;202.117.170.240&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Network activity&lt;/strong&gt;：behaviour_network:&amp;quot;/vpnchecker.php&amp;quot;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Filesystem operations&lt;/strong&gt;：behaviour_files:&amp;ldquo;C:\\Users\\&amp;lt;\USER&amp;gt;\AppData\Local\Temp\pnw2vuyz.e5s.ps1&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Processes execution&lt;/strong&gt;：behaviour_processes:&amp;ldquo;powershell.exe -ep bypass -File C:\Users\Johnson\AppData\Local\Temp\4.ps1&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;不直接相关的恶意行为组合&lt;/strong&gt;：behaviour_network:tinyurl.com and behaviour_processes:powershell&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;寻找可信签名但反病毒引擎检出率高的样本&lt;/strong&gt;：signature:&amp;quot;© Microsoft Corporation. All rights reserved.&amp;quot; tag:signed not (tag:invalid-signature or tag:revoked-cert) fs:2022-01-01+ p:5+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;寻找带有特定cookie的url&lt;/strong&gt;：entity:url cookie:&amp;ldquo;njnmsdkfsdfbiuonsdkfnsdfl&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对安卓包的搜索&lt;/strong&gt;：androguard_package:org.xmlpush.v3&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;文件名&lt;/strong&gt;：type:document name:&amp;ldquo;Standard Chartered&amp;rdquo; p:1+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;URL&lt;/strong&gt;：entity:url title:&amp;ldquo;JP Morgan&amp;rdquo; p:5+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;email&lt;/strong&gt;：type:email have:email_attachment tag:exploit&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IOS野生恶意文件&lt;/strong&gt;：(type:apple OR type:mac) have:in_the_wild p:5+&lt;/p&gt;
+&lt;p&gt;itw:cdn.discordapp.com p:5+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;entity：分为file、url、ip、domain、collection&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;itw&lt;/strong&gt;：指“In The Wild”，主要描述一种病毒活动状态，即该病毒已在互联网上广泛传播，并对日常的计算机运行产生实际影响。因此，当我们说一个病毒是&amp;quot;In The Wild&amp;quot; （缩写为ITW）的，这意味着它不仅仅是在实验室环境中的假设或可能性，而是在现实世界中已经存在并对用户和系统构成威胁了。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对特定组织进行查询&lt;/strong&gt;：entity:collection(name:apt28 or tag:apt28 or name:Sofacy or tag:Sofacy)&lt;/p&gt;
+&lt;p&gt;p:5+表示至少被5个反病毒引擎监测到&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>威胁情报RSS体系构建</title>
+      <link>https://wander1ng.com/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/</link>
+      <pubDate>Mon, 15 Jul 2024 10:11:09 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5rss%E4%BD%93%E7%B3%BB%E6%9E%84%E5%BB%BA/</guid>
+      <description>&lt;h4 id=&#34;安全厂商&#34;&gt;安全厂商&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.cloudflare.com/tag/security/&#34;&gt;赛博菩萨Cloudflare安全博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.kaspersky.com/blog/&#34;&gt;卡巴斯基&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.mandiant.com/resources/blog&#34;&gt;火眼&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.mcafee.com/blogs/&#34;&gt;麦咖啡&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blogs.cisco.com/security&#34;&gt;思科&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://talosintelligence.com/&#34;&gt;Cisco Talos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.virustotal.com/&#34;&gt;VT&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.checkpoint.com/&#34;&gt;Checkpoint&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.akamai.com/blog/security?&#34;&gt;akama&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://asec.ahnlab.com/en/&#34;&gt;ahnlab&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.avast.com/&#34;&gt;avast.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.cyble.com/&#34;&gt;cyble&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://global.ahnlab.com/site/main.do&#34;&gt;global.ahnlab.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://cybersecurity.att.com/blogs&#34;&gt;cybersecurity.att.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.zscaler.com/blogs?type=security-research&#34;&gt;zscaler.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.broadcom.com/support/security-center?&#34;&gt;broadcom.com&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;科技公司&#34;&gt;科技公司&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://community.intel.com/t5/Blogs/Products-and-Solutions/Security/bg-p/blog-security&#34;&gt;Intel&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&#34;资安媒体&#34;&gt;资安媒体&lt;/h4&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.securityweek.com/&#34;&gt;securityweek&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://thehackernews.com/&#34;&gt;thehackernews&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.bleepingcomputer.com/&#34;&gt;bleepingcomputer.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

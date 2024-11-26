@@ -3,7 +3,7 @@ title = 'Confucius组织利用ADS隐藏技术的攻击活动'
 
 description = "虽然不是很厉害但至少开始写了"
 
-tags = [ "技术" ]
+tags = [ "APT" ]
 
 date = 2024-10-30T17:58:02+08:00
 

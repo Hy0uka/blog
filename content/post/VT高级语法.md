@@ -3,7 +3,7 @@ title = 'VT高级语法'
 
 description = "记录"
 
-tags = [ "技术" ]
+tags = [ "Cyber threat hunting" ]
 
 date = 2024-11-21T10:24:27+08:00
 

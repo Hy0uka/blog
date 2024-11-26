@@ -3,7 +3,7 @@ title = '常见JavaScript混淆与反混淆'
 
 description = "JavaScript混淆"
 
-tags = [ "技术" ]
+tags = [ "Coding" ]
 
 date = 2024-07-05T15:35:25+08:00
 

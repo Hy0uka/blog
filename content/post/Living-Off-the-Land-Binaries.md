@@ -3,7 +3,7 @@ title = 'Living Off the Land Binaries'
 
 description = "包括白利用在内"
 
-tags = [ "技术" ]
+tags = [ "APT" ]
 
 date = 2024-10-28T18:07:46+08:00
 

@@ -3,7 +3,7 @@ title = 'Hugo+CloudFlare搭建博客指南'
 
 description = "崭新架构的安全博客"
 
-tags = [ "技术" ]
+tags = [ "Blog" ]
 
 date = 2024-06-27T18:02:59+08:00
 

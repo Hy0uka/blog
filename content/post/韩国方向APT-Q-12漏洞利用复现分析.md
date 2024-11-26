@@ -3,7 +3,7 @@ title = '韩国方向APT-Q-12漏洞利用复现分析'
 
 description = "还没修的0day保密"
 
-tags = [ "技术" ]
+tags = [ "APT" ]
 
 date = 2024-11-12T16:53:23+08:00
 

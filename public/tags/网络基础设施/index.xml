@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网络基础设施 on 清夜无尘の一方天地</title>
+    <link>https://wander1ng.com/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/</link>
+    <description>Recent content in 网络基础设施 on 清夜无尘の一方天地</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>cn</language>
+    <copyright>Copyright © 2019–2024</copyright>
+    <lastBuildDate>Fri, 15 Nov 2024 10:29:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://wander1ng.com/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>复习HTTPS握手流程及相关扫描器</title>
+      <link>https://wander1ng.com/post/%E5%A4%8D%E4%B9%A0https%E6%8F%A1%E6%89%8B%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Fri, 15 Nov 2024 10:29:53 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E5%A4%8D%E4%B9%A0https%E6%8F%A1%E6%89%8B%E6%B5%81%E7%A8%8B/</guid>
+      <description>&lt;h4 id=&#34;0x01常见抓包工具charlesfiddlerwireshark区别&#34;&gt;0x01常见抓包工具Charles/Fiddler/Wireshark区别&lt;/h4&gt;
+&lt;p&gt;为什么Charles等抓包工具或浏览器控制台看到的HTTPS是明文的？&lt;/p&gt;
+&lt;p&gt;HTTPS其实相当于HTTP+TLS,HTTP是明文操作，所有的加解密操作都在TLS这边。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/7284e8bfe1801b74890299a2b1a6e594.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;浏览器控制台能看到明文HTTPS是因为浏览器是应用层，所以浏览器的输出都是TLS解密过的。&lt;/p&gt;
+&lt;p&gt;Charles能看到是因为Charles抓包的时候有一个信任证书的操作，类似于中间人攻击。&lt;/p&gt;
+&lt;p&gt;Fiddler和Charles都是用于抓取应用层协议等上层的数据，都是建立连接成功以后的数据。而Wireshark可以抓取所有协议的数据包，因为直接读取网卡数据。需要抓取HTTPS建立连接成功前的过程，所以选择Wireshark。&lt;/p&gt;
+&lt;p&gt;Curl命令只发送一个请求，如果用浏览器打开百度，页面的各种资源也会发送请求，对分析造成很多不必要的数据包。&lt;/p&gt;
+&lt;h4 id=&#34;0x01为什么指数数字签名证书需要hash一次&#34;&gt;0x01为什么指数数字签名证书需要hash一次&lt;/h4&gt;
+&lt;p&gt;给证书明文签名和给明文的hash签名其实区别不大，但是对hash签名能让非对称加密的速度快很多。&lt;/p&gt;
+&lt;h4 id=&#34;0x02传输流程&#34;&gt;0x02传输流程&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;三次握手&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户端发送client_hello&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务端发送server_hello&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务端发送证书&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务端发送Server Key Exchange&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务端发送Server Hello Done&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户端发送Client_key_exchange+Change_cipher_spec+Encrypted_handshake_message&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务端发送New Session Ticket&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务端发送Change_cipher_spec&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务端发送Encrypted_handshake_message&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;完成密钥协商，开始发送数据&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;完成数据发送，四次TCP挥手&lt;/strong&gt;：客户端FIN，服务端ACK，服务端FIN，客户端ACK。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>DGA和动态域名</title>
+      <link>https://wander1ng.com/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Fri, 25 Oct 2024 14:54:57 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/dga%E5%92%8C%E5%8A%A8%E6%80%81%E5%9F%9F%E5%90%8D/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;DGA算法&lt;/strong&gt;，即Domain Generation Algorithm，是一种可以生成大量新域名的算法。攻击者使用该算法来频繁更改所使用的域名，利用这项技术可以逃避针对于特定域名和静态IP地址的恶意软件解决方案。&lt;/p&gt;
+&lt;p&gt;域名生成算法使用字符序列来快速生成数以千计的域名，这些域名实际上就是攻击者与 C2 服务器进行通信的会合点。这些算法每天可以生成成千上万个 DGA 域名，其中大部分都未注册。黑客使用未注册的域名隐藏已注册的域名，从而更轻松地避开使用签名和 IP 声誉的检查引擎所进行的检测。该算法可以在客户端和源端上执行。它从攻击者和 C2 服务器已知的一个种子开始，让双方都知道将生成哪些域名以及要注册哪个域名以用作恶意软件的通信通道。如果安全系统识别出该域名并进行拦截，攻击者就会遵从黑客和恶意软件或僵尸网络都理解的模式快速切换到下一个域名，以便继续与 C2 服务器保持联系。&lt;/p&gt;
+&lt;p&gt;目前，黑客攻击者为了防止恶意域名被发现，会使用Domain Flux或者IP Flux来快速生成大量的恶意域名。Domain Flux是通过不断变换域名，指向同一个IP，IP Flux是只有一个域名，不断变换IP，一个域名可以使用多个IP。&lt;/p&gt;
+&lt;p&gt;DGA生成的域名也可以是二级域名。&lt;/p&gt;
+&lt;p&gt;受害者端视角：使用同样的种子运行DGA，生成大量域名，逐个访问这些域名，检测是否存在，如果该域名未注册，程序继续检测其他域名，如果该域名已注册(如果某生成域名发生了被抢注的情况该怎么办？不处理，因为那些域名并不能发攻击指令，看设计方案是否要继续进行轮询)，那么恶意软件将选择使用该域名联系C&amp;amp;C服务器。
+DGA使用的种子有很多种类，包含日期、社交网络搜索热词、随机数或字典，生成一串字符前缀，添加TLD（如com、org等）后得到最终生成域名AGD（Algorithmically Generated Domain） 。
+（怎样确定同样的种子？在程序中内嵌。但是安全人员逆向了之后仍旧不能确定种子是什么，因为并不能知道攻击者究竟以什么字段作为种子）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动态域名&lt;/strong&gt;，即Dynamic DNS。API或网站等许多 Web 属性在其 IP 地址经常改变的互联网连接上运行；如果这些属性的运营商想要为托管的资源提供特定域名，就必须将 IP 地址存储在域名系统 (DNS) 记录中，这就会产生问题。动态 DNS (DDNS) 是一项服务，即使该 IP 地址不断更新，其也可使用 Web 属性的正确 IP 地址来更新 DNS。&lt;/p&gt;
+&lt;p&gt;例如，如果一位网络管理员正在运营一个域名为 &lt;a href=&#34;https://www.example.com&#34;&gt;www.example.com&lt;/a&gt; 且 IP 地址为 192.0.2.0 的小型网站，则每当另一个用户在浏览器中输入 &lt;a href=&#34;https://www.example.com&#34;&gt;www.example.com&lt;/a&gt; 时，DNS 会将他们定向到位于 192.0.2.0 的服务器。如果该管理员的 ISP 将 IP 动态更改为 192.0.2.1，则动态 DNS 服务可自动更新该管理员的 DNS 记录，以便使尝试访问 &lt;a href=&#34;https://www.example.com&#34;&gt;www.example.com&lt;/a&gt; 的其他用户现在将转到正确的 IP 地址。&lt;/p&gt;
+&lt;p&gt;准确地说变换的并不是域名本身，而是IP地址。之前一直认为具有非常多子域名的二级域名统称为动态域名，认为变化的是子域名，实际上大错特错。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/10/5a7886630805c6a8d732489bc2c3539b.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;为什么某些IP地址会更改？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在互联网早期，IP 地址很少改变，这使得域的管理非常简单。但具有互联网访问权限的 Web 和家用计算机的快速增长造成了可用 IP 地址的短缺。动态主机配置协议 (DHCP) 应运而生，该协议可使 ISP 为用户动态分配 IP。ISP 一般将维护一个 IP 地址共享池，并在连接期间或在达到最大时间之前，根据需要将其分配或“租赁”给用户。尽管引入 IPV6 缓解了 IP 地址短缺问题，但 ISP 仍经常使用 DHCP，因为这比提供静态 IP 更具成本效益。&lt;/p&gt;
+&lt;p&gt;运行主要 Web 服务的大型企业要求其 ISP 为他们提供不变或“静态”IP 地址，以便他们能够使用标准 DNS 惯例进行操作。相反，较小服务的 IP 地址经常被 ISP 更改，因此它们需要动态 DNS 解决方案来使其 DNS 记录保持最新状态。这些较小的服务可包括小型企业网站、个人网站、DVR 和安全摄像机。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;动态DNS如何工作？&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;有许多公司提供具有不同功能和技术的动态 DNS 服务。启用动态 DNS 的一种极为常见的方法是为用户提供在其计算机或路由器上运行的软件。每次更新 ISP 提供的 IP 地址时，该软件就会与动态 DNS 服务提供商进行通信，而动态 DNS 提供商接着更新进行了这些更改的 DNS，从而提供几乎即时的更新。&lt;/p&gt;
+&lt;p&gt;使用DGA的组织并不局限于僵尸网络，许多黑产也在使用，二者并无具体关系。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>互联网协议入门</title>
+      <link>https://wander1ng.com/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 16 Jul 2020 15:24:35 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/</guid>
+      <description>&lt;p&gt;学计网的时候有些头大,找到了这篇文章,首先对整体有一个认识,再换一本书,机械工业出版社的《Computer Networking A Top-Down Approach》.&lt;/p&gt;
+&lt;h4 id=&#34;序&#34;&gt;序&lt;/h4&gt;
+&lt;p&gt;互联网的核心是一系列协议,总称为互联网协议:Internet Protocol Suite.它们对电脑如何连接和组网,做出了详尽的规定.理解了这些协议的规定,就理解了互联网的原理.&lt;/p&gt;
+&lt;h4 id=&#34;概述&#34;&gt;概述&lt;/h4&gt;
+&lt;h5 id=&#34;五层模型&#34;&gt;五层模型&lt;/h5&gt;
+&lt;p&gt;自顶向下分别为应用层Application Layer,传输层Transport Layer,网络层Network Layer,链路层Link Layer和物理层Physical Layer.越下面的层越靠近硬件,越上面的层越靠近用户.&lt;/p&gt;
+&lt;h5 id=&#34;层与协议&#34;&gt;层与协议&lt;/h5&gt;
+&lt;p&gt;每一层都是为了完成某一种功能,为了实现这些功能就要传输时遵循共同的规则protocol.互联网的每一层都定义了很多协议,这些协议的总称为互联网协议.&lt;/p&gt;
+&lt;h4 id=&#34;物理层&#34;&gt;物理层&lt;/h4&gt;
+&lt;p&gt;电脑要组网,首先就要先把电脑连接起来,可以用光缆,线缆,双绞线和无线电波等方式(咋和谢希仁版有点不一样?还是我记错了).这就叫做物理层.&lt;strong&gt;它主要规定了网络的一些电气特性,作用是负责传输0和1的电信号.&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;链路层&#34;&gt;链路层&lt;/h4&gt;
+&lt;h5 id=&#34;定义&#34;&gt;定义&lt;/h5&gt;
+&lt;p&gt;单纯的0和1并没有意义,必须规定其解读方式:多少个电信号算一组,每个信号有何意义?&lt;strong&gt;链路层的功能就是在实体层的上方确定0和1的分组方式.&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;以太网协议&#34;&gt;以太网协议&lt;/h5&gt;
+&lt;p&gt;Ethernet规定,一组电信号构成一个数据包叫做帧(Frame).每一帧分为两个部分:标头Head与数据Data.Head包含数据包的一些说明项,如发送者,接收者,数据类型.数据则是数据包的具体内容.&lt;/p&gt;
+&lt;p&gt;标头的长度固定为18字节,数据的长度最短为46字节,最长为1500字节.因此对于一帧来说,大小区间为64-1518字节.数据过长则分为多个帧发送.&lt;/p&gt;
+&lt;h5 id=&#34;mac地址&#34;&gt;MAC地址&lt;/h5&gt;
+&lt;p&gt;传输数据的过程中要标识发送者与接收者,就要使用到MAC地址.Ethernet规定连入网络的所有设备都必须有网卡接口,**数据包必须是从一块网卡传送到另一块网卡.网卡的地址就是数据包的发送地址与接收地址即MAC地址.**每块网卡出场时都有一个唯一的MAC地址,长度为48个二进制位,常用12个16进制数表示.前6个位厂商编号,后六个为该厂商网卡流水号.&lt;/p&gt;
+&lt;h5 id=&#34;广播&#34;&gt;广播&lt;/h5&gt;
+&lt;p&gt;一块网卡要知道另一块网卡的MAC地址,要使用到ARP协议(在谢希仁版中自学过,现在又给忘了&amp;hellip;);&lt;/p&gt;
+&lt;p&gt;知道MAC地址之后,系统怎样才能把数据包准确送到接收方?**Ethernet并不把数据包准确送到接收方,而是向本网络所有计算机发送,让计算机自己判断是否为接收方.**而向本网络所有计算机发包的行为,就叫做广播broadcasting.&lt;/p&gt;
+&lt;h4 id=&#34;网络层&#34;&gt;网络层&lt;/h4&gt;
+&lt;h5 id=&#34;网络层的由来&#34;&gt;网络层的由来&lt;/h5&gt;
+&lt;p&gt;根据Ethernet协议,依靠MAC地址发送数据,理论上和技术上世界上任何一个地方的网卡都能够找到任何一个地方的网卡.但是这样做有一个巨大的缺点&amp;quot;&lt;strong&gt;以太网采用广播的方式发送数据包,每个成员都会收到所有的包.不仅效率低,而且只能在发送者的子网络中传播.(如果互联网上每一台计算机都收到所有的包不可想象)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;所以必须找到一种方法,能够区分MAC地址是否属于一个子网络.如果属于一个子网络,采用广播的形式发送,否则采用路由(路由即向不同的子网络分发数据包).而MAC地址只与厂商有关与网络无关,所以网络层诞生了.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;它的作用是引进一套新的地址,使我们能够区分不同的计算机是否属于一个子网络.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;于是网络层出现后,每台计算机就有了两种地址,一种是MAC地址,另一种是网络地址(二者之间无任何联系).网络地址帮助我们确定计算机所在的子网络,MAC地址则将数据包送到该子网络的目标网卡.所以从逻辑上看一定是先处理网络地址,再处理MAC地址.&lt;/p&gt;
+&lt;h5 id=&#34;ip协议&#34;&gt;IP协议&lt;/h5&gt;
+&lt;p&gt;根据网络地址的协议就叫做IP协议,其定义的地址就叫做IP地址.IP地址由网络号和主机号组成.&lt;strong&gt;处于一个子网络的电脑,其IP地址的网络部分必定是相同的.主机部分是对同处该子网的主机进行编号.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了从IP地址判断出两台计算机是否处于同一个子网,就要用到另一个参数&amp;quot;&lt;strong&gt;子网掩码&lt;/strong&gt;&amp;ldquo;即subnet mask.子网掩码使表示子网特征的一个参数,在形式上等同于IP地址,也是一个32位二进制数字.&lt;strong&gt;其网络部分全为1,主机部分全为0.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;知道IP地址与子网掩码判断是否属于同一个子网的方法:将两个IP地址分别于子网掩码进行AND运算,结果相同则在一个子网.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;已知IP地址172.16.154.1和172.16.254.233子网掩码都是255.255.255.0,请问其是否在一个子网?&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;总结IP协议的作用:一是为每台计算机分配IP地址,另一个是为确定哪些地址处于一个子网.&lt;/p&gt;
+&lt;h5 id=&#34;ip数据报&#34;&gt;IP数据报&lt;/h5&gt;
+&lt;p&gt;根据IP协议发送的数据,就叫做IP数据报.但是Ethernet数据报只包含MAC地址,并没有IP地址的栏位,是否要修改数据报定义,再添加一个栏位?回答是不需要,因为可以直接将IP数据报放进Ethernet数据报的数据部分.这就是互联网分层结构的好处:上层变动完全不涉及下层结构.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153208_10.jpg&#34; alt=&#34;IP数据报&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153209_11.jpg&#34; alt=&#34;包含IP数据报的Ethernet数据报&#34;&gt;&lt;/p&gt;
+&lt;p&gt;IP数据报的标头(特指不在Head中而在Data中的关于IP信息的Head)长度一般在20-60字节,整个数据报的长度最大为65535字节.Ethernet数据报的数据部分,最长只有1500字节,所以如果IP数据报超过了1500字节,就要分割成几个Ethernet数据报分开发送.&lt;/p&gt;
+&lt;h5 id=&#34;arp协议&#34;&gt;ARP协议&lt;/h5&gt;
+&lt;p&gt;IP数据报是放在以太网数据报里发送的.所以必须同时知道两个地址,一个是对方的MAC地址,一个是对方的IP地址.通常情况下对方的IP地址是已知的,但是MAC地址未知.所以需要一种基址从IP地址得到MAC地址.&lt;/p&gt;
+&lt;p&gt;第一种情况,两个主机不在一个子网,则事实上无法得到对方的MAC地址,只能将数据包传送到两个子网连接处的网关,让网关进行处理.&lt;/p&gt;
+&lt;p&gt;第二种情况,两个主机在一个子网,则使用ARP协议.&lt;strong&gt;ARP协议发出一个数据报,其中包含所要查询的IP地址,在对方的MAC地址这一栏,填的是FF:FF:FF:FF:FF:FF,表示这是一个广播地址.他所在的子网络的每一台主机,都会收到这个数据报.从中取出IP地址,与自身IP地址进行比较,如果两者相同,则做出回复向对方报告MAC地址,否则就丢弃这个包.&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;传输层&#34;&gt;传输层&lt;/h4&gt;
+&lt;p&gt;有了MAC地址和IP地址,就可以在互联网上任意两台主机建立通信.但是同一台主机上有许多程序都要使用到网络,那么就需要一个参数来表示这个数据包到底供哪个进程使用,这个参数就叫做端口.&lt;strong&gt;它其实是每一个使用网卡的程序的编号,每个数据报都发送到主机的特定端口,这样不同的程序就能够取到自己所需要的数据.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;端口是0到65535之间的一个整数,正好16个二进制位.&lt;strong&gt;0到1023的端口被系统占用,用户只能选择大于1023的端口.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;传输层的功能是建立端口到端口之间的通信,相比之下网络层是建立主机到主机之间的通信.只要确定主机和端口,就能实现程序之间的交流.&lt;strong&gt;因此Unix就把主机+端口,叫做&amp;quot;套接字&amp;quot;socket.&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;udp协议&#34;&gt;UDP协议&lt;/h5&gt;
+&lt;p&gt;现在我们要在数据报中加入端口信息,这就需要新的协议.最简单的实现叫做UDP协议,它的格式就是在数据前面加上端口号.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153209_12.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Head部分主要定义了&lt;strong&gt;发出端口&lt;/strong&gt;与&lt;strong&gt;接收接口&lt;/strong&gt;,其数据报非常简单,Head部分8个字节,总长度不超过65535字节,正好放进一个IP数据报.数据部分就是具体的内容然后把整个UDP数据报放入IP数据报的数据部分.所以整个Ethernet数据报变成了下面这样:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153209_13.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;tcp协议&#34;&gt;TCP协议&lt;/h5&gt;
+&lt;p&gt;UDP协议的优点在于比较简单,容易实现.但是缺点在于一旦数据报发出,无法知道对方是否知道.为了提高网络可靠性,TCP协议就诞生了.这个协议非常复杂,但可以近似认为它是有确认机制的.因此TCP协议能够确保数据不会丢失,但是实现困难,资源消耗较多.&lt;/p&gt;
+&lt;p&gt;TCP数据报和UDP数据报一样,都是内嵌在IP数据报的数据部分.TCP数据报没有长度限制,理论上可以无限长.但是为了保证网络的效率,通常TCP数据报的长度不会超过IP数据报的长度,确保单个TCP数据报不必再被分割.&lt;/p&gt;
+&lt;h4 id=&#34;应用层&#34;&gt;应用层&lt;/h4&gt;
+&lt;p&gt;应用程序收到传输层的数据,接下来就要进行解读.由于互联网是开放架构,所以必须先规定好格式.**应用层的作用,就是规定应用程序的数据格式.**举例来说,TCP协议可以为各种各样的程序传递数据,Email/WWW/FTP等,必须有不同协议规定电子邮电,网页和FTP数据的格式,这些应用程序协议就构成了应用层.这是最高的一层,直接面对用户.其数据就在TCP数据报的数据部分,因此现在的Ethernet变成了下面这样:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/20120531_153209_14.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;网络通信的实质就是交换上面的数据报.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070401.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;对于不在一个子网的两台计算机之间的通信(假设1号电脑要向4号电脑发送数据报),则1号电脑需要知道网关A的MAC地址(和4号电脑的IP地址).1号电脑发出数据报到网关A,网关A通过&lt;strong&gt;路由协议&lt;/strong&gt;发现4号电脑位于网络B,又把数据报发给网关B,B再转发到4号电脑.&lt;/p&gt;
+&lt;h4 id=&#34;判断是否处于同一子网的方法&#34;&gt;判断是否处于同一子网的方法&lt;/h4&gt;
+&lt;h5 id=&#34;静态ip地址&#34;&gt;静态IP地址&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;本机IP地址&lt;/strong&gt;,&lt;strong&gt;子网掩码&lt;/strong&gt;,&lt;strong&gt;网关IP地址&lt;/strong&gt;,&lt;strong&gt;DNS的IP地址&lt;/strong&gt;是TCP/IP协议的重要参数,通俗来说知道它们就可以上网.由于它们是给定的,计算机每次开机都分配到相同的IP地址,&lt;strong&gt;所以这种方法被称作静态IP地址上网.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;但是出于简便性,并且避免IP地址无法灵活变更,大多数用户使用&amp;quot;动态IP上网&amp;rdquo;.&lt;/p&gt;
+&lt;h5 id=&#34;动态ip地址&#34;&gt;动态IP地址&lt;/h5&gt;
+&lt;p&gt;计算机开机后会自动分配到一个IP地址,不用人为设定,它们使用的协议叫做DHCP协议.该协议规定每个子网中都有一台计算机负责管理本网络的所有IP地址,叫做DHCP服务器.&lt;strong&gt;新的计算机加入网络,必须向DHCP服务器发送一个DHCP请求数据报,申请IP地址和相关的网络参数&lt;/strong&gt;.(指定管理IP地址的DHCP服务器未开机怎么办????)&lt;/p&gt;
+&lt;p&gt;新加入的计算机不知道不同子网计算机的MAC地址和IP地址,如何发送数据报?DHCP协议作出了巧妙规定:&lt;/p&gt;
+&lt;p&gt;由于DHCP是一种建立在UDP协议基础上的应用层协议,所以整个数据报长这个样子:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070402.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;最前面的Ethernet Head,设置发出方的MAC地址和接收方(DHCP服务器)的MAC地址,前者就是本机网卡的MAC地址,后者此时不知道,填入广播地址FF:FF:FF:FF&lt;/p&gt;
+&lt;p&gt;后面的IP Head,设置发出方的IP地址和接收方的IP地址,这时对于这两者本机都不知道,于是发出方的IP地址设为0.0.0.0,接收方IP地址设为255.255.255.255&lt;/p&gt;
+&lt;p&gt;最后的UDP Head,设置发出方的端口和接收方的端口.DHCP协议规定发出方是port 68,接收方是port 67.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这个数据包构造完成后，就可以发出了。以太网是广播发送，同一个子网络的每台计算机都收到了这个包。因为接收方的MAC地址是FF-FF-FF-FF-FF-FF，看不出是发给谁的，所以每台收到这个包的计算机，还必须分析这个包的IP地址，才能确定是不是发给自己的。当看到发出方IP地址是0.0.0.0，接收方是255.255.255.255，于是DHCP服务器知道”这个包是发给我的”，而其他计算机就可以丢弃这个包。&lt;/p&gt;
+&lt;p&gt;接下来，DHCP服务器读出这个包的数据内容，分配好IP地址，发送回去一个”DHCP响应”数据包。这个响应包的结构也是类似的，以太网标头的MAC地址是双方的网卡地址，IP标头的IP地址是DHCP服务器的IP地址（发出方）和255.255.255.255（接收方），UDP标头的端口是67（发出方）和68（接收方），分配给请求端的IP地址和本网络的具体参数则包含在Data部分。新加入的计算机收到这个响应包，于是就知道了自己的IP地址、子网掩码、网关地址、DNS服务器等等参数。&lt;/p&gt;
+&lt;h2 id=&#34;实例&#34;&gt;实例&lt;/h2&gt;
+&lt;p&gt;假设网络参数如下:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;本机IP:192.168.1.100,子网掩码255.255.255.0,网关IP:192.168.1.1,DNS的IP地址:8.8.8.8&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;然后打开了Google Chrome,输入了www.google.com,接下来浏览器将要向Google发送一个网页请求数据报.&lt;/p&gt;
+&lt;h5 id=&#34;dns协议&#34;&gt;DNS协议&lt;/h5&gt;
+&lt;p&gt;发送数据报就要知道对方的IP地址,我么可以通过DNS协议将网址转换为IP地址.已知DNS服务器为8.8.8.8,于是向其发送DNS数据报(port 53):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070403.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;之后DNS服务器做出响应,告诉我们Google服务器的IP地址172.194.72.105.&lt;/p&gt;
+&lt;h5 id=&#34;子网掩码&#34;&gt;子网掩码&lt;/h5&gt;
+&lt;p&gt;得到IP地址后要通过子网掩码来判断改IP是否在同一个子网,以确定要不要向网关发包.将子网掩码与自己的IP地址和Google的IP地址进行AND运算,发现结果不相等,所以不在一个子网.&lt;strong&gt;所以我们要向Google发送数据报,必须通过网关192.168.1.1转发,也就是说接收方的IP地址将是网关的MAC地址.&lt;/strong&gt;&lt;/p&gt;
+&lt;h5 id=&#34;应用层协议&#34;&gt;应用层协议&lt;/h5&gt;
+&lt;p&gt;浏览网页用到的是HTTP协议,它的数据报长下面这个样子:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070404.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;　　GET / HTTP/1.1
+　Host: &lt;a href=&#34;https://www.google.com&#34;&gt;www.google.com&lt;/a&gt;
+　Connection: keep-alive
+　User-Agent: Mozilla/5.0 (Windows NT 6.1) ……
+　Accept: text/html,application/xhtml+xml,application/xml;q=0.9,&lt;em&gt;/&lt;/em&gt;;q=0.8
+　Accept-Encoding: gzip,deflate,sdch
+　Accept-Language: zh-CN,zh;q=0.8
+　Accept-Charset: GBK,utf-8;q=0.7,*;q=0.3
+　Cookie: … …&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;被嵌在TCP数据报之中,假定为4960字节.&lt;/p&gt;
+&lt;h5 id=&#34;tcp协议-1&#34;&gt;TCP协议&lt;/h5&gt;
+&lt;p&gt;TCP数据报需要设置端口,接收方的HTTP默认端口是80,而发送方的端口是1024-65535之间随机确定的.    假定为51775.TCP数据报的Head长为20字节,加上嵌入HTTP的数据报,总长度变为4980字节.&lt;/p&gt;
+&lt;h5 id=&#34;ip协议-1&#34;&gt;IP协议&lt;/h5&gt;
+&lt;p&gt;然后TCP数据报再嵌入IP数据报,IP数据报需要设置双方的IP地址,这是已知的.发送方是192.168.1.100（本机），接收方是172.194.72.105（Google）。IP数据包的标头长度为20字节，加上嵌入的TCP数据包，总长度变为5000字节。&lt;/p&gt;
+&lt;h5 id=&#34;ethernet协议&#34;&gt;Ethernet协议&lt;/h5&gt;
+&lt;p&gt;最后IP数据报嵌入以太网数据报,以太网数据报设置双方的MAC地址,发送方为本机的网卡MAC地址，接收方为网关192.168.1.1的MAC地址（通过ARP协议得到）。&lt;/p&gt;
+&lt;p&gt;以太网数据包的数据部分，最大长度为1500字节，而现在的IP数据包长度为5000字节。因此，IP数据包必须分割成四个包。因为每个包都有自己的IP标头（20字节），所以四个包的IP数据包的长度分别为1500、1500、1500、560。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/2024070405.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h5 id=&#34;服务器端响应&#34;&gt;服务器端响应&lt;/h5&gt;
+&lt;p&gt;经过多个网关转发,Google服务器收到了这四个以太网数据报.根据IP Head的序号,Google将四个包拼接起来,取出完整的TCP数据,根据其中的HTTP请求作出HTTP响应,再用TCP协议发回.本机收到HTTP响应后,就可以将网页显示出来,完成一次网络通信.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

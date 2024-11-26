@@ -3,7 +3,7 @@ title = 'CTF Wiki'
 
 description = "CTF Wiki中几道例题的思路"
 
-tags = [ "技术" ]
+tags = [ "CTF" ]
 
 date = 2019-06-20T00:06:21+08:00
 

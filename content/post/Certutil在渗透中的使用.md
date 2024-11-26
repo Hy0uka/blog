@@ -3,7 +3,7 @@ title = 'Certutil在渗透中的使用'
 
 description = "虽然不是很厉害但至少开始写了"
 
-tags = [ "技术" ]
+tags = [ "横向移动" ]
 
 date = 2024-11-14T16:06:31+08:00
 
