@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>清夜无尘の一方天地  | IRC/HTTP/P2P三种类型僵尸网络学习</title>
+	<meta name="viewport" content="width=device-width,minimum-scale=1">
+	<meta name="generator" content="Hugo 0.128.0">
+	
+	
+	<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+	
+
+	
+	
+	<link href="/dist/app.css" rel="stylesheet">
+	
+
+	
+
+	
+	
+<link rel="shortcut icon" href="https://wander1ng.com/img/favicon-32x32.png" type="image/png" />
+
+
+	
+
+	
+	
+	
+  
+    
+      
+    
+  
+
+
+	
+	
+	
+
+
+
+<link rel="stylesheet" href='https://wander1ng.com/lib/katex.min.css' crossorigin="anonymous">
+
+
+<script defer src='https://wander1ng.com/lib/katex.min.js' crossorigin="anonymous"></script>
+
+
+<script defer src='https://wander1ng.com/lib/contrib/auto-render.min.js'
+crossorigin="anonymous"
+onload='renderMathInElement(document.body);'></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>
+
+	
+	
+	
+	<script>
+		(function (u, c) {
+			var d = document,
+				t = 'script',
+				o = d.createElement(t),
+				s = d.getElementsByTagName(t)[0];
+			o.src = u;
+			if (c) {
+				o.addEventListener('load', function (e) {
+					c(e);
+				});
+			}
+			s.parentNode.insertBefore(o, s);
+		})('https:\/\/wander1ng.com\/lib\/pangu.min.js', function () {
+			pangu.spacingPage();
+		});
+	</script>
+	
+	
+	
+	<style type="text/css" media="screen, print">
+		@font-face {
+			font-family: "FancyTitleFont";
+			font-style: normal;
+			font-display: swap;
+			src: url('https://wander1ng.com/fonts/exampleFont.woff2') format('woff2'),
+				url('https://wander1ng.com/fonts/exampleFont.woff') format('woff');
+		}
+		 
+		  
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 300;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Light'), local('NotoSerifCJK-Light'),
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff2') format('woff2'),
+				 
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-300.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: local('Noto Serif CJK SC'), local('NotoSerifCJK-Regular'),
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff2') format('woff2'),
+				 
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-regular.woff') format('woff');
+			 
+		}
+
+		 
+		@font-face {
+			font-family: 'Noto Serif CJK SC';
+			font-style: normal;
+			font-weight: 500;
+			font-display: swap;
+			src: local('Noto Serif CJK SC Medium'), local('NotoSerifCJK-Medium'),
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff2') format('woff2'),
+				 
+				url('https://wander1ng.com/fonts/noto-serif-sc-v7-latin_chinese-simplified-500.woff') format('woff');
+			 
+		}
+	</style>
+	
+</head>
+
+<body class="bg-gray-100 text-gray-700 font-sans">
+	<div class="p-6 sm:p-10 md:p-16 flex flex-wrap">
+		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
+			<div
+				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
+				
+<div>
+	<h2>
+		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+	</h2>
+</div>
+<h1 class="pt-2">IRC/HTTP/P2P三种类型僵尸网络学习</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">主要是P2P</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/botnet'>Botnet</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2024-11-26T16:37:51&#43;08:00">2024-11-26</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><h4 id="僵尸网络分类">僵尸网络分类</h4>
+<p>僵尸网络按照命令与控制机制不同可以分成：<strong>IRC（Internet Reply Chat）协议僵尸网络、HTTP（Hypertext Transport Protocol）协议僵尸网络和P2P（Peer to Peer）协议僵尸网络</strong>。IRC协议僵尸网络和HTTP协议僵尸网络较为相似，同属C/S即Client/Server僵尸网络结构，均存在核心服务器，控制命令都要通过核心服务器进行发布，区别在于使用的协议不同。</p>
+<p>P2P协议僵尸网络具有节点对等特性，所有僵尸网络主机既是客户端也是服务器，有效克服了IRC和HTTP僵尸网络容易被检测发现以及过度依赖核心服务器的缺陷。</p>
+<h4 id="p2p僵尸网络功能结构">P2P僵尸网络功能结构</h4>
+<p><strong>主体功能模块</strong>包含**命令与控制模块、通讯模块和传播模块．**命令与控制模块负责解析邻居节点发送的控制指令并将
+解析好的指令发送给相关模块执行；通讯模块负责与邻居节点的信息交互，包括接收邻居节点的控制指令并把该控制指令发送给其他邻居节点、与邻居节点交换邻居节点列表以及根据需要将执行结果返回给邻居节点．传播模块负责传播僵尸程序，不断扩大僵尸网络规模．</p>
+<p><strong>辅助功能模块</strong>包含**僵尸主机控制模块、下载与更新模块和躲避检测与对抗模块．**僵尸主机控制模块负责完成实施命令与控制模块解析的控制者指令，如窃取信息、实施攻击等；下载与更新模块负责下载并更新僵尸程序，从而使得僵尸程序功能不断完善；躲避检测与对抗模块负责识别侦测环境并躲避侦测工具的检测与分析，从而提高僵尸网络的生存能力．</p>
+<h4 id="p2p僵尸网络结构">P2P僵尸网络结构</h4>
+<p>可分为<strong>集中式P2P僵尸网络</strong>、<strong>非结构化P2P僵尸网络</strong>和<strong>结构化P2P僵尸网络</strong></p>
+<p><strong>集中式P2P僵尸网络</strong>由一个中央服务器以星状的形式与各僵尸主机连接，但这种连接不是物理上的星状拓扑，而是一个抽象虚拟的星状结构．在集中式P2P僵尸网络中，中央服务器负责存储、管理和组织僵尸主机信息，各个新感染的僵尸主机加入僵尸网络时要首先连接中央服务器并获得僵尸主机列表信息，新感染的僵尸主机通过与列表中的僵尸主机建立连接加入网络．</p>
+<p>集中式P2P僵尸网络结构的优点是维护简单，管理高效，控制者可以随时掌握僵尸网络所有僵尸主机信息，并能够高效地组织在线活动的僵尸主机进行各种攻击行为，控制指令从发出到执行的延迟较短．缺点是中央服务器的瘫痪将对整个僵尸网络影响较大，且易于被检测发现．典型的集中式P2P僵尸网络实例有Phatbot、SpamThru等．</p>
+<p><strong>非结构化P2P僵尸网络</strong>无中央节点，僵尸主机之间均为对等连接．它没有固定、严格的拓扑结构，是一个随机生成、松散组织的普通图，不严格遵循某种形状，只是符合小世界模型或幂律模型，从本质上看也是僵尸主机自发形成的，</p>
+<p>非结构化P2P僵尸网络结构的优点是可以达到非常高的安全性、匿名性和稳定性，部分僵尸主机被发现或切断并不影响整个僵尸网络的运行，但其缺点是控制者不能完全掌握僵尸网络所有僵尸主机的信息，且路由效率不高，容易形成互相分离的僵尸子网，从而使得控制者指令不能到达所有在线活动僵尸主机，且从指令发出到僵尸主机执行存在较大延迟．典型的非结构化P2P僵尸网络实例有Sinit、Nugache等．</p>
+<p><strong>结构化P2P僵尸网络</strong>与非结构化P2P僵尸网络一样，也不存在中央节点，所有僵尸主机既是服务器又是客户端，但结构化P2P僵尸网络有一个严格的覆盖网拓扑结构，如带弦环、多维空间、超立方体、蝴蝶形等．结构化P2P僵尸网络采用<strong>分布式散列表技术</strong>来组织网络中的僵尸主机，分布式散列表使用安全的一致性散列函数将各个僵尸主机映射到覆盖网中，其中最著名的就是SHA系列函数，它能产生均匀、随机、与输入无关的散列值，且冲突概率极小．</p>
+<p>结构化P2P僵尸网络结构的优点是不仅具有非常高的安全性、匿名性，而且路由效率较高，控制者虽然不能掌握所有僵尸主机的信息，但其指令可以通过若干跳到达所有在线活动的僵尸主机，且延迟时间较短．缺点是节点的频繁加入和退出容易造成网络波动，从而形成多个互相分离的僵尸子网，稳定性较差．典型的结构化P2P僵尸网络实例有PeacommMl等．</p>
+<h4 id="p2p僵尸网络工作机制">P2P僵尸网络工作机制</h4>
+<p>可分为四个阶段：传播阶段、感染阶段、通讯阶段和攻击阶段。</p>
+<h5 id="传播阶段">传播阶段</h5>
+<p>传播阶段是指P2P僵尸网络不断传播僵尸程序到新的主机，从而不断扩大僵尸网络规模的过程．P2P僵尸网络的传播方式主要分为主动传播和被动传播两种类型．主动传播主要通过攻击系统漏洞、扫描后门程序等方式进行．该方式一般借助于传统的蠕虫病毒自动进行传播，对于重要的网络节点，控制者也可以通过密码破译、缓冲区溢出等攻击方式进行手动攻击．被动传播主要通过发送病毒邮件、钓鱼网站脚本、即时通信软件及文件资源共享等方式进行．该方式主要利用网络用户的心理弱点和不良上网习惯，引诱用户进入预先设计好的圈套中，从而实现将僵尸程序植入用户主机的目的．</p>
+<h5 id="感染阶段">感染阶段</h5>
+<p>感染阶段是指僵尸程序植入新感染节点后，新感染节点加入僵尸网络的过程．其基本过程如下：
+(1)新感染节点A发出加入网络请求指令；(2)收到请求指令的僵尸主机B将回复一个询问指令，以获取新感染节点的IP地址等相关信息；(3)新感染节点回复报文，报告自己的相关信息；(4)僵尸主机B将新感染节点A的相关信息进行记录，并将自己的僵尸网络邻居节点列表发送给新感染节点A；(5)新感染节点A或僵尸主机B向自己的邻居节点发出公告，以告知新感染节点A的加入．对于集中式P2P僵尸网络，过程(2)、(4)、(5)由中央服务器完成．对于结构化P2P僵尸网络，僵尸主机B在过程(4)中还要先协调僵尸网络中的僵尸主机为新感染节点A生成一个唯一D标识．</p>
+<h5 id="通讯阶段">通讯阶段</h5>
+<p>通讯阶段是指僵尸网络中的僵尸主机自发进行信息交互的过程．P2P僵尸主机为了保持与邻居节点的连接状态并获得僵尸网络最新消息，必须定期或不定期地与邻居节点进行信息交互，通过信息交互，P2P僵尸主机可以获得最新的邻居节点列表、最新的控制指令序列及最新的僵尸程序更新等．通讯机制的好坏决定了P2P僵尸网络的稳定性和适应性．当前P2P僵尸网络主要的通讯机制有：直接路由、路由指令、广播指令、路径返回和信息同步．</p>
+<p>(1)<strong>直接路由</strong>：当一个僵尸主机想要发送信息给目的主机时，该僵尸主机直接把报文目的地址填成目的主机的IP(Internet Protoc01)地址，并通过网络协议和路由设备将报文转发给目的主机．该方式是邻居节点之间信息交互的常用方式，也是其他通讯机制的基础．</p>
+<p>(2)<strong>路由指令</strong>：当一个僵尸主机想要通过僵尸网络发送一个指令到目的主机时，该僵尸主机不是直接发送该指令给目的主机，而是将指令封装在一个路由指令里，然后把路由指令随机发送给自己的邻居节点．路由指令的头部信息包括目的主机的P地址和最大跳数．当一个僵尸主机收到该路由指令时，首先检查目的主机碑地址是否与自己相同，如果相同则打开路由指令并解析其中包含的指令，如果不相同，则检查最大跳数是否为0，为0则丢弃该报文，否则将最大跳数减1，并随机发送给自己的邻居节点．该方法为控制者提供了有效的匿名性和安全性，因为目的主机收到路由指令报文不能确定发送主机的m地址，而且每次的路由路径是随机不定的，任何单一的僵尸网络检测终端都无法获得全部的报文信息．</p>
+<p>(3)<strong>广播指令</strong>：当一个新感染节点加入僵尸网络时，僵尸主机一般会采用广播的方式来告知新节点的加入，这种方式使得僵尸主机的邻居节点列表保持同步．僵尸主机一般会通过把路由指令中的m地址设为0来表示该指令为广播指令，每个广播命令都有固定的编号，当一个僵尸主机收到未见过的广播指令时，它将会解析指令并执行，并将该指令广播给自己的其他邻居节点．</p>
+<p>(4)<strong>路径返回</strong>：当一个僵尸主机执行完一个路由指令或者广播指令后，如果需要返回相关执行结果给指令发送者，就需要采用路径返回通讯机制，因为指令执行者不知道指令发送者的P地址．该机制的基本原理就是按照指令的传送路径将回馈信息返回给指令发送者．</p>
+<p>(5)<strong>信息同步</strong>：每个僵尸主机都会维护一张邻居节点列表，每过一段时间，僵尸主机都会与全部或部分邻居节点进行联系，以实现与邻居节点的信息同步．其中主要包括交换邻居节点信息、更新僵尸程序等．</p>
+<h5 id="攻击阶段"><strong>攻击阶段</strong></h5>
+<p>攻击阶段是指僵尸主机收到控制者指令并按照指令实施攻击的过程．僵尸主机接收指令的方式分为pull方式和push方式．pull方式是指僵尸主机定期从指定地方获取指令，该方式多见于集中式P2P僵尸网络；push方式是指僵尸主机从邻居节点那里接收指令并将指令转发给自己其他邻居节点的方式，该方式在P2P僵尸网络中应用较为广泛．</p>
+<h5 id="p2p僵尸网络的检测方法">P2P僵尸网络的检测方法</h5>
+<h5 id="基于僵尸网络流量和行为特征的检测方法">基于僵尸网络流量和行为特征的检测方法</h5>
+<p>基于僵尸网络流量特征的检测方法以文献[8-10]为代表，其基本思想是通过分析P2P僵尸网络在各个生命周期产生的特殊网络数据，找出P2P僵尸网络的流量和行为特征并生成特征向量，然后用决策树等机器学习的方法对P2P僵尸网络进行检测．特征有<strong>ICMP(Intemet Control Message Protoc01)报文异常突然增加</strong>、<strong>ARP(Address Reso-lution Protoc01)报文突然增多</strong>、<strong>SMTP(Simple Mail TransferProtoc01)报文突然增加</strong>、<strong>特定时间段内数据包相似</strong>、<strong>内网主机与外网主机连接相似</strong>等．文献[9]分析的特征有<strong>使用开放的连接端口且端口可能明确为某个区间</strong>、<strong>使用一个稳定的邻居节点列表</strong>等．文献[10]以Peacomm僵尸网络为例，通过<strong>分析协议流量、DNS(Domain Name System)查询邮件的交换记录及SMTP连接等信息</strong>，提出了能够检测非集中式P2P僵尸网络的相关特性．虽然这些方法能够针对检测P2P僵尸网络有一定效果，但是这些方法并不具有通用性，且许多正常的P2P应用也具备这些方法所提出的区分特征，容易产生误报．</p>
+<h5 id="基于行为和聚类的检测方法">基于行为和聚类的检测方法</h5>
+<p>僵尸网络的本质特性是僵尸程序与控制者通过命令与控制信道进行通信并执行控制者指令实施恶意行为，由于僵尸程序的指令行为是程序预先设置好的，所以僵尸程序所实施的恶意行为是相似或相关的．</p>
+<p>文献[12]所提出的检测框架正是利用这一特性，对相似的通信和恶意行为产生的网络流量进行聚类，并使用交叉关联的方法识别出具有相似通信和恶意行为模式的僵尸主机，它不需要解析僵尸网络命令与控制协议、不需要捕获僵尸程序代码和僵尸网络特征码．</p>
+<p><em>参考：《P2P僵尸网络研究》Journal of Chinese Computer Systems 2012年10月 第10期</em></p>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
+	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
+	
+	
+	<li class="px-1 md:px-0">
+		<a href="/post/" title="Post page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+			Post
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/tags/" title="Tags page" >
+			Tags
+		</a>
+	</li>
+	
+	<li class="px-1 md:px-0">
+		<a href="/about/" title="About page" >
+			About
+		</a>
+	</li>
+	
+	
+	
+	
+	<div id="fastSearch" class="m-0">
+		<input id="searchInput" type="text" size=10 
+			class="bg-gray-100 focus:outline-none border-b border-gray-100 focus:border-eucalyptus-300 md:text-right
+			placeholder-java-500 min-w-0 max-w-xxxs"
+			placeholder="search" />
+		<ul id="searchResults" class="bg-gray-200 px-2 divide-y divide-gray-400">
+		</ul>
+	</div>
+	
+</ul>
+	
+
+<div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
+	
+	
+	<a href='https://bilibili.com/' target="_blank" class="bilibili icon pl-1 text-eucalyptus-400 hover:text-java-400" title="bilibili link" rel="noopener"
+		aria-label="follow on bilibili——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M7.172 2.757L10.414 6h3.171l3.243-3.242a1 1 0 0 1 1.415 1.415l-1.829 1.827L18.5 6A3.5 3.5 0 0 1 22 9.5v8a3.5 3.5 0 0 1-3.5 3.5h-13A3.5 3.5 0 0 1 2 17.5v-8A3.5 3.5 0 0 1 5.5 6h2.085L5.757 4.171a1 1 0 0 1 1.415-1.415zM18.5 8h-13a1.5 1.5 0 0 0-1.493 1.356L4 9.5v8a1.5 1.5 0 0 0 1.356 1.493L5.5 19h13a1.5 1.5 0 0 0 1.493-1.356L20 17.5v-8A1.5 1.5 0 0 0 18.5 8zM8 11a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1zm8 0a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+	
+	
+	<a href='https://github.com/' target="_blank" class="github icon pl-1 text-eucalyptus-400 hover:text-java-400" title="github link" rel="noopener"
+		aria-label="follow on github——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M5.883 18.653c-.3-.2-.558-.455-.86-.816a50.32 50.32 0 0 1-.466-.579c-.463-.575-.755-.84-1.057-.949a1 1 0 0 1 .676-1.883c.752.27 1.261.735 1.947 1.588-.094-.117.34.427.433.539.19.227.33.365.44.438.204.137.587.196 1.15.14.023-.382.094-.753.202-1.095C5.38 15.31 3.7 13.396 3.7 9.64c0-1.24.37-2.356 1.058-3.292-.218-.894-.185-1.975.302-3.192a1 1 0 0 1 .63-.582c.081-.024.127-.035.208-.047.803-.123 1.937.17 3.415 1.096A11.731 11.731 0 0 1 12 3.315c.912 0 1.818.104 2.684.308 1.477-.933 2.613-1.226 3.422-1.096.085.013.157.03.218.05a1 1 0 0 1 .616.58c.487 1.216.52 2.297.302 3.19.691.936 1.058 2.045 1.058 3.293 0 3.757-1.674 5.665-4.642 6.392.125.415.19.879.19 1.38a300.492 300.492 0 0 1-.012 2.716 1 1 0 0 1-.019 1.958c-1.139.228-1.983-.532-1.983-1.525l.002-.446.005-.705c.005-.708.007-1.338.007-1.998 0-.697-.183-1.152-.425-1.36-.661-.57-.326-1.655.54-1.752 2.967-.333 4.337-1.482 4.337-4.66 0-.955-.312-1.744-.913-2.404a1 1 0 0 1-.19-1.045c.166-.414.237-.957.096-1.614l-.01.003c-.491.139-1.11.44-1.858.949a1 1 0 0 1-.833.135A9.626 9.626 0 0 0 12 5.315c-.89 0-1.772.119-2.592.35a1 1 0 0 1-.83-.134c-.752-.507-1.374-.807-1.868-.947-.144.653-.073 1.194.092 1.607a1 1 0 0 1-.189 1.045C6.016 7.89 5.7 8.694 5.7 9.64c0 3.172 1.371 4.328 4.322 4.66.865.097 1.201 1.177.544 1.748-.192.168-.429.732-.429 1.364v3.15c0 .986-.835 1.725-1.96 1.528a1 1 0 0 1-.04-1.962v-.99c-.91.061-1.662-.088-2.254-.485z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+	
+	
+	<a href='https://instagram.com/' target="_blank" class="instagram icon pl-1 text-eucalyptus-400 hover:text-java-400" title="instagram link" rel="noopener"
+		aria-label="follow on instagram——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm6.5-.25a1.25 1.25 0 0 1-2.5 0 1.25 1.25 0 0 1 2.5 0zM12 4c-2.474 0-2.878.007-4.029.058-.784.037-1.31.142-1.798.332-.434.168-.747.369-1.08.703a2.89 2.89 0 0 0-.704 1.08c-.19.49-.295 1.015-.331 1.798C4.006 9.075 4 9.461 4 12c0 2.474.007 2.878.058 4.029.037.783.142 1.31.331 1.797.17.435.37.748.702 1.08.337.336.65.537 1.08.703.494.191 1.02.297 1.8.333C9.075 19.994 9.461 20 12 20c2.474 0 2.878-.007 4.029-.058.782-.037 1.309-.142 1.797-.331.433-.169.748-.37 1.08-.702.337-.337.538-.65.704-1.08.19-.493.296-1.02.332-1.8.052-1.104.058-1.49.058-4.029 0-2.474-.007-2.878-.058-4.029-.037-.782-.142-1.31-.332-1.798a2.911 2.911 0 0 0-.703-1.08 2.884 2.884 0 0 0-1.08-.704c-.49-.19-1.016-.295-1.798-.331C14.925 4.006 14.539 4 12 4zm0-2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+	
+	
+	<a href='https://mail.google.com' target="_blank" class="mail icon pl-1 text-eucalyptus-400 hover:text-java-400" title="mail link" rel="noopener"
+		aria-label="follow on mail——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm17 4.238l-7.928 7.1L4 7.216V19h16V7.238zM4.511 5l7.55 6.662L19.502 5H4.511z"/>
+    </g>
+</svg>
+		</div>
+	</a>
+	
+	
+	
+	<a href='https://twitter.com/' target="_blank" class="twitter icon pl-1 text-eucalyptus-400 hover:text-java-400" title="twitter link" rel="noopener"
+		aria-label="follow on twitter——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M15.3 5.55a2.9 2.9 0 0 0-2.9 2.847l-.028 1.575a.6.6 0 0 1-.68.583l-1.561-.212c-2.054-.28-4.022-1.226-5.91-2.799-.598 3.31.57 5.603 3.383 7.372l1.747 1.098a.6.6 0 0 1 .034.993L7.793 18.17c.947.059 1.846.017 2.592-.131 4.718-.942 7.855-4.492 7.855-10.348 0-.478-1.012-2.141-2.94-2.141zm-4.9 2.81a4.9 4.9 0 0 1 8.385-3.355c.711-.005 1.316.175 2.669-.645-.335 1.64-.5 2.352-1.214 3.331 0 7.642-4.697 11.358-9.463 12.309-3.268.652-8.02-.419-9.382-1.841.694-.054 3.514-.357 5.144-1.55C5.16 15.7-.329 12.47 3.278 3.786c1.693 1.977 3.41 3.323 5.15 4.037 1.158.475 1.442.465 1.973.538z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+	
+	
+	<a href='https://weibo.com/' target="_blank" class="weibo icon pl-1 text-eucalyptus-400 hover:text-java-400" title="weibo link" rel="noopener"
+		aria-label="follow on weibo——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M20.194 14.197c0 3.362-4.53 6.424-9.926 6.424C5.318 20.62 1 18.189 1 14.534c0-1.947 1.18-4.087 3.24-6.088 2.832-2.746 6.229-4.033 7.858-2.448.498.482.723 1.122.719 1.858 1.975-.576 3.65-.404 4.483.752.449.623.532 1.38.326 2.207 1.511.61 2.568 1.77 2.568 3.382zm-4.44-2.07c-.386-.41-.4-.92-.198-1.41.208-.508.213-.812.12-.94-.264-.368-1.533-.363-3.194.311a2.043 2.043 0 0 1-.509.14c-.344.046-.671.001-.983-.265-.419-.359-.474-.855-.322-1.316.215-.67.18-1.076.037-1.215-.186-.18-.777-.191-1.659.143-1.069.405-2.298 1.224-3.414 2.306C3.925 11.54 3 13.218 3 14.534c0 2.242 3.276 4.087 7.268 4.087 4.42 0 7.926-2.37 7.926-4.424 0-.738-.637-1.339-1.673-1.652-.394-.113-.536-.171-.767-.417zm7.054-1.617a1 1 0 0 1-1.936-.502 4 4 0 0 0-4.693-4.924 1 1 0 1 1-.407-1.958 6 6 0 0 1 7.036 7.384z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+	
+	
+	<a href='https://youtube.com/' target="_blank" class="youtube icon pl-1 text-eucalyptus-400 hover:text-java-400" title="youtube link" rel="noopener"
+		aria-label="follow on youtube——Opens in a new window">
+		
+		<div class="fill-current h-8 w-8">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g>
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path fill-rule="nonzero" d="M19.606 6.995c-.076-.298-.292-.523-.539-.592C18.63 6.28 16.5 6 12 6s-6.628.28-7.069.403c-.244.068-.46.293-.537.592C4.285 7.419 4 9.196 4 12s.285 4.58.394 5.006c.076.297.292.522.538.59C5.372 17.72 7.5 18 12 18s6.629-.28 7.069-.403c.244-.068.46-.293.537-.592C19.715 16.581 20 14.8 20 12s-.285-4.58-.394-5.005zm1.937-.497C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5v-7l6 3.5-6 3.5z"/>
+    </g>
+</svg>
+
+		</div>
+	</a>
+	
+	
+</div>
+
+	<div class="text-sm text-gray-500 leading-tight a-gray">
+		Copyright © 2019–2024
+		<br />
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 4184 words in this page.
+	</div>
+</div>
+
+			</div>
+		</aside>
+		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
+			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/linux%E5%B8%B8%E8%A7%81%E5%90%8E%E9%97%A8%E5%8F%8A%E6%8E%92%E6%9F%A5%E6%8A%80%E6%9C%AF/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        Linux常见后门及排查技术
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/post/ssh%E4%B8%8Esshd%E7%9A%84%E5%8C%BA%E5%88%AB/">
+        SSH与SSHD的区别
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
+
+
+
+</div>
+<hr />
+<div class="pb-2">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "LZX" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+<hr />
+
+		</footer>
+		
+
+<script src="/dist/app.js"></script>
+
+
+<script src="/lib/fuse.min.js"></script> 
+<script src="/lib/fastsearch.js"></script>
+
+	</div>
+</body>
+
+</html>
