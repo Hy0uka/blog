@@ -7,10 +7,24 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Tue, 26 Nov 2024 20:13:54 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2024 18:01:48 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>BlockChain术语</title>
+      <link>https://wander1ng.com/post/blockchain%E6%9C%AF%E8%AF%AD/</link>
+      <pubDate>Tue, 10 Dec 2024 18:01:48 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/blockchain%E6%9C%AF%E8%AF%AD/</guid>
+      <description>&lt;h4 id=&#34;去中心化金融defi&#34;&gt;去中心化金融(DeFi)&lt;/h4&gt;
+&lt;p&gt;Decentralized Finance，俗称DeFi，是一种建立于区块链上的金融，不依赖于券商、交易所或银行等金融机构提供的金融工具，而是利用区块链上的智能合约(例如：以太坊)进行金融活动。DeFi平台允许人们向他人借出或借入资金，交易加密货币，并在类似储蓄的账户中获得利息。&lt;/p&gt;
+&lt;h4 id=&#34;智能合约smart-contract&#34;&gt;智能合约(Smart contract)&lt;/h4&gt;
+&lt;p&gt;是一种智能协议，在区块链内制定合约时使用，当中内含了代码函数 (Function)，亦能与其他合约进行交互、做决策、存储资料及发送以太币等功能。智能合约主力提供验证及执行合约内所订立的条件。智能合约允许在没有第三方的情况下进行可信交易。这些交易可追踪且不可逆转。&lt;/p&gt;
+&lt;p&gt;智能合约的目的是提供优于传统合同方法的安全，并减少与合同相关的其他交易成本。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>SSH与SSHD的区别</title>
