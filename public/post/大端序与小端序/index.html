@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地 </title>
+	<title>清夜无尘の一方天地  | 大端序与小端序</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/tags/%E6%8A%80%E6%9C%AF/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
-	<link rel="feed" href="/tags/%E6%8A%80%E6%9C%AF/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
 	
 	
 	
@@ -148,23 +145,82 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-					<div class="pb-4">
-		<h1 >
-			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-		</h1>
-	</div>
+				
+<div>
+	<h2>
+		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+	</h2>
+</div>
+<h1 class="pt-2">大端序与小端序</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">Meta</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/meta'>Meta</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2020-12-20T11:06:11&#43;08:00">2020-12-20</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><p><strong>大端序</strong>：高位字节在前(低地址)，低位字节在后(高地址)，属于人类读写数值的方法。</p>
+<p>**小端序：**低位字节在前(低地址)，高位字节在后(高地址)，属于计算机读写数值的方式。</p>
+<h4 id="原因">原因</h4>
+<p>首先，为什么会有小端字节序？</p>
+<p>答案是，计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的。所以，计算机的内部处理都是小端字节序。但是，人类还是习惯读写大端字节序。所以，除了计算机的内部处理，其他的场合几乎都是大端字节序，比如网络传输和文件储存。</p>
+<h4 id="处理方式">处理方式</h4>
+<p>一般字节序的问题由外部设备处理，即由从存储中进行读取的设备处理。</p>
+<p>对于大端序：</p>
+<p><code>x = buf[offset]&lt;&lt;8 | buf[offset+1];</code></p>
+<p>符合人类理解，低地址存放的高位乘以位数，或运算把低位加上去。</p>
+<p>对于小端序：</p>
+<p><code>x = buf[offset+1] * 256 + buf[offset];</code></p>
+<p>高地址存放的高位乘以位数，再把低地址存放的低位加上去。</p>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" >
+		<a href="/post/" title="Post page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Post
 		</a>
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/tags/" title="Tags page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+		<a href="/tags/" title="Tags page" >
 			Tags
 		</a>
 	</li>
@@ -175,10 +231,6 @@ onload='renderMathInElement(document.body);'></script>
 		</a>
 	</li>
 	
-	
-	<li>
-		<a href='/tags/%E6%8A%80%E6%9C%AF/index.xml'>RSS</a>
-	</li>
 	
 	
 	
@@ -192,197 +244,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-<h1 class="pb-4">
-	技术
-</h1>
-<div>
-	<section>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/blockchain%E6%9C%AF%E8%AF%AD/">
-			区块链&amp;BTCのtutorial
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		BlcokChain</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-12-10T18:01:48&#43;08:00">2024-12-10</time>
-	</div>
-</div>
-
-		</div>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E4%BB%8E%E6%AD%A3%E5%90%91%E6%9C%A8%E9%A9%AC%E7%BC%96%E5%86%99%E7%9C%8B%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">
-			从正向木马编写看逆向工程
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		新手村知识</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2020-11-26T20:11:59&#43;08:00">2020-11-26</time>
-	</div>
-</div>
-
-		</div>
-		
-	</section>
-</div>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -500,25 +361,77 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a 
-			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
-			<br />
-			49 pages, 48789 words in total.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 331 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/%E4%BB%8E%E6%AD%A3%E5%90%91%E6%9C%A8%E9%A9%AC%E7%BC%96%E5%86%99%E7%9C%8B%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        从正向木马编写看逆向工程
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/post/%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/">
+        转储文件的修复原理
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
 
 
 
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/about/">About</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/gensis/">Gensis</a>
+		
+</span>
+</div>
 
-
-
+</div>
+<hr />
+<div class="pb-2">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "LZX" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+<hr />
 
 		</footer>
 		

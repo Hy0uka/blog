@@ -17,7 +17,7 @@ draft = true
 - [ ] APT-Q-12针对WPS的探针
 
 - [ ] APT-Q-12针对某邮箱平台的第一个0day
-- [ ] APT-Q-12针对某邮箱平台的第二个0day
+- [ ] APT-Q-14针对某邮箱平台的第二个0day
 - [ ] APT-Q-14针对某Android 平台邮件客户端 0day 漏洞
 
 

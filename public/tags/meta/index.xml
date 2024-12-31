@@ -7,10 +7,32 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Wed, 19 Jun 2019 22:02:31 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Dec 2020 11:06:11 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/tags/meta/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>大端序与小端序</title>
+      <link>https://wander1ng.com/post/%E5%A4%A7%E7%AB%AF%E5%BA%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E5%BA%8F/</link>
+      <pubDate>Sun, 20 Dec 2020 11:06:11 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E5%A4%A7%E7%AB%AF%E5%BA%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E5%BA%8F/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;大端序&lt;/strong&gt;：高位字节在前(低地址)，低位字节在后(高地址)，属于人类读写数值的方法。&lt;/p&gt;
+&lt;p&gt;**小端序：**低位字节在前(低地址)，高位字节在后(高地址)，属于计算机读写数值的方式。&lt;/p&gt;
+&lt;h4 id=&#34;原因&#34;&gt;原因&lt;/h4&gt;
+&lt;p&gt;首先，为什么会有小端字节序？&lt;/p&gt;
+&lt;p&gt;答案是，计算机电路先处理低位字节，效率比较高，因为计算都是从低位开始的。所以，计算机的内部处理都是小端字节序。但是，人类还是习惯读写大端字节序。所以，除了计算机的内部处理，其他的场合几乎都是大端字节序，比如网络传输和文件储存。&lt;/p&gt;
+&lt;h4 id=&#34;处理方式&#34;&gt;处理方式&lt;/h4&gt;
+&lt;p&gt;一般字节序的问题由外部设备处理，即由从存储中进行读取的设备处理。&lt;/p&gt;
+&lt;p&gt;对于大端序：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x = buf[offset]&amp;lt;&amp;lt;8 | buf[offset+1];&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;符合人类理解，低地址存放的高位乘以位数，或运算把低位加上去。&lt;/p&gt;
+&lt;p&gt;对于小端序：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x = buf[offset+1] * 256 + buf[offset];&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;高地址存放的高位乘以位数，再把低地址存放的低位加上去。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>About</title>
