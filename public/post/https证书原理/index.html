@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地 </title>
+	<title>清夜无尘の一方天地  | HTTPS证书原理</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -27,9 +27,6 @@
 
 	
 
-	
-	<link rel="alternate" href="/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
-	<link rel="feed" href="/index.xml" type="application/rss+xml" title="清夜无尘の一方天地">
 	
 	
 	
@@ -148,16 +145,91 @@ onload='renderMathInElement(document.body);'></script>
 		<header class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-1 md:order-1 max-w-2xl">
 			<div
 				class="z-50 bg-gray-100 bg-opacity-75 bg-opacity-custom lg:min-w-0.7 max-w-xl md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 pt-2">
-					<div class="pb-4">
-		<h1 >
-			<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
-		</h1>
-	</div>
+				
+<div>
+	<h2>
+		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
+	</h2>
+</div>
+<h1 class="pt-2">HTTPS证书原理</h1>
+
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">每一次安全访问网页的背后</h3>
+
+<div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
+	
+
+	
+
+	
+	
+	
+	
+	<a class="post-taxonomy-tag text-eucalyptus-500"
+		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
+	
+	
+	
+</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
+		datetime="2025-01-07T17:11:13&#43;08:00">2025-1-7</time>
+</div>
+
+<hr />
+
+
+			</div>
+		</header>
+		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
+			
+
+<article>
+	<section class="mx-auto content">
+		<div class="c-rich-text"><p>​	HTTPS实际上是HTTP+SSL/TLS，此处HTTPS证书指的就是SSL/TLS证书（SSL是TLS的早先版本，下文统称SSL证书）。</p>
+<p>​	<strong>SSL证书是托管在网站源服务器中的数据文件</strong>（就像建立这个博客网站，实现HTTPS需要将证书文件配置在相应的服务器目录）。SSL证书促成了SSL/TLS加密，它们含有网站的公钥和网站标识以及相关信息。</p>
+<p>​	SSL证书在一个数据文件中包含以下信息：</p>
+<ol>
+<li>针对其颁发证书的域名</li>
+<li>证书颁发给那一个人、组织或设备</li>
+<li>证书颁发机构</li>
+<li>证书颁发机构的数字签名</li>
+<li>关联的子域</li>
+<li>证书的颁发日期和到期日期</li>
+<li>公钥</li>
+</ol>
+<p>​	该证书托管在一个网站的源服务器上，并被发送到任何请求加载该网站的设备上。所以网络空间测绘能够使用证书作为规则之一。</p>
+<p>​	**HTTPS如何帮助验证Web服务器身份？**私钥可以确认服务器的身份，当客户端与网站建立连接时，拥有与网站SSL证书中公钥匹配的私钥可以证明该服务器确实是该网站的合法主机，反之如果HTTP遭受某些类型的攻击，并没有检查私钥的行为，便可能访问到仿冒网站。</p>
+<p>​	某些类型的攻击具体指的是：在途攻击(中间人攻击)，DNS劫持，BGP劫持，域欺骗。</p>
+<p>​	BGP 劫持是指攻击者恶意重新路由互联网流量的情况。攻击者通过不实地宣布实际上没有拥有、控制或路由到的 IP 地址组（称为 IP 前缀）的所有权来实现此目的。BGP 劫持就好比有人改变一段高速公路上的所有标志，将汽车重新引导到错误的出口。</p>
+<p>​	什么是BGP：BGP 是边界网关协议的缩写，是互联网的路由协议。换句话说，它提供方向，以便流量尽可能有效地从一个 IP 地址传播到另一个 IP 地址。IP 地址是给定网站的实际网址。当用户键入网站名称、而浏览器找到并加载该网站名称时，请求和响应会在用户的 IP 地址和网站的 IP 地址之间来回传递。DNS（域名系统）服务器提供 IP 地址，但是 BGP 提供到达该 IP 地址的最有效方法。大体而言，如果 DNS 是互联网的通讯簿，BGP 就是互联网的路线图。</p>
+<p>​	什么是域欺骗：域欺骗最典型的例子就是钓鱼网站以及电子邮件欺骗，电子邮件欺骗是指攻击者使用带有合法网站域名的虚假电子邮件地址。由于域验证未内置在简单邮件传输协议（SMTP）（构建电子邮件的协议）中，因此导致了这种可能。最近开发的电子邮件安全协议，例如 DMARC 和 DKIM，可以提供更好的验证功能。</p>
+<p>​	<strong>一次SSL连接中的证书校验过程</strong></p>
+<p>​	有效的证书需要由权威机构CA签名，CA会使用自己的私钥来生成数字签名。这个权威机构的CA客户端是完全可以信任的，客户端浏览器会安装CA的根证书，由CA签名的根证书是被CA所信任的，构成了信任链之后客户端可以信任该服务器的证书。</p>
+<ol>
+<li>客户端与服务器建立连接时，服务器将自身的证书传输给客户端。</li>
+<li>客户端在验证证书的时候，先看CA的根证书是否在自己信任的根证书列表中。</li>
+<li>再用CA的根证书提供的公钥来验证服务器证书中的数字签名。如果公钥可以解开签名，证明该证书确实被CA所信任。再看证书是否过期，访问的网站域名是否与证书绑定的域名一致，这些都通过说明证书可以信任。</li>
+<li>接下来使用服务器证书里面的公钥进行服务器身份的验证。客户端生成一个随机数给到服务器，<strong>服务器对随机数用私钥进行签名</strong>，回传给客户端。客户端用服务器证书的公钥对随机数的签名进行验证，若验证通过，则说明对应服务器确实拥有对应服务器证书的私钥。</li>
+<li>接下来客户端会生成会话密钥，使用服务器公钥加密。服务器用自己的私钥解密后，用会话密钥加密数据进行传输，建立SSL连接。</li>
+</ol>
+<p>搭建博客时，供应商实际上能够确认你的域名所有权，有一条&quot;CA机构-&gt;域名供应商-&gt;你&quot;的信任链（即使你在A处买了域名，在B处买了服务器，最后免费证书也是A处生成的，再部署到B处服务器）。</p>
+</div>
+	</section>
+
+
+</article>
+
+		</main>
+		<div class="w-full h-0 flex-none order-3"></div>
+		<aside role="contentinfo"
+			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
+			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
+				
+	<div class="md:max-w-xs  flex flex-col md:items-end">
 	<ul class="font-serif flex-grow-0 flex justify-between flex-wrap md:flex-col">
 	
 	
 	<li class="px-1 md:px-0">
-		<a href="/post/" title="Post page" >
+		<a href="/post/" title="Post page" 
+			class="font-medium text-medium-red-violet-600 hover:text-medium-red-violet-400" >
 			Post
 		</a>
 	</li>
@@ -175,10 +247,6 @@ onload='renderMathInElement(document.body);'></script>
 	</li>
 	
 	
-	<li>
-		<a href='/index.xml'>RSS</a>
-	</li>
-	
 	
 	
 	<div id="fastSearch" class="m-0">
@@ -191,308 +259,6 @@ onload='renderMathInElement(document.body);'></script>
 	</div>
 	
 </ul>
-			</div>
-		</header>
-		<main role="main" class="w-full md:w-3/5 xl:w-1/2 max-w-3xl order-2 md:order-2 min-h-70vh pt-2 pb-4">
-			
-
-<div class="font-serif text-medium-red-violet-400 pt-3">
-	《行香子·述怀》清夜无尘，月色如银。酒斟时、须满十分。浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。
-虽抱文章，开口谁亲。且陶陶、乐尽天真。几时归去，作个闲人。对一张琴，一壶酒，一溪云。
-</div>
-<hr  class="pt-2"/>
-
-
-<div>
-	<section>
-		
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E5%A4%A7%E7%AB%AF%E5%BA%8F%E4%B8%8E%E5%B0%8F%E7%AB%AF%E5%BA%8F/">
-			大端序与小端序
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		Meta</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/meta'>Meta</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2020-12-20T11:06:11&#43;08:00">2020-12-20</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E4%BB%8E%E6%AD%A3%E5%90%91%E6%9C%A8%E9%A9%AC%E7%BC%96%E5%86%99%E7%9C%8B%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">
-			从正向木马编写看逆向工程
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		新手村知识</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E6%8A%80%E6%9C%AF'>技术</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2020-11-26T20:11:59&#43;08:00">2020-11-26</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/">
-			互联网协议入门
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		Computer Net-working</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD'>网络基础设施</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2020-07-16T15:24:35&#43;08:00">2020-7-16</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/ctf-wiki/">
-			CTF Wiki
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		CTF Wiki中几道例题的思路</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/ctf'>CTF</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2019-06-20T00:06:21&#43;08:00">2019-6-20</time>
-	</div>
-</div>
-
-		</div>
-		<div>
-			<div class="pb-8">
-	<div class="font-serif font-medium text-xl">
-		<a href="https://wander1ng.com/post/gensis/">
-			Gensis
-		</a>
-	</div>
-	
-	
-	
-	
-	<div class="font-serif text-gray-600 font-light pt-1">
-		Blog初创，天地异象</div>
-
-	
-	<div class="flex flex-wrap justify-between pt-1"><div class="md:flex-grow-0 font-light">
-	
-
-	
-
-	
-	
-	
-	
-	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/meta'>Meta</a>
-	
-	
-	
-</div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light"
-			datetime="2019-06-19T02:56:00&#43;08:00">2019-6-19</time>
-	</div>
-</div>
-
-		</div>
-		
-	</section>
-</div>
-
-		</main>
-		<div class="w-full h-0 flex-none order-3"></div>
-		<aside role="contentinfo"
-			class="w-full md:w-2/5 xl:w-1/2 md:pr-12 lg:pr-20 xl:pr-24 order-4 md:order-3 md:sticky md:bottom-0 self-end max-w-2xl">
-			<div class="md:float-right md:text-right leading-loose tracking-tight md:mb-2">
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="md:max-w-xs  flex flex-col md:items-end pt-2">
 	
 
 <div class="flex flex-wrap-reverse md:justify-end content-end md:content-start justify-start items-start md:flex-col  max-h-16">
@@ -610,139 +376,70 @@ onload='renderMathInElement(document.body);'></script>
 	
 </div>
 
-	<div class="a-gray text-sm text-gray-500 leading-tight">
+	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a 
-			href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>.
-			<br />
-			50 pages, 50302 words in total.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1513 words in this page.
 	</div>
 </div>
+
 			</div>
 		</aside>
 		<footer class="w-full md:w-3/5 xl:w-1/2 order-3 max-w-3xl md:order-4 pt-2">
 			
+<hr class="double-line" />
+<div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
+    
+    <a class="flex-grow-0" href="/post/blockchain%E6%9C%AF%E8%AF%AD/">
+        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24">
+            <path fill="none" d="M0 0h24v24H0z" />
+            <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
+        区块链&amp;BTCのtutorial
+    </a>
+    
+    
+</div>
+<div >
 
 
 
+<div class="font-serif pb-2 flex align-start leading-loose">
+	<span class="heading pr-6 leading-loose">Related</span>
+	<span >
+		
+			<a href="/post/blockchain%E6%9C%AF%E8%AF%AD/">区块链&amp;BTCのtutorial</a>&nbsp;&nbsp;&#47;&nbsp;
+		
+			<a href="/post/%E4%BB%8E%E6%AD%A3%E5%90%91%E6%9C%A8%E9%A9%AC%E7%BC%96%E5%86%99%E7%9C%8B%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/">从正向木马编写看逆向工程</a>
+		
+</span>
+</div>
+
+</div>
 <hr />
-
-
-<ul class="flex justify-between">
-    
-    <li class="page-item">
-        <a href="/" class="page-link" aria-label="First"><span aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevrons-left h-4 w-4 relative -bottom-1">
-                    <polyline points="11 17 6 12 11 7"></polyline>
-                    <polyline points="18 17 13 12 18 7"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/4/"  class="page-link" aria-label="Previous"><span
-                aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevron-left h-4 w-4 relative -bottom-1">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    <div class="flex-grow-3"></div>
+<div class="pb-2">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/">1</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/2/">2</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/3/">3</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item"><a class="page-link" href="/page/4/">4</a>
-    </li>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <li class="page-item active"><a class="page-link" href="/page/5/">5</a>
-    </li>
-    
-    
-    <div class="flex-grow-3"></div>
-    <li class="page-item disabled">
-        <a  class="page-link" aria-label="Next"><span
-                aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevron-right h-4 w-4 relative -bottom-1">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-    <li class="page-item">
-        <a href="/page/5/" class="page-link" aria-label="Last"><span aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="feather feather-chevrons-right h-4 w-4 relative -bottom-1">
-                    <polyline points="13 17 18 12 13 7"></polyline>
-                    <polyline points="6 17 11 12 6 7"></polyline>
-                </svg>
-            </span></a>
-    </li>
-    
-</ul>
-
-
-
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "LZX" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+<hr />
 
 		</footer>
 		

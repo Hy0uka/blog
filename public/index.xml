@@ -7,10 +7,47 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Tue, 31 Dec 2024 16:02:12 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2025 17:11:13 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTTPS证书原理</title>
+      <link>https://wander1ng.com/post/https%E8%AF%81%E4%B9%A6%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Tue, 07 Jan 2025 17:11:13 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/https%E8%AF%81%E4%B9%A6%E5%8E%9F%E7%90%86/</guid>
+      <description>&lt;p&gt;​	HTTPS实际上是HTTP+SSL/TLS，此处HTTPS证书指的就是SSL/TLS证书（SSL是TLS的早先版本，下文统称SSL证书）。&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;SSL证书是托管在网站源服务器中的数据文件&lt;/strong&gt;（就像建立这个博客网站，实现HTTPS需要将证书文件配置在相应的服务器目录）。SSL证书促成了SSL/TLS加密，它们含有网站的公钥和网站标识以及相关信息。&lt;/p&gt;
+&lt;p&gt;​	SSL证书在一个数据文件中包含以下信息：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;针对其颁发证书的域名&lt;/li&gt;
+&lt;li&gt;证书颁发给那一个人、组织或设备&lt;/li&gt;
+&lt;li&gt;证书颁发机构&lt;/li&gt;
+&lt;li&gt;证书颁发机构的数字签名&lt;/li&gt;
+&lt;li&gt;关联的子域&lt;/li&gt;
+&lt;li&gt;证书的颁发日期和到期日期&lt;/li&gt;
+&lt;li&gt;公钥&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;​	该证书托管在一个网站的源服务器上，并被发送到任何请求加载该网站的设备上。所以网络空间测绘能够使用证书作为规则之一。&lt;/p&gt;
+&lt;p&gt;​	**HTTPS如何帮助验证Web服务器身份？**私钥可以确认服务器的身份，当客户端与网站建立连接时，拥有与网站SSL证书中公钥匹配的私钥可以证明该服务器确实是该网站的合法主机，反之如果HTTP遭受某些类型的攻击，并没有检查私钥的行为，便可能访问到仿冒网站。&lt;/p&gt;
+&lt;p&gt;​	某些类型的攻击具体指的是：在途攻击(中间人攻击)，DNS劫持，BGP劫持，域欺骗。&lt;/p&gt;
+&lt;p&gt;​	BGP 劫持是指攻击者恶意重新路由互联网流量的情况。攻击者通过不实地宣布实际上没有拥有、控制或路由到的 IP 地址组（称为 IP 前缀）的所有权来实现此目的。BGP 劫持就好比有人改变一段高速公路上的所有标志，将汽车重新引导到错误的出口。&lt;/p&gt;
+&lt;p&gt;​	什么是BGP：BGP 是边界网关协议的缩写，是互联网的路由协议。换句话说，它提供方向，以便流量尽可能有效地从一个 IP 地址传播到另一个 IP 地址。IP 地址是给定网站的实际网址。当用户键入网站名称、而浏览器找到并加载该网站名称时，请求和响应会在用户的 IP 地址和网站的 IP 地址之间来回传递。DNS（域名系统）服务器提供 IP 地址，但是 BGP 提供到达该 IP 地址的最有效方法。大体而言，如果 DNS 是互联网的通讯簿，BGP 就是互联网的路线图。&lt;/p&gt;
+&lt;p&gt;​	什么是域欺骗：域欺骗最典型的例子就是钓鱼网站以及电子邮件欺骗，电子邮件欺骗是指攻击者使用带有合法网站域名的虚假电子邮件地址。由于域验证未内置在简单邮件传输协议（SMTP）（构建电子邮件的协议）中，因此导致了这种可能。最近开发的电子邮件安全协议，例如 DMARC 和 DKIM，可以提供更好的验证功能。&lt;/p&gt;
+&lt;p&gt;​	&lt;strong&gt;一次SSL连接中的证书校验过程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​	有效的证书需要由权威机构CA签名，CA会使用自己的私钥来生成数字签名。这个权威机构的CA客户端是完全可以信任的，客户端浏览器会安装CA的根证书，由CA签名的根证书是被CA所信任的，构成了信任链之后客户端可以信任该服务器的证书。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;客户端与服务器建立连接时，服务器将自身的证书传输给客户端。&lt;/li&gt;
+&lt;li&gt;客户端在验证证书的时候，先看CA的根证书是否在自己信任的根证书列表中。&lt;/li&gt;
+&lt;li&gt;再用CA的根证书提供的公钥来验证服务器证书中的数字签名。如果公钥可以解开签名，证明该证书确实被CA所信任。再看证书是否过期，访问的网站域名是否与证书绑定的域名一致，这些都通过说明证书可以信任。&lt;/li&gt;
+&lt;li&gt;接下来使用服务器证书里面的公钥进行服务器身份的验证。客户端生成一个随机数给到服务器，&lt;strong&gt;服务器对随机数用私钥进行签名&lt;/strong&gt;，回传给客户端。客户端用服务器证书的公钥对随机数的签名进行验证，若验证通过，则说明对应服务器确实拥有对应服务器证书的私钥。&lt;/li&gt;
+&lt;li&gt;接下来客户端会生成会话密钥，使用服务器公钥加密。服务器用自己的私钥解密后，用会话密钥加密数据进行传输，建立SSL连接。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;搭建博客时，供应商实际上能够确认你的域名所有权，有一条&amp;quot;CA机构-&amp;gt;域名供应商-&amp;gt;你&amp;quot;的信任链（即使你在A处买了域名，在B处买了服务器，最后免费证书也是A处生成的，再部署到B处服务器）。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>区块链&amp;BTCのtutorial</title>
