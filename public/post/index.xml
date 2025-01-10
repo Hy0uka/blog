@@ -1543,6 +1543,30 @@ git push https://github.com/username/projectname master(main)
     </item>
     
     <item>
+      <title>整理一些基础Web攻防知识</title>
+      <link>https://wander1ng.com/post/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80web%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Sat, 08 Jan 2022 15:19:02 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80web%E7%9F%A5%E8%AF%86/</guid>
+      <description>&lt;h3 id=&#34;sql注入漏洞&#34;&gt;SQL注入漏洞&lt;/h3&gt;
+&lt;p&gt;SQL注入的原理：用户输入的数据被解释器执行&lt;/p&gt;
+&lt;p&gt;SQL注入的分类&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;数字型注入：多出现在ASP/PHP等弱语言中，弱类型语言会自动推导变量类型。例如id=8，PHP自动推导变量id的数据类型为int类型。id=8 and 1=1，则会推导为string类型，这是弱语言类型的特性。强类型语言的数字型注入漏洞会比弱类型语言少很多。&lt;/li&gt;
+&lt;li&gt;字符型注入：输入参数为字符串时，称为字符型注入。最大区别在于：数字型注入不需要单引号闭合，字符串类型一般要使用单引号来闭合。字符型注入最关键的是如何闭合SQL语句以及注释多余的代码。当查询内容为字符串时，SQL代码如下&lt;code&gt;select * from table where username = &#39;admin&#39;&lt;/code&gt;，当攻击者进行SQL注入时，直接输入&lt;code&gt;select * from table where username = &#39;admin and 1=1&#39; &lt;/code&gt;会被当成查询语句，此处想要注入必须注意字符串闭合问题：&lt;code&gt;select * from table where username = &#39;admin&#39; and 1=1 --&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;SQL注入的分类：POST注入，即注入字段在POST数据中。Cookie注入，注入字段在Cookie数据中。延时注入，使用数据库延时特性注入。搜索注入，注入处为搜索的地点。base64注入，注入字符串需要经过base64加密。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;上传漏洞&#34;&gt;上传漏洞&lt;/h3&gt;
+&lt;h3 id=&#34;xss跨站脚本漏洞&#34;&gt;XSS跨站脚本漏洞&lt;/h3&gt;
+&lt;p&gt;XXS又叫CSS即Cross Site Scripting，即跨站脚本攻击。指的是攻击者在网页中嵌入客户端脚本，通常是JS编写的恶意代码。当用户使用浏览器浏览该网页时，恶意代码将会被用户的浏览器执行。&lt;/p&gt;
+&lt;p&gt;JS加载外部的代码文件可以是任意扩展名（无扩展名也可以），如&lt;code&gt;&amp;lt;script src=&amp;quot;http://www.secbug.org/x.jpg&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;，即使文件为图片扩展名x.jpg，只要其中包含JS代码就会被执行。&lt;/p&gt;
+&lt;h3 id=&#34;命令执行漏洞&#34;&gt;命令执行漏洞&lt;/h3&gt;
+&lt;h3 id=&#34;文件包含漏洞&#34;&gt;文件包含漏洞&lt;/h3&gt;
+&lt;h3 id=&#34;其它漏洞&#34;&gt;其它漏洞&lt;/h3&gt;
+</description>
+    </item>
+    
+    <item>
       <title>转储文件的修复原理</title>
       <link>https://wander1ng.com/post/%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/</link>
       <pubDate>Wed, 30 Dec 2020 12:27:23 +0800</pubDate>
