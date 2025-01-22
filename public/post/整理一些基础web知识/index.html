@@ -195,6 +195,11 @@ onload='renderMathInElement(document.body);'></script>
 <h3 id="xss跨站脚本漏洞">XSS跨站脚本漏洞</h3>
 <p>XXS又叫CSS即Cross Site Scripting，即跨站脚本攻击。指的是攻击者在网页中嵌入客户端脚本，通常是JS编写的恶意代码。当用户使用浏览器浏览该网页时，恶意代码将会被用户的浏览器执行。</p>
 <p>JS加载外部的代码文件可以是任意扩展名（无扩展名也可以），如<code>&lt;script src=&quot;http://www.secbug.org/x.jpg&quot;&gt;&lt;/script&gt;</code>，即使文件为图片扩展名x.jpg，只要其中包含JS代码就会被执行。</p>
+<p>XSS的分类</p>
+<ol>
+<li>反射型XSS，也称非持久性XSS。当用户访问一个带有XSS代码的URL请求时，服务器端接收数据后处理，然后把带有XSS代码的数据发送到浏览器。浏览器引擎解析执行这段带有XSS代码的数据后，最终造成XSS漏洞，这个过程就像一次反射故称反射型XSS。如<code>?php $username = $_GET['username'];echo $username; ?&gt;</code>这段代码中，程序接受username值后再输出。如果输入<code>username=&lt;script&gt;恶意代码&lt;/script&gt;</code>，将会造成反射型XSS漏洞。</li>
+<li>存储型XSS，又被成为持久性XSS，是最危险的一种跨站脚本。允许用户存储数据的Web应用程序都可能会出现存储型XSS。攻击者提交XSS代码到服务器后，被服务端接受并存储。攻击者再次访问某个页面是，这段恶意代码被程序读出来响应给浏览器引擎执行。存储型与反射型、DOM型相比，具有较高的隐蔽性和危害性，最大的区别在于反射型和DOM型都必须依靠用户手动触发，存储型不需要。在测试是否存在XSS时，首先要确定输入点和输出点。</li>
+</ol>
 <h3 id="命令执行漏洞">命令执行漏洞</h3>
 <h3 id="文件包含漏洞">文件包含漏洞</h3>
 <h3 id="其它漏洞">其它漏洞</h3>
@@ -366,7 +371,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 739 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1174 words in this page.
 	</div>
 </div>
 
