@@ -1,9 +1,9 @@
 +++
 title = 'Fofa测绘规则收集'
 
-description = "Meta"
+description = "网络测绘"
 
-tags = [ "Meta" ]
+tags = [ "技术" ]
 
 date = 2025-02-10T10:20:08+08:00
 

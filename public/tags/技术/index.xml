@@ -7,10 +7,72 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Tue, 07 Jan 2025 17:11:13 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2025 10:20:08 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/tags/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fofa测绘规则收集</title>
+      <link>https://wander1ng.com/post/fofa%E6%B5%8B%E7%BB%98%E8%A7%84%E5%88%99%E6%94%B6%E9%9B%86/</link>
+      <pubDate>Mon, 10 Feb 2025 10:20:08 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/fofa%E6%B5%8B%E7%BB%98%E8%A7%84%E5%88%99%E6%94%B6%E9%9B%86/</guid>
+      <description>&lt;h2 id=&#34;哪些字段可用于拓线&#34;&gt;&lt;strong&gt;哪些字段可用于拓线&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;单一的字段有时不能完全代表网站的所有特征，通常我们需要组合字段形成FOFA语法&lt;/strong&gt;，以下提供一些可以用于拓线的字段：&lt;/p&gt;
+&lt;p&gt;fid（FOFA聚合多个关键特征形成的唯一标识符。通过FID，用户可以快速找到具有相似特征的网站资产‌）&lt;/p&gt;
+&lt;p&gt;jarm（JARM 是一个活动的传输层安全 (TLS)服务器指纹识别工具）&lt;/p&gt;
+&lt;p&gt;header_hash（FOFA的header_hash特征是指HTTP响应头信息的哈希值）&lt;/p&gt;
+&lt;p&gt;body_hash (HTML正文计算的hash值)&lt;/p&gt;
+&lt;p&gt;banner（协议banner信息）&lt;/p&gt;
+&lt;p&gt;cert（证书）&lt;/p&gt;
+&lt;p&gt;header（HTTP头信息）&lt;/p&gt;
+&lt;p&gt;server（网站server）&lt;/p&gt;
+&lt;p&gt;port（开放端口）&lt;/p&gt;
+&lt;p&gt;icon_hash（标识设备的图标哈希值‌）&lt;/p&gt;
+&lt;p&gt;certs_issuer_org（证书颁发者组织）&lt;/p&gt;
+&lt;p&gt;certs_issuer_cn（证书颁发者通用名称）&lt;/p&gt;
+&lt;p&gt;certs_subject_org（证书持有者组织）&lt;/p&gt;
+&lt;p&gt;certs_subject_cn（ 证书持有者通用名称）&lt;/p&gt;
+&lt;p&gt;lastupdatetime（FOFA最后更新时间）&lt;/p&gt;
+&lt;p&gt;tls_ja3s（JA3S 用于 SSL/TLS 通信的服务器端，指纹是使用 ServerHello 数据包中的属性 SSL 版本、密码和 SSLExtension生成的）&lt;/p&gt;
+&lt;p&gt;tls_version（TLS 协议版本）&lt;/p&gt;
+&lt;h2 id=&#34;特征选取&#34;&gt;&lt;strong&gt;特征选取&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;特征的选取通常基于以下几个因素：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;唯一性&lt;/strong&gt;：选择那些能够独特标识APT组织活动的特征，以减少误报和提高准确性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;稳定性&lt;/strong&gt;：选择那些不易频繁变化的特征，如某些特定的技术栈或服务配置。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可探测性&lt;/strong&gt;：选择那些可以通过网络扫描或情报收集轻易探测到的特征。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;相关性&lt;/strong&gt;：选择与APT组织行为模式紧密相关联的特征。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;哪些特征可用于拓线我们已经知道了，那如何快速锁定APT组织相关资产呢，以下是一些可&lt;strong&gt;优先选取的特征&lt;/strong&gt;及其理由：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;证书特征&lt;/strong&gt;：首先优先选取证书特征，因为证书信息&lt;strong&gt;相对稳定，不易频繁变化&lt;/strong&gt;，可以作为APT组织资产识别的重要特征。证书提供了关于服务器身份的详细信息，包括颁发者、有效期、公钥等。证书的某些属性，如颁发机构（Issuer）和主题（Subject）中的组织名称，可以作为识别APT组织资产的重要线索。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TLS指纹&lt;/strong&gt;：其次，选取TLS指纹，如JARM或JA3S指纹。这些指纹&lt;strong&gt;基于TLS握手过程中的详细信息，可以唯一标识一个服务器的TLS配置&lt;/strong&gt;。TLS指纹可以帮助识别即使在IP地址或域名变化的情况下，仍然保持相同TLS配置的APT资产。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HTTP响应头特征&lt;/strong&gt;：HTTP响应头特征，如Server头、Content-Type、Content-Length等。这些特征可以提供关于服务器软件、页面内容和响应大小的信息。通过分析这些特征，可以识别出&lt;strong&gt;与APT组织相关的特定服务器配置或行为模式并且这些信息相对稳定，易于通过网络扫描探测到&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HTTP响应Banner特征&lt;/strong&gt;：Banner特征，如HTTP响应中的服务版本信息，也可以作为识别APT资产的线索。这些信息可能在APT组织的攻击基础设施中保持一致，从而帮助识别相关的资产。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;基于tls指纹关联&#34;&gt;&lt;strong&gt;基于TLS指纹关联&lt;/strong&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JA3方法用于收集Client Hello数据包中以下字段的十进制字节值&lt;/strong&gt;：版本、可接受的密码、扩展列表、椭圆曲线密码和椭圆曲线密码格式，有助于识别客户端。JA3/S方法用于 SSL/TLS 通信的服务器端，指纹是使用 ServerHello 数据包中的属性 SSL 版本、密码和 SSLExtension生成的。JA3、JA3/S主要基于流量，服务器面对不同客户端产生不同的JA3S指纹。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JARM则是完全主动的扫描并生成指纹，服务器可以生产唯一的JARM指纹&lt;/strong&gt;。是一个活动的传输层安全 (TLS)服务器指纹识别工具，可以快速验证组中的所有服务器是否具有相同的 TLS 配置。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;基于header的指纹关联&#34;&gt;&lt;strong&gt;基于Header的指纹关联&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;HTTP header中包括以下几种信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;**Content-Type：**代表内容的媒体类型和编码格式。&lt;/li&gt;
+&lt;li&gt;**Content-Length：**表示传输的请求／响应的Body的长度。&lt;/li&gt;
+&lt;li&gt;**Server：**用于返回服务器相关的软件信息。&lt;/li&gt;
+&lt;li&gt;**header_hash：**将HTTP或HTTPS响应头信息去掉value值后生成一个hash值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;基于banner的指纹关联&#34;&gt;&lt;strong&gt;基于Banner的指纹关联&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Banner信息，也称为服务标识或服务Banner，&lt;strong&gt;是在客户端与服务器建立连接时，服务器发送给客户端的初始信息。&lt;strong&gt;这些信息通常包含了服务器的名称、版本号、操作系统、支持的协议等。然而，由于&lt;/strong&gt;Banner可以进行人为修改、伪装或模糊，这使得单纯基于Banner的字段信息进行资产探测与识别的准确率无法得到保证&lt;/strong&gt;。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>HTTPS证书原理</title>
