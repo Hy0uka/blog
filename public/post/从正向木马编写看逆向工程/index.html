@@ -284,14 +284,6 @@ main()   //主函数不解释
 <p>然后又赋给了rsp+20，最后把eax中存放的第一个参数赋给ecx。</p>
 <p><img src="C:%5CUsers%5Clizhenxin%5CAppData%5CRoaming%5CLanxinSoftCustom%5CLxResource%5CImages%5C0880c08b0110ebe3d330.png" alt="0880c08b0110ebe3d330"></p>
 <p>比较奇怪的是为什么不在栈顶。</p>
-<h5 id="基础知识">基础知识</h5>
-<ol>
-<li>StartupInfo结构体，主要用于创建新进程时，指定该进程的主窗口特性。主要指定窗口显示状态、窗口位置和大小、窗口标题和其他属性。</li>
-<li>获取cmd的绝对路径可以使用GetEnvironmentVariableA(&ldquo;COMSPEC&rdquo;, Buffer, 0xFFu)。</li>
-<li>C语言的强制类型转换：(typename)  expression，typename为新类型名称，expression为表达式。</li>
-<li>返回地址的存储，因为是由主调函数进行的压栈操作，所以x64dbg的栈区分，将存储返回地址的部分算作上一个栈。</li>
-<li>UTF-8 是 Unicode 的实现方式之一。</li>
-</ol>
 </div>
 	</section>
 
@@ -460,7 +452,7 @@ main()   //主函数不解释
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1242 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 976 words in this page.
 	</div>
 </div>
 

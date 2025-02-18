@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Mon, 10 Feb 2025 10:20:08 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 10 Feb 2025 11:24:03 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Windows ETW技术</title>
+      <link>https://wander1ng.com/post/windows-etw%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Mon, 10 Feb 2025 11:24:03 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/windows-etw%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Fofa测绘规则收集</title>
@@ -1788,14 +1797,6 @@ main()   //主函数不解释
 &lt;p&gt;然后又赋给了rsp+20，最后把eax中存放的第一个参数赋给ecx。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;C:%5CUsers%5Clizhenxin%5CAppData%5CRoaming%5CLanxinSoftCustom%5CLxResource%5CImages%5C0880c08b0110ebe3d330.png&#34; alt=&#34;0880c08b0110ebe3d330&#34;&gt;&lt;/p&gt;
 &lt;p&gt;比较奇怪的是为什么不在栈顶。&lt;/p&gt;
-&lt;h5 id=&#34;基础知识&#34;&gt;基础知识&lt;/h5&gt;
-&lt;ol&gt;
-&lt;li&gt;StartupInfo结构体，主要用于创建新进程时，指定该进程的主窗口特性。主要指定窗口显示状态、窗口位置和大小、窗口标题和其他属性。&lt;/li&gt;
-&lt;li&gt;获取cmd的绝对路径可以使用GetEnvironmentVariableA(&amp;ldquo;COMSPEC&amp;rdquo;, Buffer, 0xFFu)。&lt;/li&gt;
-&lt;li&gt;C语言的强制类型转换：(typename)  expression，typename为新类型名称，expression为表达式。&lt;/li&gt;
-&lt;li&gt;返回地址的存储，因为是由主调函数进行的压栈操作，所以x64dbg的栈区分，将存储返回地址的部分算作上一个栈。&lt;/li&gt;
-&lt;li&gt;UTF-8 是 Unicode 的实现方式之一。&lt;/li&gt;
-&lt;/ol&gt;
 </description>
     </item>
     
