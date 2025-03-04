@@ -117,6 +117,46 @@
 &lt;li&gt;接下来客户端会生成会话密钥，使用服务器公钥加密。服务器用自己的私钥解密后，用会话密钥加密数据进行传输，建立SSL连接。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;搭建博客时，供应商实际上能够确认你的域名所有权，有一条&amp;quot;CA机构-&amp;gt;域名供应商-&amp;gt;你&amp;quot;的信任链（即使你在A处买了域名，在B处买了服务器，最后免费证书也是A处生成的，再部署到B处服务器）。&lt;/p&gt;
+&lt;h4 id=&#34;ip地址的分类&#34;&gt;IP地址的分类&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;A类地址：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;范围：1.0.0.0到126.255.255.255&lt;/li&gt;
+&lt;li&gt;适用于大型网络。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;B类地址：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;范围：128.0.0.0到191.255.255.255&lt;/li&gt;
+&lt;li&gt;适用于中型网络。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;C类地址：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;范围：192.0.0.0到223.255.255.255&lt;/li&gt;
+&lt;li&gt;适用于小型网络。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;D类地址：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;范围：224.0.0.0到239.255.255.255&lt;/li&gt;
+&lt;li&gt;用于组播。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;E类地址：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;范围：240.0.0.0到255.255.255.255&lt;/li&gt;
+&lt;li&gt;保留地址，用于研究。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;根据是否为私有ip分&#34;&gt;根据是否为私有IP分&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;A类私有IP地址：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;10.0.0.0 到 10.255.255.255&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;B类私有IP地址：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;172.16.0.0 到 172.31.255.255&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;C类私有IP地址：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;192.168.0.0 到 192.168.255.255&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于ABC类IP，每类IP都有属于该类的私有地址。比如一般个人主机的局域网地址可能是192.168.x.x，公司调试集群分配的IP地址是172.31.64.x。&lt;/p&gt;
 </description>
     </item>
     

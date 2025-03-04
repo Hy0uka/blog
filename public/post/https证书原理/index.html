@@ -211,6 +211,46 @@ onload='renderMathInElement(document.body);'></script>
 <li>接下来客户端会生成会话密钥，使用服务器公钥加密。服务器用自己的私钥解密后，用会话密钥加密数据进行传输，建立SSL连接。</li>
 </ol>
 <p>搭建博客时，供应商实际上能够确认你的域名所有权，有一条&quot;CA机构-&gt;域名供应商-&gt;你&quot;的信任链（即使你在A处买了域名，在B处买了服务器，最后免费证书也是A处生成的，再部署到B处服务器）。</p>
+<h4 id="ip地址的分类">IP地址的分类</h4>
+<p><strong>A类地址：</strong></p>
+<ul>
+<li>范围：1.0.0.0到126.255.255.255</li>
+<li>适用于大型网络。</li>
+</ul>
+<p><strong>B类地址：</strong></p>
+<ul>
+<li>范围：128.0.0.0到191.255.255.255</li>
+<li>适用于中型网络。</li>
+</ul>
+<p><strong>C类地址：</strong></p>
+<ul>
+<li>范围：192.0.0.0到223.255.255.255</li>
+<li>适用于小型网络。</li>
+</ul>
+<p><strong>D类地址：</strong></p>
+<ul>
+<li>范围：224.0.0.0到239.255.255.255</li>
+<li>用于组播。</li>
+</ul>
+<p><strong>E类地址：</strong></p>
+<ul>
+<li>范围：240.0.0.0到255.255.255.255</li>
+<li>保留地址，用于研究。</li>
+</ul>
+<h4 id="根据是否为私有ip分">根据是否为私有IP分</h4>
+<p><strong>A类私有IP地址：</strong></p>
+<ul>
+<li>10.0.0.0 到 10.255.255.255</li>
+</ul>
+<p><strong>B类私有IP地址：</strong></p>
+<ul>
+<li>172.16.0.0 到 172.31.255.255</li>
+</ul>
+<p><strong>C类私有IP地址：</strong></p>
+<ul>
+<li>192.168.0.0 到 192.168.255.255</li>
+</ul>
+<p>对于ABC类IP，每类IP都有属于该类的私有地址。比如一般个人主机的局域网地址可能是192.168.x.x，公司调试集群分配的IP地址是172.31.64.x。</p>
 </div>
 	</section>
 
@@ -379,7 +419,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1513 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1848 words in this page.
 	</div>
 </div>
 
