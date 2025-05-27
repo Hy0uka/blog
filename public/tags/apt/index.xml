@@ -66,6 +66,45 @@
 &lt;/blockquote&gt;
 &lt;p&gt;让用户决定是否要启用宏。&lt;strong&gt;不同的是，当用户单击启用之后，ALT + F11打开宏代码窗口，却并不能看到宏代码。也不能通过一些常见的宏代码提取工具检测分析宏。这是因为默认情况下，XLM宏代码存储在xl\Macrosheets\文件夹下的Sheet1.xml中。打开该xml文件，可以清晰的看到刚才在Excel工作表中插入的宏代码。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/7d105156c0d16f5314ee44aee1a1c8e3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;钓鱼邮件伪造防范&#34;&gt;钓鱼邮件伪造防范&lt;/h3&gt;
+&lt;h4 id=&#34;查看邮件头信息email-header&#34;&gt;查看邮件头信息（Email Header）&lt;/h4&gt;
+&lt;p&gt;邮件头包含了邮件的详细元数据，是真实发件人身份验证的关键。你可以查看以下几个字段：&lt;/p&gt;
+&lt;h4 id=&#34;1-return-path&#34;&gt;1. &lt;strong&gt;Return-Path&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;表示邮件退回的地址，攻击者通常会伪造这个地址。&lt;/li&gt;
+&lt;li&gt;与“From”字段不同则可疑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-received多级&#34;&gt;2. &lt;strong&gt;Received&lt;/strong&gt;（多级）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;显示邮件在传输过程中的每一跳（由哪个邮件服务器接收，再转发）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;从底部往上看&lt;/strong&gt;，看是否有可疑或不一致的来源 IP。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-message-id&#34;&gt;3. &lt;strong&gt;Message-ID&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;合法邮件服务（如 Gmail）会生成以其域名结尾的 Message-ID，如 &lt;code&gt;&amp;lt;randomid@mail.gmail.com&amp;gt;&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;可疑的伪造邮件可能使用非标准或不一致的 Message-ID。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;检查域名验证机制反伪造技术&#34;&gt;检查域名验证机制（反伪造技术）&lt;/h4&gt;
+&lt;p&gt;现代邮件系统用以下机制防止伪造：&lt;/p&gt;
+&lt;h4 id=&#34;1-spfsender-policy-framework&#34;&gt;1. &lt;strong&gt;SPF（Sender Policy Framework）&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;用来验证某个 IP 是否有权限代表该域名发送邮件。&lt;/li&gt;
+&lt;li&gt;查看邮件头中的 &lt;code&gt;Received-SPF&lt;/code&gt; 字段，值应为 &lt;code&gt;pass&lt;/code&gt;。
+&lt;ul&gt;
+&lt;li&gt;示例：&lt;code&gt;Received-SPF: pass (domain of example.com designates 192.0.2.1 as permitted sender)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-dkimdomainkeys-identified-mail&#34;&gt;2. &lt;strong&gt;DKIM（DomainKeys Identified Mail）&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;使用加密签名验证发件人域名。&lt;/li&gt;
+&lt;li&gt;邮件头中应有：&lt;code&gt;DKIM-Signature&lt;/code&gt; 和验证结果如：&lt;code&gt;Authentication-Results: dkim=pass&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-dmarcdomain-based-message-authentication-reporting--conformance&#34;&gt;3. &lt;strong&gt;DMARC（Domain-based Message Authentication, Reporting &amp;amp; Conformance）&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;基于 SPF 和 DKIM，给出统一策略判断邮件是否合法。&lt;/li&gt;
+&lt;li&gt;邮件头中应有类似：&lt;code&gt;Authentication-Results: dmarc=pass&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

@@ -63,3 +63,43 @@ XLM宏和VBA宏的设计理念不同，导致了宏代码在文件结构中的�
 
 ![](https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/7d105156c0d16f5314ee44aee1a1c8e3.png)
 
+### 钓鱼邮件伪造防范
+
+#### 查看邮件头信息（Email Header）
+
+邮件头包含了邮件的详细元数据，是真实发件人身份验证的关键。你可以查看以下几个字段：
+
+#### 1. **Return-Path**
+
+- 表示邮件退回的地址，攻击者通常会伪造这个地址。
+- 与“From”字段不同则可疑。
+
+#### 2. **Received**（多级）
+
+- 显示邮件在传输过程中的每一跳（由哪个邮件服务器接收，再转发）。
+- **从底部往上看**，看是否有可疑或不一致的来源 IP。
+
+#### 3. **Message-ID**
+
+- 合法邮件服务（如 Gmail）会生成以其域名结尾的 Message-ID，如 `<randomid@mail.gmail.com>`。
+- 可疑的伪造邮件可能使用非标准或不一致的 Message-ID。
+
+#### 检查域名验证机制（反伪造技术）
+
+现代邮件系统用以下机制防止伪造：
+
+#### 1. **SPF（Sender Policy Framework）**
+
+- 用来验证某个 IP 是否有权限代表该域名发送邮件。
+- 查看邮件头中的 `Received-SPF` 字段，值应为 `pass`。
+  - 示例：`Received-SPF: pass (domain of example.com designates 192.0.2.1 as permitted sender)`
+
+#### 2. **DKIM（DomainKeys Identified Mail）**
+
+- 使用加密签名验证发件人域名。
+- 邮件头中应有：`DKIM-Signature` 和验证结果如：`Authentication-Results: dkim=pass`
+
+#### 3. **DMARC（Domain-based Message Authentication, Reporting & Conformance）**
+
+- 基于 SPF 和 DKIM，给出统一策略判断邮件是否合法。
+- 邮件头中应有类似：`Authentication-Results: dmarc=pass`

@@ -7,10 +7,194 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Thu, 27 Mar 2025 15:00:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 27 May 2025 11:31:56 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关于IP溯源的一些经验</title>
+      <link>https://wander1ng.com/post/%E5%85%B3%E4%BA%8Eip%E6%BA%AF%E6%BA%90%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%8F%E9%AA%8C/</link>
+      <pubDate>Tue, 27 May 2025 11:31:56 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/%E5%85%B3%E4%BA%8Eip%E6%BA%AF%E6%BA%90%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%8F%E9%AA%8C/</guid>
+      <description>&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://github.com/curated-intel/Attribution-to-IP&#34;&gt;https://github.com/curated-intel/Attribution-to-IP&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;方法&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;PDNS&lt;/td&gt;
+&lt;td&gt;显示该IP的历史解析，并允许您识别指向该IP的域。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;域DNS记录&lt;/td&gt;
+&lt;td&gt;包括A、PTR、MX、TXT和CNAME记录。PTR记录可以显示主机名；TXT和MX记录可以提供有关域所有者或提供商的线索。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;IP WHOIS&lt;/td&gt;
+&lt;td&gt;查询Register和网络块注册信息，可以直接识别注册IP范围的实体或ISP。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;开放端口和运行服务&lt;/td&gt;
+&lt;td&gt;扫描IP以查找可访问的端口和服务，Banner抓取可以显示软件、版本，有时还会显示组织名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;X509证书&lt;/td&gt;
+&lt;td&gt;检查在开放的HTTPS端口上提供的SSL证书，证书通常包含域、电子邮件地址或者组织名称。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ASN&lt;/td&gt;
+&lt;td&gt;ASN描述IP地址块的所有权，帮助识别网络背后的ISP、托管提供商或大型组织。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;IP地理定位&lt;/td&gt;
+&lt;td&gt;将IP映射到大致的物理位置。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;边界网关协议BGP&lt;/td&gt;
+&lt;td&gt;BGP公告告知谁在路由IP块，并确认管理地址的ASN。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;内容存档&lt;/td&gt;
+&lt;td&gt;该IP上的网站的存档内容或IP上的服务的屏幕截图，可能会显示网站更改之前的早期品牌、联系信息或者域。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;手动浏览&lt;/td&gt;
+&lt;td&gt;直接在浏览器中访问IP。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Google Dorking&lt;/td&gt;
+&lt;td&gt;高级搜索语法。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;链接到Tor节点、VPN或代理&lt;/td&gt;
+&lt;td&gt;检查Tor、VPN或Proxy节点的列表，表明IP不属于特定的最终用户，而是隐私或匿名网络的一部分。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;云存储&lt;/td&gt;
+&lt;td&gt;Cloud Storage存储桶可能会包含与IP所有者相关的配置文件、日志、构建工作或者命名约定。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;IP行为&lt;/td&gt;
+&lt;td&gt;蜜罐网络和众包报告网站还可以根据观察到的与蜜罐和受害者 IP 的交互来帮助辨别 IP 在做什么以及谁拥有它。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;安全 TXT 记录&lt;/td&gt;
+&lt;td&gt;直接查询 IP 可以显示主机 IP 上 .well_known/security.txt 或 /security.txt 路径处的安全 TXT 文件。安全 TXT 文件也存在 DNS 实现，这些文件可以作为 DNS TXT 记录找到。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;加密货币网络节点&lt;/td&gt;
+&lt;td&gt;用于支持加密货币挖掘和账本记录活动的公开分布式网络的 IP 列表。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;服务提供商 IP 范围&lt;/td&gt;
+&lt;td&gt;报告为属于 Cloud、CDN 和其他服务提供商的 IP 地址列表。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;域名系统 (DNS) 记录是存储在 DNS 服务器上的指令，用于将域名（例如 &lt;code&gt;www.google.com&lt;/code&gt;）与各种类型的信息相关联，最常见的是 IP 地址。下面是常见的DNS记录类型。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A (Address Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：将域名或子域名指向一个 IPv4 地址。这是最基本和最常见的记录类型。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;example.com. A 192.0.2.1&lt;/code&gt; (表示 &lt;code&gt;example.com&lt;/code&gt; 指向 IPv4 地址 &lt;code&gt;192.0.2.1&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;AAAA (IPv6 Address Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：将域名或子域名指向一个 IPv6 地址。随着 IPv6 的普及，这种记录越来越重要。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;example.com. AAAA 2001:0db8:85a3:0000:0000:8a2e:0370:7334&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;CNAME (Canonical Name Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：将一个域名（别名）指向另一个规范的域名（Canonical Name）。当你想让多个域名指向同一个服务器，并且希望主服务器 IP 更改时只修改一个 A 记录时非常有用。CNAME 记录的值必须是另一个域名，不能是 IP 地址。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;www.example.com. CNAME example.com.&lt;/code&gt; (表示 &lt;code&gt;www.example.com&lt;/code&gt; 是 &lt;code&gt;example.com&lt;/code&gt; 的别名)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;MX (Mail Exchange Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：指定负责接收该域名电子邮件的邮件服务器及其优先级。优先级数字越小，表示邮件服务器的优先级越高。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;example.com. MX 10 mail.example.com.&lt;/code&gt; (表示发送到 &lt;code&gt;example.com&lt;/code&gt; 的邮件应由 &lt;code&gt;mail.example.com&lt;/code&gt; 处理，优先级为 10)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;TXT (Text Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;**功能：**允许管理员在 DNS 中存储任意文本信息。常用于多种目的，例如：&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SPF (Sender Policy Framework)&lt;/strong&gt;：验证邮件服务器是否有权为该域名发送邮件，防止邮件欺诈。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DKIM (DomainKeys Identified Mail)&lt;/strong&gt;：通过加密签名验证邮件的真实性和完整性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DMARC (Domain-based Message Authentication, Reporting, and Conformance)&lt;/strong&gt;：结合 SPF 和 DKIM，提供更强大的邮件认证策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;域名所有权验证&lt;/strong&gt;：许多服务（如 Google Search Console, Microsoft 365）会要求你添加特定的 TXT 记录来证明你对域名的所有权。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;example.com. TXT &amp;quot;v=spf1 mx -all&amp;quot;&lt;/code&gt; (一个 SPF 记录示例)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;NS (Name Server Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：指定负责管理该域名或子域名解析的权威 DNS 服务器。一个域名通常有多个 NS 记录，指向不同的 DNS 服务器以实现冗余。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;example.com. NS ns1.nameserver.com.&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;SOA (Start of Authority Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：包含关于 DNS 区域的重要管理信息，如区域的主 DNS 服务器、区域管理员的电子邮件地址、区域文件的序列号以及区域刷新、重试、过期和否定缓存的计时器。每个 DNS 区域必须有一个 SOA 记录。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例内容&lt;/strong&gt;：主服务器名、管理员邮箱、序列号、刷新间隔、重试间隔、过期时间、最小 TTL。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;SRV (Service Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：指定特定服务（如 SIP、XMPP、LDAP）的主机名和端口号。允许服务在非标准端口上运行，并提供负载均衡和故障转移机制。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;_sip._tcp.example.com. SRV 10 5 5060 sipserver.example.com.&lt;/code&gt; (表示 SIP 服务可以通过 TCP 协议在 &lt;code&gt;sipserver.example.com&lt;/code&gt; 的 5060 端口找到，优先级10，权重5)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;PTR (Pointer Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：用于反向 DNS 查询，即将 IP 地址解析回域名。主要用于邮件服务器验证和其他反向查找场景。通常在 &lt;code&gt;in-addr.arpa&lt;/code&gt; (IPv4) 或 &lt;code&gt;ip6.arpa&lt;/code&gt; (IPv6) 域中设置。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;1.2.0.192.in-addr.arpa. PTR example.com.&lt;/code&gt; (表示 IP 地址 &lt;code&gt;192.0.2.1&lt;/code&gt; 反向解析为 &lt;code&gt;example.com&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;CAA (Certification Authority Authorization Record)&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;功能&lt;/strong&gt;：允许域名所有者指定哪些证书颁发机构 (CA) 有权为其域名颁发 SSL/TLS 证书，以增强安全性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：&lt;code&gt;example.com. CAA 0 issue &amp;quot;letsencrypt.org&amp;quot;&lt;/code&gt; (表示只有 Let&amp;rsquo;s Encrypt 有权为 &lt;code&gt;example.com&lt;/code&gt; 颁发证书)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;查询Whois的时候，如果返回Privacy Protect说明信息被隐藏，可尝试历史WHOIS存档（如微步，WhoisHistory API）。&lt;/p&gt;
+&lt;p&gt;PDNS：使用SecurityTrails或Censys查询IP历史绑定域名常用于： 识别被黑域名迁移路径，发现攻击者丢弃的C2服务器旧域名。’&lt;/p&gt;
+&lt;p&gt;通过网络测绘扫描IP开放端口，结合Banner信息判断用途。端口22+OpenSSH可能为老旧的Linux服务器。&lt;/p&gt;
+&lt;p&gt;SSL证书关联分析：提取IP的SSL证书SHA256指纹→全网搜索相同证书的IP/域名→若存在证书复用则可穿透CDN。&lt;/p&gt;
+&lt;p&gt;ASN网络区块溯源：访问BGP.TOOLS查询IP的AS号，通过AS关联信息确定主机商。(这个一般FOFA就做了)。&lt;/p&gt;
+&lt;p&gt;BGP路由劫持检测：通过RIPE Stat或BGP Stream监控IP路由变更：正常情况IP应该再所属AS内广播，若发现在其它AS内广播则可能遭遇BGP劫持。&lt;/p&gt;
+&lt;p&gt;什么是BGP：BGP（&lt;strong&gt;Border Gateway Protocol&lt;/strong&gt;）是互联网的核心路由协议，用于在**自治系统（AS，Autonomous System）**之间交换路由信息。每个 ISP、大型组织或云服务商都有自己的 AS。某 IP 段的归属、路由方向，都是通过 BGP 协议“宣传”出来的。&lt;/p&gt;
+&lt;p&gt;BGP 劫持指的是：某个自治系统（AS）恶意或错误地向互联网宣称某 IP 段归它所有，从而把原本属于其他 AS 的网络流量吸引到自己那里。Eg：IP 段 &lt;code&gt;8.8.8.0/24&lt;/code&gt; 本来是 Google 的。某个攻击者 AS 宣称：“我也有 &lt;code&gt;8.8.8.0/24&lt;/code&gt;”，或者更具体的子网：&lt;code&gt;8.8.8.0/25&lt;/code&gt;(/25表示前25位为网络地址，具体细分到2的7次方大的子网)。因为 BGP 优先选择更精确的前缀（更长的子网掩码），全世界访问 &lt;code&gt;8.8.8.8&lt;/code&gt; 的流量就可能会被“吸引”到攻击者那里。&lt;/p&gt;
+&lt;p&gt;BGP 劫持的目的：&lt;strong&gt;中间人攻击&lt;/strong&gt;（MITM）：拦截流量进行监听或篡改；&lt;strong&gt;拒绝服务（DoS）&lt;/strong&gt;：导致原始网络瘫痪或隔离；&lt;strong&gt;垃圾邮件/网络诈骗&lt;/strong&gt;：临时使用被劫持 IP 地址发送恶意内容；&lt;strong&gt;掩盖真实身份&lt;/strong&gt;：通过临时接管 IP 避免追踪。&lt;/p&gt;
+&lt;p&gt;代码仓库情报挖掘：Github高级搜索语法&amp;quot;192.168.1.1&amp;quot; language:python &amp;ldquo;password&amp;rdquo; AND &amp;ldquo;10.0.0.0/8&amp;rdquo; extension:env 将某些服务所属IP明文卸载Github配置文件可能遭遇批量扫描。&lt;/p&gt;
+&lt;h4 id=&#34;高阶对抗&#34;&gt;高阶对抗&lt;/h4&gt;
+&lt;p&gt;Netflow流量图谱搭建：Elastic Stack + Logstash，从高频通信IP（如每5分钟连接乌克兰某IP）和异常协议比例（如80%流量为ICMP可能存在隧道隐匿） 两个维度分析。&lt;/p&gt;
+&lt;p&gt;蜜罐网络行为捕获：部署Cowrie/Conpot蜜罐，记录攻击者：输入的命令序列（&lt;code&gt;wget恶意脚本&lt;/code&gt;、&lt;code&gt;curl C2地址&lt;/code&gt;） ，使用的工具特征（如Metasploit默认User-Agent）。&lt;/p&gt;
+&lt;p&gt;泄露数据关联匹配：整合DeHashed+SpyCloud数据，实现：IP与泄露账号关联（攻击IP曾登录&lt;code&gt;admin@victim.com&lt;/code&gt;），密码重用追踪（攻击者邮箱密码与某社工库记录一致） 。&lt;/p&gt;
+&lt;h4 id=&#34;收费方案&#34;&gt;收费方案&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Method 方法&lt;/th&gt;
+&lt;th&gt;Description 描述&lt;/th&gt;
+&lt;th&gt;Source(s) 来源&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;NetFlow NetFlow 网络&lt;/td&gt;
+&lt;td&gt;NetFlow captures metadata about traffic flows (source/destination IPs, ports, protocol, timestamps) and can be used to track communication patterns, peer IPs, and usage behavior. Repeated traffic between an IP and a corporate network could indicate ownership. NetFlow 捕获有关流量（源/目标 IP、端口、协议、时间戳）的元数据，并可用于跟踪通信模式、对等 IP 和使用行为。IP 和公司网络之间的重复流量可能表示所有权。&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.team-cymru.com/&#34;&gt;Team Cymru Pure Signal&lt;/a&gt; Cymru Pure Signal 团队&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Breach Data 泄露数据&lt;/td&gt;
+&lt;td&gt;Breach Data includes leaked credentials, config files, and service records from compromised systems and could be used to directly connect an IP to an email address, domain, or username and imply corporate ownership. 泄露数据包括来自受感染系统的泄露凭据、配置文件和服务记录，可用于将 IP 直接连接到电子邮件地址、域或用户名，并暗示公司所有权。&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://spycloud.com/&#34;&gt;SpyCloud&lt;/a&gt; / &lt;a href=&#34;https://amibreached.com/&#34;&gt;AmIBreached&lt;/a&gt; / &lt;a href=&#34;https://intelx.io/&#34;&gt;Intelx&lt;/a&gt; / &lt;a href=&#34;https://dehashed.com/&#34;&gt;Dehashed&lt;/a&gt; / &lt;a href=&#34;https://socradar.io/&#34;&gt;Socradar&lt;/a&gt; / &lt;a href=&#34;http://hudsonrock.com/&#34;&gt;Hudsonrock&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Internet Scraping Databases Internet 抓取数据库&lt;/td&gt;
+&lt;td&gt;Internet scraping databases collect, store, and index citations from the darkweb, cybercrime forum posts, messaging services, paste sites, legit news sites, and technical blogs, among other sources. They may have data on IP addresses such as where they were first and last mentioned and in what context. Internet 抓取数据库从暗网、网络犯罪论坛帖子、消息服务、粘贴站点、合法新闻站点和技术博客等来源收集、存储和索引引文。他们可能有 IP 地址的数据，例如他们第一次和最后一次被提及的位置以及在什么上下文中。&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://www.recordedfuture.com/&#34;&gt;Recorded Future&lt;/a&gt; / &lt;a href=&#34;https://www.anomali.com/products/threatstream&#34;&gt;Anomali ThreatStream&lt;/a&gt; / &lt;a href=&#34;https://intel471.com/solutions/dark-web-monitoring-and-investigations&#34;&gt;Intel471&lt;/a&gt; / &lt;a href=&#34;https://flashpoint.io/ignite/cyber-threat-intelligence/&#34;&gt;Flashpoint&lt;/a&gt; 记录的未来 / Anomali ThreatStream / Intel471 / Flashpoint&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</description>
+    </item>
     
     <item>
       <title>Fofa测绘规则收集</title>
@@ -742,6 +926,45 @@ int main(int argc,char **argv)
 &lt;/blockquote&gt;
 &lt;p&gt;让用户决定是否要启用宏。&lt;strong&gt;不同的是，当用户单击启用之后，ALT + F11打开宏代码窗口，却并不能看到宏代码。也不能通过一些常见的宏代码提取工具检测分析宏。这是因为默认情况下，XLM宏代码存储在xl\Macrosheets\文件夹下的Sheet1.xml中。打开该xml文件，可以清晰的看到刚才在Excel工作表中插入的宏代码。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/7d105156c0d16f5314ee44aee1a1c8e3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;钓鱼邮件伪造防范&#34;&gt;钓鱼邮件伪造防范&lt;/h3&gt;
+&lt;h4 id=&#34;查看邮件头信息email-header&#34;&gt;查看邮件头信息（Email Header）&lt;/h4&gt;
+&lt;p&gt;邮件头包含了邮件的详细元数据，是真实发件人身份验证的关键。你可以查看以下几个字段：&lt;/p&gt;
+&lt;h4 id=&#34;1-return-path&#34;&gt;1. &lt;strong&gt;Return-Path&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;表示邮件退回的地址，攻击者通常会伪造这个地址。&lt;/li&gt;
+&lt;li&gt;与“From”字段不同则可疑。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-received多级&#34;&gt;2. &lt;strong&gt;Received&lt;/strong&gt;（多级）&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;显示邮件在传输过程中的每一跳（由哪个邮件服务器接收，再转发）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;从底部往上看&lt;/strong&gt;，看是否有可疑或不一致的来源 IP。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-message-id&#34;&gt;3. &lt;strong&gt;Message-ID&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;合法邮件服务（如 Gmail）会生成以其域名结尾的 Message-ID，如 &lt;code&gt;&amp;lt;randomid@mail.gmail.com&amp;gt;&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;可疑的伪造邮件可能使用非标准或不一致的 Message-ID。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;检查域名验证机制反伪造技术&#34;&gt;检查域名验证机制（反伪造技术）&lt;/h4&gt;
+&lt;p&gt;现代邮件系统用以下机制防止伪造：&lt;/p&gt;
+&lt;h4 id=&#34;1-spfsender-policy-framework&#34;&gt;1. &lt;strong&gt;SPF（Sender Policy Framework）&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;用来验证某个 IP 是否有权限代表该域名发送邮件。&lt;/li&gt;
+&lt;li&gt;查看邮件头中的 &lt;code&gt;Received-SPF&lt;/code&gt; 字段，值应为 &lt;code&gt;pass&lt;/code&gt;。
+&lt;ul&gt;
+&lt;li&gt;示例：&lt;code&gt;Received-SPF: pass (domain of example.com designates 192.0.2.1 as permitted sender)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-dkimdomainkeys-identified-mail&#34;&gt;2. &lt;strong&gt;DKIM（DomainKeys Identified Mail）&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;使用加密签名验证发件人域名。&lt;/li&gt;
+&lt;li&gt;邮件头中应有：&lt;code&gt;DKIM-Signature&lt;/code&gt; 和验证结果如：&lt;code&gt;Authentication-Results: dkim=pass&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;3-dmarcdomain-based-message-authentication-reporting--conformance&#34;&gt;3. &lt;strong&gt;DMARC（Domain-based Message Authentication, Reporting &amp;amp; Conformance）&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;基于 SPF 和 DKIM，给出统一策略判断邮件是否合法。&lt;/li&gt;
+&lt;li&gt;邮件头中应有类似：&lt;code&gt;Authentication-Results: dmarc=pass&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

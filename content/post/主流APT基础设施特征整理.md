@@ -12,15 +12,28 @@ draft = true
 
 # 朝鲜Kimsuky
 
-- 使用网易XSS 0day![](https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2025/03/7e6a1de4bd124fd78450c8057084b5a6.png)
-- 喜欢打下跳板网站后使用开源邮件项目PGPMailer(https://github.com/PHPMailer/PHPMailer)来发送钓鱼邮件，**这点与APT37一致**。邮件的X-Mailer一项的值会是PHPMailer 5.2.14。
+- 使用网易XSS 0day
+- ![](https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2025/03/7e6a1de4bd124fd78450c8057084b5a6.png)
+- 喜欢打下跳板网站后使用开源邮件项目PGPMailer(https://github.com/PHPMailer/PHPMailer)来发送钓鱼邮件，**这点与APT37一致**。
 - 基础设施由xampp搭建，这点**与之前的朝鲜APT组织一致**。![](https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2025/03/66ca3568f7e1666e86227ea816fc48c3.png)
 - 使用过之前被APT37入侵过的韩国医院的证书![](https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2025/03/2ee741b2a238006ba522428aaf1e0d7e.png)
-- 
 
-# 台湾毒云藤
+# 朝鲜APT37
 
+- 喜欢打下跳板网站后，使用PHPMailer的开源组件去发邮件。
+
+# 台湾毒云藤APT-C-01
+
+- 中华民国安全局外包
 - 喜欢用AS-CHOOPA的VPS
+
+# 台湾APT-Q-22
+
+- 军情局
+
+# 匿名者64
+
+- 资通电军
 
 # 越南海莲花
 

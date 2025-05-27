@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>清夜无尘の一方天地  | 钓鱼邮件浅析(参考语雀P1ut0)</title>
+	<title>清夜无尘の一方天地  | 关于IP溯源的一些经验</title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1">
 	<meta name="generator" content="Hugo 0.128.0">
 	
@@ -151,9 +151,9 @@ onload='renderMathInElement(document.body);'></script>
 		<a href="https://wander1ng.com/" title="清夜无尘の一方天地" class="heading font-cursive icon">清夜无尘の一方天地</a>
 	</h2>
 </div>
-<h1 class="pt-2">钓鱼邮件浅析(参考语雀P1ut0)</h1>
+<h1 class="pt-2">关于IP溯源的一些经验</h1>
 
-<h3 class="text-java-700 font-normal leading-relaxed pt-2">鱼叉是漏洞之外最常见的入口点</h3>
+<h3 class="text-java-700 font-normal leading-relaxed pt-2">威胁情报</h3>
 
 <div class="flex flex-wrap justify-end pt-2 "><div class="md:flex-grow-0 font-light">
 	
@@ -165,12 +165,12 @@ onload='renderMathInElement(document.body);'></script>
 	
 	
 	<a class="post-taxonomy-tag text-eucalyptus-500"
-		href='/tags/apt'>APT</a>
+		href='/tags/%E6%BA%AF%E6%BA%90'>溯源</a>
 	
 	
 	
 </div><time class="text-eucalyptus-500 md:text-right md:flex-grow font-light pl-4"
-		datetime="2024-11-20T18:42:55&#43;08:00">2024-11-20</time>
+		datetime="2025-05-27T11:31:56&#43;08:00">2025-5-27</time>
 </div>
 
 <hr />
@@ -183,93 +183,181 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><h4 id="一种未曾见过的钓鱼手法使用iframe元素填充页面">一种未曾见过的钓鱼手法：使用iframe元素填充页面</h4>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/140b75470ebc2561d9f4d3e671fa1ede.png" alt=""></p>
-<p>虽然但是，直接看url也能看出不是官方页面。</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/647efb2bdfeb4192b10c8f7bde679b1c.png" alt=""></p>
-<p>该页面实际上被一个满屏的iframe给填充了：</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/57d31d25d2f9dc189296bf2a0d047260.png" alt=""></p>
-<p>只是在直接的钓鱼页面过程中加上了一层跳转，实际上该是黑的域名还是黑的。</p>
-<h4 id="直接投递exe类钓鱼邮件">直接投递exe类钓鱼邮件</h4>
-<p>一般都会对样本进行加密压缩规避杀软，同时将解压密码写在正文中。APT-Q-15这样做过，虽然投递的是msi。</p>
-<h4 id="钓鱼邮件下发漏洞文档">钓鱼邮件下发漏洞文档</h4>
-<p>最常见的CVE2017-11822，从C2远程加载exe</p>
-<h4 id="macro40宏文档投递">Macro4.0宏文档投递</h4>
-<p>VBA（Visual Basic for Applications）是为Microsoft Office软件开发的一种宏语言。它可以用于各种Office应用程序，如Excel、Word、PowerPoint等。VBA有强大的内置函数和对象模型，可以轻松地扩展Office应用程序的功能，从而提高工作效率。VBA也可以用于创建自己的用户界面和编写各种业务应用程序。</p>
-<p>VBS（Visual Basic Script）是一种通用的脚本语言，它通常用于Windows操作系统中的各种任务和自动化操作。VBS通常用于运行脚本文件、自动化常规任务、设置环境变量、执行Windows命令等等。VBS相比于VBA，不依赖于Office应用程序，并且可以执行操作系统级别的任务。</p>
-<p>但VBS不等于XLM宏。</p>
+		<div class="c-rich-text"><p><em><a href="https://github.com/curated-intel/Attribution-to-IP">https://github.com/curated-intel/Attribution-to-IP</a></em></p>
 <table>
 <thead>
 <tr>
-<th>VBA</th>
-<th>XLM宏</th>
+<th>方法</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Excel5.0技术</td>
-<td>Excel4.0技术</td>
+<td>PDNS</td>
+<td>显示该IP的历史解析，并允许您识别指向该IP的域。</td>
 </tr>
 <tr>
-<td>依赖于office组件执行</td>
-<td>依赖于wscript.exe</td>
+<td>域DNS记录</td>
+<td>包括A、PTR、MX、TXT和CNAME记录。PTR记录可以显示主机名；TXT和MX记录可以提供有关域所有者或提供商的线索。</td>
 </tr>
 <tr>
-<td>语法相同</td>
-<td>语法相同</td>
+<td>IP WHOIS</td>
+<td>查询Register和网络块注册信息，可以直接识别注册IP范围的实体或ISP。</td>
+</tr>
+<tr>
+<td>开放端口和运行服务</td>
+<td>扫描IP以查找可访问的端口和服务，Banner抓取可以显示软件、版本，有时还会显示组织名称。</td>
+</tr>
+<tr>
+<td>X509证书</td>
+<td>检查在开放的HTTPS端口上提供的SSL证书，证书通常包含域、电子邮件地址或者组织名称。</td>
+</tr>
+<tr>
+<td>ASN</td>
+<td>ASN描述IP地址块的所有权，帮助识别网络背后的ISP、托管提供商或大型组织。</td>
+</tr>
+<tr>
+<td>IP地理定位</td>
+<td>将IP映射到大致的物理位置。</td>
+</tr>
+<tr>
+<td>边界网关协议BGP</td>
+<td>BGP公告告知谁在路由IP块，并确认管理地址的ASN。</td>
+</tr>
+<tr>
+<td>内容存档</td>
+<td>该IP上的网站的存档内容或IP上的服务的屏幕截图，可能会显示网站更改之前的早期品牌、联系信息或者域。</td>
+</tr>
+<tr>
+<td>手动浏览</td>
+<td>直接在浏览器中访问IP。</td>
+</tr>
+<tr>
+<td>Google Dorking</td>
+<td>高级搜索语法。</td>
+</tr>
+<tr>
+<td>链接到Tor节点、VPN或代理</td>
+<td>检查Tor、VPN或Proxy节点的列表，表明IP不属于特定的最终用户，而是隐私或匿名网络的一部分。</td>
+</tr>
+<tr>
+<td>云存储</td>
+<td>Cloud Storage存储桶可能会包含与IP所有者相关的配置文件、日志、构建工作或者命名约定。</td>
+</tr>
+<tr>
+<td>IP行为</td>
+<td>蜜罐网络和众包报告网站还可以根据观察到的与蜜罐和受害者 IP 的交互来帮助辨别 IP 在做什么以及谁拥有它。</td>
+</tr>
+<tr>
+<td>安全 TXT 记录</td>
+<td>直接查询 IP 可以显示主机 IP 上 .well_known/security.txt 或 /security.txt 路径处的安全 TXT 文件。安全 TXT 文件也存在 DNS 实现，这些文件可以作为 DNS TXT 记录找到。</td>
+</tr>
+<tr>
+<td>加密货币网络节点</td>
+<td>用于支持加密货币挖掘和账本记录活动的公开分布式网络的 IP 列表。</td>
+</tr>
+<tr>
+<td>服务提供商 IP 范围</td>
+<td>报告为属于 Cloud、CDN 和其他服务提供商的 IP 地址列表。</td>
 </tr>
 </tbody>
 </table>
-<p>XLM宏的创建比较简单，直接在某个工作表右键选择插入MS Excel4.0宏表。</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/f68d3f153c5dd09e71ecc92bea7f75b5.png" alt=""></p>
-<p>Excel则会自动创建一个名为Macro1的新工作表，中文系统下为&lt;宏1&gt;，在创建的新工作表中，可以执行宏指令。</p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/43351dcae816838c5f1cc6b52bdcfaa9.png" alt=""></p>
-<p>使用XLM宏比常见的VBA宏具有更好的免杀性。原因主要是：</p>
-<p>XLM宏和VBA宏的设计理念不同，导致了宏代码在文件结构中的呈现不同。和VBA宏一样的是，在文件打开时，Excel依旧会提醒用户</p>
-<blockquote>
-<p>Because of your security settings, macros have been disabled. To run macros, you need to reopen this workbook, and then choose to enable macros. For more information about enabling macros, click Help.</p>
-</blockquote>
-<p>让用户决定是否要启用宏。<strong>不同的是，当用户单击启用之后，ALT + F11打开宏代码窗口，却并不能看到宏代码。也不能通过一些常见的宏代码提取工具检测分析宏。这是因为默认情况下，XLM宏代码存储在xl\Macrosheets\文件夹下的Sheet1.xml中。打开该xml文件，可以清晰的看到刚才在Excel工作表中插入的宏代码。</strong></p>
-<p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/11/7d105156c0d16f5314ee44aee1a1c8e3.png" alt=""></p>
-<h3 id="钓鱼邮件伪造防范">钓鱼邮件伪造防范</h3>
-<h4 id="查看邮件头信息email-header">查看邮件头信息（Email Header）</h4>
-<p>邮件头包含了邮件的详细元数据，是真实发件人身份验证的关键。你可以查看以下几个字段：</p>
-<h4 id="1-return-path">1. <strong>Return-Path</strong></h4>
+<p><strong>域名系统 (DNS) 记录是存储在 DNS 服务器上的指令，用于将域名（例如 <code>www.google.com</code>）与各种类型的信息相关联，最常见的是 IP 地址。下面是常见的DNS记录类型。</strong></p>
+<p><strong>A (Address Record)</strong></p>
 <ul>
-<li>表示邮件退回的地址，攻击者通常会伪造这个地址。</li>
-<li>与“From”字段不同则可疑。</li>
+<li><strong>功能</strong>：将域名或子域名指向一个 IPv4 地址。这是最基本和最常见的记录类型。</li>
+<li><strong>示例</strong>：<code>example.com. A 192.0.2.1</code> (表示 <code>example.com</code> 指向 IPv4 地址 <code>192.0.2.1</code>)</li>
 </ul>
-<h4 id="2-received多级">2. <strong>Received</strong>（多级）</h4>
+<p><strong>AAAA (IPv6 Address Record)</strong></p>
 <ul>
-<li>显示邮件在传输过程中的每一跳（由哪个邮件服务器接收，再转发）。</li>
-<li><strong>从底部往上看</strong>，看是否有可疑或不一致的来源 IP。</li>
+<li><strong>功能</strong>：将域名或子域名指向一个 IPv6 地址。随着 IPv6 的普及，这种记录越来越重要。</li>
+<li><strong>示例</strong>：<code>example.com. AAAA 2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
 </ul>
-<h4 id="3-message-id">3. <strong>Message-ID</strong></h4>
+<p><strong>CNAME (Canonical Name Record)</strong></p>
 <ul>
-<li>合法邮件服务（如 Gmail）会生成以其域名结尾的 Message-ID，如 <code>&lt;randomid@mail.gmail.com&gt;</code>。</li>
-<li>可疑的伪造邮件可能使用非标准或不一致的 Message-ID。</li>
+<li><strong>功能</strong>：将一个域名（别名）指向另一个规范的域名（Canonical Name）。当你想让多个域名指向同一个服务器，并且希望主服务器 IP 更改时只修改一个 A 记录时非常有用。CNAME 记录的值必须是另一个域名，不能是 IP 地址。</li>
+<li><strong>示例</strong>：<code>www.example.com. CNAME example.com.</code> (表示 <code>www.example.com</code> 是 <code>example.com</code> 的别名)</li>
 </ul>
-<h4 id="检查域名验证机制反伪造技术">检查域名验证机制（反伪造技术）</h4>
-<p>现代邮件系统用以下机制防止伪造：</p>
-<h4 id="1-spfsender-policy-framework">1. <strong>SPF（Sender Policy Framework）</strong></h4>
+<p><strong>MX (Mail Exchange Record)</strong></p>
 <ul>
-<li>用来验证某个 IP 是否有权限代表该域名发送邮件。</li>
-<li>查看邮件头中的 <code>Received-SPF</code> 字段，值应为 <code>pass</code>。
+<li><strong>功能</strong>：指定负责接收该域名电子邮件的邮件服务器及其优先级。优先级数字越小，表示邮件服务器的优先级越高。</li>
+<li><strong>示例</strong>：<code>example.com. MX 10 mail.example.com.</code> (表示发送到 <code>example.com</code> 的邮件应由 <code>mail.example.com</code> 处理，优先级为 10)</li>
+</ul>
+<p><strong>TXT (Text Record)</strong></p>
 <ul>
-<li>示例：<code>Received-SPF: pass (domain of example.com designates 192.0.2.1 as permitted sender)</code></li>
+<li>**功能：**允许管理员在 DNS 中存储任意文本信息。常用于多种目的，例如：</li>
+<li><strong>SPF (Sender Policy Framework)</strong>：验证邮件服务器是否有权为该域名发送邮件，防止邮件欺诈。</li>
+<li><strong>DKIM (DomainKeys Identified Mail)</strong>：通过加密签名验证邮件的真实性和完整性。</li>
+<li><strong>DMARC (Domain-based Message Authentication, Reporting, and Conformance)</strong>：结合 SPF 和 DKIM，提供更强大的邮件认证策略。</li>
+<li><strong>域名所有权验证</strong>：许多服务（如 Google Search Console, Microsoft 365）会要求你添加特定的 TXT 记录来证明你对域名的所有权。</li>
+<li><strong>示例</strong>：<code>example.com. TXT &quot;v=spf1 mx -all&quot;</code> (一个 SPF 记录示例)</li>
 </ul>
-</li>
-</ul>
-<h4 id="2-dkimdomainkeys-identified-mail">2. <strong>DKIM（DomainKeys Identified Mail）</strong></h4>
+<p><strong>NS (Name Server Record)</strong></p>
 <ul>
-<li>使用加密签名验证发件人域名。</li>
-<li>邮件头中应有：<code>DKIM-Signature</code> 和验证结果如：<code>Authentication-Results: dkim=pass</code></li>
+<li><strong>功能</strong>：指定负责管理该域名或子域名解析的权威 DNS 服务器。一个域名通常有多个 NS 记录，指向不同的 DNS 服务器以实现冗余。</li>
+<li><strong>示例</strong>：<code>example.com. NS ns1.nameserver.com.</code></li>
 </ul>
-<h4 id="3-dmarcdomain-based-message-authentication-reporting--conformance">3. <strong>DMARC（Domain-based Message Authentication, Reporting &amp; Conformance）</strong></h4>
+<p><strong>SOA (Start of Authority Record)</strong></p>
 <ul>
-<li>基于 SPF 和 DKIM，给出统一策略判断邮件是否合法。</li>
-<li>邮件头中应有类似：<code>Authentication-Results: dmarc=pass</code></li>
+<li><strong>功能</strong>：包含关于 DNS 区域的重要管理信息，如区域的主 DNS 服务器、区域管理员的电子邮件地址、区域文件的序列号以及区域刷新、重试、过期和否定缓存的计时器。每个 DNS 区域必须有一个 SOA 记录。</li>
+<li><strong>示例内容</strong>：主服务器名、管理员邮箱、序列号、刷新间隔、重试间隔、过期时间、最小 TTL。</li>
 </ul>
+<p><strong>SRV (Service Record)</strong></p>
+<ul>
+<li><strong>功能</strong>：指定特定服务（如 SIP、XMPP、LDAP）的主机名和端口号。允许服务在非标准端口上运行，并提供负载均衡和故障转移机制。</li>
+<li><strong>示例</strong>：<code>_sip._tcp.example.com. SRV 10 5 5060 sipserver.example.com.</code> (表示 SIP 服务可以通过 TCP 协议在 <code>sipserver.example.com</code> 的 5060 端口找到，优先级10，权重5)</li>
+</ul>
+<p><strong>PTR (Pointer Record)</strong></p>
+<ul>
+<li><strong>功能</strong>：用于反向 DNS 查询，即将 IP 地址解析回域名。主要用于邮件服务器验证和其他反向查找场景。通常在 <code>in-addr.arpa</code> (IPv4) 或 <code>ip6.arpa</code> (IPv6) 域中设置。</li>
+<li><strong>示例</strong>：<code>1.2.0.192.in-addr.arpa. PTR example.com.</code> (表示 IP 地址 <code>192.0.2.1</code> 反向解析为 <code>example.com</code>)</li>
+</ul>
+<p><strong>CAA (Certification Authority Authorization Record)</strong></p>
+<ul>
+<li><strong>功能</strong>：允许域名所有者指定哪些证书颁发机构 (CA) 有权为其域名颁发 SSL/TLS 证书，以增强安全性。</li>
+<li><strong>示例</strong>：<code>example.com. CAA 0 issue &quot;letsencrypt.org&quot;</code> (表示只有 Let&rsquo;s Encrypt 有权为 <code>example.com</code> 颁发证书)</li>
+</ul>
+<p>查询Whois的时候，如果返回Privacy Protect说明信息被隐藏，可尝试历史WHOIS存档（如微步，WhoisHistory API）。</p>
+<p>PDNS：使用SecurityTrails或Censys查询IP历史绑定域名常用于： 识别被黑域名迁移路径，发现攻击者丢弃的C2服务器旧域名。’</p>
+<p>通过网络测绘扫描IP开放端口，结合Banner信息判断用途。端口22+OpenSSH可能为老旧的Linux服务器。</p>
+<p>SSL证书关联分析：提取IP的SSL证书SHA256指纹→全网搜索相同证书的IP/域名→若存在证书复用则可穿透CDN。</p>
+<p>ASN网络区块溯源：访问BGP.TOOLS查询IP的AS号，通过AS关联信息确定主机商。(这个一般FOFA就做了)。</p>
+<p>BGP路由劫持检测：通过RIPE Stat或BGP Stream监控IP路由变更：正常情况IP应该再所属AS内广播，若发现在其它AS内广播则可能遭遇BGP劫持。</p>
+<p>什么是BGP：BGP（<strong>Border Gateway Protocol</strong>）是互联网的核心路由协议，用于在**自治系统（AS，Autonomous System）**之间交换路由信息。每个 ISP、大型组织或云服务商都有自己的 AS。某 IP 段的归属、路由方向，都是通过 BGP 协议“宣传”出来的。</p>
+<p>BGP 劫持指的是：某个自治系统（AS）恶意或错误地向互联网宣称某 IP 段归它所有，从而把原本属于其他 AS 的网络流量吸引到自己那里。Eg：IP 段 <code>8.8.8.0/24</code> 本来是 Google 的。某个攻击者 AS 宣称：“我也有 <code>8.8.8.0/24</code>”，或者更具体的子网：<code>8.8.8.0/25</code>(/25表示前25位为网络地址，具体细分到2的7次方大的子网)。因为 BGP 优先选择更精确的前缀（更长的子网掩码），全世界访问 <code>8.8.8.8</code> 的流量就可能会被“吸引”到攻击者那里。</p>
+<p>BGP 劫持的目的：<strong>中间人攻击</strong>（MITM）：拦截流量进行监听或篡改；<strong>拒绝服务（DoS）</strong>：导致原始网络瘫痪或隔离；<strong>垃圾邮件/网络诈骗</strong>：临时使用被劫持 IP 地址发送恶意内容；<strong>掩盖真实身份</strong>：通过临时接管 IP 避免追踪。</p>
+<p>代码仓库情报挖掘：Github高级搜索语法&quot;192.168.1.1&quot; language:python &ldquo;password&rdquo; AND &ldquo;10.0.0.0/8&rdquo; extension:env 将某些服务所属IP明文卸载Github配置文件可能遭遇批量扫描。</p>
+<h4 id="高阶对抗">高阶对抗</h4>
+<p>Netflow流量图谱搭建：Elastic Stack + Logstash，从高频通信IP（如每5分钟连接乌克兰某IP）和异常协议比例（如80%流量为ICMP可能存在隧道隐匿） 两个维度分析。</p>
+<p>蜜罐网络行为捕获：部署Cowrie/Conpot蜜罐，记录攻击者：输入的命令序列（<code>wget恶意脚本</code>、<code>curl C2地址</code>） ，使用的工具特征（如Metasploit默认User-Agent）。</p>
+<p>泄露数据关联匹配：整合DeHashed+SpyCloud数据，实现：IP与泄露账号关联（攻击IP曾登录<code>admin@victim.com</code>），密码重用追踪（攻击者邮箱密码与某社工库记录一致） 。</p>
+<h4 id="收费方案">收费方案</h4>
+<table>
+<thead>
+<tr>
+<th>Method 方法</th>
+<th>Description 描述</th>
+<th>Source(s) 来源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NetFlow NetFlow 网络</td>
+<td>NetFlow captures metadata about traffic flows (source/destination IPs, ports, protocol, timestamps) and can be used to track communication patterns, peer IPs, and usage behavior. Repeated traffic between an IP and a corporate network could indicate ownership. NetFlow 捕获有关流量（源/目标 IP、端口、协议、时间戳）的元数据，并可用于跟踪通信模式、对等 IP 和使用行为。IP 和公司网络之间的重复流量可能表示所有权。</td>
+<td><a href="https://www.team-cymru.com/">Team Cymru Pure Signal</a> Cymru Pure Signal 团队</td>
+</tr>
+<tr>
+<td>Breach Data 泄露数据</td>
+<td>Breach Data includes leaked credentials, config files, and service records from compromised systems and could be used to directly connect an IP to an email address, domain, or username and imply corporate ownership. 泄露数据包括来自受感染系统的泄露凭据、配置文件和服务记录，可用于将 IP 直接连接到电子邮件地址、域或用户名，并暗示公司所有权。</td>
+<td><a href="https://spycloud.com/">SpyCloud</a> / <a href="https://amibreached.com/">AmIBreached</a> / <a href="https://intelx.io/">Intelx</a> / <a href="https://dehashed.com/">Dehashed</a> / <a href="https://socradar.io/">Socradar</a> / <a href="http://hudsonrock.com/">Hudsonrock</a></td>
+</tr>
+<tr>
+<td>Internet Scraping Databases Internet 抓取数据库</td>
+<td>Internet scraping databases collect, store, and index citations from the darkweb, cybercrime forum posts, messaging services, paste sites, legit news sites, and technical blogs, among other sources. They may have data on IP addresses such as where they were first and last mentioned and in what context. Internet 抓取数据库从暗网、网络犯罪论坛帖子、消息服务、粘贴站点、合法新闻站点和技术博客等来源收集、存储和索引引文。他们可能有 IP 地址的数据，例如他们第一次和最后一次被提及的位置以及在什么上下文中。</td>
+<td><a href="https://www.recordedfuture.com/">Recorded Future</a> / <a href="https://www.anomali.com/products/threatstream">Anomali ThreatStream</a> / <a href="https://intel471.com/solutions/dark-web-monitoring-and-investigations">Intel471</a> / <a href="https://flashpoint.io/ignite/cyber-threat-intelligence/">Flashpoint</a> 记录的未来 / Anomali ThreatStream / Intel471 / Flashpoint</td>
+</tr>
+</tbody>
+</table>
 </div>
 	</section>
 
@@ -438,7 +526,7 @@ onload='renderMathInElement(document.body);'></script>
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1570 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 3482 words in this page.
 	</div>
 </div>
 
@@ -449,41 +537,19 @@ onload='renderMathInElement(document.body);'></script>
 <hr class="double-line" />
 <div class="flex flex-wrap justify-between pb-2 leading-loose font-serif">
     
-    <a class="flex-grow-0" href="/post/%E5%A4%8D%E4%B9%A0https%E6%8F%A1%E6%89%8B%E6%B5%81%E7%A8%8B/">
+    <a class="flex-grow-0" href="/post/fofa%E6%B5%8B%E7%BB%98%E8%A7%84%E5%88%99%E6%94%B6%E9%9B%86/">
         <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
             height="24">
             <path fill="none" d="M0 0h24v24H0z" />
             <path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414z" /></svg>
-        复习HTTPS握手流程及相关扫描器
+        Fofa测绘规则收集
     </a>
     
-    
-    <a class="flex-grow-0" href="/post/vt%E9%AB%98%E7%BA%A7%E8%AF%AD%E6%B3%95/">
-        VT高级语法
-        <svg class="fill-current inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-            height="24">
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" /></svg></a>
     
 </div>
 <div >
 
 
-
-<div class="font-serif pb-2 flex align-start leading-loose">
-	<span class="heading pr-6 leading-loose">Related</span>
-	<span >
-		
-			<a href="/post/msi%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6%E5%8F%8A%E7%9B%B8%E5%85%B3apt%E7%BB%84%E7%BB%87%E6%89%8B%E6%B3%95/">Msi恶意文件及相关APT组织手法</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/msi-transforms%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">MSI TRANSFORMS技术分析</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/confucius%E7%BB%84%E7%BB%87%E5%88%A9%E7%94%A8ads%E9%9A%90%E8%97%8F%E6%8A%80%E6%9C%AF%E7%9A%84%E6%94%BB%E5%87%BB%E6%B4%BB%E5%8A%A8/">Confucius组织利用ADS隐藏技术的攻击活动</a>&nbsp;&nbsp;&#47;&nbsp;
-		
-			<a href="/post/living-off-the-land-binaries/">Living Off the Land Binaries</a>
-		
-</span>
-</div>
 
 </div>
 <hr />
