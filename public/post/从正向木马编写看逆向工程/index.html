@@ -277,14 +277,34 @@ main()   //主函数不解释
 <p>简单来说这个程序的功能就是开放5210端口，并监听。然后把输入重定向到新起cmd进程，并把cmd进程的输出重定向到5210端口。</p>
 <h5 id="对64位下传参的测试">对64位下传参的测试</h5>
 <p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/4df417ee0c925a50506052e490c72dfa.png" alt=""></p>
-<p>传4个参数及以下，使用的是寄存器传参，cd89，第一个参数传到c，第二个参数传到d，第三个参数传到8，第四个参数传到9。从顺序上来看，从右往左，先从第四个开始传，再从第三个开始传&hellip;</p>
+<p>传4个参数及以下，使用的是寄存器传参，cd89，第一个参数传到c，第二个参数传到d，第三个参数传到8，第四个参数传到9。从顺序上来看，从右往左，先从第四个开始传，再从第三个开始传&hellip;(最后三句汇编)。</p>
 <p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/7cfa50c168c605c3f3c348bc87cc3891.png" alt=""></p>
-<p>传5个参数及以上，前四个使用寄存器传参，从第五个开始使用堆栈传参(上图是传完了之后的结果，汇编侧可以看到寄存器的使用)。可以看到第五个参数先使用了寄存器将参数从rbp-14h中取出来(寻址方式。反映变化趋势的方面，栈由高地址向低地址生长，参数由低地址向高地址生长。x64dbg的上面是栈顶低地址下面是栈底高地址)。</p>
+<p>传5个参数及以上，前四个使用寄存器传参，从第五个开始使用堆栈传参(上图是传完了之后的结果，汇编侧可以看到寄存器的使用)。可以看到第五个参数先使用了寄存器将参数从rbp-14h中取出来(寻址方式。反映变化趋势的方面，栈由高地址向低地址生长，参数由低地址向高地址生长。x64dbg的上面是栈顶低地址下面是栈底高地址)。rbp-14h=DCC，实际上一个堆栈存放一段数据，可能是一个参数也可能是两个参数？例如DD0处存放了00000002和00000003。</p>
 <p><img src="https://pub-f40a9f95639d4cee81dcb09d9b4adf70.r2.dev/blog/2024/12/d8c9290af6a1335497314da67801034c.png" alt=""></p>
 <p>然后又赋给了rsp+20，最后把eax中存放的第一个参数赋给ecx。</p>
 <p><img src="C:%5CUsers%5Clizhenxin%5CAppData%5CRoaming%5CLanxinSoftCustom%5CLxResource%5CImages%5C0880c08b0110ebe3d330.png" alt="0880c08b0110ebe3d330"></p>
 <p>比较奇怪的是为什么不在栈顶。</p>
-</div>
+<h2 id="栈传参--shadow-space影子空间">栈传参 &amp; Shadow Space（影子空间）</h2>
+<ul>
+<li>Windows 要求每个函数调用在栈上为前 4 个参数 <strong>预留 32 字节</strong> 的空间，叫做 <strong>shadow space</strong>。</li>
+<li>不论是否用到了栈，这块空间都要保留（供被调用者在需要时将寄存器值保存到这里）。</li>
+</ul>
+<p>📦 结构如下（函数调用前）：</p>
+<pre tabindex="0"><code>less复制编辑High address
++-------------------+
+| 参数5（如有）       | ← 栈上传递
+| 参数6（如有）       |
++-------------------+
+| Shadow Space (32B)| ← 必须保留
+| [RCX]             |
+| [RDX]             |
+| [R8]              |
+| [R9]              |
++-------------------+
+| Return Address    |
++-------------------+
+Low address (RSP)
+</code></pre></div>
 	</section>
 
 
@@ -452,7 +472,7 @@ main()   //主函数不解释
 	<div class="text-sm text-gray-500 leading-tight a-gray">
 		Copyright © 2019–2024
 		<br />
-		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 976 words in this page.
+		Built with Hugo and theme <a href="https://github.com/heyeshuang/hugo-theme-tokiwa">Tokiwa</a>. 1226 words in this page.
 	</div>
 </div>
 
