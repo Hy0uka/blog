@@ -183,7 +183,7 @@ onload='renderMathInElement(document.body);'></script>
 
 <article>
 	<section class="mx-auto content">
-		<div class="c-rich-text"><p>​	对于多阶段释放的样本，可以扔进xdbg，在回连C2的函数下断。找到断下来的地址空间，不是shellcode的话就是一个完整的PE，如果是PE，直接dump出来，修复导入导出表后便能在IDA中分析。</p>
+		<div class="c-rich-text"><p>​	对于多阶段释放的样本，可以扔进xdbg，在回连C2的函数下断。<strong>找到断下来的地址空间，不是shellcode的话就是一个完整的PE</strong>，如果是PE，直接dump出来，修复导入导出表后便能在IDA中分析。</p>
 <p>​	看修复过程的操作主要涉及对VirtualAddress和Relative VirtualAddress的处理，顺便学习一下内存对齐的原理。</p>
 <p><strong>对于内存空间的任意值， 有：</strong></p>
 <p>VirtualAddress：进程虚拟内存的绝对地址。</p>

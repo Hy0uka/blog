@@ -18,7 +18,7 @@
       <pubDate>Wed, 30 Dec 2020 12:27:23 +0800</pubDate>
       
       <guid>https://wander1ng.com/post/%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/</guid>
-      <description>&lt;p&gt;​	对于多阶段释放的样本，可以扔进xdbg，在回连C2的函数下断。找到断下来的地址空间，不是shellcode的话就是一个完整的PE，如果是PE，直接dump出来，修复导入导出表后便能在IDA中分析。&lt;/p&gt;
+      <description>&lt;p&gt;​	对于多阶段释放的样本，可以扔进xdbg，在回连C2的函数下断。&lt;strong&gt;找到断下来的地址空间，不是shellcode的话就是一个完整的PE&lt;/strong&gt;，如果是PE，直接dump出来，修复导入导出表后便能在IDA中分析。&lt;/p&gt;
 &lt;p&gt;​	看修复过程的操作主要涉及对VirtualAddress和Relative VirtualAddress的处理，顺便学习一下内存对齐的原理。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;对于内存空间的任意值， 有：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;VirtualAddress：进程虚拟内存的绝对地址。&lt;/p&gt;

@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>cn</language>
     <copyright>Copyright © 2019–2024</copyright>
-    <lastBuildDate>Fri, 20 Jun 2025 18:25:22 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 26 Jun 2025 18:28:27 +0800</lastBuildDate>
     
 	<atom:link href="https://wander1ng.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -1882,6 +1882,21 @@ git push https://github.com/username/projectname master(main)
     </item>
     
     <item>
+      <title>TLS回调实现反调试</title>
+      <link>https://wander1ng.com/post/tls%E5%9B%9E%E8%B0%83/</link>
+      <pubDate>Thu, 20 Jun 2024 18:25:22 +0800</pubDate>
+      
+      <guid>https://wander1ng.com/post/tls%E5%9B%9E%E8%B0%83/</guid>
+      <description>&lt;p&gt;​	TLS回调被用来在程序入口点执行之前运行代码，因此这些代码可以在调试器中秘密执行。TLS是windows的一个存储类，其中数据对象不是一个自动的堆栈变量，而是代码中运行的每个线程的一个本地变量。大致而言，TLS允许每个线程维护一个TLS声明的专有变量。在应用程序实现TLS的情况下，可执行程序的PE头部会包含一个.tls段。TLS提供了初始化和终止TLS数据对象的回调函数。windows系统在执行程序正常的入口点之前运行这些回调函数。&lt;/p&gt;
+&lt;p&gt;​	可以使用PEview查看应用程序的.tls段，可以发现TLS回调函数。通常情况下，正常程序不适用.tls段，如果看到了程序的.tls段，就可以怀疑它使用了反调试技术。&lt;/p&gt;
+&lt;p&gt;​	使用IDA Pro可以很容易的分析TLS回调函数。一旦IDA Pro完成对应用程序的分析，可以通过Ctrl+E看到二进制的入口点，该组合键的作用是显示应用程序的所有入口点，其中包含TLS回调。&lt;/p&gt;
+&lt;p&gt;​	PE文件头可选映像头中数据目录表的第10成员&lt;strong&gt;IMAGE_DATA_DIRECTORY DataDirectory[IMAGE_DIRECTORY_ENTRY_TLS]&lt;strong&gt;指向&lt;/strong&gt;线程局部存储，英文简写”TLS”。&lt;strong&gt;这个段里面保存了&lt;/strong&gt;变量和回调函数&lt;/strong&gt;的数据，但是TLS表本身的结构体一般存在于”.rdata”段内。&lt;/p&gt;
+&lt;p&gt;​	**TLS中的变量：**单独存在于每个独立的线程当中，每个线程中对该变量的操作都不会影响到其他线程中的TLS变量。**TLS中的回调函数：**在程序入口点（AddressOfEntry）之前执行，也就是说程序在被调试时，还没有在入口点处断下来之前，TLS中的变量和回调函数就已经执行完了，所以TLS可以用作反调试之类的操作。&lt;/p&gt;
+&lt;p&gt;​	在IDA中使用ｃｔｒｌ+E 组合键查看回调函数，是TlsCallback。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>整理一些基础Web攻防知识</title>
       <link>https://wander1ng.com/post/%E6%95%B4%E7%90%86%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80web%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sat, 08 Jan 2022 15:19:02 +0800</pubDate>
@@ -1916,7 +1931,7 @@ git push https://github.com/username/projectname master(main)
       <pubDate>Wed, 30 Dec 2020 12:27:23 +0800</pubDate>
       
       <guid>https://wander1ng.com/post/%E8%BD%AC%E5%82%A8%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%AE%E5%A4%8D%E5%8E%9F%E7%90%86/</guid>
-      <description>&lt;p&gt;​	对于多阶段释放的样本，可以扔进xdbg，在回连C2的函数下断。找到断下来的地址空间，不是shellcode的话就是一个完整的PE，如果是PE，直接dump出来，修复导入导出表后便能在IDA中分析。&lt;/p&gt;
+      <description>&lt;p&gt;​	对于多阶段释放的样本，可以扔进xdbg，在回连C2的函数下断。&lt;strong&gt;找到断下来的地址空间，不是shellcode的话就是一个完整的PE&lt;/strong&gt;，如果是PE，直接dump出来，修复导入导出表后便能在IDA中分析。&lt;/p&gt;
 &lt;p&gt;​	看修复过程的操作主要涉及对VirtualAddress和Relative VirtualAddress的处理，顺便学习一下内存对齐的原理。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;对于内存空间的任意值， 有：&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;VirtualAddress：进程虚拟内存的绝对地址。&lt;/p&gt;
@@ -2071,7 +2086,7 @@ main()   //主函数不解释
 &lt;li&gt;不论是否用到了栈，这块空间都要保留（供被调用者在需要时将寄存器值保存到这里）。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;📦 结构如下（函数调用前）：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;less复制编辑High address
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;High address
 +-------------------+
 | 参数5（如有）       | ← 栈上传递
 | 参数6（如有）       |
